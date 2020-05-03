@@ -1215,7 +1215,7 @@
 
 .hero-slider .hero-text {
   padding: 0 30px;
-  margin-top: 100px; }
+  margin-top: 170px; }
 
 .hero-slider .hero-text h1 {
   line-height: 50px;
@@ -1234,6 +1234,7 @@
 
 .hero-slider .hero-text p {
   color: #333;
+  font-size: 18px;
   margin-bottom: 35px; }
 
 .hero-slider .hero-text .button {
