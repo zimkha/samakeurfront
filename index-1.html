@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="en"  ng-app="publibag">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- status bar mobile -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <link rel="shortcut icon" type="image/x-icon" href="assets/images/favicon.png">
+    <link rel="icon" type="image/png" href="assets/images/favicon.png">
+
+    <title>Publibag</title>
+
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/css/uikit.min.css" rel="stylesheet">
+    <link href="assets/css/uikit.css" rel="stylesheet">
+
+    <link href="js/iziToast/dist/css/iziToast.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="assets/css/swiper.css">
+    <link href="assets/css/style.css?v=ffsf" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="assets/css/lightbox.css" rel="stylesheet">
+
+    <script type="text/javascript" src="assets/js/swipper.js"></script>
+    <script type="text/javascript" src="assets/js/uikit.min.js"></script>
+    <script type="text/javascript" src="assets/js/jquery.min.js"></script>
+    <script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="assets/js/lightbox-plus-jquery.js"></script>
+
+</head>
+<body ng-controller="afterLoginCtl">
+
+    <section class="d-none" id="top"></section>
+    
+    <section id="nav-bar">
+        <nav class="navbar fixed-top navbar-expand-lg navbar-light">
+            <a class="navbar-brand" href="/">
+                <div id="test1" class="nav-logo"> <img src="assets/images/logo/logo.svg" class="item-img-nav" alt=""></div>
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="fa fa-bars"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+              <ul class="navbar-nav ml-auto">
+                <li class="nav-item active1 ">
+                  <a class="nav-link " href="#service" id="service1">Qui somme-nous ?</a>
+                </li>
+                <li class="nav-item active1">
+                  <a class="nav-link" href="#comment" data-scroll>Comment ça marche ?</a>
+                </li>
+                <li class="nav-item active1">
+                  <a class="nav-link" href="#produit" data-scroll>Nos Produits</a>
+                </li>
+                <li class="nav-item active1">
+                  <a class="nav-link" href="#confiance" data-scroll>Notre Réseau</a>
+                </li>
+                <li class="nav-item active1">
+                  <a class="nav-link" href="#section-jeu" data-scroll>Nos Contacts</a>
+                </li>
+              </ul>
+            </div>
+          </nav>
+    </section>
+
+     <!-- banner -->
+     <section id="banner">
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <img class="item-image-swip" src="https://www.maigrir.fr/821-thickbox_default/pain-moelleux-365gr.jpg" alt="" style="width: 100%!important;height: 100%">
+                    <div class="item-text-swp">
+                        <div> <span class="item-titre-partenaire font-weight-bold"> Vous cherchez un moyen</span></div>
+                        <div class="item-desc-partenaire">Efficace de faire passer votre message.</div>
+
+                        <div class="pt-42">
+                            <a href="#section-jeu" class="btn item-btn fsize-20 p-0 text-dark">
+                                <div class="item-btn-1 btn-default pl-3 pr-3 pt-1 pb-1">Jeux concours</div>
+                            </a>
+                            <div class="pt-3 fsize-16">Retrouvez le formulaire ci-dessous</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <img class="item-image-swip" src="https://www.guydemarle.com/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb053IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--7c790f566b572879e4be531a53bdff08b33ba560/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9VWTI5dFltbHVaVjl2Y0hScGIyNXpld1k2QzNKbGMybDZaVWtpRGpFMU1EQjRNVFV3TUFZNkJrVlUiLCJleHAiOm51bGwsInB1ciI6InZhcmlhdGlvbiJ9fQ==--3fc61d6304cc6214f7d9184e8eb99bd25324c309/pain-facon-nordique.jpg" alt="" style="height: 100%;width: 100%!important;">
+                    <div class="item-text-swp">
+                        <div> <span class="item-titre-partenaire font-weight-bold"> Quibusdam pariatur saepe</span></div>
+                        <div class="item-desc-partenaire">Lorem ipsum, dolor sit amet consectetur adipisicing elit.nus</div>
+
+                        <div class="pt-42">
+                            <a href="#section-jeu" class="btn item-btn fsize-20 p-0 text-dark">
+                                <div class="item-btn-1 btn-default pl-3 pr-3 pt-1 pb-1">Jeux concours</div>
+                            </a>
+                            <div class="pt-3 fsize-16">Retrouvez le formulaire ci-dessous</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <img class="item-image-swip" src="https://www.marieblachere.com/wp-content/uploads/2019/07/Marie-Blachere_Pain-Sportif.jpg" alt="" style="width: 100%!important;height: 100%">
+                    <div class="item-text-swp">
+                        <div> <span class="item-titre-partenaire font-weight-bold"> amet consectetur adipisicing</span></div>
+                        <div class="item-desc-partenaire">Lorem Quibusdam pariatur saepe, nostrum ad</div>
+
+                        <div class="pt-42">
+                            <a href="#section-jeu" class="btn item-btn fsize-20 p-0 text-dark">
+                                <div class="item-btn-1 btn-default pl-3 pr-3 pt-1 pb-1">Jeux concours</div>
+                            </a>
+                            <div class="pt-3 fsize-16">Retrouvez le formulaire ci-dessous</div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+            <div class="swiper-pagination"></div>
+
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+
+        </div>
+    </section>
+
+     <section id="service" name="service">
+        <div class="item-title">
+            <span>Qui sommes - nous ?</span>
+            <div class="underline"></div>
+        </div>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-5 col-sm-6 text-center">
+                    <div class="item-img-service" class="item-img" uk-scrollspy="cls: uk-animation-slide-left; delay: 300">
+                        <img src="https://static-imanemagazine.com/2012/01/pain-200x200.jpg" alt="" class="item-img" uk-scrollspy="cls: uk-animation-slide-right; delay: 400">
+                    </div>
+                </div>
+                <div class="col-md-6 col-sm-6">
+                    <div class="item-desc">
+                        <div class="item-titre-publibag">PUBLIBAG</div>
+                        <div class="item-desc-texte">Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae tempora facilis delectus architecto quo accusantium voluptates inventore cum a asperiores tempore harum est dolorum perferendis ea nulla, recusandae sequi distinctio?
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae tempora facilis delectus architecto quo accusantium voluptates inventore cum a asperiores tempore harum est dolorum perferendis ea nulla, recusandae sequi distinctio?</div>
+                
+                    </div>    
+                </div>
+            </div>
+        </div>
+    </section>
+
+     <section id="comment">
+        <div class="item-title-1 p-5 mb-5">
+            <span>Comment ça marche ?</span>
+            <div class="underline-1"></div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 col-sm-4 text-center">
+                    <div class="item-comment">
+                        <div class="item-comment-1">
+                            <div class="item-comment-2">
+                                <img src="assets/images/icons/icon-budget.svg" class="item-comment-3" alt="">
+                            </div>
+                            <div class="mt-30">
+                                <div class="item-comment-4">Budjet restreint</div>
+                            </div>
+                            <div class="mt-30">
+                                <div class="item-comment-5">Vous faire connaitre rapidement avec un budget pub restreint</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-4 text-center">
+                    <div class="item-comment">
+                        <div class="item-comment-1">
+                            <div class="item-comment-2">
+                                <img src="assets/images/icons/icon-main.svg" class="item-comment-3" alt="">
+                            </div>
+                            <div class="mt-30">
+                                <div class="item-comment-4">Toutes les mains</div>
+                            </div>
+                            <div class="mt-30">
+                                <div class="item-comment-5">90% de vos clients consomment du pain quotidiennement</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-4 text-center">
+                    <div class="item-comment">
+                        <div class="item-comment-1">
+                            <div class="item-comment-2">
+                                <img src="assets/images/icons/icon-capital.svg" class="item-comment-3" alt="">
+                            </div>
+                            <div class="mt-30">
+                                <div class="item-comment-4">Toute la capitale</div>
+                            </div>
+                            <div class="mt-30">
+                                <div class="item-comment-5">Augmentez-votre visiblite partout ou vous souhaitez</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-center m-auto pt-60  pb-60">
+                    <button type="button" href="#section-jeu" class="btn item-btn font-weight-bold fsize-26 p-0 text-dark" data-toggle="modal" data-target="#exampleModal">
+                        <div class="item-btn-1 btn-default pl-3 pr-3 pt-1 pb-1">Nous contacter</div>
+                    </button>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+
+     <section id="produit" name="produit">
+        <div class="item-title">
+            <span>Nos Produits</span>
+            <div class="underline"></div>
+        </div>
+        <div class="container-fluid">
+          
+            <div class="row justify-content-center">
+
+                <div class="col-md-3 col-sm-4 p-0">
+                    <div class="uk-inline-clip uk-transition-toggle" tabindex="0">
+                        <div style="text-decoration: none">
+                            <img class="item-produit" src="https://www.lafabriqueduboulanger.com/file/2019/07/pain-ferme-01.jpg" title="title">
+                        </div>
+                        <a href="https://static.passeportsante.net/200x200/i62590-pain.jpg" data-title="desciption" style="text-decoration: none" data-lightbox="roadtrip" class="uk-transition-fade uk-position-cover uk-overlay uk-flex uk-flex-center uk-flex-middle image-back image-back-color">
+                            <p class="uk-h4 uk-margin-remove text-white">
+                                <span class="fa fa-image text-white fsize-44"> </span>
+                            </p>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-md-3 col-sm-4 p-0">
+                    <div class="uk-inline-clip uk-transition-toggle" tabindex="0">
+                        <div style="text-decoration: none">
+                            <img class="item-produit" src="https://delicesdophelie.be/wp-content/uploads/2016/11/pain-4-200x200.jpg" title="title">
+                        </div>
+                        <a href="https://static.passeportsante.net/200x200/i62590-pain.jpg" data-title="desciption" style="text-decoration: none" data-lightbox="roadtrip" class="uk-transition-fade uk-position-cover uk-overlay uk-flex uk-flex-center uk-flex-middle image-back image-back-color">
+                            <p class="uk-h4 uk-margin-remove text-white">
+                                <span class="fa fa-image text-white fsize-44"> </span>
+                            </p>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-md-3 col-sm-4 p-0">
+                    <div class="uk-inline-clip uk-transition-toggle" tabindex="0">
+                        <div style="text-decoration: none">
+                            <img class="item-produit" src="https://www.lafabriqueduboulanger.com/file/2019/07/pain-ferme-01.jpg" title="title">
+                        </div>
+                        <a href="https://static.passeportsante.net/200x200/i62590-pain.jpg" data-title="desciption" style="text-decoration: none" data-lightbox="roadtrip" class="uk-transition-fade uk-position-cover uk-overlay uk-flex uk-flex-center uk-flex-middle image-back image-back-color">
+                            <p class="uk-h4 uk-margin-remove text-white">
+                                <span class="fa fa-image text-white fsize-44"> </span>
+                            </p>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-md-3 col-sm-4 p-0">
+                    <div class="uk-inline-clip uk-transition-toggle" tabindex="0">
+                        <div style="text-decoration: none">
+                            <img class="item-produit" src="https://www.lidealdesgourmands.com/2743-large_default/pain-complet-280gr.jpg" title="title">
+                        </div>
+                        <a href="https://static.passeportsante.net/200x200/i62590-pain.jpg" data-title="desciption" style="text-decoration: none" data-lightbox="roadtrip" class="uk-transition-fade uk-position-cover uk-overlay uk-flex uk-flex-center uk-flex-middle image-back image-back-color">
+                            <p class="uk-h4 uk-margin-remove text-white">
+                                <span class="fa fa-image text-white fsize-44"> </span>
+                            </p>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-md-3 col-sm-4 p-0">
+                    <div class="uk-inline-clip uk-transition-toggle" tabindex="0">
+                        <div style="text-decoration: none">
+                            <img class="item-produit" src="https://www.lidealdesgourmands.com/2744-large_default/pain-cranberries-et-amandes-360gr.jpg" title="title">
+                        </div>
+                        <a href="https://static.passeportsante.net/200x200/i62590-pain.jpg" data-title="desciption" style="text-decoration: none" data-lightbox="roadtrip" class="uk-transition-fade uk-position-cover uk-overlay uk-flex uk-flex-center uk-flex-middle image-back image-back-color">
+                            <p class="uk-h4 uk-margin-remove text-white">
+                                <span class="fa fa-image text-white fsize-44"> </span>
+                            </p>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-md-3 col-sm-4 p-0">
+                    <div class="uk-inline-clip uk-transition-toggle" tabindex="0">
+                        <div style="text-decoration: none">
+                            <img class="item-produit" src="https://monquartier.quebec/wp-content/uploads/2018/04/anna-pierrot-gateau-800x800.jpg" title="title">
+                        </div>
+                        <a href="https://static.passeportsante.net/200x200/i62590-pain.jpg" data-title="desciption" style="text-decoration: none" data-lightbox="roadtrip" class="uk-transition-fade uk-position-cover uk-overlay uk-flex uk-flex-center uk-flex-middle image-back image-back-color">
+                            <p class="uk-h4 uk-margin-remove text-white">
+                                <span class="fa fa-image text-white fsize-44"> </span>
+                            </p>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-md-3 col-sm-4 p-0">
+                    <div class="uk-inline-clip uk-transition-toggle" tabindex="0">
+                        <div style="text-decoration: none">
+                            <img class="item-produit" src="https://static.passeportsante.net/200x200/i62640-pain-blanc-ou-pain-complet-lequel-faut-il-choisir.jpg" title="title">
+                        </div>
+                        <a href="https://static.passeportsante.net/200x200/i62590-pain.jpg" data-title="desciption" style="text-decoration: none" data-lightbox="roadtrip" class="uk-transition-fade uk-position-cover uk-overlay uk-flex uk-flex-center uk-flex-middle image-back image-back-color">
+                            <p class="uk-h4 uk-margin-remove text-white">
+                                <span class="fa fa-image text-white fsize-44"> </span>
+                            </p>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-md-3 col-sm-4 p-0">
+                    <div class="uk-inline-clip uk-transition-toggle" tabindex="0">
+                        <div style="text-decoration: none">
+                            <img class="item-produit" src="https://static-imanemagazine.com/2012/01/pain-200x200.jpg" title="title">
+                        </div>
+                        <a href="https://static.passeportsante.net/200x200/i62590-pain.jpg" data-title="desciption" style="text-decoration: none" data-lightbox="roadtrip" class="uk-transition-fade uk-position-cover uk-overlay uk-flex uk-flex-center uk-flex-middle image-back image-back-color">
+                            <p class="uk-h4 uk-margin-remove text-white">
+                                <span class="fa fa-image text-white fsize-44"> </span>
+                            </p>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+     <section id="confiance" name="confiance" class="pl-5 pr-5">
+        <div class="item-title">
+            <div>Notre Réseau</div>
+            <div class="underline"></div>
+            <div class="fsize-26 text-orange mt-40">Ils nous font confiance</div>
+        </div>
+
+         <div class="swiper-container1">
+             <div class="swiper-wrapper">
+                 <div class="swiper-slide">
+                    <div class="p-0  mb-24">
+                        <div class="text-center">
+                            <img class="item-produit-partenaire" src="assets/images/partenaires/partenaire-1.jpg" title="title">
+                        </div>
+                        <div class="text-center item-text-part">lorem ipsum 1</div>
+                    </div>
+                </div>
+                 <div class="swiper-slide">
+                    <div class="p-0  mb-24">
+                        <div class="text-center">
+                            <img class="item-produit-partenaire" src="assets/images/partenaires/partenaire-2.jpg" title="title">
+                        </div>
+                        <div class="text-center item-text-part">lorem ipsum 1</div>
+                    </div>
+                         
+                </div>
+                 <div class="swiper-slide">
+                    <div class="p-0  mb-24">
+                        <div class="text-center">
+                            <img class="item-produit-partenaire" src="assets/images/partenaires/partenaire-3.jpg" title="title">
+                        </div>
+                        <div class="text-center item-text-part">lorem ipsum 1</div>
+                    </div>
+                </div>
+                 <div class="swiper-slide">
+                    <div class="p-0  mb-24">
+                        <div class="text-center">
+                            <img class="item-produit-partenaire" src="assets/images/partenaires/partenaire-1.jpg" title="title">
+                        </div>
+                        <div class="text-center item-text-part">lorem ipsum 1</div>
+                    </div>
+                </div>
+
+             </div>
+
+             <div class="swiper-button-prev1"></div>
+             <div class="swiper-button-next1"></div>
+
+         </div>
+    </section>
+
+    <section id="partenaire" name="partenaire">
+        <div class="item-title">
+            <div class="fsize-26 text-orange mt-40 ">Partenaires / Distributeurs</div>
+        </div>
+    
+        <div class="">
+            <div>
+                <div id="google-map"></div>
+            </div>
+            
+            <div class="p-5 bg-dark">
+                <div class="container p-2">
+                    <div class="row justify-content-center">
+                        <div class="col-md-3 mb-2" uk-scrollspy="cls: uk-animation-slide-bottom; delay: 400">
+                            <div class="item-distributeur">
+                                <div class="item-distributeur-1">
+                                    <div class="mt-10">
+                                        <div class="item-distributeur-2 text-center">Nombre boulangerie</div>
+                                    </div>
+                                    <div class="mt-10">
+                                        <div class="item-distributeur-3  text-center font-weight-bold" id="boulangerie">03</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 mb-2" uk-scrollspy="cls: uk-animation-slide-top; delay: 800">
+                            <div class="item-distributeur">
+                                <div class="item-distributeur-1">
+                                    <div class="mt-10">
+                                        <div class="item-distributeur-2 text-center">Nombre Super</div>
+                                    </div>
+                                    <div class="mt-10">
+                                        <div class="item-distributeur-3  text-center font-weight-bold" id="super">23</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 mb-2" uk-scrollspy="cls: uk-animation-slide-bottom; delay: 1200">
+                            <div class="item-distributeur">
+                                <div class="item-distributeur-1">
+                                    <div class="mt-10">
+                                        <div class="item-distributeur-2 text-center">Nombre boulangerie</div>
+                                    </div>
+                                    <div class="mt-10">
+                                        <div class="item-distributeur-3  text-center font-weight-bold" id="super2">07</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="louer" name="louer">
+        <div class="item-title">
+            <span>Votre Publicité <br> <span class="fsize-28">ici</span> </span>
+            <div class="underline"></div>
+        </div>
+
+        <div class="container-fluid">
+            <div class="row justify-content-center">
+
+                <div class="col-md-3 p-0">
+                    <div class="uk-inline-clip uk-transition-toggle" tabindex="0">
+                        <div style="text-decoration: none">
+                            <img class="item-produit" src="https://static.passeportsante.net/200x200/i62590-pain.jpg" title="title">
+                        </div>
+                        <a href="https://static.passeportsante.net/200x200/i62590-pain.jpg" data-title="desciption" style="text-decoration: none" data-lightbox="roadtrip" class="uk-transition-fade uk-position-cover uk-overlay uk-flex uk-flex-center uk-flex-middle image-back image-back-color">
+                            <p class="uk-h4 uk-margin-remove text-white">
+                                <span class="fa fa-image text-white fsize-44"> </span>
+                            </p>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-md-3 p-0">
+                    <div class="uk-inline-clip uk-transition-toggle" tabindex="0">
+                        <div style="text-decoration: none">
+                            <img class="item-produit" src="https://delicesdophelie.be/wp-content/uploads/2016/11/pain-4-200x200.jpg" title="title">
+                        </div>
+                        <a href="https://static.passeportsante.net/200x200/i62590-pain.jpg" data-title="desciption" style="text-decoration: none" data-lightbox="roadtrip" class="uk-transition-fade uk-position-cover uk-overlay uk-flex uk-flex-center uk-flex-middle image-back image-back-color">
+                            <p class="uk-h4 uk-margin-remove text-white">
+                                <span class="fa fa-image text-white fsize-44"> </span>
+                            </p>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-md-3 p-0">
+                    <div class="uk-inline-clip uk-transition-toggle" tabindex="0">
+                        <div style="text-decoration: none">
+                            <img class="item-produit" src="https://www.lafabriqueduboulanger.com/file/2019/07/pain-ferme-01.jpg" title="title">
+                        </div>
+                        <a href="https://static.passeportsante.net/200x200/i62590-pain.jpg" data-title="desciption" style="text-decoration: none" data-lightbox="roadtrip" class="uk-transition-fade uk-position-cover uk-overlay uk-flex uk-flex-center uk-flex-middle image-back image-back-color">
+                            <p class="uk-h4 uk-margin-remove text-white">
+                                <span class="fa fa-image text-white fsize-44"> </span>
+                            </p>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-md-3 p-0">
+                    <div class="uk-inline-clip uk-transition-toggle" tabindex="0">
+                        <div style="text-decoration: none">
+                            <img class="item-produit" src="https://static.passeportsante.net/200x200/i62590-pain.jpg" title="title">
+                        </div>
+                        <a href="https://static.passeportsante.net/200x200/i62590-pain.jpg" data-title="desciption" style="text-decoration: none" data-lightbox="roadtrip" class="uk-transition-fade uk-position-cover uk-overlay uk-flex uk-flex-center uk-flex-middle image-back image-back-color">
+                            <p class="uk-h4 uk-margin-remove text-white">
+                                <span class="fa fa-image text-white fsize-44"> </span>
+                            </p>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+     <section id="section-jeu" name="section-jeu">
+        <div class="item-title">
+            <div>Jeux Concours</div>
+            <span class="fsize-26 text-orange">Inscrivez-Vous !</span>
+            <div class="underline"></div>
+        </div>
+        <div id="jeu-1">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-md-8">
+                        <div class="item-jeu">
+                            <form  enctype="multipart/form-data" id="jeu" ng-submit="Participerjeux($event)">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="mt-2">
+                                            <label for="prenom_jeu">Prenom</label>
+                                            <input type="text" class="form-control required" placeholder="Prenom"  name="prenom" id="prenom_jeu">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="mt-2">
+                                            <label for="nom_jeu">Nom</label>
+                                            <input type="text" class="form-control required" placeholder="Nom"  name="nom" id="nom_jeu">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="mt-2">
+                                            <label for="telephone_jeu">Telephone</label>
+                                            <input type="number" class="form-control required" placeholder="Telephone"  name="telephone" id="telephone_jeu">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="mt-2">
+                                            <label for="adresse_jeu">Adresse / Zone </label>
+                                            <select name="zone" id="zone_jeu" class="form-control required" >
+                                                <option value="" disabled>Adresse / Zone</option>
+                                                <option  ng-repeat="zone in zones" value="{{zone.id}}" >{{ zone.zone }}</option>
+                                               
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="mt-2">
+                                            <label for="email_jeu">Adresse email</label>
+                                            <input type="text" class="form-control required" placeholder="Email"  name="email" id="email_jeu">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="mt-2">
+                                            <label for="code_jeu"> Code</label>
+                                            <input type="text" class="form-control required" placeholder="Code"  name="code" id="code_jeu">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="mt-4">
+                                            <button class="btn btn-dark w-100 font-weight-bold fsize-18" type="submit">Envoyer</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <div class="text-center text-white fsize-30 mb-20 mt-30 font-weight-bold">
+                    <div class="container-fluid">
+
+                        <div class="item-arrow-up">
+                            <a class="nav-link text-white" href="#top" data-scroll><i class="fa fa-arrow-up"></i></a>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-5">
+                                <hr class="mt-26">
+                            </div>
+                            <div class="col-md-2">
+                                <img src="assets/images/logo/logo.svg" class="item-logo-bas" alt="">
+                            </div>
+                            <div class="col-md-5">
+                                <hr class="mt-26">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="container">
+                    <div class="row justify-content-center text-white text-center mb-30">
+                        <div class="col-md-3 mb-1">
+                            <div>
+                                <i class="fa fa-map-marker text-white fsize-50"></i>
+                            </div>
+                            <div>
+                                <div>Avenue xxxx xxxxxx</div>
+                                <div>Abidjan cote d'ivoire</div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 mb-1">
+                            <div>
+                                <i class="fa fa-phone text-white fsize-50"></i>
+                            </div>
+                            <div>
+                                <div>xxxx xxxx xxxx</div>
+                                <div>xxxx xxxx xxxx</div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 mb-1">
+                            <div>
+                                <i class="fa fa-envelope text-white fsize-50"></i>
+                            </div>
+                            <div>
+                                <div>contact@publicbag.com</div>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <div class="row justify-content-center text-white text-center icons mb-40">
+                        <div class="col-md-3 mb-1">
+                            <a target="_blank" href="#" class="nav-link">
+                                <i class="fa fa-facebook"></i>
+                            </a>
+                            <div class="mt-2">
+                                <div>Publibag</div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 mb-1">
+                            <a target="_blank" href="#" class="nav-link">
+                                <i class="fa fa-twitter"></i>
+                            </a>
+                            <div class="mt-2">
+                                <div>Publibag</div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 mb-1">
+                            <a target="_blank" href="#" class="nav-link">
+                                <i class="fa fa-instagram"></i>
+                            </a>
+                            <div class="mt-2">
+                                <div>Publibag</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <hr class="m-4">
+
+                <div class="text-center text-white fsize-20 pb-20">Copyright 2020, <a target="_blank" href="https://guindytechnology.com" class="text-orange lien-guindy">Guindy Technology</a></div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModal" aria-hidden="true">
+        <div class="modal-dialog modal-sm" role="document">
+          <div class="modal-content">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            <div class="modal-body">
+                
+                <div class="item-titre-modal mb-3">Contactez-nous</div>
+
+                <form id="contacteznous" enctype="multipart/form-data" ng-submit="contactezNous($event)">
+                    <div class="row">
+                        <div class="col-md-6 mt-3">
+                            <input type="text" class="form-control mb-2 required" placeholder="Nom complet" name="nomcomplet" id="nomcomplet_contacteznous">
+                        </div>
+                        <div class="col-md-6 mt-3">
+                            <input type="email" class="form-control mb-2 required" placeholder="Adresse email" name="email" id="email_contacteznous">
+                        </div>
+                        <div class="col-md-12 mt-3">
+                            <input type="number" class="form-control mb-2 required" placeholder="Telephone" name="telephone" id="telephone_contacteznous">
+                        </div>
+                        <div class="col-md-12 mt-3">
+                            <label for="message_contacteznous">Message</label>
+                            <textarea type="number" class="form-control mb-2 mh-50 required" rows="3" name="message" id="message_contacteznous"></textarea>
+                        </div>
+                        <div class="text-right col-md-12 mt-18">
+                            <button type="submit" class="btn btn-dark font-weight-bold pl-4 pr-4 mr-2 fsize-18">Envoyer</button>
+                            <button class="btn btn-default font-weight-bold pl-4 pr-4 fsize-18" type="reset" data-dismiss="modal">Annuler</button>
+                        </div>
+                    </div>
+                    
+                </form>
+                   
+            </div>
+          </div>
+        </div>
+      </div>
+
+</body>
+
+<!--
+files angularJS
+-->
+<script src="js/angular/angular.min.js"></script>
+<script src="js/angular/angular-cookies.min.js"></script>
+<!--<script src="js/angular/angular-route.min.js"></script>-->
+<script src="js/angular/moment.min.js"></script>
+<script src="js/angular/angular-moment.min.js"></script>
+<script src="js/angular/ui-bootstrap-tpls-2.5.0.min.js" type="text/javascript"></script>
+<script src="js/angular/BACKOFFICE.js?v=sddfs4"></script>
+<script src="js/vendor/jquery.min.js"></script>
+<script src="js/angular/angularjs-social-login.js"></script>
+<script src="js/angular/angular-filter.js"></script>
+<!--iziToast-->
+<script src="js/blockUI/jquery.blockUI.js"></script>
+<script src="js/iziToast/dist/js/iziToast.min.js"></script>
+
+
+
+<!--map-->
+<script src="https://maps.google.com/maps/api/js?key=AIzaSyAhv1P5d-KDs30Iz1iMgn91XYsxRfjFmd4"></script>
+<script src="https://apis.google.com/js/platform.js" async defer></script>
+<script>
+    // googleMap
+    google.maps.event.addDomListener(window, 'load', init);
+
+    function init()
+    {
+        var mapOptions =
+            {
+                zoom: 13,
+                center: new google.maps.LatLng(5.338473, -4.079204)
+            };
+        var mapElement = document.getElementById('google-map');
+
+        var map = new google.maps.Map(mapElement, mapOptions);
+        var marker = new google.maps.Marker({
+            position: new google.maps.LatLng(5.338473, -4.079204),
+            map: map,
+            title: 'Publibag',
+            icon: "assets/images/imgs/localisation.png"
+        });
+
+        map.setCenter(marker.getPosition());
+    }
+</script>
+
+<script src="assets/js/main.js?v=sddfs4"> </script>
+
+<script src="js/main.js?v=sddfs4"></script>
+
+<script>
+    $('a').click(function(){
+        $('html, body').animate({
+            scrollTop: $( $(this).attr('href') ).offset().top
+        }, 500);
+        return false;
+    });
+
+    var timerElmt = document.getElementById('boulangerie');
+    var timerElmt1 = document.getElementById('super');
+    var timerElmt2 = document.getElementById('super2');
+    var counter = 0;
+    var counter1 = 0;
+    var counter2 = 0;
+    var timer = setInterval(function(){
+        timerElmt.innerText = '0'+counter;
+        counter ++;
+        if (counter == 70) {
+            timerElmt.innerText = "70";
+            clearInterval(timer)
+        }
+    },300);
+    var timer1 = setInterval(function(){
+        timerElmt1.innerText = '0'+counter1;
+        counter1 ++;
+        if (counter1 == 50) {
+            timerElmt1.innerText = "50";
+            clearInterval(timer1)
+        }
+    },300);
+    var timer2 = setInterval(function(){
+        timerElmt2.innerText = '0'+counter2;
+        counter2 ++;
+        if (counter2 == 100) {
+            timerElmt2.innerText = "100";
+            clearInterval(timer2)
+        }
+    },300);
+</script>
+
+</html>

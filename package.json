@@ -1,0 +1,31 @@
+{
+  "name": "samakeurfront",
+  "version": "1.0.0",
+  "description": "",
+  "main": "gulpfile.js",
+  "directories": {
+    "doc": "doc"
+  },
+  "scripts": {
+    "start": "gulp",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zimkha/samakeurfront.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "gulp": "^4.0.2"
+  },
+  "devDependencies": {
+    "browser-sync": "^2.26.7",
+    "gulp-sass": "^4.0.2",
+    "node-sass": "^4.12.0"
+  },
+  "bugs": {
+    "url": "https://github.com/zimkha/samakeurfront/issues"
+  },
+  "homepage": "https://github.com/zimkha/samakeurfront#readme"
+}

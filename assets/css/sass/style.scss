@@ -1,0 +1,98 @@
+
+.content-1 {
+  padding: 20px 30px;
+}
+
+.small-title-1 {
+  font-size: 42px;
+}
+
+.text-1 {
+  font-size: 18px;
+  line-height: 35px;
+  margin-top: 25px;
+}
+
+.home-1 {
+  background: blue!important;
+  padding: 20px 0px!important;
+}
+
+.titre-slide {
+  font-size: 16px!important;
+  font-weight: 600!important;
+}
+
+
+@for $i from 1 through 250 {
+  .zi-#{$i * 10} {
+    z-index: $i * 10;
+  }
+}
+
+@for $i from 1 through 150 {
+  .lh-#{$i * 2} {
+    line-height: $i * 2px;
+  }
+}
+
+@for $i from 1 through 150 {
+  .fsize-#{$i * 2} {
+    font-size: $i * 2px !important;
+  }
+}
+
+@for $i from 1 through 250 {
+  .wd-#{$i * 10} {
+    width: $i * 10%;
+  }
+}
+
+@for $i from 1 through 250 {
+  .wdpx-#{$i + 2} {
+    width: $i + 2px;
+  }
+}
+
+@for $i from 1 through 550 {
+  .hpx-#{$i + 2} {
+    height: $i + 2px;
+  }
+}
+
+@for $i from 2 through 350 {
+  .p-#{$i * 2} {
+    padding: $i*2px;
+  }
+}
+
+@for $i from 2 through 350 {
+  .m-#{$i * 2} {
+    margin: $i*2px;
+  }
+}
+
+@for $i from 2 through 350 {
+  .pt-#{$i * 2} {
+    padding-top: $i*2px;
+  }
+}
+
+@for $i from 2 through 350 {
+  .pb-#{$i * 2} {
+    padding-bottom: $i*2px;
+  }
+}
+
+@for $i from 2 through 350 {
+  .mb-#{$i * 2} {
+    margin-bottom: $i*2px;
+  }
+}
+
+@for $i from 2 through 350 {
+  .mt-#{$i * 2} {
+    margin-top: $i*2px;
+  }
+}
+
