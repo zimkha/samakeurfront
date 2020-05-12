@@ -15,12 +15,76 @@
 .text-1 {
   font-size: 18px;
   line-height: 35px;
-  margin-top: 25px;
+  margin-top: 19px;
+}
+
+.hero-text-2 {
+  position: absolute;
+  top: 35%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+
+.hero-slider .hero-text-2 h1 {
+  line-height: 50px;
+  font-size: 47px;
+  font-weight: 700;
+  color: #F7941D;
+  margin-bottom: 20px; }
+
+.hero-slider .hero-text-2 h1 span {
+  font-size: 20px;
+  display: block;
+  margin-bottom: 12px;
+  color: #333;
+  font-weight: 700;
+  line-height: initial; }
+
+.hero-slider .hero-text-2 p {
+  color: #fff;
+  font-weight: 600;
+  font-size: 17px;
+  //margin-bottom: 35px;
+  }
+
+.hero-slider .hero-text-2 .button {
+  margin: 0; }
+
+.hero-slider .hero-text-2 .btn {
+  color: #fff;
+  background: #333;
+  padding: 13px 30px;
+  line-height: initial;
+  border: none;
+  height: auto;
+  z-index: 0; }
+
+.hero-slider .hero-text-2 .btn:hover {
+  background: #F7941D;
+  color: #fff; }
+
+
+.text-orange {
+  color: #F7941D!important;
 }
 
 .home-1 {
   background: #F7941D!important;
   padding: 20px 0px!important;
+}
+
+.item-menu-res {
+  display: flex;
+
+  li {
+    margin: 0px 10px;
+
+    a:hover{
+      color: #F7941D!important;
+      font-size: 17px;
+    }
+  }
 }
 
 .titre-slide {

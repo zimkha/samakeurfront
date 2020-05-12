@@ -1353,10 +1353,12 @@
   color: #fff; }
 
 .hero-area2 .owl-carousel .owl-controls .owl-nav .owl-prev {
-  left: 0; }
+  left: 0;
+  display: none !important; }
 
 .hero-area2 .owl-carousel .owl-controls .owl-nav .owl-next {
-  right: 0; }
+  right: 0;
+  display: none !important; }
 
 /* Hero Area 3 */
 .hero-area3 .big-content {
@@ -1676,10 +1678,12 @@
   background: #F7941D; }
 
 .most-popular .owl-carousel .owl-controls .owl-nav .owl-prev {
-  left: 0; }
+  left: 0;
+  display: none !important; }
 
 .most-popular .owl-carousel .owl-controls .owl-nav .owl-next {
-  right: 0; }
+  right: 0;
+  display: none !important; }
 
 /*======================================
    End Most Popular CSS
@@ -1953,7 +1957,8 @@
   line-height: 50px; }
 
 .single-product .product-content {
-  margin-top: 20px; }
+  margin-top: 20px;
+  text-align: justify !important; }
 
 .single-product .product-img:hover.default-overlay::before {
   background-color: rgba(38, 38, 38, 0.2);
