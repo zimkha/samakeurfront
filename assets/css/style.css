@@ -55,12 +55,23 @@
   background: #F7941D;
   color: #fff; }
 
+.item-image-header-bannier {
+  height: 80vh;
+  width: 100%;
+  object-fit: cover;
+  filter: brightness(0.8); }
+
 .text-orange {
   color: #F7941D !important; }
 
 .home-1 {
   background: #F7941D !important;
   padding: 20px 0px !important; }
+
+.header.shop .middle-inner {
+  padding: 0px !important;
+  background: #fff !important;
+  border-top: 0px solid #eee !important; }
 
 .item-menu-res {
   display: flex; }
@@ -11155,3 +11166,67 @@
 
 .mt-700 {
   margin-top: 700px; }
+
+/*les medias*/
+@media all and (min-width: 220px) and (max-width: 770px) {
+  .hero-slider {
+    height: auto !important; }
+  .item-image-header-bannier {
+    height: auto !important;
+    width: 100%;
+    object-fit: cover;
+    filter: brightness(0.8); }
+  .header.shop .middle-inner {
+    padding: 10px 0 !important;
+    background: #fff;
+    border-top: 1px solid #eee; }
+  .hero-text-2 {
+    position: absolute;
+    top: 15%;
+    left: 46%;
+    transform: translateX(-50%); }
+  .hero-slider .hero-text-2 h1 {
+    line-height: 46px;
+    font-size: 30px;
+    font-weight: 700;
+    color: #F7941D;
+    margin-bottom: 10px; }
+  .hero-slider .hero-text-2 p {
+    color: #fff;
+    font-weight: 600;
+    font-size: 12px; }
+  .hero-slider .hero-text-2 .btn {
+    color: #fff;
+    background: #333;
+    padding: 8px 20px;
+    line-height: initial;
+    border: none;
+    height: auto;
+    z-index: 0; }
+  .mt-80 {
+    margin-top: 40px; }
+  .mb-80 {
+    margin-bottom: 40px; }
+  .small-title-1 {
+    font-size: 37px; }
+  .text-1 {
+    font-size: 14px;
+    line-height: 35px;
+    margin-top: 19px; }
+  .btn {
+    position: relative;
+    font-weight: 500;
+    font-size: 14px;
+    color: #fff;
+    background: #333;
+    display: inline-block;
+    -webkit-transition: all 0.4s ease;
+    -moz-transition: all 0.4s ease;
+    transition: all 0.4s ease;
+    z-index: 5;
+    display: inline-block;
+    padding: 8px 20px !important;
+    border-radius: 0px;
+    text-transform: uppercase; }
+  .section {
+    padding: 30px 0px !important; } }
