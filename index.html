@@ -187,12 +187,12 @@
 									</ul>
 								</div>
 							</div>-->
-						<div class="col-md-6">
+						<div class="col-md-2">
 							<div class="pt-16">
 								<a href="/" class="small-title-1 titre-logo text-orange">Samakeur</a>
 							</div>
 						</div>
-						<div class="col-md-6">
+						<div class="col-md-10" style="    display: contents!important;">
 							<div class="menu-area">
 								<!-- Main Menu -->
 								<nav class="navbar navbar-expand-lg">
@@ -209,10 +209,16 @@
 															<li><a href="#">Serivce 3</a></li>
 														</ul>
 													</li>-->
-													<li><a href="#service">Services</a></li>
+													<li><a href="apropos.html">A Propos</a></li>
+													<li><a href="service.html">Services</a></li>
 													<li><a href="#galerie">Galeries</a></li>
 													<li><a href="#contact-us">Contact</a></li>
-													<li><a href="#">Espace client</a></li>
+													<li><a href="#">Espace client</a>
+														<ul class="dropdown">
+															<li><a href="login.html">Connexion</a></li>
+															<li><a href="register.html">S'inscrire</a></li>
+														</ul>
+													</li>
 												</ul>
 										</div>
 									</div>
@@ -229,18 +235,45 @@
 	<!--/ End Header -->
 	
 	<!-- Slider Area -->
+	<!--<section class="hero-slider">
+		&lt;!&ndash; Single Slider &ndash;&gt;
+		<div class="single-slider">
+			<div class="container">
+				<div class="row no-gutters">
+					<div class="col-lg-9 offset-lg-3 col-12">
+						<div class="text-inner">
+							<div class="row">
+								<div class="col-lg-7 col-12">
+									<div class="hero-text">
+										<h1><span> </span>SamaKeur</h1>
+										<p>"La simplicité, c’est l’harmonie parfaite entre le beau, l’utile et le juste"</p>
+										<p class="text-right mb-30">Franck Llyod Wright</p>
+
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		&lt;!&ndash;/ End Single Slider &ndash;&gt;
+	</section>-->
+
 	<section class="hero-slider" id="accueil">
 		<!-- Single Slider -->
 		<div class="">
 			<div>
-				<img class="item-image-header-bannier" src="assets/images/imgs/Baniere.jpg">
+				<div class="item-image-header-bannier">
+					<img class="" src="assets/images/imgs/Baniere.jpg">
+				</div>
 				<div class="hero-text-2">
 					<h1>SamaKeur</h1>
 					<p>"La simplicité, c’est l’harmonie parfaite entre le beau, l’utile et le juste"</p>
 					<p class="text-right mb-30">Franck Llyod Wright</p>
-					<div class="button">
+					<!--<div class="button">
 						<a href="#" class="btn">Lire la suite ..</a>
-					</div>
+					</div>-->
 				</div>
 			</div>
 			<!--<div class="container">
@@ -272,19 +305,16 @@
 	<section class="cown-down mt-80 mb-80" >
 		<div class="section-inner ">
 			<div class="container-fluid">
-				<div class="row">
-					<div class="col-lg-6 col-12 padding-right">
-						<div class="image">
-							<!--<img src="https://via.placeholder.com/750x590" alt="#">-->
-							<img style="width: 100%" src="assets/images/slides/4.jpeg" alt="#">
-						</div>
-					</div>
-					<div class="col-lg-6 col-12 padding-left">
+				<div class="row justify-content-center">
+
+					<div class="col-lg-5 col-12 padding-right">
 						<div class="content-1">
 							<div class="">
-								<p class="small-title-1">Samakeur</p>
+								<p class="small-title-1 text-orange">Samakeur</p>
 								<!--<h3 class="title">Beatutyful dress for women</h3>-->
-								<p class="text-1 text-justify">Une entreprise innovante proposant à ses clients le choix de A à Z du designer de sa maison.
+								<div class="text-1 text-justify">
+									<div class="text-orange fsize-18">Une entreprise innovante</div>
+								    Proposant à ses clients le choix de A à Z du designer de sa maison.
 									Nos ingénieures, architectes et nos techniciens travaillent jour et nuit pour vous proposer le meilleur
 									en qualité et prestation de service.
 									Réaliser vos projets avec <span class="font-weight-bold">Samakeur</span>.
@@ -292,13 +322,20 @@
 								</p>
 
 
-								<div style="margin-top: 30px">
+								<!--<div style="margin-top: 30px">
 									<button class="btn btn-primary">Voir plus</button>
-								</div>
+								</div>-->
 							</div>
 						</div>
 					</div>
+
 				</div>
+					<div class="col-lg-5 col-12 padding-left align-self-center">
+						<div class="image text-center" >
+							<img style="width: 65%" src="https://uploads.rejoins.octo.com/job_offer/picto/3/Illus_siteRH_archi.svg" alt="#">
+							<!--<img style="width: 100%" src="assets/images/slides/4.jpeg" alt="#">-->
+						</div>
+					</div>
 			</div>
 		</div>
 	</section>
@@ -315,9 +352,9 @@
 					</div>
 				</div>
 				<div class="col-lg-3 col-md-6 col-12 align-self-center">
-					<div class="text-right">
+					<!--<div class="text-right">
 						<button class="btn btn-warning" type="button">Demander un devis</button>
-					</div>
+					</div>-->
 				</div>
 			</div>
 		</div>
@@ -411,27 +448,36 @@
 	
 	<!-- Start Small Banner  -->
 	<section class="small-banner section">
-		<div class="container-fluid">
+		<div class="container">
 			<div class="row">
-				<div class="col-lg-4 col-md-6 col-12">
-					<div class="single-banner">
-						<!--<img src="https://via.placeholder.com/600x370" alt="#">-->
-						<img style="width: 100%;height: 275px;filter: brightness(.5)" src="assets/images/slides/7.jpeg" alt="#">
-						<div class="content">
-							<p>bâtiments en R+1</p>
-							<h3 class="text-justify"> Le plans du projet montrent des bâtiments avec parkings au niveau 0</h3 class="text-justify">
+				<div class="col-lg-4 col-md-6 col-12 mb-2">
+					<div class="card p-3 shadow-lg">
+						<div class="">
+							<h4 class="text-center font-weight-bold">Bâtiments en R+1</h4>
+							<div class="text-justify fsize-14 mt-10"> Le plans du projet montrent des bâtiments avec parkings au niveau 0 Le plans
+								du projet montrent des bâtiments avec parkings au niveau 0 Le plans du projet montrent des bâtiments avec parkings au niveau 0</div>
 						</div>
 					</div>
 				</div>
-				<div class="col-lg-4 col-md-6 col-12">
-					<div class="single-banner">
-						<img style="width: 100%;height: 275px;filter: brightness(.5)" src="assets/images/slides/8.jpeg" alt="#">
-						<div class="content">
-							<p>bâtiments en R+2</p>
-							<h3 class="text-justify"> Le plans du projet montrent des bâtiments avec parkings au niveau 2</h3>
+				<div class="col-lg-4 col-md-6 col-12 mb-2">
+					<div class="card p-3 shadow-lg">
+						<div class="">
+							<h4 class="text-center font-weight-bold">Bâtiments en R+1</h4>
+							<div class="text-justify fsize-14 mt-10"> Le plans du projet montrent des bâtiments avec parkings au niveau 0 Le plans
+								du projet montrent des bâtiments avec parkings au niveau 0 Le plans du projet montrent des bâtiments avec parkings au niveau 0</div>
 						</div>
 					</div>
 				</div>
+				<div class="col-lg-4 col-md-6 col-12 mb-2">
+					<div class="card p-3 shadow-lg">
+						<div class="">
+							<h4 class="text-center font-weight-bold">Bâtiments en R+1</h4>
+							<div class="text-justify fsize-14 mt-10"> Le plans du projet montrent des bâtiments avec parkings au niveau 0 Le plans
+								du projet montrent des bâtiments avec parkings au niveau 0 Le plans du projet montrent des bâtiments avec parkings au niveau 0</div>
+						</div>
+					</div>
+				</div>
+				<!--
 				<div class="col-lg-4 col-12">
 					<div class="single-banner tab-height">
 						<img style="width: 100%;height: 275px;filter: brightness(.5)" src="assets/images/slides/9.jpeg" alt="#">
@@ -440,7 +486,7 @@
 							<h3 class="text-justify"> Le plans du projet montrent des bâtiments avec parkings au niveau 5</h3>
 						</div>
 					</div>
-				</div>
+				</div>-->
 			</div>
 		</div>
 	</section>
@@ -571,24 +617,6 @@
 													</div>
 												</div>
 											</div>
-											<div class="col-xl-3 col-lg-4 col-md-4 col-12">
-												<div class="single-product">
-													<div class="product-img">
-														<a href="#">
-															<img class="default-img hpx-210" src="assets/images/imgs/Baniere.jpg" alt="#">
-														</a>
-													</div>
-												</div>
-											</div>
-											<div class="col-xl-3 col-lg-4 col-md-4 col-12">
-												<div class="single-product">
-													<div class="product-img">
-														<a href="#">
-															<img class="default-img hpx-210" src="assets/images/imgs/Maitrise_doeuvre.jpg" alt="#">
-														</a>
-													</div>
-												</div>
-											</div>
 
 										</div>
 									</div>
@@ -634,33 +662,7 @@
 													</div>
 												</div>
 											</div>
-											<div class="col-xl-3 col-lg-4 col-md-4 col-12">
-												<div class="single-product">
-													<div class="product-img">
-														<a href="#">
-															<img class="default-img hpx-210" src="assets/images/imgs/Home_staging.jpeg" alt="#">
-														</a>
-													</div>
-												</div>
-											</div>
-											<div class="col-xl-3 col-lg-4 col-md-4 col-12">
-												<div class="single-product">
-													<div class="product-img">
-														<a href="#">
-															<img class="default-img hpx-210" src="assets/images/imgs/Baniere.jpg" alt="#">
-														</a>
-													</div>
-												</div>
-											</div>
-											<div class="col-xl-3 col-lg-4 col-md-4 col-12">
-												<div class="single-product">
-													<div class="product-img">
-														<a href="#">
-															<img class="default-img hpx-210" src="assets/images/imgs/Maitrise_doeuvre.jpg" alt="#">
-														</a>
-													</div>
-												</div>
-											</div>
+
 										</div>
 									</div>
 								</div>
@@ -705,24 +707,7 @@
 													</div>
 												</div>
 											</div>
-											<div class="col-xl-3 col-lg-4 col-md-4 col-12">
-												<div class="single-product">
-													<div class="product-img">
-														<a href="#">
-															<img class="default-img hpx-210" src="assets/images/imgs/Baniere.jpg" alt="#">
-														</a>
-													</div>
-												</div>
-											</div>
-											<div class="col-xl-3 col-lg-4 col-md-4 col-12">
-												<div class="single-product">
-													<div class="product-img">
-														<a href="#">
-															<img class="default-img hpx-210" src="assets/images/imgs/Maitrise_doeuvre.jpg" alt="#">
-														</a>
-													</div>
-												</div>
-											</div>
+
 										</div>
 									</div>
 								</div>
@@ -767,24 +752,7 @@
 													</div>
 												</div>
 											</div>
-											<div class="col-xl-3 col-lg-4 col-md-4 col-12">
-												<div class="single-product">
-													<div class="product-img">
-														<a href="#">
-															<img class="default-img hpx-210" src="assets/images/slides/7.jpeg" alt="#">
-														</a>
-													</div>
-												</div>
-											</div>
-											<div class="col-xl-3 col-lg-4 col-md-4 col-12">
-												<div class="single-product">
-													<div class="product-img">
-														<a href="#">
-															<img class="default-img hpx-210" src="assets/images/imgs/Maitrise_doeuvre.jpg" alt="#">
-														</a>
-													</div>
-												</div>
-											</div>
+
 										</div>
 									</div>
 								</div>
@@ -829,24 +797,7 @@
 													</div>
 												</div>
 											</div>
-											<div class="col-xl-3 col-lg-4 col-md-4 col-12">
-												<div class="single-product">
-													<div class="product-img">
-														<a href="#">
-															<img class="default-img hpx-210" src="assets/images/slides/7.jpeg" alt="#">
-														</a>
-													</div>
-												</div>
-											</div>
-											<div class="col-xl-3 col-lg-4 col-md-4 col-12">
-												<div class="single-product">
-													<div class="product-img">
-														<a href="#">
-															<img class="default-img hpx-210" src="assets/images/imgs/Maitrise_doeuvre.jpg" alt="#">
-														</a>
-													</div>
-												</div>
-											</div>
+
 										</div>
 									</div>
 								</div>
