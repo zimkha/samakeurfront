@@ -91,6 +91,65 @@
   left: 50%;
   transform: translateX(-50%); }
 
+.hero-slider .single-slider::after {
+  content: "";
+  height: auto;
+  background-image: url(../../images/imgs/Baniere.jpg) !important;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 40vh !important; }
+
+.module {
+  width: 100%;
+  height: 80vh !important;
+  display: grid;
+  place-items: center;
+  color: #ff43ea;
+  position: relative; }
+  .module h1 {
+    line-height: 50px;
+    font-size: 47px;
+    font-weight: 700;
+    color: #F7941D;
+    margin-bottom: 20px; }
+  .module span {
+    font-size: 20px;
+    display: block;
+    margin-bottom: 12px;
+    color: #333;
+    font-weight: 700;
+    line-height: initial; }
+  .module p {
+    color: #fff;
+    font-weight: 600;
+    font-size: 17px; }
+  .module .btn {
+    color: #fff;
+    background: #333;
+    padding: 13px 30px;
+    line-height: initial;
+    border: none;
+    height: auto;
+    z-index: 0; }
+
+.module::before {
+  content: "";
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-image: url("../images/imgs/Baniere.jpg");
+  background-size: cover;
+  filter: brightness(0.7); }
+
+.module-inside {
+  position: relative;
+  font: bold 42px sans-serif;
+  padding: 0px 20px;
+  margin-top: -15%; }
+
 .hero-slider .hero-text-2 h1 {
   line-height: 50px;
   font-size: 47px;
@@ -11257,9 +11316,16 @@
     object-fit: cover;
     filter: brightness(0.8); }
   .header.shop .middle-inner {
-    padding: 1px 0 10px !important;
+    padding: 10px 0 10px !important;
     background: #fff;
     border-top: 1px solid #eee; }
+  .hero-slider .single-slider {
+    height: auto;
+    background-image: url(../../images/imgs/Baniere.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 40vh !important; }
   .item-titre {
     font-size: 20px;
     line-height: 20px;
@@ -11315,3 +11381,7 @@
     text-transform: uppercase; }
   .section {
     padding: 30px 0px !important; } }
+
+@media only screen and (max-width: 450px) {
+  .hero-slider .hero-text {
+    margin-top: 40px; } }
