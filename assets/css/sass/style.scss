@@ -255,6 +255,13 @@
   font-weight: 600!important;
 }
 
+.shopping-summery tbody tr img {
+  width: 40px!important;
+  height: 40px!important;
+  border-radius: 50%!important;
+  margin-top: -7px;
+}
+
 
 @for $i from 1 through 250 {
   .zi-#{$i * 10} {

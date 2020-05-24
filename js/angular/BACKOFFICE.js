@@ -1,11 +1,11 @@
-var app = angular.module('publibag', ['angular.filter','socialLogin', 'ngCookies', 'ui.bootstrap']);
+var app = angular.module('samakeur', ['angular.filter','socialLogin', 'ngCookies', 'ui.bootstrap']);
 
 //---BASE_URL----//
-var BASE_URL = 'http://localhost/publibag_bak/public/';
-//var BASE_URL = 'http://publibagci.com/admin/';
+var BASE_URL = 'http://localhost/samakeur_bak/public/';
+//var BASE_URL = 'http://samakeurci.com/admin/';
 
 var imgupload = 'images/upload.jpg';
-var tokenDepublibag = '';
+var tokenDesamakeur = '';
 var tokenDeOasisValCompte = '';
 
 app.factory('userLogged', function ($http, $q, $cookies, $location) {
@@ -17,19 +17,19 @@ app.factory('userLogged', function ($http, $q, $cookies, $location) {
     var res = window.location.pathname;
     console.log('aaa='+urlEnCours+'//ffff'+urlEnCours2);
 
-    var searchTerm = 'tokenpublibag';
+    var searchTerm = 'tokensamakeur';
     var reponse = urlEnCours2.indexOf(searchTerm);
     var indexToken, getToken;
     if(reponse !== -1)
     {
-        indexToken = urlEnCours2.indexOf('tokenpublibag');
+        indexToken = urlEnCours2.indexOf('tokensamakeur');
         getToken = urlEnCours2.substring(indexToken+(searchTerm.length+1), urlEnCours2.length);
         console.log('token forgot pwd=', getToken);
-        tokenDepublibag = getToken;
+        tokenDesamakeur = getToken;
     }
 
     // ACTIVATION COMPTE
-    searchTerm = 'tokenactivationpublibag';
+    searchTerm = 'tokenactivationsamakeur';
     reponse = urlEnCours2.indexOf(searchTerm);
     if(reponse !== -1)
     {
@@ -357,6 +357,25 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
         }
     };
 
+    // Permet d'afficher le formulaire
+    $scope.showModalAdd = function (type, tag = "", fromUpdate = false, check = 0) {
+        setTimeout(function () {
+            // On fait d'abord un destroy
+            if (!$('select').data('select2')) {
+                $('.select').select2('destroy');
+            }
+            // entrepriseabonnement
+            $('.select2').select2();
+
+        }, 500);
+
+
+        $("#modal_" + type).modal('show');
+
+
+    };
+
+
     $scope.contactezNous = function (e)
     {
         e.preventDefault();
@@ -499,7 +518,7 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
         }
         else
         {
-            if(tokenDepublibag == '')
+            if(tokenDesamakeur == '')
             {
                 form.blockUI_stop();
                 iziToast.error({
@@ -512,7 +531,7 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
             {
                 var data = {
                     password: senddata.password,
-                    token: tokenDepublibag
+                    token: tokenDesamakeur
                 };
                 $http({
                     url: BASE_URL + 'password-reset',

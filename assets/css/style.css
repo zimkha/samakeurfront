@@ -216,6 +216,12 @@
   font-size: 16px !important;
   font-weight: 600 !important; }
 
+.shopping-summery tbody tr img {
+  width: 40px !important;
+  height: 40px !important;
+  border-radius: 50% !important;
+  margin-top: -7px; }
+
 .zi-10 {
   z-index: 10; }
 
