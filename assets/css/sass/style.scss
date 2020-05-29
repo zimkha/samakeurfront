@@ -108,17 +108,18 @@
   margin-top: 19px;
 }
 
-.hero-text-2 {
+.hero-text {
   position: absolute;
   top: 35%;
   left: 50%;
+  width: 100%;
   transform: translateX(-50%);
 }
 
 .hero-slider .single-slider::after {
   content: "";
   height: auto;
-  background-image: url(../../images/imgs/Baniere.jpg)!important;
+  background-image: url(../../images/imgs/Baniere3.jpeg)!important;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -193,14 +194,14 @@
 }
 
 
-.hero-slider .hero-text-2 h1 {
+.hero-slider .hero-text h1 {
   line-height: 50px;
   font-size: 47px;
   font-weight: 700;
   color: #F7941D;
   margin-bottom: 20px; }
 
-.hero-slider .hero-text-2 h1 span {
+.hero-slider .hero-text h1 span {
   font-size: 20px;
   display: block;
   margin-bottom: 12px;
@@ -208,17 +209,17 @@
   font-weight: 700;
   line-height: initial; }
 
-.hero-slider .hero-text-2 p {
+.hero-slider .hero-text p {
   color: #fff;
   font-weight: 600;
   font-size: 17px;
   //margin-bottom: 35px;
   }
 
-.hero-slider .hero-text-2 .button {
+.hero-slider .hero-text .button {
   margin: 0; }
 
-.hero-slider .hero-text-2 .btn {
+.hero-slider .hero-text .btn {
   color: #fff;
   background: #333;
   padding: 13px 30px;
@@ -227,7 +228,7 @@
   height: auto;
   z-index: 0; }
 
-.hero-slider .hero-text-2 .btn:hover {
+.hero-slider .hero-text .btn:hover {
   background: #F7941D;
   color: #fff; }
 
@@ -406,7 +407,7 @@
 
   .hero-slider .single-slider {
     height: auto;
-    background-image: url(../../images/imgs/Baniere.jpg);
+    background-image: url(../../images/imgs/Baniere3.jpeg);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -421,15 +422,16 @@
     text-transform: uppercase;
   }
 
-  .hero-text-2 {
+  .hero-text {
     position: absolute;
     top: 15%;
-    left: 46%;
+    left: 49%;
+    width: 100%;
     transform: translateX(-50%);
 
   }
 
-  .hero-slider .hero-text-2 h1 {
+  .hero-slider .hero-text h1 {
     line-height: 46px;
     font-size: 30px;
     font-weight: 700;
@@ -437,13 +439,13 @@
     margin-bottom: 10px;
   }
 
-  .hero-slider .hero-text-2 p {
+  .hero-slider .hero-text p {
     color: #fff;
     font-weight: 600;
     font-size: 12px;
   }
 
-  .hero-slider .hero-text-2 .btn {
+  .hero-slider .hero-text .btn {
     color: #fff;
     background: #333;
     padding: 8px 20px;
@@ -525,15 +527,18 @@
     border-top: 1px solid #dee2e6;
   }
 
-  .module .btn {
-    color: #fff;
-    background: #333;
-    padding: 13px 30px;
-    line-height: initial;
-    border: none;
-    height: auto;
-    z-index: 0;
+  .hero-slider .hero-text .btn {
     display: none!important;
+  }
+
+  .hero-slider .hero-text p {
+    color: #fff;
+    font-weight: 600;
+    font-size: 14px;
+  }
+
+  .pt-80 {
+    padding-top: 40px!important;
   }
 }
 
