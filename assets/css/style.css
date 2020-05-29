@@ -145,13 +145,13 @@
 
 .module::before {
   content: "";
-  top: 0px !important;
+  top: -5px !important;
   left: 0;
   width: 100%;
   height: 100vh;
   position: absolute;
-  background-image: url("../images/imgs/Baniere.jpg");
-  background-size: cover;
+  background-image: url("../images/imgs/Baniere3.jpeg");
+  background-size: 100% 100%;
   background-repeat: no-repeat;
   filter: brightness(0.7); }
 
@@ -11426,7 +11426,16 @@
   .table td, .table th {
     padding: .50rem;
     /* vertical-align: top; */
-    border-top: 1px solid #dee2e6; } }
+    border-top: 1px solid #dee2e6; }
+  .module .btn {
+    color: #fff;
+    background: #333;
+    padding: 13px 30px;
+    line-height: initial;
+    border: none;
+    height: auto;
+    z-index: 0;
+    display: none !important; } }
 
 @media all and (min-width: 771px) and (max-width: 900px) {
   .titre-slide {
