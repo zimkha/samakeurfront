@@ -558,6 +558,47 @@
   .tel-mobile {
     display: none;
   }
+
+  .slicknav_nav {
+    clear: both;
+    color: #fff;
+    margin: 0;
+    background: transparent;
+    padding-top: 15px;
+    display: inline-flex!important;
+
+    a {
+      margin-right: 15px!important;
+
+    }
+
+    li {
+      &:active {
+        color: #fff;
+        background: #F7941D!important;
+      }
+    }
+  }
+
+  .slicknav_nav .slicknav_arrow {
+    color: #F7941D;
+    display: none!important;
+  }
+
+  .slicknav_btn {
+    background: transparent;
+    padding: 0;
+    margin: 6px 0 0;
+    display: none!important;
+  }
+
+  .slicknav_menu {
+    display: block;
+    background: transparent;
+    padding: 0;
+    margin-top: -13px!important;
+    height: 45px!important;
+  }
 }
 
 @media all and (min-width: 771px) and (max-width: 900px) {
