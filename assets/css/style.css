@@ -11338,14 +11338,14 @@
     padding: 0.2rem .4rem !important;
     font-size: 8px !important; }
   .header.shop .topbar {
-    padding: 10px 0 4px !important; }
+    padding: 0 !important; }
   .item-image-header-bannier {
     height: auto !important;
     width: 100%;
     object-fit: cover;
     filter: brightness(0.8); }
   .header.shop .middle-inner {
-    padding: 10px 16px 10px !important;
+    padding: 10px 0px 14px !important;
     background: #fff;
     border-top: 1px solid #eee; }
   .hero-slider .single-slider {
@@ -11436,7 +11436,9 @@
     font-weight: 600;
     font-size: 14px; }
   .pt-80 {
-    padding-top: 20px !important; } }
+    padding-top: 20px !important; }
+  .tel-mobile {
+    display: none; } }
 
 @media all and (min-width: 771px) and (max-width: 900px) {
   .titre-slide {
