@@ -469,8 +469,27 @@
     padding: 30px 0px!important;
   }
 
+  .product-img {
+    text-align: center;
+
+    .hpx-216 {
+      height: auto!important;
+      margin-top: 10px;
+    }
+
+    .hpx-210 {
+      height: auto!important;
+    }
+  }
+
 }
 
+@media all and (min-width: 771px) and (max-width: 900px) {
+  .titre-slide {
+    font-size: 13px !important;
+    font-weight: 600 !important;
+  }
+}
 
 @media only screen and (max-width: 450px){
 

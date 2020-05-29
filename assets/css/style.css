@@ -11393,7 +11393,19 @@
     border-radius: 0px;
     text-transform: uppercase; }
   .section {
-    padding: 30px 0px !important; } }
+    padding: 30px 0px !important; }
+  .product-img {
+    text-align: center; }
+    .product-img .hpx-216 {
+      height: auto !important;
+      margin-top: 10px; }
+    .product-img .hpx-210 {
+      height: auto !important; } }
+
+@media all and (min-width: 771px) and (max-width: 900px) {
+  .titre-slide {
+    font-size: 13px !important;
+    font-weight: 600 !important; } }
 
 @media only screen and (max-width: 450px) {
   .hero-slider .hero-text {
