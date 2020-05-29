@@ -12,6 +12,9 @@
   font-size: 42px;
 }
 
+.back-orange {
+  background: #F7941D;
+}
 
 .item-h5 {
   font-size: 1.02rem!important;
@@ -179,6 +182,7 @@
   position: absolute;
   background-image: url("../images/imgs/Baniere.jpg");
   background-size: cover;
+  background-repeat: no-repeat;
   filter: brightness(.7);
 }
 .module-inside {
@@ -234,6 +238,25 @@
 .text-orange {
   color: #F7941D!important;
 }
+
+// tableau
+
+.table thead th {
+  vertical-align: bottom;
+  border-bottom: 2px solid #dee2e6;
+  color: white;
+  font-size: 12px;
+}
+
+
+.table td, .table th {
+  padding: .50rem;
+  /* vertical-align: top; */
+  border-top: 1px solid #dee2e6;
+}
+
+
+// fin tableau
 
 .home-1 {
   background: #F7941D!important;
@@ -480,6 +503,26 @@
     .hpx-210 {
       height: auto!important;
     }
+  }
+
+  .item-h5 {
+    font-size: .9rem !important;
+    font-weight: 500 !important;
+  }
+
+  .product-area .nav-tabs li a {
+    padding: 3px 8px!important;
+    margin-right: 3px!important;
+    font-size: 10px!important;
+  }
+
+
+//   tableau
+
+  .table td, .table th {
+    padding: .50rem;
+    /* vertical-align: top; */
+    border-top: 1px solid #dee2e6;
   }
 
 }
