@@ -104,6 +104,12 @@
   background-repeat: no-repeat;
   height: 40vh !important; }
 
+.mobile {
+  display: none !important; }
+
+.pc {
+  display: block !important; }
+
 .col-md-3 .titre-slide {
   background: #f7941d !important;
   padding: 2px 10px;
@@ -11355,6 +11361,10 @@
     background-position: center;
     background-repeat: no-repeat;
     height: 40vh !important; }
+  .mobile {
+    display: block !important; }
+  .pc {
+    display: none !important; }
   .item-titre {
     font-size: 20px;
     line-height: 20px;

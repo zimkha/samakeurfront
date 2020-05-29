@@ -126,6 +126,13 @@
   height: 40vh!important;
 }
 
+.mobile {
+  display: none!important;
+}
+
+.pc {
+  display: block!important;
+}
 .col-md-3 {
   .titre-slide {
     background: #f7941d!important;
@@ -414,6 +421,13 @@
     height: 40vh!important;
   }
 
+  .mobile {
+    display: block!important;
+  }
+
+  .pc {
+    display: none!important;
+  }
 
   .item-titre {
     font-size: 20px;
