@@ -254,11 +254,15 @@
   font-size: 16px !important;
   font-weight: 600 !important; }
 
-.shopping-summery tbody tr img {
+td.image img {
   width: 40px !important;
   height: 40px !important;
   border-radius: 50% !important;
-  margin-top: -7px; }
+  margin-top: -5px; }
+
+td.price {
+  font-size: 13px;
+  text-align: center; }
 
 .zi-10 {
   z-index: 10; }
@@ -11511,7 +11515,11 @@
     margin-top: -13px !important; }
   .div-text {
     padding: 5px 15px !important;
-    text-align: justify !important; } }
+    text-align: justify !important; }
+  .class-table {
+    width: 100%;
+    position: relative;
+    overflow: scroll !important; } }
 
 @media all and (min-width: 771px) and (max-width: 900px) {
   .titre-slide {

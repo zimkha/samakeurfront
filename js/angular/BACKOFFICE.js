@@ -1,7 +1,7 @@
 var app = angular.module('samakeur', ['angular.filter','socialLogin', 'ngCookies', 'ui.bootstrap']);
 
 //---BASE_URL----//
-var BASE_URL = 'http://localhost/samakeur_bak/public/';
+var BASE_URL = 'http://localhost/samakeurback/public/';
 //var BASE_URL = 'http://samakeurci.com/admin/';
 
 var imgupload = 'images/upload.jpg';
@@ -226,8 +226,7 @@ app.factory('Init', function ($http, $q) {
                 $.ajax
                 (
                     {
-                        url: BASE_URL + (!is_an_update ? 'contrat' : 'update-user'),
-                        //url: BASE_URL + (!is_an_update ? 'inscription' : 'update-user'),
+                        url: BASE_URL + (!is_an_update ? 'inscription' : 'update-user'),
                         type:'POST',
                         contentType:false,
                         processData:false,
@@ -869,7 +868,7 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
     $scope.$on('$routeChangeSuccess', function (next, current) {
         currentRoute = current;
         $scope.linknav = $location.path();
-        if (angular.lowercase(current.templateUrl).indexOf("connexion-contrat") !== -1 &&angular.lowercase(current.templateUrl).indexOf("connexion-inscription") !== -1 && window.location.href.indexOf('confirmation-compte') !== -1) {
+        if (angular.lowercase(current.templateUrl).indexOf("connexion-inscription") !== -1 && window.location.href.indexOf('confirmation-compte') !== -1) {
             setTimeout(function () {
                 $('#member-profile').addClass('d-none');
                 $('#form_activationaccount').removeClass('d-none');
