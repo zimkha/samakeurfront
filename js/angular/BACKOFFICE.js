@@ -101,7 +101,7 @@ app.factory('userLogged', function ($http, $q, $cookies, $location) {
                 var deferred = $q.defer();
                 $http({
                     method: 'GET',
-                    url: BASE_URL + '/graphql?query={' + element + '{metadata{total,per_page,current_page,last_page},data{' + listeattributs + '}}}'
+                    url: BASE_URL + 'graphql?query={' + element + '{metadata{total,per_page,current_page,last_page},data{' + listeattributs + '}}}'
                 }).then(function successCallback(response) {
                     factory.data = response['data']['data'][!element.indexOf('(') != -1 ? element.split('(')[0] : element];
                     deferred.resolve(factory.data);
@@ -181,7 +181,7 @@ app.factory('Init', function ($http, $q) {
                 console.log(dataget);
                 $http({
                     method: 'GET',
-                    url: BASE_URL + (is_graphQL ? '/graphql?query= {'+element+' {'+listeattributs+'} }' : element),
+                    url: BASE_URL + (is_graphQL ? 'graphql?query= {'+element+' {'+listeattributs+'} }' : element),
                     headers: {
                         'Content-Type': 'application/json'
                     },
@@ -209,7 +209,7 @@ app.factory('Init', function ($http, $q) {
                 var deferred=$q.defer();
                 $http({
                     method: 'GET',
-                    url: BASE_URL + '/graphql?query={'+element+'{metadata{total,per_page,current_page,last_page},data{'+listeattributs+'}}}'
+                    url: BASE_URL + 'graphql?query={'+element+'{metadata{total,per_page,current_page,last_page},data{'+listeattributs+'}}}'
                 }).then(function successCallback(response) {
                     factory.data=response['data']['data'][!element.indexOf('(')!=-1 ? element.split('(')[0] : element];
                     deferred.resolve(factory.data);
@@ -287,8 +287,7 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
 
             /*"jeuxs"                          : "id,user_id,ligne_regularisations{id,ligne_inventaire_id,ligne_inventaire{actual_quantity,current_quantity},ligne_approvisionn    ement_id},created_at_fr,user{name,image}",
             "contacts"                       : "id,email,nomcomplet,telephone,message",
-            "messages"                       : "id,email,nom,prenom,telephone,code,status",
-            "zones"                          : "id,zone",*/
+            "messages"                       : "id,email,nom,prenom,telephone,code,status",*/
 
             "plans"                         : ["id,superficie,longeur,largeur,nb_pieces,nb_salon,nb_chambre,nb_cuisine,nb_toillette,nb_etage", ",niveau_plans{id,piece,bureau,toillette,chambre,salon,cuisine}"],
 
@@ -304,8 +303,6 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
 
             "typeremarques"                 :  ["id",""],
 
-            "zones"                         :  ["id,zone"],
-
             "remarques"                     :  ["id,demande_text,projet_id,type_remarque_id",""],
 
             'permissions'                   : ['id,name,display_name,guard_name', ""],
@@ -317,7 +314,6 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
             "dashboards"                    : ["clients,assurances,ventes,fournisseurs"],
         };
 
-    $scope.zones = [];
     $scope.plans = [];
     $scope.planprojets = [];
     $scope.niveauplans = [];
@@ -327,21 +323,25 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
     $scope.remarques = [];
     $scope.users = [];
 
+
+
+    $scope.paginationprojet = {
+        currentPage: 1,
+        maxSize: 10,
+        entryLimit: 10,
+        totalItems: 0
+    };
+
     $scope.getelements = function (type, addData=null)
     {
         rewriteType = type;
         Init.getElement(rewriteType, listofrequests_assoc[type]).then(function(data)
         {
-            $scope.zones = listofrequests_assoc["zones"];
             console.log('donnees yi = ', type, data);
 
             if (type.indexOf("typeclients")!==-1)
             {
                 $scope.typeclients = data;
-            }
-            else if (type.indexOf("zones")!==-1)
-            {
-                $scope.zones = data;
             }
             else if (type.indexOf("plans")!==-1)
             {
@@ -407,6 +407,8 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
 
     $scope.pageChanged = function(currentpage)
     {
+
+        console.log("cureeeent page", currentpage)
 
         if ( currentpage.indexOf('projet')!==-1 )
         {
@@ -574,16 +576,11 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
 
     whereAreWe = window.location.href;
     console.log('whereAreWe', whereAreWe);
-    if (whereAreWe.indexOf('/')!==-1 || whereAreWe.indexOf('index')!==-1 )
+    if (whereAreWe.indexOf('mon-profil')!==-1)
     {
-        $scope.getelements("zones");
-
-    }
-    else if (whereAreWe.indexOf('planning')!==-1)
-    {
-
-        $scope.getelements("pratiques");
-        $scope.getelements("zones");
+        console.log("je suis icici")
+        $scope.pageChanged("projet");
+      //  $scope.getelements("planprojets");
     }
 
 
