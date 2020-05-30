@@ -168,6 +168,9 @@
   padding: 0px 20px;
   margin-top: -15%; }
 
+.item-menu-res a:hover {
+  font-size: 14px !important; }
+
 .hero-slider .hero-text h1 {
   line-height: 50px;
   font-size: 47px;
