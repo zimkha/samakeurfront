@@ -567,15 +567,18 @@
     padding-top: 15px;
     display: inline-flex!important;
 
-    a {
+    li {
       margin-right: 15px!important;
 
     }
 
-    li {
-      &:active {
-        color: #fff;
-        background: #F7941D!important;
+    li.active {
+      background: #F7941D!important;
+      padding: 0px 9px!important;
+      border-radius: 4px!important;
+
+      a {
+        color: #fff!important;
       }
     }
   }

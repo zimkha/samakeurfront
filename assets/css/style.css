@@ -11456,11 +11456,14 @@
     background: transparent;
     padding-top: 15px;
     display: inline-flex !important; }
-    .slicknav_nav a {
+    .slicknav_nav li {
       margin-right: 15px !important; }
-    .slicknav_nav li:active {
-      color: #fff;
-      background: #F7941D !important; }
+    .slicknav_nav li.active {
+      background: #F7941D !important;
+      padding: 0px 9px !important;
+      border-radius: 4px !important; }
+      .slicknav_nav li.active a {
+        color: #fff !important; }
   .slicknav_nav .slicknav_arrow {
     color: #F7941D;
     display: none !important; }
