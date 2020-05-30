@@ -211,7 +211,7 @@
   filter: brightness(0.8); }
 
 .text-orange {
-  color: #F7941D !important; }
+  color: #F7941D; }
 
 .table thead th {
   vertical-align: bottom;
