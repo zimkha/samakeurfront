@@ -11343,6 +11343,25 @@
   margin-top: 700px; }
 
 /*les medias*/
+@media all and (min-width: 120px) and (max-width: 480px) {
+  .slicknav_nav {
+    clear: both;
+    color: #fff;
+    margin: 0;
+    background: transparent;
+    padding-top: 15px;
+    display: inline-flex !important; }
+    .slicknav_nav li {
+      margin-right: 10px !important;
+      font-size: 10px !important; }
+    .slicknav_nav li.active {
+      background: #F7941D !important;
+      padding: 0px 9px !important;
+      border-radius: 4px !important;
+      height: 37px !important; }
+      .slicknav_nav li.active a {
+        color: #fff !important; } }
+
 @media all and (min-width: 220px) and (max-width: 770px) {
   .hero-slider {
     height: auto !important; }
