@@ -11383,9 +11383,11 @@
     color: #F7941D;
     margin-bottom: 10px; }
   .hero-slider .hero-text p {
-    color: #fff;
+    color: #fff !important;
     font-weight: 600;
     font-size: 12px; }
+    .hero-slider .hero-text p .text-orange {
+      color: #fff !important; }
   .hero-slider .hero-text .btn {
     color: #fff;
     background: #333;

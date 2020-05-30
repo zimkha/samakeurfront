@@ -454,9 +454,13 @@
   }
 
   .hero-slider .hero-text p {
-    color: #fff;
+    color: #fff!important;
     font-weight: 600;
     font-size: 12px;
+
+    .text-orange {
+      color: #fff!important;
+    }
   }
 
   .hero-slider .hero-text .btn {
