@@ -216,6 +216,9 @@
 .text-orange-1 {
   color: #F7941D; }
 
+.div-text {
+  text-align: justify !important; }
+
 .table thead th {
   vertical-align: bottom;
   border-bottom: 2px solid #dee2e6;
@@ -11482,7 +11485,10 @@
     display: block;
     background: transparent;
     padding: 0;
-    margin-top: -13px !important; } }
+    margin-top: -13px !important; }
+  .div-text {
+    padding: 5px 15px !important;
+    text-align: justify !important; } }
 
 @media all and (min-width: 771px) and (max-width: 900px) {
   .titre-slide {
