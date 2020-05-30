@@ -42,6 +42,7 @@
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/style2.css">
     <link rel="stylesheet" href="assets/css/responsive.css">
+    <link rel="stylesheet" href="js/iziToast/dist/css/iziToast.min.css" type="text/css" />
 
 
 
@@ -71,8 +72,8 @@
 
                     <div class="top-left">
                         <ul class="item-menu-res">
-                            <li><i class="ti-headphone-alt text-orange"></i> +221 77 777 77 77</li>
-                            <li><i class="ti-email text-orange"></i> samakeur@gmail.com</li>
+                            <li><i class="fa fa-whatsapp text-orange"></i> <a target="_blank" href="https://wa.me/221777847978"> +221 77 784 79 78</a> </li>
+                            <li><i class="ti-email text-orange"></i> admin@samakeur.sn</li>
                         </ul>
                     </div>
                     <!--/ End Top Left -->
@@ -93,7 +94,6 @@
                             <li><a href="#"><i class="ti-linkedin"></i></a></li>
                             <li><a href="#"><i class="ti-instagram"></i></a></li>
                             <li><a href="#"><i class="ti-youtube"></i></a></li>
-                            <li><a href="#"><i class="ti-vimeo"></i></a></li>
                         </ul>
                     </div>
                     <!-- End Top Right -->
@@ -134,8 +134,8 @@
                                             <li><a href="index.html#accueil">Accueil</a></li>
                                             <li><a href="apropos.html">A Propos</a></li>
                                             <li><a href="service.html">Services</a></li>
-                                            <li><a href="index.html#galerie">Galeries</a></li>
-                                            <li><a href="index.html#contact-us">Contact</a></li>
+                                            <!-- <li><a href="index.html#galerie">Galeries</a></li>
+                                            <li><a href="index.html#contact-us">Contact</a></li>-->
                                             <li><a href="#">Espace client</a>
                                                 <ul class="dropdown">
                                                     <li><a href="login.html">Connexion</a></li>
@@ -180,9 +180,9 @@
                         <div class="nav-main">
                             <!-- Tab Nav -->
                             <ul class="nav nav-tabs" id="myTab" role="tablist">
-                                <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#man" role="tab">Nouveau Demande</a></li>
-                                <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#women" role="tab">En Validation</a></li>
-                                <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#kids" role="tab">Premier Paiement</a></li>
+                                <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#man" role="tab">Mes demandes</a></li>
+                                <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#women" role="tab">En validation</a></li>
+                                <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#kids" role="tab">Paiement effectué</a></li>
                             </ul>
                             <!--/ End Tab Nav -->
                         </div>
@@ -193,11 +193,11 @@
                                     <div class="mt-20">
 
                                         <div class="row">
-                                            <div class="col-12">
+                                            <div class="col-12"  style="width:100%; position:relative; overflow:scroll!important;">
                                                 <!-- Shopping Summery -->
-                                                <table class="table shopping-summery">
+                                                <table class="table">
                                                     <thead>
-                                                    <tr class="main-hading">
+                                                    <tr class="main-hading back-orange">
                                                         <th>Photo</th>
                                                         <th>Nom / Prenom</th>
                                                         <th>Adresse</th>
@@ -246,57 +246,61 @@
                             <div class="tab-pane fade" id="women" role="tabpanel">
                                 <div class="tab-single">
                                     <div class="mt-20">
-                                        <table class="table shopping-summery">
-                                            <thead>
-                                            <tr class="main-hading">
-                                                <th>Photo</th>
-                                                <th>Nom / Prenom</th>
-                                                <th>Adresse</th>
-                                                <th>Telephone</th>
-                                                <th>Email</th>
-                                                <th>Adresse Chantier</th>
-                                                <th>Superficie</th>
-                                                <th>Type de chambre</th>
-                                                <th>Nombre de chambre</th>
-                                            </tr>
-                                            </thead>
-                                            <tbody>
-                                            <tr>
-                                                <td class="image" data-title="No"><img src="https://via.placeholder.com/100x100" alt="#"></td>
-                                                <td class="price" data-title="Price"><span>Khazim Ndiaye</span></td>
-                                                <td class="price" data-title="Price"><span>Dakar/Parcelle</span></td>
-                                                <td class="total-amount" data-title="Total"><span>77 777 77 77</span></td>
-                                                <td class="total-amount" data-title="Total"><span>khaz@gmail.com</span></td>
-                                                <td class="total-amount" data-title="Total"><span>Thiaroye</span></td>
-                                                <td class="total-amount" data-title="Total"><span>300 m*m</span></td>
-                                                <td class="total-amount" data-title="Total"><span>type chmabre 1</span></td>
-                                                <td class="total-amount" data-title="Total"><span>23</span></td>
-                                            </tr>
-                                            <tr>
-                                                <td class="image" data-title="No"><img src="https://via.placeholder.com/100x100" alt="#"></td>
-                                                <td class="price" data-title="Price"><span>Khazim Ndiaye</span></td>
-                                                <td class="price" data-title="Price"><span>Dakar/Parcelle</span></td>
-                                                <td class="total-amount" data-title="Total"><span>77 777 77 77</span></td>
-                                                <td class="total-amount" data-title="Total"><span>khaz@gmail.com</span></td>
-                                                <td class="total-amount" data-title="Total"><span>Thiaroye</span></td>
-                                                <td class="total-amount" data-title="Total"><span>300 m*m</span></td>
-                                                <td class="total-amount" data-title="Total"><span>type chmabre 1</span></td>
-                                                <td class="total-amount" data-title="Total"><span>23</span></td>
-                                            </tr>
-                                            <tr>
-                                                <td class="image" data-title="No"><img src="https://via.placeholder.com/100x100" alt="#"></td>
-                                                <td class="price" data-title="Price"><span>Khazim Ndiaye</span></td>
-                                                <td class="price" data-title="Price"><span>Dakar/Parcelle</span></td>
-                                                <td class="total-amount" data-title="Total"><span>77 777 77 77</span></td>
-                                                <td class="total-amount" data-title="Total"><span>khaz@gmail.com</span></td>
-                                                <td class="total-amount" data-title="Total"><span>Thiaroye</span></td>
-                                                <td class="total-amount" data-title="Total"><span>300 m*m</span></td>
-                                                <td class="total-amount" data-title="Total"><span>type chmabre 1</span></td>
-                                                <td class="total-amount" data-title="Total"><span>23</span></td>
-                                            </tr>
+                                        <div class="row">
+                                            <div class="col-12"  style="width:100%; position:relative; overflow:scroll!important;">
+                                                <table class="table">
+                                                    <thead>
+                                                    <tr class="main-hading back-orange">
+                                                        <th>Photo</th>
+                                                        <th>Nom / Prenom</th>
+                                                        <th>Adresse</th>
+                                                        <th>Telephone</th>
+                                                        <th>Email</th>
+                                                        <th>Adresse Chantier</th>
+                                                        <th>Superficie</th>
+                                                        <th>Type de chambre</th>
+                                                        <th>Nombre de chambre</th>
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                    <tr>
+                                                        <td class="image" data-title="No"><img src="https://via.placeholder.com/100x100" alt="#"></td>
+                                                        <td class="price" data-title="Price"><span>Khazim Ndiaye</span></td>
+                                                        <td class="price" data-title="Price"><span>Dakar/Parcelle</span></td>
+                                                        <td class="total-amount" data-title="Total"><span>77 777 77 77</span></td>
+                                                        <td class="total-amount" data-title="Total"><span>khaz@gmail.com</span></td>
+                                                        <td class="total-amount" data-title="Total"><span>Thiaroye</span></td>
+                                                        <td class="total-amount" data-title="Total"><span>300 m*m</span></td>
+                                                        <td class="total-amount" data-title="Total"><span>type chmabre 1</span></td>
+                                                        <td class="total-amount" data-title="Total"><span>23</span></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="image" data-title="No"><img src="https://via.placeholder.com/100x100" alt="#"></td>
+                                                        <td class="price" data-title="Price"><span>Khazim Ndiaye</span></td>
+                                                        <td class="price" data-title="Price"><span>Dakar/Parcelle</span></td>
+                                                        <td class="total-amount" data-title="Total"><span>77 777 77 77</span></td>
+                                                        <td class="total-amount" data-title="Total"><span>khaz@gmail.com</span></td>
+                                                        <td class="total-amount" data-title="Total"><span>Thiaroye</span></td>
+                                                        <td class="total-amount" data-title="Total"><span>300 m*m</span></td>
+                                                        <td class="total-amount" data-title="Total"><span>type chmabre 1</span></td>
+                                                        <td class="total-amount" data-title="Total"><span>23</span></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="image" data-title="No"><img src="https://via.placeholder.com/100x100" alt="#"></td>
+                                                        <td class="price" data-title="Price"><span>Khazim Ndiaye</span></td>
+                                                        <td class="price" data-title="Price"><span>Dakar/Parcelle</span></td>
+                                                        <td class="total-amount" data-title="Total"><span>77 777 77 77</span></td>
+                                                        <td class="total-amount" data-title="Total"><span>khaz@gmail.com</span></td>
+                                                        <td class="total-amount" data-title="Total"><span>Thiaroye</span></td>
+                                                        <td class="total-amount" data-title="Total"><span>300 m*m</span></td>
+                                                        <td class="total-amount" data-title="Total"><span>type chmabre 1</span></td>
+                                                        <td class="total-amount" data-title="Total"><span>23</span></td>
+                                                    </tr>
 
-                                            </tbody>
-                                        </table>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
 
                                     </div>
                                 </div>
@@ -306,57 +310,61 @@
                             <div class="tab-pane fade" id="kids" role="tabpanel">
                                 <div class="tab-single">
                                     <div class="mt-20">
-                                        <table class="table shopping-summery">
-                                            <thead>
-                                            <tr class="main-hading">
-                                                <th>Photo</th>
-                                                <th>Nom / Prenom</th>
-                                                <th>Adresse</th>
-                                                <th>Telephone</th>
-                                                <th>Email</th>
-                                                <th>Adresse Chantier</th>
-                                                <th>Superficie</th>
-                                                <th>Type de chambre</th>
-                                                <th>Nombre de chambre</th>
-                                            </tr>
-                                            </thead>
-                                            <tbody>
-                                            <tr>
-                                                <td class="image" data-title="No"><img src="https://via.placeholder.com/100x100" alt="#"></td>
-                                                <td class="price" data-title="Price"><span>Khazim Ndiaye</span></td>
-                                                <td class="price" data-title="Price"><span>Dakar/Parcelle</span></td>
-                                                <td class="total-amount" data-title="Total"><span>77 777 77 77</span></td>
-                                                <td class="total-amount" data-title="Total"><span>khaz@gmail.com</span></td>
-                                                <td class="total-amount" data-title="Total"><span>Thiaroye</span></td>
-                                                <td class="total-amount" data-title="Total"><span>300 m*m</span></td>
-                                                <td class="total-amount" data-title="Total"><span>type chmabre 1</span></td>
-                                                <td class="total-amount" data-title="Total"><span>23</span></td>
-                                            </tr>
-                                            <tr>
-                                                <td class="image" data-title="No"><img src="https://via.placeholder.com/100x100" alt="#"></td>
-                                                <td class="price" data-title="Price"><span>Khazim Ndiaye</span></td>
-                                                <td class="price" data-title="Price"><span>Dakar/Parcelle</span></td>
-                                                <td class="total-amount" data-title="Total"><span>77 777 77 77</span></td>
-                                                <td class="total-amount" data-title="Total"><span>khaz@gmail.com</span></td>
-                                                <td class="total-amount" data-title="Total"><span>Thiaroye</span></td>
-                                                <td class="total-amount" data-title="Total"><span>300 m*m</span></td>
-                                                <td class="total-amount" data-title="Total"><span>type chmabre 1</span></td>
-                                                <td class="total-amount" data-title="Total"><span>23</span></td>
-                                            </tr>
-                                            <tr>
-                                                <td class="image" data-title="No"><img src="https://via.placeholder.com/100x100" alt="#"></td>
-                                                <td class="price" data-title="Price"><span>Khazim Ndiaye</span></td>
-                                                <td class="price" data-title="Price"><span>Dakar/Parcelle</span></td>
-                                                <td class="total-amount" data-title="Total"><span>77 777 77 77</span></td>
-                                                <td class="total-amount" data-title="Total"><span>khaz@gmail.com</span></td>
-                                                <td class="total-amount" data-title="Total"><span>Thiaroye</span></td>
-                                                <td class="total-amount" data-title="Total"><span>300 m*m</span></td>
-                                                <td class="total-amount" data-title="Total"><span>type chmabre 1</span></td>
-                                                <td class="total-amount" data-title="Total"><span>23</span></td>
-                                            </tr>
+                                        <div class="row">
+                                            <div class="col-12"  style="width:100%; position:relative; overflow:scroll!important;">
+                                                <table class="table">
+                                                    <thead>
+                                                    <tr class="main-hading back-orange">
+                                                        <th>Photo</th>
+                                                        <th>Nom / Prenom</th>
+                                                        <th>Adresse</th>
+                                                        <th>Telephone</th>
+                                                        <th>Email</th>
+                                                        <th>Adresse Chantier</th>
+                                                        <th>Superficie</th>
+                                                        <th>Type de chambre</th>
+                                                        <th>Nombre de chambre</th>
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                    <tr>
+                                                        <td class="image" data-title="No"><img src="https://via.placeholder.com/100x100" alt="#"></td>
+                                                        <td class="price" data-title="Price"><span>Khazim Ndiaye</span></td>
+                                                        <td class="price" data-title="Price"><span>Dakar/Parcelle</span></td>
+                                                        <td class="total-amount" data-title="Total"><span>77 777 77 77</span></td>
+                                                        <td class="total-amount" data-title="Total"><span>khaz@gmail.com</span></td>
+                                                        <td class="total-amount" data-title="Total"><span>Thiaroye</span></td>
+                                                        <td class="total-amount" data-title="Total"><span>300 m*m</span></td>
+                                                        <td class="total-amount" data-title="Total"><span>type chmabre 1</span></td>
+                                                        <td class="total-amount" data-title="Total"><span>23</span></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="image" data-title="No"><img src="https://via.placeholder.com/100x100" alt="#"></td>
+                                                        <td class="price" data-title="Price"><span>Khazim Ndiaye</span></td>
+                                                        <td class="price" data-title="Price"><span>Dakar/Parcelle</span></td>
+                                                        <td class="total-amount" data-title="Total"><span>77 777 77 77</span></td>
+                                                        <td class="total-amount" data-title="Total"><span>khaz@gmail.com</span></td>
+                                                        <td class="total-amount" data-title="Total"><span>Thiaroye</span></td>
+                                                        <td class="total-amount" data-title="Total"><span>300 m*m</span></td>
+                                                        <td class="total-amount" data-title="Total"><span>type chmabre 1</span></td>
+                                                        <td class="total-amount" data-title="Total"><span>23</span></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="image" data-title="No"><img src="https://via.placeholder.com/100x100" alt="#"></td>
+                                                        <td class="price" data-title="Price"><span>Khazim Ndiaye</span></td>
+                                                        <td class="price" data-title="Price"><span>Dakar/Parcelle</span></td>
+                                                        <td class="total-amount" data-title="Total"><span>77 777 77 77</span></td>
+                                                        <td class="total-amount" data-title="Total"><span>khaz@gmail.com</span></td>
+                                                        <td class="total-amount" data-title="Total"><span>Thiaroye</span></td>
+                                                        <td class="total-amount" data-title="Total"><span>300 m*m</span></td>
+                                                        <td class="total-amount" data-title="Total"><span>type chmabre 1</span></td>
+                                                        <td class="total-amount" data-title="Total"><span>23</span></td>
+                                                    </tr>
 
-                                            </tbody>
-                                        </table>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
 
                                     </div>
                                 </div>
@@ -618,7 +626,7 @@ files angularJS
 <!-- Bootstrap JS -->
 <script src="assets/js/bootstrap.min.js"></script>
 <!-- Color JS -->
-<script src="assets/js/colors.js"></script>
+
 <!-- Slicknav JS -->
 <script src="assets/js/slicknav.min.js"></script>
 <!-- Owl Carousel JS -->
@@ -641,5 +649,9 @@ files angularJS
 <script src="assets/js/easing.js"></script>
 <!-- Active JS -->
 <script src="assets/js/active.js"></script>
+
+<!--iziToast-->
+<script src="js/blockUI/jquery.blockUI.js"></script>
+<script src="js/iziToast/dist/js/iziToast.min.js"></script>
 </body>
 </html>

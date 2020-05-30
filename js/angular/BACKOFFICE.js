@@ -226,7 +226,8 @@ app.factory('Init', function ($http, $q) {
                 $.ajax
                 (
                     {
-                        url: BASE_URL + (!is_an_update ? 'inscription' : 'update-user'),
+                        url: BASE_URL + (!is_an_update ? 'contrat' : 'update-user'),
+                        //url: BASE_URL + (!is_an_update ? 'inscription' : 'update-user'),
                         type:'POST',
                         contentType:false,
                         processData:false,
@@ -252,7 +253,7 @@ app.factory('Init', function ($http, $q) {
                         {
                             //$('#modal_add' + element).blockUI_stop();
                             console.log('erreur serveur', error);
-                            deferred.reject(msg_erreur);
+                           // deferred.reject(msg_erreur);
 
                         }
                     }
@@ -285,35 +286,115 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
     var listofrequests_assoc =
         {
 
-            "jeuxs"                          : "id,user_id,ligne_regularisations{id,ligne_inventaire_id,ligne_inventaire{actual_quantity,current_quantity},ligne_approvisionn    ement_id},created_at_fr,user{name,image}",
+            /*"jeuxs"                          : "id,user_id,ligne_regularisations{id,ligne_inventaire_id,ligne_inventaire{actual_quantity,current_quantity},ligne_approvisionn    ement_id},created_at_fr,user{name,image}",
             "contacts"                       : "id,email,nomcomplet,telephone,message",
             "messages"                       : "id,email,nom,prenom,telephone,code,status",
-            "zones"                          : "id,zone",
+            "zones"                          : "id,zone",*/
+
+            "plans"                         : ["id,superficie,longeur,largeur,nb_pieces,nb_salon,nb_chambre,nb_cuisine,nb_toillette,nb_etage", ",niveau_plans{id,piece,bureau,toillette,chambre,salon,cuisine}"],
+
+            "planprojets"                   : ["id,plan_id,projet_id,etat_active,message,etat,plan{id}",""],
+
+            "niveauplans"                   : ["id",""],
+
+            "niveauprojets"                 :  ["id",""],
+
+            "projets"                       :  ["id,etat,active,a_valider,created_at_fr,created_at,superficie,longeur,largeur,nb_pieces,nb_salon,nb_chambre,nb_cuisine,nb_toillette,nb_etage,user_id,user{name,email,nom,prenom,telephone,adresse_complet,code_postal}", ",niveau_projets{id,piece,bureau,toillette,chambre,salon,cuisine},remarques{id,demande_text,projet_id,type_remarque_id}"],
+
+            "clients"                       :  ["id",""],
+
+            "typeremarques"                 :  ["id",""],
+
+            "zones"                         :  ["id,zone"],
+
+            "remarques"                     :  ["id,demande_text,projet_id,type_remarque_id",""],
+
+            'permissions'                   : ['id,name,display_name,guard_name', ""],
+
+            "roles"                         : ["id,name,guard_name,permissions{id,name,display_name,guard_name}", ""],
+
+            "users"                         : ["id,nom,prenom,adresse_complet,pays,code_postal,is_client,telephone,name,email,active,password,image,roles{id,name,guard_name,permissions{id,name,display_name,guard_name}}", ",last_login,last_login_ip,created_at_fr", ""],
+
+            "dashboards"                    : ["clients,assurances,ventes,fournisseurs"],
         };
 
     $scope.zones = [];
-    $scope.zones = listofrequests_assoc["zones"];
+    $scope.plans = [];
+    $scope.planprojets = [];
+    $scope.niveauplans = [];
+    $scope.niveauprojets = [];
+    $scope.projets = [];
+    $scope.typeremarques = [];
+    $scope.remarques = [];
+    $scope.users = [];
 
     $scope.getelements = function (type, addData=null)
     {
         rewriteType = type;
-        if (type.indexOf("marque")!==-1 || type.indexOf("pratiques")!==-1 || type.indexOf("typeoffres")!==-1 || type.indexOf("professeurs")!==-1)
-        {
-            rewriteType = rewriteType + "(showatwebsite:true)";
-            console.log('rewriteType', rewriteType);
-        }
         Init.getElement(rewriteType, listofrequests_assoc[type]).then(function(data)
         {
             $scope.zones = listofrequests_assoc["zones"];
-            console.log('donnï¿½es yi = ', type, data);
+            console.log('donnees yi = ', type, data);
 
-            if (type.indexOf("pratiques")!==-1)
+            if (type.indexOf("typeclients")!==-1)
             {
-                $scope.pratiques = data;
+                $scope.typeclients = data;
             }
             else if (type.indexOf("zones")!==-1)
             {
                 $scope.zones = data;
+            }
+            else if (type.indexOf("plans")!==-1)
+            {
+                $scope.plans = data;
+            }
+            else if (type.indexOf("planprojets")!==-1)
+            {
+                $scope.planprojets = data;
+            }
+            else if (type.indexOf("niveauplans")!==-1)
+            {
+                $scope.niveauplans = data;
+            }
+            else if (type.indexOf("niveauprojets")!==-1)
+            {
+                $scope.niveauprojets = data;
+            }
+            else if (type.indexOf("projets")!==-1)
+            {
+                $scope.projets = data;
+            }
+            else if (type.indexOf("typeremarques")!==-1)
+            {
+                $scope.typeremarques = data;
+            }
+            else if (type.indexOf("remarques")!==-1)
+            {
+                $scope.remarques = data;
+            }
+            else if (type.indexOf("permissions")!==-1)
+            {
+                $scope.permissions = data;
+            }
+            else if (type.indexOf("roles")!==-1)
+            {
+                if (forModal)
+                {
+                    $scope.roles_modal = data;
+                }
+                else
+                {
+                    $scope.roles = data;
+                }
+            }
+            else if (type.indexOf("users")!==-1)
+            {
+                $scope.users = data;
+            }
+            else if (type.indexOf("dashboards")!==-1)
+            {
+                console.log('infos du dashboards', data);
+
             }
         }, function (msg) {
             iziToast.error({
@@ -327,32 +408,33 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
 
     $scope.pageChanged = function(currentpage)
     {
-        if ( currentpage.indexOf('imggalerie')!==-1 )
-        {
-            rewriteelement = 'imggaleriespaginated(page:'+ $scope.paginationimggalerie.currentPage +',count:'+ $scope.paginationimggalerie.entryLimit
-                +')';
-            if ($.fn.blockUI_start)
-            {
-                $('body').blockUI_start();
-            }
-            Init.getElementPaginated(rewriteelement, listofrequests_assoc["imggaleries"]).then(function (data)
-            {
-                if ($.fn.blockUI_start)
-                {
-                    $('body').blockUI_stop();
-                }
 
-                $scope.paginationimggalerie = {
+        if ( currentpage.indexOf('projet')!==-1 )
+        {
+            rewriteelement = 'projetspaginated(page:'+ $scope.paginationprojet.currentPage +',count:'+ $scope.paginationprojet.entryLimit
+               /* + ($scope.projetview ? ',projet_id:' + $scope.projetview.id : "" )
+                + ($scope.planview ? ',plan_id:' + $scope.planview.id : "" )
+                + ($scope.clientview ? ',user_id:' + $scope.clientview.id : "" )
+                + ($scope.radioBtnComposition ? ',etat:' + $scope.radioBtnComposition : "")
+                + ($('#searchtexte_projet').val() ? (',' + $('#searchoption_projet').val() + ':"' + $('#searchtexte_projet').val() + '"') : "" )
+                + ($('#projet_user').val() ? ',user_id:' + $('#projet_user').val() : "" )
+                + ($('#created_at_start_listprojet').val() ? ',created_at_start:' + '"' + $('#created_at_start_listprojet').val() + '"' : "" )
+                + ($('#created_at_end_listprojet').val() ? ',created_at_end:' + '"' + $('#created_at_end_listprojet').val() + '"' : "" )*/
+                +')';
+            Init.getElementPaginated(rewriteelement, listofrequests_assoc["projets"][0]).then(function (data)
+            {
+                $scope.paginationprojet = {
                     currentPage: data.metadata.current_page,
                     maxSize: 10,
-                    entryLimit: $scope.paginationimggalerie.entryLimit,
+                    entryLimit: $scope.paginationprojet.entryLimit,
                     totalItems: data.metadata.total
                 };
-                $scope.imggaleries = data.data;
+
+                $scope.projets = data.data;
             },function (msg)
             {
-                $('body').blockUI_stop();
-                console.log('reservation', msg);
+
+                toastr.error(msg);
             });
         }
     };
@@ -375,88 +457,6 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
 
     };
 
-
-    $scope.contactezNous = function (e)
-    {
-        e.preventDefault();
-
-        var form = $('#contacteznous');
-        senddata = form.serializeObject();
-
-        form.blockUI_start();
-        $http({
-            url: BASE_URL +'save/contact',
-            method: 'POST',
-            data: senddata,
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        }).then(function (data) {
-            form.blockUI_stop();
-
-            if (data.data.errors) {
-                iziToast.error({
-                    title: '',
-                    message: data.data.errors,
-                    position: 'topRight'
-                });
-            }else{
-
-                iziToast.success({
-                    title:  'Success',
-                    message: 'VOTRE MESSAGE A BIEN ETE ENVOYE',
-                    position: 'topRight'
-                });
-                console.log("datadata ", data)
-                setTimeout(function () {
-                    $("#exampleModal").hide();
-                },500)
-                $scope.emptyForm('contacteznous');
-
-            }
-        });
-
-    };
-    $scope.Participerjeux = function (e)
-    {
-        e.preventDefault();
-
-        var form = $('#jeu');
-        senddata = form.serializeObject();
-
-        form.blockUI_start();
-        $http({
-            url: BASE_URL +'save/game',
-            method: 'POST',
-            data: senddata,
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        }).then(function (data) {
-            form.blockUI_stop();
-
-            if (data.data.errors) {
-                console.log("errors")
-                iziToast.error({
-                    title: 'Erreur',
-                    message: data.data.errors,
-                    position: 'topRight'
-                });
-            }else{
-
-                iziToast.success({
-                    title:  'Success',
-                    message: 'VOUS VENEZ DE PARTICPER AU JEUX, BONNE CHANCE',
-                    position: 'topRight'
-                });
-                $scope.emptyForm('jeu');
-                console.log("datadata ", data)
-
-            }
-
-        });
-
-    };
 
     $scope.resetPwd = function (e)
     {
@@ -589,9 +589,7 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
 
 
     console.log('window.location', window.location.href);
-    //-------DEBUT = FONCTIONS GRAPHQL POUR L4AFFICHAGE----------------------//
 
-    //----Affichage des types tarifs et des tarifs-----//
 
     //--Pour les donnï¿½es de l'utilisateur--//
     var globalUserId = 0;
@@ -625,7 +623,7 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
         var data = form.serializeObject();
         console.log('data form', data);
 
-        $('#form_login').blockUI_start();
+        form.blockUI_start();
         Init.loginUser(data).then(function (data) {
             form.blockUI_stop();
             if (data.errors) {
@@ -644,17 +642,16 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
                 userLogged.loginUser(data.data);
                 $scope.userConnected = userLogged.isLogged();
                 $scope.userConnected.estConnectei = 'true';
-                //$scope.nomUser = 'Thierno Ndiaye';
                 $window.sessionStorage.setItem('connectei', true);
                 $scope.estConnectei = $window.sessionStorage.getItem('connectei');
 
 
                 iziToast.success({
                     title: 'Connexion',
-                    message: 'Vous ï¿½tes connectï¿½',
+                    message: 'Vous étes connecté',
                     position: 'topRight'
                 });
-                var urlRedirection = "profil/index.html";
+                var urlRedirection = "mon-profil.html";
                 setTimeout(function () {
                     window.location.href = urlRedirection;
                 }, 500);
@@ -664,7 +661,7 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
             form.blockUI_stop();
             iziToast.error({
                 title: 'Connexion',
-                message: "Paramï¿½tres incorrectes",
+                message: "Paramétres incorrectes",
                 position: 'topRight'
             });
             console.log('erreur', msg);
@@ -774,7 +771,7 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
 
         var form = $('#member-profile');
 
-        console.log("formulaire", form.html());
+        //console.log("formulaire", form.html());
         //senddata = form.serializeObject();
         var formdata=(window.FormData) ? ( new FormData(form[0])): null;
         var senddata=(formdata!==null) ? formdata : form.serialize();
@@ -800,10 +797,10 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
                     iziToast.success({
                         title: ('Information'),
                         //message: retour.success,
-                        message: 'Inscription rï¿½ussie, un mail d\'activation vous a ï¿½tï¿½ envoyï¿½ dans votre boite mail',
+                        message: 'Inscription réussie, un mail d\'activation vous a été envoyé dans votre boite mail',
                         position: 'topRight'
                     });
-                    var urlRedirection = "connexion.html";
+                    var urlRedirection = "login.html";
                     setTimeout(function () {
                         window.location.href = urlRedirection;
                     }, 500);
@@ -838,7 +835,7 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
 
                     iziToast.success({
                         title: 'Information',
-                        message: "Mise ï¿½ jour effectuï¿½e avec succï¿½s",
+                        message: "Mise à jour effectuée avec succés",
                         position: 'topRight'
                     });
                 }
@@ -872,7 +869,7 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
     $scope.$on('$routeChangeSuccess', function (next, current) {
         currentRoute = current;
         $scope.linknav = $location.path();
-        if (angular.lowercase(current.templateUrl).indexOf("connexion-inscription") !== -1 && window.location.href.indexOf('confirmation-compte') !== -1) {
+        if (angular.lowercase(current.templateUrl).indexOf("connexion-contrat") !== -1 &&angular.lowercase(current.templateUrl).indexOf("connexion-inscription") !== -1 && window.location.href.indexOf('confirmation-compte') !== -1) {
             setTimeout(function () {
                 $('#member-profile').addClass('d-none');
                 $('#form_activationaccount').removeClass('d-none');
