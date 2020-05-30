@@ -540,7 +540,8 @@ Version:1.0
 	margin-bottom: 0;
 }
 .hero-slider .hero-text p {
-	color: #333;
+	color: #fff!important;
+	/*color: #333;*/
 	margin-bottom: 28px;
 }
 .hero-slider .hero-text .btn {
@@ -1275,7 +1276,8 @@ Version:1.0
 	margin-bottom: 0;
 }
 .hero-slider .hero-text p {
-	color: #333;
+	color: #fff!important;
+	/*color: #333;*/
 	margin-bottom: 28px;
 }
 .hero-slider .hero-text .btn {
