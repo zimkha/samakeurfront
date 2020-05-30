@@ -1,7 +1,7 @@
 var app = angular.module('samakeur', ['angular.filter','socialLogin', 'ngCookies', 'ui.bootstrap']);
 
 //---BASE_URL----//
-var BASE_URL = 'http://localhost/samakeur_bak/public/';
+var BASE_URL = 'http://localhost/samakeurback/public/';
 //var BASE_URL = 'http://samakeurci.com/admin/';
 
 var imgupload = 'images/upload.jpg';
