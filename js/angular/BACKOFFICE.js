@@ -289,11 +289,11 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
             "contacts"                       : "id,email,nomcomplet,telephone,message",
             "messages"                       : "id,email,nom,prenom,telephone,code,status",*/
 
-            "plans"                         : ["id,superficie,longeur,largeur,nb_pieces,nb_salon,nb_chambre,nb_cuisine,nb_toillette,nb_etage", ",niveau_plans{id,piece,bureau,toillette,chambre,salon,cuisine}"],
+            "plans"                         :  ["id,superficie,longeur,largeur,nb_pieces,nb_salon,nb_chambre,nb_cuisine,nb_toillette,nb_etage", ",niveau_plans{id,piece,bureau,toillette,chambre,salon,cuisine}"],
 
-            "planprojets"                   : ["id,plan_id,projet_id,etat_active,message,etat,plan{id}",""],
+            "planprojets"                   :  ["id,plan_id,projet_id,etat_active,message,etat,plan{id}",""],
 
-            "niveauplans"                   : ["id",""],
+            "niveauplans"                   :  ["id",""],
 
             "niveauprojets"                 :  ["id",""],
 
@@ -305,13 +305,13 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
 
             "remarques"                     :  ["id,demande_text,projet_id,type_remarque_id",""],
 
-            'permissions'                   : ['id,name,display_name,guard_name', ""],
+            'permissions'                   :  ['id,name,display_name,guard_name', ""],
 
-            "roles"                         : ["id,name,guard_name,permissions{id,name,display_name,guard_name}", ""],
+            "roles"                         :  ["id,name,guard_name,permissions{id,name,display_name,guard_name}", ""],
 
-            "users"                         : ["id,nom,prenom,adresse_complet,pays,code_postal,is_client,telephone,name,email,active,password,image,roles{id,name,guard_name,permissions{id,name,display_name,guard_name}}", ",last_login,last_login_ip,created_at_fr", ""],
+            "users"                         :  ["id,nom,prenom,adresse_complet,pays,code_postal,is_client,telephone,name,email,active,password,image,roles{id,name,guard_name,permissions{id,name,display_name,guard_name}}", ",last_login,last_login_ip,created_at_fr", ""],
 
-            "dashboards"                    : ["clients,assurances,ventes,fournisseurs"],
+            "dashboards"                    :  ["clients,assurances,ventes,fournisseurs"],
         };
 
     $scope.plans = [];

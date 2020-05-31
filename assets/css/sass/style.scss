@@ -321,6 +321,22 @@ td.price {
  // text-align: center;
 }
 
+.btn-circle {
+  height:1.8rem;width:1.8rem;font-size:.75rem;border-radius: 50%!important;
+}
+
+.back-success {
+  background: #1cc88a!important;
+}
+
+.back-danger {
+  background: #e74a3b!important;
+}
+
+.back-info {
+  background: 4e73df!important;
+}
+
 
 @for $i from 1 through 250 {
   .zi-#{$i * 10} {
