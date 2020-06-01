@@ -426,7 +426,37 @@ td.price {
 
 /*les medias*/
 
-@media all and (min-width: 120px) and (max-width: 580px) {
+@media all and (min-width: 120px) and (max-width: 363px) {
+
+  .slicknav_nav {
+    clear: both;
+    color: #fff;
+    margin: 0;
+    background: transparent;
+    padding-top: 15px;
+    display: inline-flex!important;
+
+    li {
+      margin-right: 4px!important;
+      font-size: 8px!important;
+    }
+
+    li.active {
+      background: #F7941D!important;
+      padding: 0px 5px!important;
+      border-radius: 4px!important;
+      height: 37px!important;
+
+      a {
+        color: #fff!important;
+        font-size: 8px!important;
+      }
+      }
+    }
+  }
+}
+
+@media all and (min-width: 364px) and (max-width: 580px) {
 
   .slicknav_nav {
     clear: both;
@@ -439,6 +469,10 @@ td.price {
     li {
       margin-right: 6px!important;
       font-size: 8px!important;
+
+      a {
+        font-size: 12px!important;
+      }
     }
 
     li.active {
@@ -449,6 +483,7 @@ td.price {
 
       a {
         color: #fff!important;
+        font-size: 10px!important;
       }
     }
   }
