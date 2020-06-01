@@ -11360,6 +11360,10 @@ td.price {
 .mt-700 {
   margin-top: 700px; }
 
+.tab-content .btn {
+  background: #F7941D !important;
+  border: 1px solid #F7941D; }
+
 .active-ordi {
   display: block; }
 
