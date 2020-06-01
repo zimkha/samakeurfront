@@ -11360,6 +11360,12 @@ td.price {
 .mt-700 {
   margin-top: 700px; }
 
+.active-ordi {
+  display: block; }
+
+.active-mobile {
+  display: none; }
+
 /*les medias*/
 @media all and (min-width: 120px) and (max-width: 580px) {
   .slicknav_nav {
@@ -11381,6 +11387,10 @@ td.price {
         color: #fff !important; } }
 
 @media all and (min-width: 220px) and (max-width: 770px) {
+  .active-ordi {
+    display: none; }
+  .active-mobile {
+    display: block; }
   .hero-slider {
     height: auto !important; }
   .item-menu-res {
