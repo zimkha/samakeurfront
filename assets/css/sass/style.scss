@@ -414,7 +414,7 @@ td.price {
 
 /*les medias*/
 
-@media all and (min-width: 120px) and (max-width: 480px) {
+@media all and (min-width: 120px) and (max-width: 580px) {
 
   .slicknav_nav {
     clear: both;
@@ -425,8 +425,8 @@ td.price {
     display: inline-flex!important;
 
     li {
-      margin-right: 10px!important;
-      font-size: 10px!important;
+      margin-right: 7px!important;
+      font-size: 9px!important;
     }
 
     li.active {
