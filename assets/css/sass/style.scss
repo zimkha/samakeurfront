@@ -438,7 +438,10 @@ td.price {
 
     li {
       margin-right: 4px!important;
-      font-size: 8px!important;
+      font-size: 10px!important;
+      a {
+        font-size: 10px!important;
+      }
     }
 
     li.active {
@@ -449,12 +452,11 @@ td.price {
 
       a {
         color: #fff!important;
-        font-size: 8px!important;
+        font-size: 10px!important;
       }
       }
     }
   }
-}
 
 @media all and (min-width: 364px) and (max-width: 580px) {
 
@@ -471,7 +473,7 @@ td.price {
       font-size: 8px!important;
 
       a {
-        font-size: 12px!important;
+        font-size: 11px!important;
       }
     }
 
@@ -483,7 +485,7 @@ td.price {
 
       a {
         color: #fff!important;
-        font-size: 10px!important;
+        font-size: 11px!important;
       }
     }
   }
