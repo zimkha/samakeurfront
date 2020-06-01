@@ -11371,7 +11371,29 @@ td.price {
   display: none; }
 
 /*les medias*/
-@media all and (min-width: 120px) and (max-width: 363px) {
+@media all and (min-width: 120px) and (max-width: 289px) {
+  .slicknav_nav {
+    clear: both;
+    color: #fff;
+    margin: 0;
+    background: transparent;
+    padding-top: 15px;
+    display: inline-flex !important; }
+    .slicknav_nav li {
+      margin-right: 3px !important;
+      font-size: 7px !important; }
+      .slicknav_nav li a {
+        font-size: 7px !important; }
+    .slicknav_nav li.active {
+      background: #F7941D !important;
+      padding: 0px 4px !important;
+      border-radius: 4px !important;
+      height: 37px !important; }
+      .slicknav_nav li.active a {
+        color: #fff !important;
+        font-size: 7px !important; } }
+
+@media all and (min-width: 290px) and (max-width: 363px) {
   .slicknav_nav {
     clear: both;
     color: #fff;
