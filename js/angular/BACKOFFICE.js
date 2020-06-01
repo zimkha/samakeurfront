@@ -637,9 +637,9 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
                 // Save user connected
                 userLogged.loginUser(data.data);
                 $scope.userConnected = userLogged.isLogged();
-                $scope.userConnected.estConnectei = 'true';
+               // $scope.userConnected.estConnectei = 'true';
                 $window.sessionStorage.setItem('connectei', true);
-                $scope.estConnectei = $window.sessionStorage.getItem('connectei');
+              //  $scope.estConnectei = $window.sessionStorage.getItem('connectei');
 
 
                 iziToast.success({
@@ -748,7 +748,7 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
         $scope.userConnected = userLogged.isLogged();
         //$scope.userConnected.id = 0;
         //$window.sessionStorage.setItem('connectei', false);
-        $scope.estConnectei = $window.sessionStorage.getItem('connectei');
+      //  $scope.estConnectei = $window.sessionStorage.getItem('connectei');
         //console.log('testinnnnnnnnnnnnnng = '+$scope.estConnectei);
         iziToast.info({
             title: 'Vous vous ï¿½tes dï¿½connectï¿½',
