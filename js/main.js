@@ -107,6 +107,30 @@ jQuery.extend( jQuery.easing,
             }, 2000);
         });
 
+    /*    function toggleIcon(e) {
+            alert("bonjour");
+            $(e.target)
+                .prev('.btn-primary')
+                .find(".fa")
+                .toggleClass('fa-plus fa-minus');
+        };
+        $('.active-mobile').on('hidden.bs.collapse', toggleIcon);
+        $('.active-mobile').on('shown.bs.collapse', toggleIcon);*/
+
+        $(document).ready(function(){
+            // Add minus icon for collapse element which is open by default
+            $(".collapse.show").each(function(){
+                $(this).prev(".alert-accor").find(".fa").addClass("fa-minus").removeClass("fa-plus");
+            });
+
+            // Toggle plus minus icon on show hide of collapse element
+            $(".collapse").on('show.bs.collapse', function(){
+                $(this).prev(".alert-accor").find(".fa").removeClass("fa-plus").addClass("fa-minus");
+            }).on('hide.bs.collapse', function(){
+                $(this).prev(".alert-accor").find(".fa").removeClass("fa-minus").addClass("fa-plus");
+            });
+        });
+
 
         /*--
                 blockui loading
