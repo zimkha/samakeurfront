@@ -120,7 +120,7 @@ app.factory('Init', function ($http, $q) {
         {
             data: false,
             loginUser: function (data) {
-                console.log('Dans login');
+                console.log('Dans login', data);
                 var deferred = $q.defer();
                 $http({
                     url: BASE_URL + 'connexion',
@@ -220,7 +220,7 @@ app.factory('Init', function ($http, $q) {
                 return deferred.promise;
             },
             saveAccount: function (data, is_an_update) {
-                console.log('Dans inscription');
+                console.log('Dans inscription', data);
 
                 var deferred=$q.defer();
                 $.ajax
