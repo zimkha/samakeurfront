@@ -332,6 +332,31 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
         totalItems: 0
     };
 
+    $(".search-home-2").hide();
+    $scope.searchPopo = function()
+    {
+
+        $(".btn-btn").on('click', function()
+        {
+            $(".search-home-2").fadeIn(700);
+            $(".search-home-2").show();
+
+            console.log('focus detecré');
+        })
+
+    }
+    $scope.searchPopo2 = function()
+    {
+
+        $(".btn-btn-minus").on('click', function()
+        {
+            $(".search-home-2").fadeOut(700);
+            $(".search-home-2").hide();
+            console.log('focus retiré');
+        });
+
+    }
+
     $scope.getelements = function (type, addData=null)
     {
         rewriteType = type;

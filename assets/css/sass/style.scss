@@ -525,6 +525,13 @@ td.price {
 @media all and (min-width: 220px) and (max-width: 770px) {
 
 
+  .tab-content .btn {
+    width: 30px !important;
+    height: 30px !important;
+    padding: 5px !important;
+    font-size: 15px !important;
+  }
+
   .active-ordi{
     display: none;
   }

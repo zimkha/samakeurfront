@@ -67,7 +67,7 @@
     <div class="topbar">
         <div class="container">
             <div class="row">
-                <div class="col-md-6 col-12">
+                <div class="col-lg-4 col-md-12 col-12">
                     <!-- Top Left -->
 
                     <div class="top-left">
@@ -78,7 +78,7 @@
                     </div>
                     <!--/ End Top Left -->
                 </div>
-                <div class="col-md-6 col-12">
+                <div class="col-lg-8 col-md-12 col-12 tel-mobile">
                     <!-- Top Right -->
                     <div class="right-content">
                         <!--<ul class="list-main">
@@ -94,6 +94,7 @@
                             <li><a href="#"><i class="ti-linkedin"></i></a></li>
                             <li><a href="#"><i class="ti-instagram"></i></a></li>
                             <li><a href="#"><i class="ti-youtube"></i></a></li>
+                            <!--<li><a href="#"><i class="ti-vimeo"></i></a></li>-->
                         </ul>
                     </div>
                     <!-- End Top Right -->
@@ -134,11 +135,9 @@
                                             <li><a href="index.html#accueil">Accueil</a></li>
                                             <li><a href="apropos.html">A Propos</a></li>
                                             <li><a href="service.html">Services</a></li>
-                                            <!-- <li><a href="index.html#galerie">Galeries</a></li>
-                                            <li><a href="index.html#contact-us">Contact</a></li>-->
-                                            <li><a href="#">Espace client</a>
+                                            <li><a href="#"><span class="pc">Espace client</span> <span class="fa fa-user fsize-18 mobile"></span></a>
                                                 <ul class="dropdown">
-                                                    <li><a href="login.html">Connexion</a></li>
+                                                    <li class="active"><a href="login.html">Connexion</a></li>
                                                     <li><a href="register.html">S'inscrire</a></li>
                                                 </ul>
                                             </li>
@@ -189,7 +188,354 @@
                         <div class="tab-content" id="myTabContent">
                             <!-- Start Single Tab -->
                             <div class="tab-pane fade show active" id="man" role="tabpanel">
-                                <div class="tab-single">
+
+                                <div class="row mt-20">
+                                    <div class="col-md-4 mb-10">
+                                        <div style="background: #ffffff;padding: 10px;border-radius: 5px" class="shadow">
+                                            <div>Projet 1</div>
+                                            <div>
+                                                <button  title="Info" class="btn back-info btn-sm btn-circle btn-btn" ng-click="searchPopo()">
+                                                    <i class="fa fa-info"></i>
+                                                </button>
+                                            </div>
+
+                                            <div style="margin-top: 15px;position: absolute;z-index: 999;background: #ffffff;padding: 10px;border-radius: 5px" class="shadow search-home-2">
+                                                <div class="">
+                                                    <div style="position: absolute;right: 10px;top: 10px">
+                                                        <button  title="detail" class="btn back-success btn-sm btn-circle btn-btn-minus" ng-click="searchPopo2()">
+                                                            <i class="fa fa-close"></i>
+                                                        </button>
+                                                    </div>
+                                                    <div  class="card-body row animated fadeInUp">
+                                                        <div class=" col-md-12 col-sm-12 mt-10">
+                                                            <div class="border-danger">
+                                                                <div> Localisation :<span> <u>Thiaroye</u></span></div>
+                                                            </div>
+                                                        </div>
+                                                        <div class=" col-md-6 col-sm-12 mt-10">
+                                                            <div class="border-danger">
+                                                                <div> Superficie :<span> <u>12</u></span></div>
+                                                            </div>
+                                                        </div>
+                                                        <div class=" col-md-6 col-sm-12 mt-10">
+                                                            <div class="border-danger">
+                                                                <div> Long / Larg : <span> <u>3 - 4</u></span></div>
+                                                            </div>
+                                                        </div>
+                                                        <div class=" col-md-12 col-sm-12 mt-10">
+                                                            <div class="border-danger text-orange font-weight-bold ">
+                                                                <div> Niveau :<span> <u>1</u></span></div>
+                                                            </div>
+                                                        </div>
+                                                        <div class=" col-md-6 col-sm-12 mt-10">
+                                                            <div class="border-danger">
+                                                                <div> Chambre Sple :<span> <u>3</u></span></div>
+                                                            </div>
+
+                                                        </div>
+                                                        <div class=" col-md-6 col-sm-12 mt-10">
+                                                            <div class="border-danger">
+                                                                <div> Chambre SDB :<span> <u>3</u></span></div>
+                                                            </div>
+                                                        </div>
+                                                        <div class=" col-md-6 col-sm-12 mt-10">
+                                                            <div class="border-danger">
+                                                                <div> Cuisine :<span> <u>4</u></span></div>
+                                                            </div>
+                                                        </div>
+                                                        <div class=" col-md-6 col-sm-12 mt-10">
+                                                            <div class="border-danger">
+                                                                <div>  Toillette :<span> <u>5</u></span></div>
+                                                            </div>
+                                                        </div>
+                                                        <div class=" col-md-6 col-sm-12 mt-10">
+                                                            <div class="border-danger">
+                                                                <div> Salon :<span> <u>6</u></span></div>
+                                                            </div>
+                                                        </div>
+                                                        <div class=" col-md-6 col-sm-12 mt-10">
+                                                            <div class="border-danger">
+                                                                <div> Bureau :<span> <u>2</u></span></div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class=" col-md-12 col-sm-12 mt-10">
+                                                            <button  title="detail" class="btn back-success btn-sm btn-circle mr-2" ng-click="showModalAdd('demande')">
+                                                                <i class="fa fa-edit"></i>
+                                                            </button>
+                                                            <button  title="Supprimer" class="btn back-danger btn-sm btn-circle">
+                                                                <i class="fa fa-trash"></i>
+                                                            </button>
+
+                                                        </div>
+
+
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 mb-10">
+                                        <div style="background: #ffffff;padding: 10px;border-radius: 5px" class="shadow">
+                                            <div>Projet 1</div>
+                                            <div>
+                                                <button  title="Info" class="btn back-info btn-sm btn-circle btn-btn" ng-click="searchPopo()">
+                                                    <i class="fa fa-info"></i>
+                                                </button>
+                                            </div>
+
+                                            <div style="margin-top: 15px;position: absolute;z-index: 999;background: #ffffff;padding: 10px;border-radius: 5px" class="shadow search-home-2">
+                                                <div class="">
+                                                    <div style="position: absolute;right: 10px;top: 10px">
+                                                        <button  title="detail" class="btn back-success btn-sm btn-circle btn-btn-minus" ng-click="searchPopo2()">
+                                                            <i class="fa fa-close"></i>
+                                                        </button>
+                                                    </div>
+                                                    <div  class="card-body row animated fadeInUp">
+                                                        <div class=" col-md-12 col-sm-12 mt-10">
+                                                            <div class="border-danger">
+                                                                <div> Localisation :<span> <u>Thiaroye</u></span></div>
+                                                            </div>
+                                                        </div>
+                                                        <div class=" col-md-6 col-sm-12 mt-10">
+                                                            <div class="border-danger">
+                                                                <div> Superficie :<span> <u>12</u></span></div>
+                                                            </div>
+                                                        </div>
+                                                        <div class=" col-md-6 col-sm-12 mt-10">
+                                                            <div class="border-danger">
+                                                                <div> Long / Larg : <span> <u>3 - 4</u></span></div>
+                                                            </div>
+                                                        </div>
+                                                        <div class=" col-md-12 col-sm-12 mt-10">
+                                                            <div class="border-danger text-orange font-weight-bold ">
+                                                                <div> Niveau :<span> <u>1</u></span></div>
+                                                            </div>
+                                                        </div>
+                                                        <div class=" col-md-6 col-sm-12 mt-10">
+                                                            <div class="border-danger">
+                                                                <div> Chambre Sple :<span> <u>3</u></span></div>
+                                                            </div>
+
+                                                        </div>
+                                                        <div class=" col-md-6 col-sm-12 mt-10">
+                                                            <div class="border-danger">
+                                                                <div> Chambre SDB :<span> <u>3</u></span></div>
+                                                            </div>
+                                                        </div>
+                                                        <div class=" col-md-6 col-sm-12 mt-10">
+                                                            <div class="border-danger">
+                                                                <div> Cuisine :<span> <u>4</u></span></div>
+                                                            </div>
+                                                        </div>
+                                                        <div class=" col-md-6 col-sm-12 mt-10">
+                                                            <div class="border-danger">
+                                                                <div>  Toillette :<span> <u>5</u></span></div>
+                                                            </div>
+                                                        </div>
+                                                        <div class=" col-md-6 col-sm-12 mt-10">
+                                                            <div class="border-danger">
+                                                                <div> Salon :<span> <u>6</u></span></div>
+                                                            </div>
+                                                        </div>
+                                                        <div class=" col-md-6 col-sm-12 mt-10">
+                                                            <div class="border-danger">
+                                                                <div> Bureau :<span> <u>2</u></span></div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class=" col-md-12 col-sm-12 mt-10">
+                                                            <button  title="detail" class="btn back-success btn-sm btn-circle mr-2" ng-click="showModalAdd('demande')">
+                                                                <i class="fa fa-edit"></i>
+                                                            </button>
+                                                            <button  title="Supprimer" class="btn back-danger btn-sm btn-circle">
+                                                                <i class="fa fa-trash"></i>
+                                                            </button>
+
+                                                        </div>
+
+
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 mb-10">
+                                        <div style="background: #ffffff;padding: 10px;border-radius: 5px" class="shadow">
+                                            <div>Projet 1</div>
+                                            <div>
+                                                <button  title="Info" class="btn back-info btn-sm btn-circle btn-btn" ng-click="searchPopo()">
+                                                    <i class="fa fa-info"></i>
+                                                </button>
+                                            </div>
+
+                                            <div style="margin-top: 15px;position: absolute;z-index: 999;background: #ffffff;padding: 10px;border-radius: 5px" class="shadow search-home-2">
+                                                <div class="">
+                                                    <div style="position: absolute;right: 10px;top: 10px">
+                                                        <button  title="detail" class="btn back-success btn-sm btn-circle btn-btn-minus" ng-click="searchPopo2()">
+                                                            <i class="fa fa-close"></i>
+                                                        </button>
+                                                    </div>
+                                                    <div  class="card-body row animated fadeInUp">
+                                                        <div class=" col-md-12 col-sm-12 mt-10">
+                                                            <div class="border-danger">
+                                                                <div> Localisation :<span> <u>Thiaroye</u></span></div>
+                                                            </div>
+                                                        </div>
+                                                        <div class=" col-md-6 col-sm-12 mt-10">
+                                                            <div class="border-danger">
+                                                                <div> Superficie :<span> <u>12</u></span></div>
+                                                            </div>
+                                                        </div>
+                                                        <div class=" col-md-6 col-sm-12 mt-10">
+                                                            <div class="border-danger">
+                                                                <div> Long / Larg : <span> <u>3 - 4</u></span></div>
+                                                            </div>
+                                                        </div>
+                                                        <div class=" col-md-12 col-sm-12 mt-10">
+                                                            <div class="border-danger text-orange font-weight-bold ">
+                                                                <div> Niveau :<span> <u>1</u></span></div>
+                                                            </div>
+                                                        </div>
+                                                        <div class=" col-md-6 col-sm-12 mt-10">
+                                                            <div class="border-danger">
+                                                                <div> Chambre Sple :<span> <u>3</u></span></div>
+                                                            </div>
+
+                                                        </div>
+                                                        <div class=" col-md-6 col-sm-12 mt-10">
+                                                            <div class="border-danger">
+                                                                <div> Chambre SDB :<span> <u>3</u></span></div>
+                                                            </div>
+                                                        </div>
+                                                        <div class=" col-md-6 col-sm-12 mt-10">
+                                                            <div class="border-danger">
+                                                                <div> Cuisine :<span> <u>4</u></span></div>
+                                                            </div>
+                                                        </div>
+                                                        <div class=" col-md-6 col-sm-12 mt-10">
+                                                            <div class="border-danger">
+                                                                <div>  Toillette :<span> <u>5</u></span></div>
+                                                            </div>
+                                                        </div>
+                                                        <div class=" col-md-6 col-sm-12 mt-10">
+                                                            <div class="border-danger">
+                                                                <div> Salon :<span> <u>6</u></span></div>
+                                                            </div>
+                                                        </div>
+                                                        <div class=" col-md-6 col-sm-12 mt-10">
+                                                            <div class="border-danger">
+                                                                <div> Bureau :<span> <u>2</u></span></div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class=" col-md-12 col-sm-12 mt-10">
+                                                            <button  title="detail" class="btn back-success btn-sm btn-circle mr-2">
+                                                                <i class="fa fa-edit"></i>
+                                                            </button>
+                                                            <button  title="Supprimer" class="btn back-danger btn-sm btn-circle">
+                                                                <i class="fa fa-trash"></i>
+                                                            </button>
+
+                                                        </div>
+
+
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 mb-10">
+                                        <div style="background: #ffffff;padding: 10px;border-radius: 5px" class="shadow">
+                                            <div>Projet 1</div>
+                                            <div>
+                                                <button  title="Info" class="btn back-info btn-sm btn-circle btn-btn" ng-click="searchPopo()">
+                                                    <i class="fa fa-info"></i>
+                                                </button>
+                                            </div>
+
+                                            <div style="margin-top: 15px;position: absolute;z-index: 999;background: #ffffff;padding: 10px;border-radius: 5px" class="shadow search-home-2">
+                                                <div class="">
+                                                    <div style="position: absolute;right: 10px;top: 10px">
+                                                        <button  title="detail" class="btn back-success btn-sm btn-circle btn-btn-minus" ng-click="searchPopo2()">
+                                                            <i class="fa fa-close"></i>
+                                                        </button>
+                                                    </div>
+                                                    <div  class="card-body row animated fadeInUp">
+                                                        <div class=" col-md-12 col-sm-12 mt-10">
+                                                            <div class="border-danger">
+                                                                <div> Localisation :<span> <u>Thiaroye</u></span></div>
+                                                            </div>
+                                                        </div>
+                                                        <div class=" col-md-6 col-sm-12 mt-10">
+                                                            <div class="border-danger">
+                                                                <div> Superficie :<span> <u>12</u></span></div>
+                                                            </div>
+                                                        </div>
+                                                        <div class=" col-md-6 col-sm-12 mt-10">
+                                                            <div class="border-danger">
+                                                                <div> Long / Larg : <span> <u>3 - 4</u></span></div>
+                                                            </div>
+                                                        </div>
+                                                        <div class=" col-md-12 col-sm-12 mt-10">
+                                                            <div class="border-danger text-orange font-weight-bold ">
+                                                                <div> Niveau :<span> <u>1</u></span></div>
+                                                            </div>
+                                                        </div>
+                                                        <div class=" col-md-6 col-sm-12 mt-10">
+                                                            <div class="border-danger">
+                                                                <div> Chambre Sple :<span> <u>3</u></span></div>
+                                                            </div>
+
+                                                        </div>
+                                                        <div class=" col-md-6 col-sm-12 mt-10">
+                                                            <div class="border-danger">
+                                                                <div> Chambre SDB :<span> <u>3</u></span></div>
+                                                            </div>
+                                                        </div>
+                                                        <div class=" col-md-6 col-sm-12 mt-10">
+                                                            <div class="border-danger">
+                                                                <div> Cuisine :<span> <u>4</u></span></div>
+                                                            </div>
+                                                        </div>
+                                                        <div class=" col-md-6 col-sm-12 mt-10">
+                                                            <div class="border-danger">
+                                                                <div>  Toillette :<span> <u>5</u></span></div>
+                                                            </div>
+                                                        </div>
+                                                        <div class=" col-md-6 col-sm-12 mt-10">
+                                                            <div class="border-danger">
+                                                                <div> Salon :<span> <u>6</u></span></div>
+                                                            </div>
+                                                        </div>
+                                                        <div class=" col-md-6 col-sm-12 mt-10">
+                                                            <div class="border-danger">
+                                                                <div> Bureau :<span> <u>2</u></span></div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class=" col-md-12 col-sm-12 mt-10">
+                                                            <button  title="detail" class="btn back-success btn-sm btn-circle mr-2">
+                                                                <i class="fa fa-edit"></i>
+                                                            </button>
+                                                            <button  title="Supprimer" class="btn back-danger btn-sm btn-circle">
+                                                                <i class="fa fa-trash"></i>
+                                                            </button>
+
+                                                        </div>
+
+
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--<div class="tab-single">
                                     <div class="mt-20">
 
                                         <div class="row">
@@ -269,90 +615,357 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div>-->
                             </div>
                             <!--/ End Single Tab -->
                             <!-- Start Single Tab -->
                             <div class="tab-pane fade" id="women" role="tabpanel">
                                 <div class="tab-single">
-                                    <div class="mt-20">
-                                        <div class="row">
-                                            <div class="col-12 class-table">
-                                                <table class="table">
-                                                    <thead>
-                                                    <tr class="main-hading back-orange">
-                                                        <th>Adresse Chantier</th>
-                                                        <th>Superficie</th>
-                                                        <th>Longeur</th>
-                                                        <th>Largeur</th>
-                                                        <th>Nombre de chambre</th>
-                                                        <th>Actions</th>
-                                                    </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                    <tr>
-                                                        <td class="price"><span>Thiaroye</span></td>
-                                                        <td class="price"><span>300 m*m</span></td>
-                                                        <td class="price"><span>34</span></td>
-                                                        <td class="price"><span>23</span></td>
-                                                        <td class="price"><span>12</span></td>
-                                                        <td class="">
-                                                            <button  title="Info" class="btn back-info btn-sm btn-circle">
-                                                                <i class="fa fa-info"></i>
-                                                            </button>
-                                                            <button  title="detail" class="btn back-success btn-sm btn-circle">
-                                                                <i class="fa fa-edit"></i>
-                                                            </button>
-                                                            <button  title="Supprimer" class="btn back-danger btn-sm btn-circle">
-                                                                <i class="fa fa-trash"></i>
-                                                            </button>
+                                    <div class="row mt-20">
+                                        <div class="col-md-4 mb-10">
+                                            <div style="background: #ffffff;padding: 10px;border-radius: 5px" class="shadow">
+                                                <div>Projet 1</div>
+                                                <div>
+                                                    <button  title="Info" class="btn back-info btn-sm btn-circle btn-btn" ng-click="searchPopo()">
+                                                        <i class="fa fa-info"></i>
+                                                    </button>
+                                                </div>
 
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="price"><span>Thiaroye</span></td>
-                                                        <td class="price"><span>300 m*m</span></td>
-                                                        <td class="price"><span>34</span></td>
-                                                        <td class="price"><span>23</span></td>
-                                                        <td class="price"><span>12</span></td>
-                                                        <td class="">
-                                                            <button  title="Info" class="btn back-info btn-sm btn-circle">
-                                                                <i class="fa fa-info"></i>
+                                                <div style="margin-top: 15px;position: absolute;z-index: 999;background: #ffffff;padding: 10px;border-radius: 5px" class="shadow search-home-2">
+                                                    <div class="">
+                                                        <div style="position: absolute;right: 10px;top: 10px">
+                                                            <button  title="detail" class="btn back-success btn-sm btn-circle btn-btn-minus" ng-click="searchPopo2()">
+                                                                <i class="fa fa-close"></i>
                                                             </button>
-                                                            <button  title="detail" class="btn back-success btn-sm btn-circle">
-                                                                <i class="fa fa-edit"></i>
-                                                            </button>
-                                                            <button  title="Supprimer" class="btn back-danger btn-sm btn-circle">
-                                                                <i class="fa fa-trash"></i>
-                                                            </button>
+                                                        </div>
+                                                        <div  class="card-body row animated fadeInUp">
+                                                            <div class=" col-md-12 col-sm-12 mt-10">
+                                                                <div class="border-danger">
+                                                                    <div> Localisation :<span> <u>Thiaroye</u></span></div>
+                                                                </div>
+                                                            </div>
+                                                            <div class=" col-md-6 col-sm-12 mt-10">
+                                                                <div class="border-danger">
+                                                                    <div> Superficie :<span> <u>12</u></span></div>
+                                                                </div>
+                                                            </div>
+                                                            <div class=" col-md-6 col-sm-12 mt-10">
+                                                                <div class="border-danger">
+                                                                    <div> Long / Larg : <span> <u>3 - 4</u></span></div>
+                                                                </div>
+                                                            </div>
+                                                            <div class=" col-md-12 col-sm-12 mt-10">
+                                                                <div class="border-danger text-orange font-weight-bold ">
+                                                                    <div> Niveau :<span> <u>1</u></span></div>
+                                                                </div>
+                                                            </div>
+                                                            <div class=" col-md-6 col-sm-12 mt-10">
+                                                                <div class="border-danger">
+                                                                    <div> Chambre Sple :<span> <u>3</u></span></div>
+                                                                </div>
 
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="price"><span>Thiaroye</span></td>
-                                                        <td class="price"><span>300 m*m</span></td>
-                                                        <td class="price"><span>34</span></td>
-                                                        <td class="price"><span>23</span></td>
-                                                        <td class="price"><span>12</span></td>
-                                                        <td class="">
-                                                            <button  title="Info" class="btn back-info btn-sm btn-circle">
-                                                                <i class="fa fa-info"></i>
-                                                            </button>
-                                                            <button  title="detail" class="btn back-success btn-sm btn-circle">
-                                                                <i class="fa fa-edit"></i>
-                                                            </button>
-                                                            <button  title="Supprimer" class="btn back-danger btn-sm btn-circle">
-                                                                <i class="fa fa-trash"></i>
-                                                            </button>
+                                                            </div>
+                                                            <div class=" col-md-6 col-sm-12 mt-10">
+                                                                <div class="border-danger">
+                                                                    <div> Chambre SDB :<span> <u>3</u></span></div>
+                                                                </div>
+                                                            </div>
+                                                            <div class=" col-md-6 col-sm-12 mt-10">
+                                                                <div class="border-danger">
+                                                                    <div> Cuisine :<span> <u>4</u></span></div>
+                                                                </div>
+                                                            </div>
+                                                            <div class=" col-md-6 col-sm-12 mt-10">
+                                                                <div class="border-danger">
+                                                                    <div>  Toillette :<span> <u>5</u></span></div>
+                                                                </div>
+                                                            </div>
+                                                            <div class=" col-md-6 col-sm-12 mt-10">
+                                                                <div class="border-danger">
+                                                                    <div> Salon :<span> <u>6</u></span></div>
+                                                                </div>
+                                                            </div>
+                                                            <div class=" col-md-6 col-sm-12 mt-10">
+                                                                <div class="border-danger">
+                                                                    <div> Bureau :<span> <u>2</u></span></div>
+                                                                </div>
+                                                            </div>
 
-                                                        </td>
-                                                    </tr>
+                                                            <div class=" col-md-12 col-sm-12 mt-10">
+                                                                <button  title="detail" class="btn back-success btn-sm btn-circle mr-2" ng-click="showModalAdd('demande')">
+                                                                    <i class="fa fa-edit"></i>
+                                                                </button>
+                                                                <button  title="Supprimer" class="btn back-danger btn-sm btn-circle">
+                                                                    <i class="fa fa-trash"></i>
+                                                                </button>
 
-                                                    </tbody>
-                                                </table>
+                                                            </div>
+
+
+                                                        </div>
+
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
+                                        <div class="col-md-4 mb-10">
+                                            <div style="background: #ffffff;padding: 10px;border-radius: 5px" class="shadow">
+                                                <div>Projet 1</div>
+                                                <div>
+                                                    <button  title="Info" class="btn back-info btn-sm btn-circle btn-btn" ng-click="searchPopo()">
+                                                        <i class="fa fa-info"></i>
+                                                    </button>
+                                                </div>
 
+                                                <div style="margin-top: 15px;position: absolute;z-index: 999;background: #ffffff;padding: 10px;border-radius: 5px" class="shadow search-home-2">
+                                                    <div class="">
+                                                        <div style="position: absolute;right: 10px;top: 10px">
+                                                            <button  title="detail" class="btn back-success btn-sm btn-circle btn-btn-minus" ng-click="searchPopo2()">
+                                                                <i class="fa fa-close"></i>
+                                                            </button>
+                                                        </div>
+                                                        <div  class="card-body row animated fadeInUp">
+                                                            <div class=" col-md-12 col-sm-12 mt-10">
+                                                                <div class="border-danger">
+                                                                    <div> Localisation :<span> <u>Thiaroye</u></span></div>
+                                                                </div>
+                                                            </div>
+                                                            <div class=" col-md-6 col-sm-12 mt-10">
+                                                                <div class="border-danger">
+                                                                    <div> Superficie :<span> <u>12</u></span></div>
+                                                                </div>
+                                                            </div>
+                                                            <div class=" col-md-6 col-sm-12 mt-10">
+                                                                <div class="border-danger">
+                                                                    <div> Long / Larg : <span> <u>3 - 4</u></span></div>
+                                                                </div>
+                                                            </div>
+                                                            <div class=" col-md-12 col-sm-12 mt-10">
+                                                                <div class="border-danger text-orange font-weight-bold ">
+                                                                    <div> Niveau :<span> <u>1</u></span></div>
+                                                                </div>
+                                                            </div>
+                                                            <div class=" col-md-6 col-sm-12 mt-10">
+                                                                <div class="border-danger">
+                                                                    <div> Chambre Sple :<span> <u>3</u></span></div>
+                                                                </div>
+
+                                                            </div>
+                                                            <div class=" col-md-6 col-sm-12 mt-10">
+                                                                <div class="border-danger">
+                                                                    <div> Chambre SDB :<span> <u>3</u></span></div>
+                                                                </div>
+                                                            </div>
+                                                            <div class=" col-md-6 col-sm-12 mt-10">
+                                                                <div class="border-danger">
+                                                                    <div> Cuisine :<span> <u>4</u></span></div>
+                                                                </div>
+                                                            </div>
+                                                            <div class=" col-md-6 col-sm-12 mt-10">
+                                                                <div class="border-danger">
+                                                                    <div>  Toillette :<span> <u>5</u></span></div>
+                                                                </div>
+                                                            </div>
+                                                            <div class=" col-md-6 col-sm-12 mt-10">
+                                                                <div class="border-danger">
+                                                                    <div> Salon :<span> <u>6</u></span></div>
+                                                                </div>
+                                                            </div>
+                                                            <div class=" col-md-6 col-sm-12 mt-10">
+                                                                <div class="border-danger">
+                                                                    <div> Bureau :<span> <u>2</u></span></div>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class=" col-md-12 col-sm-12 mt-10">
+                                                                <button  title="detail" class="btn back-success btn-sm btn-circle mr-2" ng-click="showModalAdd('demande')">
+                                                                    <i class="fa fa-edit"></i>
+                                                                </button>
+                                                                <button  title="Supprimer" class="btn back-danger btn-sm btn-circle">
+                                                                    <i class="fa fa-trash"></i>
+                                                                </button>
+
+                                                            </div>
+
+
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 mb-10">
+                                            <div style="background: #ffffff;padding: 10px;border-radius: 5px" class="shadow">
+                                                <div>Projet 1</div>
+                                                <div>
+                                                    <button  title="Info" class="btn back-info btn-sm btn-circle btn-btn" ng-click="searchPopo()">
+                                                        <i class="fa fa-info"></i>
+                                                    </button>
+                                                </div>
+
+                                                <div style="margin-top: 15px;position: absolute;z-index: 999;background: #ffffff;padding: 10px;border-radius: 5px" class="shadow search-home-2">
+                                                    <div class="">
+                                                        <div style="position: absolute;right: 10px;top: 10px">
+                                                            <button  title="detail" class="btn back-success btn-sm btn-circle btn-btn-minus" ng-click="searchPopo2()">
+                                                                <i class="fa fa-close"></i>
+                                                            </button>
+                                                        </div>
+                                                        <div  class="card-body row animated fadeInUp">
+                                                            <div class=" col-md-12 col-sm-12 mt-10">
+                                                                <div class="border-danger">
+                                                                    <div> Localisation :<span> <u>Thiaroye</u></span></div>
+                                                                </div>
+                                                            </div>
+                                                            <div class=" col-md-6 col-sm-12 mt-10">
+                                                                <div class="border-danger">
+                                                                    <div> Superficie :<span> <u>12</u></span></div>
+                                                                </div>
+                                                            </div>
+                                                            <div class=" col-md-6 col-sm-12 mt-10">
+                                                                <div class="border-danger">
+                                                                    <div> Long / Larg : <span> <u>3 - 4</u></span></div>
+                                                                </div>
+                                                            </div>
+                                                            <div class=" col-md-12 col-sm-12 mt-10">
+                                                                <div class="border-danger text-orange font-weight-bold ">
+                                                                    <div> Niveau :<span> <u>1</u></span></div>
+                                                                </div>
+                                                            </div>
+                                                            <div class=" col-md-6 col-sm-12 mt-10">
+                                                                <div class="border-danger">
+                                                                    <div> Chambre Sple :<span> <u>3</u></span></div>
+                                                                </div>
+
+                                                            </div>
+                                                            <div class=" col-md-6 col-sm-12 mt-10">
+                                                                <div class="border-danger">
+                                                                    <div> Chambre SDB :<span> <u>3</u></span></div>
+                                                                </div>
+                                                            </div>
+                                                            <div class=" col-md-6 col-sm-12 mt-10">
+                                                                <div class="border-danger">
+                                                                    <div> Cuisine :<span> <u>4</u></span></div>
+                                                                </div>
+                                                            </div>
+                                                            <div class=" col-md-6 col-sm-12 mt-10">
+                                                                <div class="border-danger">
+                                                                    <div>  Toillette :<span> <u>5</u></span></div>
+                                                                </div>
+                                                            </div>
+                                                            <div class=" col-md-6 col-sm-12 mt-10">
+                                                                <div class="border-danger">
+                                                                    <div> Salon :<span> <u>6</u></span></div>
+                                                                </div>
+                                                            </div>
+                                                            <div class=" col-md-6 col-sm-12 mt-10">
+                                                                <div class="border-danger">
+                                                                    <div> Bureau :<span> <u>2</u></span></div>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class=" col-md-12 col-sm-12 mt-10">
+                                                                <button  title="detail" class="btn back-success btn-sm btn-circle mr-2">
+                                                                    <i class="fa fa-edit"></i>
+                                                                </button>
+                                                                <button  title="Supprimer" class="btn back-danger btn-sm btn-circle">
+                                                                    <i class="fa fa-trash"></i>
+                                                                </button>
+
+                                                            </div>
+
+
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 mb-10">
+                                            <div style="background: #ffffff;padding: 10px;border-radius: 5px" class="shadow">
+                                                <div>Projet 1</div>
+                                                <div>
+                                                    <button  title="Info" class="btn back-info btn-sm btn-circle btn-btn" ng-click="searchPopo()">
+                                                        <i class="fa fa-info"></i>
+                                                    </button>
+                                                </div>
+
+                                                <div style="margin-top: 15px;position: absolute;z-index: 999;background: #ffffff;padding: 10px;border-radius: 5px" class="shadow search-home-2">
+                                                    <div class="">
+                                                        <div style="position: absolute;right: 10px;top: 10px">
+                                                            <button  title="detail" class="btn back-success btn-sm btn-circle btn-btn-minus" ng-click="searchPopo2()">
+                                                                <i class="fa fa-close"></i>
+                                                            </button>
+                                                        </div>
+                                                        <div  class="card-body row animated fadeInUp">
+                                                            <div class=" col-md-12 col-sm-12 mt-10">
+                                                                <div class="border-danger">
+                                                                    <div> Localisation :<span> <u>Thiaroye</u></span></div>
+                                                                </div>
+                                                            </div>
+                                                            <div class=" col-md-6 col-sm-12 mt-10">
+                                                                <div class="border-danger">
+                                                                    <div> Superficie :<span> <u>12</u></span></div>
+                                                                </div>
+                                                            </div>
+                                                            <div class=" col-md-6 col-sm-12 mt-10">
+                                                                <div class="border-danger">
+                                                                    <div> Long / Larg : <span> <u>3 - 4</u></span></div>
+                                                                </div>
+                                                            </div>
+                                                            <div class=" col-md-12 col-sm-12 mt-10">
+                                                                <div class="border-danger text-orange font-weight-bold ">
+                                                                    <div> Niveau :<span> <u>1</u></span></div>
+                                                                </div>
+                                                            </div>
+                                                            <div class=" col-md-6 col-sm-12 mt-10">
+                                                                <div class="border-danger">
+                                                                    <div> Chambre Sple :<span> <u>3</u></span></div>
+                                                                </div>
+
+                                                            </div>
+                                                            <div class=" col-md-6 col-sm-12 mt-10">
+                                                                <div class="border-danger">
+                                                                    <div> Chambre SDB :<span> <u>3</u></span></div>
+                                                                </div>
+                                                            </div>
+                                                            <div class=" col-md-6 col-sm-12 mt-10">
+                                                                <div class="border-danger">
+                                                                    <div> Cuisine :<span> <u>4</u></span></div>
+                                                                </div>
+                                                            </div>
+                                                            <div class=" col-md-6 col-sm-12 mt-10">
+                                                                <div class="border-danger">
+                                                                    <div>  Toillette :<span> <u>5</u></span></div>
+                                                                </div>
+                                                            </div>
+                                                            <div class=" col-md-6 col-sm-12 mt-10">
+                                                                <div class="border-danger">
+                                                                    <div> Salon :<span> <u>6</u></span></div>
+                                                                </div>
+                                                            </div>
+                                                            <div class=" col-md-6 col-sm-12 mt-10">
+                                                                <div class="border-danger">
+                                                                    <div> Bureau :<span> <u>2</u></span></div>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class=" col-md-12 col-sm-12 mt-10">
+                                                                <button  title="detail" class="btn back-success btn-sm btn-circle mr-2">
+                                                                    <i class="fa fa-edit"></i>
+                                                                </button>
+                                                                <button  title="Supprimer" class="btn back-danger btn-sm btn-circle">
+                                                                    <i class="fa fa-trash"></i>
+                                                                </button>
+
+                                                            </div>
+
+
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -360,84 +973,351 @@
                             <!-- Start Single Tab -->
                             <div class="tab-pane fade" id="kids" role="tabpanel">
                                 <div class="tab-single">
-                                    <div class="mt-20">
-                                        <div class="row">
-                                            <div class="col-12 class-table">
-                                                <table class="table">
-                                                    <thead>
-                                                    <tr class="main-hading back-orange">
-                                                        <th>Adresse Chantier</th>
-                                                        <th>Superficie</th>
-                                                        <th>Longeur</th>
-                                                        <th>Largeur</th>
-                                                        <th>Nombre de chambre</th>
-                                                        <th>Actions</th>
-                                                    </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                    <tr>
-                                                        <td class="price"><span>Thiaroye</span></td>
-                                                        <td class="price"><span>300 m*m</span></td>
-                                                        <td class="price"><span>34</span></td>
-                                                        <td class="price"><span>23</span></td>
-                                                        <td class="price"><span>12</span></td>
-                                                        <td class="">
-                                                            <button  title="Info" class="btn back-info btn-sm btn-circle">
-                                                                <i class="fa fa-info"></i>
-                                                            </button>
-                                                            <button  title="detail" class="btn back-success btn-sm btn-circle">
-                                                                <i class="fa fa-edit"></i>
-                                                            </button>
-                                                            <button  title="Supprimer" class="btn back-danger btn-sm btn-circle">
-                                                                <i class="fa fa-trash"></i>
-                                                            </button>
+                                    <div class="row mt-20">
+                                        <div class="col-md-4 mb-10">
+                                            <div style="background: #ffffff;padding: 10px;border-radius: 5px" class="shadow">
+                                                <div>Projet 1</div>
+                                                <div>
+                                                    <button  title="Info" class="btn back-info btn-sm btn-circle btn-btn" ng-click="searchPopo()">
+                                                        <i class="fa fa-info"></i>
+                                                    </button>
+                                                </div>
 
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="price"><span>Thiaroye</span></td>
-                                                        <td class="price"><span>300 m*m</span></td>
-                                                        <td class="price"><span>34</span></td>
-                                                        <td class="price"><span>23</span></td>
-                                                        <td class="price"><span>12</span></td>
-                                                        <td class="">
-                                                            <button  title="Info" class="btn back-info btn-sm btn-circle">
-                                                                <i class="fa fa-info"></i>
+                                                <div style="margin-top: 15px;position: absolute;z-index: 999;background: #ffffff;padding: 10px;border-radius: 5px" class="shadow search-home-2">
+                                                    <div class="">
+                                                        <div style="position: absolute;right: 10px;top: 10px">
+                                                            <button  title="detail" class="btn back-success btn-sm btn-circle btn-btn-minus" ng-click="searchPopo2()">
+                                                                <i class="fa fa-close"></i>
                                                             </button>
-                                                            <button  title="detail" class="btn back-success btn-sm btn-circle">
-                                                                <i class="fa fa-edit"></i>
-                                                            </button>
-                                                            <button  title="Supprimer" class="btn back-danger btn-sm btn-circle">
-                                                                <i class="fa fa-trash"></i>
-                                                            </button>
+                                                        </div>
+                                                        <div  class="card-body row animated fadeInUp">
+                                                            <div class=" col-md-12 col-sm-12 mt-10">
+                                                                <div class="border-danger">
+                                                                    <div> Localisation :<span> <u>Thiaroye</u></span></div>
+                                                                </div>
+                                                            </div>
+                                                            <div class=" col-md-6 col-sm-12 mt-10">
+                                                                <div class="border-danger">
+                                                                    <div> Superficie :<span> <u>12</u></span></div>
+                                                                </div>
+                                                            </div>
+                                                            <div class=" col-md-6 col-sm-12 mt-10">
+                                                                <div class="border-danger">
+                                                                    <div> Long / Larg : <span> <u>3 - 4</u></span></div>
+                                                                </div>
+                                                            </div>
+                                                            <div class=" col-md-12 col-sm-12 mt-10">
+                                                                <div class="border-danger text-orange font-weight-bold ">
+                                                                    <div> Niveau :<span> <u>1</u></span></div>
+                                                                </div>
+                                                            </div>
+                                                            <div class=" col-md-6 col-sm-12 mt-10">
+                                                                <div class="border-danger">
+                                                                    <div> Chambre Sple :<span> <u>3</u></span></div>
+                                                                </div>
 
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="price"><span>Thiaroye</span></td>
-                                                        <td class="price"><span>300 m*m</span></td>
-                                                        <td class="price"><span>34</span></td>
-                                                        <td class="price"><span>23</span></td>
-                                                        <td class="price"><span>12</span></td>
-                                                        <td class="">
-                                                            <button  title="Info" class="btn back-info btn-sm btn-circle">
-                                                                <i class="fa fa-info"></i>
-                                                            </button>
-                                                            <button  title="detail" class="btn back-success btn-sm btn-circle">
-                                                                <i class="fa fa-edit"></i>
-                                                            </button>
-                                                            <button  title="Supprimer" class="btn back-danger btn-sm btn-circle">
-                                                                <i class="fa fa-trash"></i>
-                                                            </button>
+                                                            </div>
+                                                            <div class=" col-md-6 col-sm-12 mt-10">
+                                                                <div class="border-danger">
+                                                                    <div> Chambre SDB :<span> <u>3</u></span></div>
+                                                                </div>
+                                                            </div>
+                                                            <div class=" col-md-6 col-sm-12 mt-10">
+                                                                <div class="border-danger">
+                                                                    <div> Cuisine :<span> <u>4</u></span></div>
+                                                                </div>
+                                                            </div>
+                                                            <div class=" col-md-6 col-sm-12 mt-10">
+                                                                <div class="border-danger">
+                                                                    <div>  Toillette :<span> <u>5</u></span></div>
+                                                                </div>
+                                                            </div>
+                                                            <div class=" col-md-6 col-sm-12 mt-10">
+                                                                <div class="border-danger">
+                                                                    <div> Salon :<span> <u>6</u></span></div>
+                                                                </div>
+                                                            </div>
+                                                            <div class=" col-md-6 col-sm-12 mt-10">
+                                                                <div class="border-danger">
+                                                                    <div> Bureau :<span> <u>2</u></span></div>
+                                                                </div>
+                                                            </div>
 
-                                                        </td>
-                                                    </tr>
+                                                            <div class=" col-md-12 col-sm-12 mt-10">
+                                                                <button  title="detail" class="btn back-success btn-sm btn-circle mr-2" ng-click="showModalAdd('demande')">
+                                                                    <i class="fa fa-edit"></i>
+                                                                </button>
+                                                                <button  title="Supprimer" class="btn back-danger btn-sm btn-circle">
+                                                                    <i class="fa fa-trash"></i>
+                                                                </button>
 
-                                                    </tbody>
-                                                </table>
+                                                            </div>
+
+
+                                                        </div>
+
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
+                                        <div class="col-md-4 mb-10">
+                                            <div style="background: #ffffff;padding: 10px;border-radius: 5px" class="shadow">
+                                                <div>Projet 1</div>
+                                                <div>
+                                                    <button  title="Info" class="btn back-info btn-sm btn-circle btn-btn" ng-click="searchPopo()">
+                                                        <i class="fa fa-info"></i>
+                                                    </button>
+                                                </div>
 
+                                                <div style="margin-top: 15px;position: absolute;z-index: 999;background: #ffffff;padding: 10px;border-radius: 5px" class="shadow search-home-2">
+                                                    <div class="">
+                                                        <div style="position: absolute;right: 10px;top: 10px">
+                                                            <button  title="detail" class="btn back-success btn-sm btn-circle btn-btn-minus" ng-click="searchPopo2()">
+                                                                <i class="fa fa-close"></i>
+                                                            </button>
+                                                        </div>
+                                                        <div  class="card-body row animated fadeInUp">
+                                                            <div class=" col-md-12 col-sm-12 mt-10">
+                                                                <div class="border-danger">
+                                                                    <div> Localisation :<span> <u>Thiaroye</u></span></div>
+                                                                </div>
+                                                            </div>
+                                                            <div class=" col-md-6 col-sm-12 mt-10">
+                                                                <div class="border-danger">
+                                                                    <div> Superficie :<span> <u>12</u></span></div>
+                                                                </div>
+                                                            </div>
+                                                            <div class=" col-md-6 col-sm-12 mt-10">
+                                                                <div class="border-danger">
+                                                                    <div> Long / Larg : <span> <u>3 - 4</u></span></div>
+                                                                </div>
+                                                            </div>
+                                                            <div class=" col-md-12 col-sm-12 mt-10">
+                                                                <div class="border-danger text-orange font-weight-bold ">
+                                                                    <div> Niveau :<span> <u>1</u></span></div>
+                                                                </div>
+                                                            </div>
+                                                            <div class=" col-md-6 col-sm-12 mt-10">
+                                                                <div class="border-danger">
+                                                                    <div> Chambre Sple :<span> <u>3</u></span></div>
+                                                                </div>
+
+                                                            </div>
+                                                            <div class=" col-md-6 col-sm-12 mt-10">
+                                                                <div class="border-danger">
+                                                                    <div> Chambre SDB :<span> <u>3</u></span></div>
+                                                                </div>
+                                                            </div>
+                                                            <div class=" col-md-6 col-sm-12 mt-10">
+                                                                <div class="border-danger">
+                                                                    <div> Cuisine :<span> <u>4</u></span></div>
+                                                                </div>
+                                                            </div>
+                                                            <div class=" col-md-6 col-sm-12 mt-10">
+                                                                <div class="border-danger">
+                                                                    <div>  Toillette :<span> <u>5</u></span></div>
+                                                                </div>
+                                                            </div>
+                                                            <div class=" col-md-6 col-sm-12 mt-10">
+                                                                <div class="border-danger">
+                                                                    <div> Salon :<span> <u>6</u></span></div>
+                                                                </div>
+                                                            </div>
+                                                            <div class=" col-md-6 col-sm-12 mt-10">
+                                                                <div class="border-danger">
+                                                                    <div> Bureau :<span> <u>2</u></span></div>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class=" col-md-12 col-sm-12 mt-10">
+                                                                <button  title="detail" class="btn back-success btn-sm btn-circle mr-2" ng-click="showModalAdd('demande')">
+                                                                    <i class="fa fa-edit"></i>
+                                                                </button>
+                                                                <button  title="Supprimer" class="btn back-danger btn-sm btn-circle">
+                                                                    <i class="fa fa-trash"></i>
+                                                                </button>
+
+                                                            </div>
+
+
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 mb-10">
+                                            <div style="background: #ffffff;padding: 10px;border-radius: 5px" class="shadow">
+                                                <div>Projet 1</div>
+                                                <div>
+                                                    <button  title="Info" class="btn back-info btn-sm btn-circle btn-btn" ng-click="searchPopo()">
+                                                        <i class="fa fa-info"></i>
+                                                    </button>
+                                                </div>
+
+                                                <div style="margin-top: 15px;position: absolute;z-index: 999;background: #ffffff;padding: 10px;border-radius: 5px" class="shadow search-home-2">
+                                                    <div class="">
+                                                        <div style="position: absolute;right: 10px;top: 10px">
+                                                            <button  title="detail" class="btn back-success btn-sm btn-circle btn-btn-minus" ng-click="searchPopo2()">
+                                                                <i class="fa fa-close"></i>
+                                                            </button>
+                                                        </div>
+                                                        <div  class="card-body row animated fadeInUp">
+                                                            <div class=" col-md-12 col-sm-12 mt-10">
+                                                                <div class="border-danger">
+                                                                    <div> Localisation :<span> <u>Thiaroye</u></span></div>
+                                                                </div>
+                                                            </div>
+                                                            <div class=" col-md-6 col-sm-12 mt-10">
+                                                                <div class="border-danger">
+                                                                    <div> Superficie :<span> <u>12</u></span></div>
+                                                                </div>
+                                                            </div>
+                                                            <div class=" col-md-6 col-sm-12 mt-10">
+                                                                <div class="border-danger">
+                                                                    <div> Long / Larg : <span> <u>3 - 4</u></span></div>
+                                                                </div>
+                                                            </div>
+                                                            <div class=" col-md-12 col-sm-12 mt-10">
+                                                                <div class="border-danger text-orange font-weight-bold ">
+                                                                    <div> Niveau :<span> <u>1</u></span></div>
+                                                                </div>
+                                                            </div>
+                                                            <div class=" col-md-6 col-sm-12 mt-10">
+                                                                <div class="border-danger">
+                                                                    <div> Chambre Sple :<span> <u>3</u></span></div>
+                                                                </div>
+
+                                                            </div>
+                                                            <div class=" col-md-6 col-sm-12 mt-10">
+                                                                <div class="border-danger">
+                                                                    <div> Chambre SDB :<span> <u>3</u></span></div>
+                                                                </div>
+                                                            </div>
+                                                            <div class=" col-md-6 col-sm-12 mt-10">
+                                                                <div class="border-danger">
+                                                                    <div> Cuisine :<span> <u>4</u></span></div>
+                                                                </div>
+                                                            </div>
+                                                            <div class=" col-md-6 col-sm-12 mt-10">
+                                                                <div class="border-danger">
+                                                                    <div>  Toillette :<span> <u>5</u></span></div>
+                                                                </div>
+                                                            </div>
+                                                            <div class=" col-md-6 col-sm-12 mt-10">
+                                                                <div class="border-danger">
+                                                                    <div> Salon :<span> <u>6</u></span></div>
+                                                                </div>
+                                                            </div>
+                                                            <div class=" col-md-6 col-sm-12 mt-10">
+                                                                <div class="border-danger">
+                                                                    <div> Bureau :<span> <u>2</u></span></div>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class=" col-md-12 col-sm-12 mt-10">
+                                                                <button  title="detail" class="btn back-success btn-sm btn-circle mr-2">
+                                                                    <i class="fa fa-edit"></i>
+                                                                </button>
+                                                                <button  title="Supprimer" class="btn back-danger btn-sm btn-circle">
+                                                                    <i class="fa fa-trash"></i>
+                                                                </button>
+
+                                                            </div>
+
+
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 mb-10">
+                                            <div style="background: #ffffff;padding: 10px;border-radius: 5px" class="shadow">
+                                                <div>Projet 1</div>
+                                                <div>
+                                                    <button  title="Info" class="btn back-info btn-sm btn-circle btn-btn" ng-click="searchPopo()">
+                                                        <i class="fa fa-info"></i>
+                                                    </button>
+                                                </div>
+
+                                                <div style="margin-top: 15px;position: absolute;z-index: 999;background: #ffffff;padding: 10px;border-radius: 5px" class="shadow search-home-2">
+                                                    <div class="">
+                                                        <div style="position: absolute;right: 10px;top: 10px">
+                                                            <button  title="detail" class="btn back-success btn-sm btn-circle btn-btn-minus" ng-click="searchPopo2()">
+                                                                <i class="fa fa-close"></i>
+                                                            </button>
+                                                        </div>
+                                                        <div  class="card-body row animated fadeInUp">
+                                                            <div class=" col-md-12 col-sm-12 mt-10">
+                                                                <div class="border-danger">
+                                                                    <div> Localisation :<span> <u>Thiaroye</u></span></div>
+                                                                </div>
+                                                            </div>
+                                                            <div class=" col-md-6 col-sm-12 mt-10">
+                                                                <div class="border-danger">
+                                                                    <div> Superficie :<span> <u>12</u></span></div>
+                                                                </div>
+                                                            </div>
+                                                            <div class=" col-md-6 col-sm-12 mt-10">
+                                                                <div class="border-danger">
+                                                                    <div> Long / Larg : <span> <u>3 - 4</u></span></div>
+                                                                </div>
+                                                            </div>
+                                                            <div class=" col-md-12 col-sm-12 mt-10">
+                                                                <div class="border-danger text-orange font-weight-bold ">
+                                                                    <div> Niveau :<span> <u>1</u></span></div>
+                                                                </div>
+                                                            </div>
+                                                            <div class=" col-md-6 col-sm-12 mt-10">
+                                                                <div class="border-danger">
+                                                                    <div> Chambre Sple :<span> <u>3</u></span></div>
+                                                                </div>
+
+                                                            </div>
+                                                            <div class=" col-md-6 col-sm-12 mt-10">
+                                                                <div class="border-danger">
+                                                                    <div> Chambre SDB :<span> <u>3</u></span></div>
+                                                                </div>
+                                                            </div>
+                                                            <div class=" col-md-6 col-sm-12 mt-10">
+                                                                <div class="border-danger">
+                                                                    <div> Cuisine :<span> <u>4</u></span></div>
+                                                                </div>
+                                                            </div>
+                                                            <div class=" col-md-6 col-sm-12 mt-10">
+                                                                <div class="border-danger">
+                                                                    <div>  Toillette :<span> <u>5</u></span></div>
+                                                                </div>
+                                                            </div>
+                                                            <div class=" col-md-6 col-sm-12 mt-10">
+                                                                <div class="border-danger">
+                                                                    <div> Salon :<span> <u>6</u></span></div>
+                                                                </div>
+                                                            </div>
+                                                            <div class=" col-md-6 col-sm-12 mt-10">
+                                                                <div class="border-danger">
+                                                                    <div> Bureau :<span> <u>2</u></span></div>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class=" col-md-12 col-sm-12 mt-10">
+                                                                <button  title="detail" class="btn back-success btn-sm btn-circle mr-2">
+                                                                    <i class="fa fa-edit"></i>
+                                                                </button>
+                                                                <button  title="Supprimer" class="btn back-danger btn-sm btn-circle">
+                                                                    <i class="fa fa-trash"></i>
+                                                                </button>
+
+                                                            </div>
+
+
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -462,33 +1342,39 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span class="ti-close" aria-hidden="true"></span></button>
             </div>
             <div class="modal-body" style="padding: 50px!important;">
-                <form id="form_addplan" class="form" enctype="multipart/form-data" accept-charset="UTF-8">
-                    <input type="hidden" id="id_plan" name="id">
+                <form id="form_addprojet" class="form" enctype="multipart/form-data" accept-charset="UTF-8">
+                    <input type="hidden" id="id_projet" name="id">
                     <!--  <input type="hidden" name="tab_niveau" id="tab_niveau" value="@{{produitsInTable}}">-->
 
                     <div class="row">
                         <div class="col-lg-3">
                             <div class="form-group">
-                                <label for="superficie_plan">Superficie</label>
-                                <input type="number" id="superficie_plan" name="superficie" class="form-control">
+                                <label for="localisation_projet">Localisation</label>
+                                <input type="text" id="localisation_projet" name="localisation" class="form-control">
                             </div>
                         </div>
                         <div class="col-lg-3">
                             <div class="form-group">
-                                <label for="longeur_plan">Longeur</label>
-                                <input type="number" id="longeur_plan" name="longeur" class="form-control">
+                                <label for="superficie_projet">Superficie</label>
+                                <input type="number" id="superficie_projet" name="superficie" class="form-control">
                             </div>
                         </div>
-                        <div class="col-lg-3">
+                        <div class="col-lg-2">
                             <div class="form-group">
-                                <label for="largeur_plan">Largeur</label>
-                                <input type="number" id="largeur_plan" name="largeur" class="form-control">
+                                <label for="longeur_projet">Longeur</label>
+                                <input type="number" id="longeur_projet" name="longeur" class="form-control">
                             </div>
                         </div>
-                        <div class="col-lg-3">
+                        <div class="col-lg-2">
                             <div class="form-group">
-                                <label for="unite_mesure_plan">Unité de mesure</label>
-                                <select class="form-control" id="unite_mesure_plan" name="unite_mesure">
+                                <label for="largeur_projet">Largeur</label>
+                                <input type="number" id="largeur_projet" name="largeur" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-lg-2">
+                            <div class="form-group">
+                                <label for="unite_mesure_projet">Unité de mesure</label>
+                                <select class="form-control" id="unite_mesure_projet" name="unite_mesure">
                                     <option value="1">Mettre carré</option>
                                     <option value="2">Hectare</option>
                                 </select>
@@ -498,22 +1384,22 @@
                     <div class="row">
                         <div class="col-lg-3">
                             <label class="checkbox-inline">
-                                <input type="checkbox" id="electricte_projet" value="">Electricté
+                                <input type="checkbox" id="electricte_projet" value=""> Electricté
                               </label>
                         </div>
                         <div class="col-lg-3">
                             <label class="checkbox-inline">
-                                <input type="checkbox" id="accesvoirie_projet" value="">Accés voirie
+                                <input type="checkbox" id="accesvoirie_projet" value=""> Accés voirie
                               </label>
                         </div>
                         <div class="col-lg-3">
                             <label class="checkbox-inline">
-                                <input type="checkbox" id="ass_projet" value="">Assainissement
+                                <input type="checkbox" id="ass_projet" value=""> Assainissement
                               </label>
                         </div>
                                                 <div class="col-lg-3">
                             <label class="checkbox-inline">
-                                <input type="checkbox" id="cadastre_projet" value="">Cadastre
+                                <input type="checkbox" id="cadastre_projet" value=""> Cadastre
                               </label>
                         </div>
                     </div>
@@ -521,20 +1407,10 @@
 
                         <div class="col-lg-12">
                             <div class="form-group">
-                                <label for="fichier_plan">Fichier</label>
-                                <input type="file" class="form-control" id="fichier_plan" name="fichier">
+                                <label for="fichier_projet">Fichier</label>
+                                <input type="file" class="form-control" id="fichier_projet" name="fichier">
                             </div>
                         </div>
-                    </div>
-                    <div class="row">
-                         <div class="col-lg-12">
-                            <div class="form-group">
-                                <label>
-                                    Description
-                                </label>
-                                <textarea  class="form-control" placeholder="Description de votre projet"  rows="4" id="description_plan" name="description"></textarea>
-                            </div>
-                        </div> 
                     </div>
                     <h4 class="form-section animated fadeInDown mb-3 mt-5 border-bottom border-alternate">
                         <i class="fa fa-shopping-cart"></i>
@@ -547,119 +1423,136 @@
                                 <div class="row">
                                     <div class="col-lg-3">
                                         <div class="form-group">
-                                            <label for="niveau_plan">Designation</label>
-                                            <input type="number" name="niveau" id="niveau_plan" class="form-control" >
+                                            <label for="niveau_projet">Designation</label>
+                                            <input type="number" name="niveau" id="niveau_projet" class="form-control" >
                                         </div>
                                     </div>
                                     <div class="col-lg-3">
                                         <div class="form-group">
-                                            <label for="piece_plan">Pièces</label>
-                                            <input type="number" name="piece" id="piece_plan" class="form-control" >
+                                            <label for="piece_projet">Pièces</label>
+                                            <input type="number" name="piece" id="piece_projet" class="form-control" >
                                         </div>
                                     </div>
                                     <div class="col-lg-3">
                                         <div class="form-group">
-                                            <label for="chambre_plan">Chambres</label>
-                                            <input type="number" name="chambre" id="chambre_plan" class="form-control" >
+                                            <label for="chambre_projet">Chambres</label>
+                                            <input type="number" name="chambre" id="chambre_projet" class="form-control" >
                                         </div>
                                     </div>
                                     <div class="col-lg-3">
                                         <div class="form-group">
-                                            <label for="bureau_plan">Bureau</label>
-                                            <input type="number" id="bureau_plan" class="form-control" >
+                                            <label for="bureau_projet">Bureau</label>
+                                            <input type="number" id="bureau_projet" class="form-control" >
                                         </div>
                                     </div>
                                     <div class="col-lg-3">
                                         <div class="form-group">
-                                            <label for="salon_plan">Salon</label>
-                                            <input type="number" name="salon" id="salon_plan" class="form-control" >
+                                            <label for="salon_projet">Salon</label>
+                                            <input type="number" name="salon" id="salon_projet" class="form-control" >
                                         </div>
                                     </div>
                                     <div class="col-lg-3">
                                         <div class="form-group">
-                                            <label for="cuisine_plan">Cuisine</label>
-                                            <input type="number" name="cuisine" id="cuisine_plan" class="form-control" >
+                                            <label for="cuisine_projet">Cuisine</label>
+                                            <input type="number" name="cuisine" id="cuisine_projet" class="form-control" >
                                         </div>
                                     </div>
                                     <div class="col-lg-3">
                                         <div class="form-group">
-                                            <label for="toillete_plan">Toillette</label>
-                                            <input type="number" name="toillete" class="form-control" id="toillete_plan">
+                                            <label for="toillete_projet">Toillette</label>
+                                            <input type="number" name="toillete" class="form-control" id="toillete_projet">
                                         </div>
                                     </div>
-                                    <!--<div class="col-lg-3">
+                                    <div class="col-lg-3">
                                         <div class="form-group mt-4 text-lg-right">
-                                            <button class="btn btn-success mt-2" ng-click="actionSurPlan('add')" title="Ajouter un niveau" >
+                                            <button class="btn btn-success mt-2" ng-click="actionSurprojet('add')" title="Ajouter un niveau" >
                                                 <i class="fa fa-plus"></i>
                                             </button>
                                         </div>
-                                    </div>-->
+                                    </div>
                                 </div>
+
+
+                                 <div class="row mt-5">
+                                     <!-- <div class="col-md-12 animated fadeIn text-center" ng-if="produitsInTable.length==0">-->
+                                      <div class="col-md-12 animated fadeIn text-center">
+                                          <h3> Ajouter un Niveau pour ce projet</h3>
+                                      </div>
+                                     <!-- <div class="col-md-12" ng-if="produitsInTable.length !=0">-->
+                                      <div class="col-md-12">
+                                          <div class="table-responsive">
+                                              <table class="table table-responsive-sm table-bordered mb-0 text-center dataTable dtr-inline text-dark" style="color: #000!important;" id="tabNiveau" role="grid">
+                                                  <thead style="color: #000!important;" >
+                                                  <th class="text-center">N°</th>
+                                                  <th class="text-center">Niveau</th>
+                                                  <th class="text-center">Pièce</th>
+                                                  <th class="text-center">Chambre</th>
+                                                  <th class="text-center">Bureau</th>
+                                                  <th class="text-center">Salon</th>
+                                                  <th class="text-center">Cuisine</th>
+                                                  <th class="text-center">Toillettes</th>
+                                                  <th class="text-center">Actions</th>
+                                                  </thead>
+                                                  <tbody>
+                                                  <tr class="animated fadeIn">
+                                                  <!--<tr class="animated fadeIn" ng-repeat="item in produitsInTable">-->
+                                                      <td class="text-center">
+                                                          1
+                                                      </td>
+                                                      <td class="text-center">
+                                                         <!-- @{{ item.niveau }}--> Niveau 1
+                                                      </td>
+                                                      <td class="text-center">
+                                                          <!--@{{ item.piece }}--> 22
+                                                      </td>
+                                                      <td class="text-center">
+                                                          @{{ item.chambre }} 3
+                                                      </td>
+                                                      <td class="text-center">
+                                                          @{{ item.bureau }} 4
+                                                      </td>
+                                                      <td class="text-center">
+                                                          @{{ item.salon }} 5
+                                                      </td>
+                                                      <td class="text-center">
+                                                          @{{ item.cuisine }} 6
+                                                      </td>
+                                                      <td class="text-center">
+                                                          @{{ item.toillete }} 6
+                                                      </td>
+                                                      <td>
+                                                          <button class="btn btn-danger" ng-click="actionSurprojet('delete',item)" title="Supprimer du tableau">
+                                                              <span class="fa fa-trash"></span>
+                                                          </button>
+                                                      </td>
+                                                  </tr>
+                                                  </tbody>
+                                              </table>
+
+                                          </div>
+                                      </div>
+                                  </div>
+
                             </div>
                         </div>
                     </div>
 
-                    <!-- <div class="row mt-5">
-                         <div class="col-md-12 animated fadeIn text-center" ng-if="produitsInTable.length==0">
-                             <h3> Ajouter un Niveau pour ce plan</h3>
-                         </div>
-                         <div class="col-md-12" ng-if="produitsInTable.length !=0">
-                             <div class="table-responsive">
-                                 <table class="table table-responsive-sm table-bordered mb-0 text-center dataTable dtr-inline" id="tabNiveau" role="grid">
-                                     <thead>
-                                     <th class="text-center">N°</th>
-                                     <th class="text-center">Niveau</th>
-                                     <th class="text-center">Pièce</th>
-                                     <th class="text-center">Chambre</th>
-                                     <th class="text-center">Bureau</th>
-                                     <th class="text-center">Salon</th>
-                                     <th class="text-center">Cuisine</th>
-                                     <th class="text-center">Toillettes</th>
-                                     <th class="text-center">Actions</th>
-                                     </thead>
-                                     <tbody>
-                                     <tr class="animated fadeIn" ng-repeat="item in produitsInTable">
-                                         <td class="text-center">
-                                             1
-                                         </td>
-                                         &lt;!&ndash;<td class="text-center">
-                                             @{{ item.niveau }}
-                                         </td>
-                                         <td class="text-center">
-                                             @{{ item.piece }}
-                                         </td>
-                                         <td class="text-center">
-                                             @{{ item.chambre }}
-                                         </td>
-                                         <td class="text-center">
-                                             @{{ item.bureau }}
-                                         </td>
-                                         <td class="text-center">
-                                             @{{ item.salon }}
-                                         </td>
-                                         <td class="text-center">
-                                             @{{ item.cuisine }}
-                                         </td>
-                                         <td class="text-center">
-                                             @{{ item.toillete }}
-                                         </td>&ndash;&gt;
-                                         <td>
-                                             &lt;!&ndash;<button class="btn btn-danger" ng-click="actionSurPlan('delete',item)" title="Supprimer du tableau">
-                                                 <span class="fa fa-trash"></span>
-                                             </button>&ndash;&gt;
-                                         </td>
-                                     </tr>
-                                     </tbody>
-                                 </table>
+                    <div class="row mt-14">
+                        <div class="col-lg-12">
+                            <div class="form-group">
+                                <label>
+                                    Description
+                                </label>
+                                <textarea  class="form-control" placeholder="Description de votre projet"  rows="4" id="description_projet" name="description"></textarea>
+                            </div>
+                        </div>
+                    </div>
 
-                             </div>
-                         </div>
-                     </div>-->
 
 
                     <div class="modal-footer">
                         <button type="reset" class="btn btn-danger btn-sm" data-dismiss="modal">Fermer</button>
-                        <button type="submit" class="btn btn-primary btn-sm" ng-click="addElement($event,'plan')">Enregistrer</button>
+                        <button type="submit" class="btn btn-primary btn-sm" ng-click="addElement($event,'projet')">Enregistrer</button>
                     </div>
                 </form>
 
