@@ -711,7 +711,6 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
             $scope.necessite_bornage = 0;
         }
 
-
         //  if ($scope.userConnected) {
             //let data = [];
             var data = {
@@ -890,6 +889,7 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
     if (whereAreWe.indexOf('mon-profil')!==-1)
     {
         console.log("je suis icici")
+        $scope.getelements('projets')
         $scope.pageChanged("projet");
       //  $scope.getelements("planprojets");
     }
