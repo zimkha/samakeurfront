@@ -45,7 +45,14 @@
     <link rel="stylesheet" href="js/iziToast/dist/css/iziToast.min.css" type="text/css" />
 
 
-
+    <style>
+        .table thead th {
+            vertical-align: bottom;
+            border-bottom: 2px solid #dee2e6;
+            color: #000!important;
+            font-size: 12px;
+        }
+    </style>
 </head>
 <body class="js" ng-controller="afterLoginCtl">
 
@@ -1347,31 +1354,46 @@
                     <!--  <input type="hidden" name="tab_niveau" id="tab_niveau" value="@{{produitsInTable}}">-->
 
                     <div class="row">
-                        <div class="col-lg-3">
+                        <div class="col-lg-6">
                             <div class="form-group">
-                                <label for="localisation_projet">Localisation</label>
+                                <label for="localisation_projet">Adresse</label>
                                 <input type="text" id="localisation_projet" name="localisation" class="form-control">
                             </div>
                         </div>
-                        <div class="col-lg-3">
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label for="fichier_projet">Fichier</label>
+                                <input type="file" class="form-control" id="fichier_projet" name="fichier">
+                            </div>
+                        </div>
+                        <!--<div class="col-lg-3">
                             <div class="form-group">
                                 <label for="superficie_projet">Superficie</label>
                                 <input type="number" id="superficie_projet" name="superficie" class="form-control">
                             </div>
-                        </div>
-                        <div class="col-lg-2">
+                        </div>-->
+                        <div class="col-lg-4">
                             <div class="form-group">
                                 <label for="longeur_projet">Longeur</label>
                                 <input type="number" id="longeur_projet" name="longeur" class="form-control">
                             </div>
                         </div>
-                        <div class="col-lg-2">
+                        <div class="col-lg-4">
                             <div class="form-group">
                                 <label for="largeur_projet">Largeur</label>
                                 <input type="number" id="largeur_projet" name="largeur" class="form-control">
                             </div>
                         </div>
-                        <div class="col-lg-2">
+                        <div class="col-lg-4">
+                            <div class="form-group">
+                                <label for="piscine_projet">Piscine</label>
+                                <select class="form-control" id="piscine_projet" name="piscine">
+                                    <option value="1">OUI</option>
+                                    <option value="0">NON</option>
+                                </select>
+                            </div>
+                        </div>
+                       <!-- <div class="col-lg-2">
                             <div class="form-group">
                                 <label for="unite_mesure_projet">Unité de mesure</label>
                                 <select class="form-control" id="unite_mesure_projet" name="unite_mesure">
@@ -1379,9 +1401,9 @@
                                     <option value="2">Hectare</option>
                                 </select>
                             </div>
-                        </div>
+                        </div>-->
                     </div>
-                    <div class="row">
+                   <!-- <div class="row">
                         <div class="col-lg-3">
                             <label class="checkbox-inline">
                                 <input type="checkbox" id="electricte_projet" value=""> Electricté
@@ -1402,16 +1424,52 @@
                                 <input type="checkbox" id="cadastre_projet" value=""> Cadastre
                               </label>
                         </div>
-                    </div>
+                    </div>-->
                     <div class="row">
-
-                        <div class="col-lg-12">
-                            <div class="form-group">
-                                <label for="fichier_projet">Fichier</label>
-                                <input type="file" class="form-control" id="fichier_projet" name="fichier">
-                            </div>
+                        <div class="col-lg-3">
+                            <label class="checkbox-inline">
+                                <input type="checkbox" id="electricte_projet" value="true" name="electricite"> Electricté
+                            </label>
+                        </div>
+                        <div class="col-lg-3">
+                            <label class="checkbox-inline">
+                                <input type="checkbox" id="accesvoirie_projet" value="true" name="acces_voirie"> Accés voirie
+                            </label>
+                        </div>
+                        <div class="col-lg-3">
+                            <label class="checkbox-inline">
+                                <input type="checkbox" id="ass_projet" value="true" name="assainissement"> Assainissement
+                            </label>
+                        </div>
+                        <div class="col-lg-3">
+                            <label class="checkbox-inline">
+                                <input type="checkbox" id="cadastre_projet" value="true" name="geometre"> Cadastre
+                            </label>
                         </div>
                     </div>
+                    <div class="row">
+                        <div class="col-lg-3">
+                            <label class="checkbox-inline">
+                                <input type="checkbox" id="courant_faible_projet" value="true" name="courant_faible"> Courant Faible
+                            </label>
+                        </div>
+                        <div class="col-lg-3">
+                            <label class="checkbox-inline">
+                                <input type="checkbox" id="eaux_pluviable_projet" value="true" name="eaux_pluviable"> Eaux pliviale
+                            </label>
+                        </div>
+                        <div class="col-lg-3">
+                            <label class="checkbox-inline">
+                                <input type="checkbox" id="bornes_visible_projet" value="true" name="bornes_visible"> Bornez Visible
+                            </label>
+                        </div>
+                        <div class="col-lg-3">
+                            <label class="checkbox-inline">
+                                <input type="checkbox" id="necessite_bornage_projet" value="true" name="necessite_bornage"> Necessite bornage
+                            </label>
+                        </div>
+                    </div>
+
                     <h4 class="form-section animated fadeInDown mb-3 mt-5 border-bottom border-alternate">
                         <i class="fa fa-shopping-cart"></i>
                         NIVEAUX
@@ -1424,7 +1482,7 @@
                                     <div class="col-lg-3">
                                         <div class="form-group">
                                             <label for="niveau_projet">Designation</label>
-                                            <input type="number" name="niveau" id="niveau_projet" class="form-control" >
+                                            <input type="text" name="niveau" id="niveau_projet" class="form-control" >
                                         </div>
                                     </div>
                                     <div class="col-lg-3">
@@ -1459,13 +1517,13 @@
                                     </div>
                                     <div class="col-lg-3">
                                         <div class="form-group">
-                                            <label for="toillete_projet">Toillette</label>
-                                            <input type="number" name="toillete" class="form-control" id="toillete_projet">
+                                            <label for="toillette_projet">Toillette</label>
+                                            <input type="number" name="toillette" class="form-control" id="toillette_projet">
                                         </div>
                                     </div>
                                     <div class="col-lg-3">
                                         <div class="form-group mt-4 text-lg-right">
-                                            <button class="btn btn-success mt-2" ng-click="actionSurprojet('add')" title="Ajouter un niveau" >
+                                            <button class="btn btn-success mt-2" ng-click="actionSurProjet('add')" title="Ajouter un niveau" >
                                                 <i class="fa fa-plus"></i>
                                             </button>
                                         </div>
@@ -1474,12 +1532,10 @@
 
 
                                  <div class="row mt-5">
-                                     <!-- <div class="col-md-12 animated fadeIn text-center" ng-if="produitsInTable.length==0">-->
-                                      <div class="col-md-12 animated fadeIn text-center">
+                                      <div class="col-md-12 animated fadeIn text-center" ng-if="produitsInTable.length==0">
                                           <h3> Ajouter un Niveau pour ce projet</h3>
                                       </div>
-                                     <!-- <div class="col-md-12" ng-if="produitsInTable.length !=0">-->
-                                      <div class="col-md-12">
+                                      <div class="col-md-12" ng-if="produitsInTable.length !=0">
                                           <div class="table-responsive">
                                               <table class="table table-responsive-sm table-bordered mb-0 text-center dataTable dtr-inline text-dark" style="color: #000!important;" id="tabNiveau" role="grid">
                                                   <thead style="color: #000!important;" >
@@ -1494,31 +1550,30 @@
                                                   <th class="text-center">Actions</th>
                                                   </thead>
                                                   <tbody>
-                                                  <tr class="animated fadeIn">
-                                                  <!--<tr class="animated fadeIn" ng-repeat="item in produitsInTable">-->
+                                                  <tr class="animated fadeIn" ng-repeat="item in produitsInTable">
                                                       <td class="text-center">
                                                           1
                                                       </td>
                                                       <td class="text-center">
-                                                         <!-- @{{ item.niveau }}--> Niveau 1
+                                                          {{ item.niveau }}
                                                       </td>
                                                       <td class="text-center">
-                                                          <!--@{{ item.piece }}--> 22
+                                                          {{ item.piece }}
                                                       </td>
                                                       <td class="text-center">
-                                                          @{{ item.chambre }} 3
+                                                          {{ item.chambre }}
                                                       </td>
                                                       <td class="text-center">
-                                                          @{{ item.bureau }} 4
+                                                          {{ item.bureau }}
                                                       </td>
                                                       <td class="text-center">
-                                                          @{{ item.salon }} 5
+                                                          {{ item.salon }}
                                                       </td>
                                                       <td class="text-center">
-                                                          @{{ item.cuisine }} 6
+                                                          {{ item.cuisine }}
                                                       </td>
                                                       <td class="text-center">
-                                                          @{{ item.toillete }} 6
+                                                          {{ item.toillette }}
                                                       </td>
                                                       <td>
                                                           <button class="btn btn-danger" ng-click="actionSurprojet('delete',item)" title="Supprimer du tableau">
@@ -1552,7 +1607,7 @@
 
                     <div class="modal-footer">
                         <button type="reset" class="btn btn-danger btn-sm" data-dismiss="modal">Fermer</button>
-                        <button type="submit" class="btn btn-primary btn-sm" ng-click="addElement($event,'projet')">Enregistrer</button>
+                        <button type="submit" class="btn btn-primary btn-sm" ng-click="addProjet($event)">Enregistrer</button>
                     </div>
                 </form>
 
