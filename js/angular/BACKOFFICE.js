@@ -332,6 +332,31 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
         totalItems: 0
     };
 
+    $(".search-home-2").hide();
+    $scope.searchPopo = function()
+    {
+
+        $(".btn-btn").on('click', function()
+        {
+            $(".search-home-2").fadeIn(700);
+            $(".search-home-2").show();
+
+            console.log('focus detecré');
+        })
+
+    }
+    $scope.searchPopo2 = function()
+    {
+
+        $(".btn-btn-minus").on('click', function()
+        {
+            $(".search-home-2").fadeOut(700);
+            $(".search-home-2").hide();
+            console.log('focus retiré');
+        });
+
+    }
+
     $scope.getelements = function (type, addData=null)
     {
         rewriteType = type;
@@ -458,6 +483,304 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
 
     };
 
+    $scope.produitsInTable = [];
+
+    $scope.actionSurProjet = function (action, selectedItem = null) {
+        if (action == 'add')
+        {
+            //Ajouter un élément dans le tableau
+            var niveau = $("#niveau_projet").val();
+            var piece_projet = $("#piece_projet").val();
+            var chambre_projet = $("#chambre_projet").val();
+            var chambre_sdb_projet = $("#chambre_sdb_projet").val();
+            var bureau_projet = $("#bureau_projet").val();
+            var salon_projet = $("#salon_projet").val();
+            var cuisine_projet = $("#cuisine_projet").val();
+            var toillette_projet = $("#toillette_projet").val();
+
+
+            if ($scope.estEntier(piece_projet) == false) {
+                iziToast.error({
+                    message: "Sélectionnez une piece",
+                    position: 'topRight'
+                });
+                return false;
+            }
+            if ($scope.estEntier(chambre_projet) == false) {
+                iziToast.error({
+                    message: "Sélectionnez une chambre",
+                    position: 'topRight'
+                });
+                return false;
+            }
+            if ($scope.estEntier(chambre_sdb_projet) == false) {
+                iziToast.error({
+                    message: "Sélectionnez une chambre SDB",
+                    position: 'topRight'
+                });
+                return false;
+            }
+            if ($scope.estEntier(salon_projet) == false) {
+                iziToast.error({
+                    message: "Sélectionnez une salon",
+                    position: 'topRight'
+                });
+                return false;
+            }
+            if ($scope.estEntier(cuisine_projet) == false) {
+                iziToast.error({
+                    message: "Sélectionnez une cuisine",
+                    position: 'topRight'
+                });
+                return false;
+            }
+            if ($scope.estEntier(toillette_projet) == false) {
+                iziToast.error({
+                    message: "Sélectionnez une toillette",
+                    position: 'topRight'
+                });
+                return false;
+            }
+            else if ($scope.testSiUnElementEstDansTableau($scope.produitsInTable, niveau) == true) {
+                iziToast.error({
+                    message: "Le niveau est déja dans le tableau",
+                    position: 'topRight'
+                });
+                return false;
+            }
+
+            $scope.produitsInTable.unshift({
+                "niveau": niveau,
+                "piece": piece_projet,
+                "chambre": chambre_projet,
+                "sdb": chambre_sdb_projet,
+                "bureau": bureau_projet,
+                "salon": salon_projet,
+                "cuisine": cuisine_projet,
+                "toillette": toillette_projet,
+            });
+
+            console.log("this.produitsInTable",$scope.produitsInTable)
+
+            $("#niveau_projet").val('');
+            $("#piece_projet").val('');
+            $("#chambre_projet").val('');
+            $("#chambre_sdb_projet").val('');
+            $("#salon_projet").val('');
+            $("#cuisine_projet").val('');
+            $("#bureau_projet").val('');
+            $("#toillette_projet").val('');
+
+        }
+        else if (action == 'delete') {
+            //Supprimer un élément du tableau
+            $.each($scope.produitsInTable, function (keyItem, oneItem) {
+                if (oneItem.id == selectedItem.id) {
+                    $scope.produitsInTable.splice(keyItem, 1);
+                    return false;
+                }
+            });
+        }
+        else {
+            //Vider le tableau
+            $scope.produitsInTable = [];
+        }
+    };
+    // fin projet
+
+
+    $scope.estEntier = function (val, superieur = true, peutEtreEgaleAzero = false) {
+        //tags: isInt, tester entier
+        var retour = false;
+        if (val == undefined || val == null) {
+            retour = false;
+        } else if (val === '') {
+            retour = false;
+        } else if (isNaN(val) == true) {
+            retour = false;
+        } else if (parseInt(val) != parseFloat(val)) {
+            retour = false;
+        } else {
+            if (superieur == false) {
+                //entier inférieur
+                if (parseInt(val) < 0 && peutEtreEgaleAzero == true) {
+                    //]-inf; 0]
+                    retour = true;
+                } else if (parseInt(val) < 0 && peutEtreEgaleAzero == false) {
+                    //]-inf; 0[
+                    retour = true;
+                } else {
+                    retour = false;
+                }
+            } else {
+                //entier supérieur
+                if (parseInt(val) > 0 && peutEtreEgaleAzero == true) {
+                    //[0; +inf[
+                    retour = true;
+                } else if (parseInt(val) > 0 && peutEtreEgaleAzero == false) {
+                    //]0; +inf[
+                    retour = true;
+                } else {
+                    retour = false;
+                }
+            }
+        }
+        return retour;
+    };
+    //---FIN => Tester si la valeur est un entier ou pas---//
+
+    $scope.testSiUnElementEstDansTableau = function (tableau, idElement)
+    {
+        var retour = false;
+        try
+        {
+            idElement = parseInt(idElement);
+            $.each(tableau, function (keyItem, oneItem) {
+                if (oneItem.id == idElement) {
+                    retour = true;
+                }
+                return !retour;
+            });
+        }
+        catch(error)
+        {
+            console.log('testSiUnElementEstDansTableau error =', error);
+        }
+
+        return retour;
+    };
+
+    $scope.electricite = 0;
+    $scope.acces_voirie = 0;
+    $scope.assainissement = 0;
+    $scope.geometre = 0;
+    $scope.courant_faible = 0;
+    $scope.eaux_pluviable = 0;
+    $scope.bornes_visible = 0;
+    $scope.necessite_bornage = 0;
+
+
+    $scope.userConnected = {id: 1, nom_complet: "papa thiam", email: "papathiame11@gmail.com"}
+
+    $scope.addProjet = function (e) {
+        e.preventDefault();
+
+        if($('#electricte_projet').prop('checked') == true){
+            $scope.electricite = 1;
+        }
+        else
+        {
+            $scope.electricite = 0;
+        }
+        if($('#accesvoirie_projet').prop('checked') == true){
+            $scope.acces_voirie = 1;
+        }
+        else
+        {
+            $scope.acces_voirie = 0;
+        }
+        if($('#ass_projet').prop('checked') == true){
+            $scope.assainissement = 1;
+        }
+        else
+        {
+            $scope.assainissement = 0;
+        }
+        if($('#cadastre_projet').prop('checked') == true){
+            $scope.geometre = 1;
+        }
+        else
+        {
+            $scope.geometre = 0;
+        }
+        if($('#courant_faible_projet').prop('checked') == true){
+            $scope.courant_faible = 1;
+        }
+        else
+        {
+            $scope.courant_faible = 0;
+        }
+        if($('#eaux_pluviable_projet').prop('checked') == true){
+            $scope.eaux_pluviable = 1;
+        }
+        else
+        {
+            $scope.eaux_pluviable = 0;
+        }
+        if($('#bornes_visible_projet').prop('checked') == true){
+            $scope.bornes_visible = 1;
+        }
+        else
+        {
+            $scope.bornes_visible = 0;
+        }
+        if($('#necessite_bornage_projet').prop('checked') == true){
+            $scope.necessite_bornage = 1;
+        }
+        else
+        {
+            $scope.necessite_bornage = 0;
+        }
+
+        console.log("icic => ",$scope.necessite_bornage,$scope.bornes_visible,$scope.eaux_pluviable,$scope.electricite)
+
+        //  if ($scope.userConnected) {
+            //let data = [];
+            var data = {
+                'client': '2',
+               // 'client': $scope.userConnected.id,
+                'adresse_terrain': $('#localisation_projet').val(),
+                'fichier': $('#fichier_projet').val(),
+                'longeur': $('#longeur_projet').val(),
+                'largeur': $('#largeur_projet').val(),
+                'piscine': $('#piscine_projet').val(),
+                'description': $('#description_projet').val(),
+                'electricite': $scope.electricite,
+                'acces_voirie': $scope.acces_voirie,
+                'assainissement': $scope.assainissement,
+                'geometre': $scope.geometre,
+                'courant_faible': $scope.courant_faible,
+                'eaux_pluviable': $scope.eaux_pluviable,
+                'bornes_visible': $scope.bornes_visible,
+                'necessite_bornage': $scope.necessite_bornage,
+                'tab_projet': JSON.stringify($scope.produitsInTable),
+            };
+
+            console.log("icic les datas => ", data)
+           // $('body').blockUI_start();
+            $http({
+                url: BASE_URL + 'projet',
+                method: 'POST',
+                data: data,
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            }).then(function (data) {
+               // $('body').blockUI_stop();
+                if (data.data.errors) {
+                    iziToast.error({
+                        title: '',
+                        message: data.data.errors,
+                        position: 'topRight'
+                    });
+                }else{
+                   // $('body').blockUI_stop();
+                    iziToast.success({
+                        title: '',
+                        message: 'Votre demande a bien été prise en compte',
+                        position: 'topRight'
+                    });
+                }
+            })
+       /* } else {
+            iziToast.info({
+                title: '',
+                message: 'Veuillez vous connecter pour réserver',
+                position: 'topRight'
+            });
+        }
+        return 'yes';*/
+    }
 
     $scope.resetPwd = function (e)
     {
@@ -579,6 +902,7 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
     if (whereAreWe.indexOf('mon-profil')!==-1)
     {
         console.log("je suis icici")
+        $scope.getelements('projets')
         $scope.pageChanged("projet");
       //  $scope.getelements("planprojets");
     }
@@ -664,7 +988,7 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
         });
     };
 
-    $scope.passwordReset = function (e)
+  /*  $scope.passwordReset = function (e)
     {
         e.preventDefault();
         var form = $('#form_passwordreset');
@@ -701,6 +1025,7 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
             });
         });
     };
+*/
 
     $scope.activationAccount = function (e) {
         e.preventDefault();
@@ -741,7 +1066,7 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
     };
 
     $scope.LogOut = function () {
-        console.log('Dans dï¿½connexion');
+        console.log('Dans deconnexion');
         //$scope.userConnected = null;
         userLogged.LogOut();
         //$scope.userConnected.estConnectei = 'false';
