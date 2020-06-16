@@ -492,6 +492,7 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
             var niveau = $("#niveau_projet").val();
             var piece_projet = $("#piece_projet").val();
             var chambre_projet = $("#chambre_projet").val();
+            var chambre_sdb_projet = $("#chambre_sdb_projet").val();
             var bureau_projet = $("#bureau_projet").val();
             var salon_projet = $("#salon_projet").val();
             var cuisine_projet = $("#cuisine_projet").val();
@@ -508,6 +509,13 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
             if ($scope.estEntier(chambre_projet) == false) {
                 iziToast.error({
                     message: "Sélectionnez une chambre",
+                    position: 'topRight'
+                });
+                return false;
+            }
+            if ($scope.estEntier(chambre_sdb_projet) == false) {
+                iziToast.error({
+                    message: "Sélectionnez une chambre SDB",
                     position: 'topRight'
                 });
                 return false;
@@ -545,6 +553,7 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
                 "niveau": niveau,
                 "piece": piece_projet,
                 "chambre": chambre_projet,
+                "sdb": chambre_sdb_projet,
                 "bureau": bureau_projet,
                 "salon": salon_projet,
                 "cuisine": cuisine_projet,
@@ -556,6 +565,7 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
             $("#niveau_projet").val('');
             $("#piece_projet").val('');
             $("#chambre_projet").val('');
+            $("#chambre_sdb_projet").val('');
             $("#salon_projet").val('');
             $("#cuisine_projet").val('');
             $("#bureau_projet").val('');
@@ -649,6 +659,7 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
     $scope.bornes_visible = 0;
     $scope.necessite_bornage = 0;
 
+
     $scope.userConnected = {id: 1, nom_complet: "papa thiam", email: "papathiame11@gmail.com"}
 
     $scope.addProjet = function (e) {
@@ -711,12 +722,14 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
             $scope.necessite_bornage = 0;
         }
 
+        console.log("icic => ",$scope.necessite_bornage,$scope.bornes_visible,$scope.eaux_pluviable,$scope.electricite)
+
         //  if ($scope.userConnected) {
             //let data = [];
             var data = {
-                'client': 2,
-                //'client': $scope.userConnected.id,
-                'localisation': $('#localisation_projet').val(),
+                'client': '2',
+               // 'client': $scope.userConnected.id,
+                'adresse_terrain': $('#localisation_projet').val(),
                 'fichier': $('#fichier_projet').val(),
                 'longeur': $('#longeur_projet').val(),
                 'largeur': $('#largeur_projet').val(),
@@ -744,10 +757,10 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
                 }
             }).then(function (data) {
                // $('body').blockUI_stop();
-                if (data.data.error) {
+                if (data.data.errors) {
                     iziToast.error({
                         title: '',
-                        message: data.data.error,
+                        message: data.data.errors,
                         position: 'topRight'
                     });
                 }else{
