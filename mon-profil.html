@@ -462,35 +462,35 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span class="ti-close" aria-hidden="true"></span></button>
             </div>
             <div class="modal-body" style="padding: 50px!important;">
-                <form id="form_addplan" class="form" enctype="multipart/form-data" accept-charset="UTF-8">
-                    <input type="hidden" id="id_plan" name="id">
+                <form id="form_addprojet" class="form" enctype="multipart/form-data" accept-charset="UTF-8">
+                    <input type="hidden" id="id_projet" name="id">
                     <!--  <input type="hidden" name="tab_niveau" id="tab_niveau" value="@{{produitsInTable}}">-->
 
                     <div class="row">
                         <div class="col-lg-3">
                             <div class="form-group">
-                                <label for="superficie_plan">Superficie</label>
+                                <label for="superficie_projet">Superficie</label>
                                 <input type="number" id="superficie_plan" name="superficie" class="form-control">
                             </div>
                         </div>
                         <div class="col-lg-3">
                             <div class="form-group">
-                                <label for="longeur_plan">Longeur</label>
-                                <input type="number" id="longeur_plan" name="longeur" class="form-control">
+                                <label for="longeur_projet">Longeur</label>
+                                <input type="number" id="longeur_projet" name="longeur" class="form-control">
                             </div>
                         </div>
                         <div class="col-lg-3">
                             <div class="form-group">
                                 <label for="largeur_plan">Largeur</label>
-                                <input type="number" id="largeur_plan" name="largeur" class="form-control">
+                                <input type="number" id="largeur_projet" name="largeur" class="form-control">
                             </div>
                         </div>
                         <div class="col-lg-3">
                             <div class="form-group">
                                 <label for="unite_mesure_plan">Unité de mesure</label>
-                                <select class="form-control" id="unite_mesure_plan" name="unite_mesure">
+                                <select class="form-control" id="unite_mesure_projet" name="unite_mesure">
                                     <option value="1">Mettre carré</option>
-                                    <option value="2">Hectare</option>
+                                    <option value="0">Hectare</option>
                                 </select>
                             </div>
                         </div>
@@ -521,8 +521,8 @@
 
                         <div class="col-lg-12">
                             <div class="form-group">
-                                <label for="fichier_plan">Fichier</label>
-                                <input type="file" class="form-control" id="fichier_plan" name="fichier">
+                                <label for="fichier_projet">Fichier</label>
+                                <input type="file" class="form-control" id="fichier_projet" name="fichier">
                             </div>
                         </div>
                     </div>
@@ -532,7 +532,7 @@
                                 <label>
                                     Description
                                 </label>
-                                <textarea  class="form-control" placeholder="Description de votre projet"  rows="4" id="description_plan" name="description"></textarea>
+                                <textarea  class="form-control" placeholder="Description de votre projet"  rows="4" id="description_projet" name="description"></textarea>
                             </div>
                         </div> 
                     </div>
@@ -548,13 +548,13 @@
                                     <div class="col-lg-3">
                                         <div class="form-group">
                                             <label for="niveau_plan">Designation</label>
-                                            <input type="number" name="niveau" id="niveau_plan" class="form-control" >
+                                            <input type="number" name="niveau" id="niveau_projet" class="form-control" >
                                         </div>
                                     </div>
                                     <div class="col-lg-3">
                                         <div class="form-group">
                                             <label for="piece_plan">Pièces</label>
-                                            <input type="number" name="piece" id="piece_plan" class="form-control" >
+                                            <input type="number" name="piece" id="piece_projet" class="form-control" >
                                         </div>
                                     </div>
                                     <div class="col-lg-3">
@@ -565,26 +565,26 @@
                                     </div>
                                     <div class="col-lg-3">
                                         <div class="form-group">
-                                            <label for="bureau_plan">Bureau</label>
-                                            <input type="number" id="bureau_plan" class="form-control" >
+                                            <label for="bureau_projet">Bureau</label>
+                                            <input type="number" id="bureau_projet" class="form-control" >
                                         </div>
                                     </div>
                                     <div class="col-lg-3">
                                         <div class="form-group">
-                                            <label for="salon_plan">Salon</label>
-                                            <input type="number" name="salon" id="salon_plan" class="form-control" >
+                                            <label for="salon_projet">Salon</label>
+                                            <input type="number" name="salon" id="salon_projet" class="form-control" >
                                         </div>
                                     </div>
                                     <div class="col-lg-3">
                                         <div class="form-group">
-                                            <label for="cuisine_plan">Cuisine</label>
-                                            <input type="number" name="cuisine" id="cuisine_plan" class="form-control" >
+                                            <label for="cuisine_projet">Cuisine</label>
+                                            <input type="number" name="cuisine" id="cuisine_projet" class="form-control" >
                                         </div>
                                     </div>
                                     <div class="col-lg-3">
                                         <div class="form-group">
-                                            <label for="toillete_plan">Toillette</label>
-                                            <input type="number" name="toillete" class="form-control" id="toillete_plan">
+                                            <label for="toillete_projet">Toillette</label>
+                                            <input type="number" name="toillete" class="form-control" id="toillete_projet">
                                         </div>
                                     </div>
                                     <!--<div class="col-lg-3">
@@ -659,7 +659,7 @@
 
                     <div class="modal-footer">
                         <button type="reset" class="btn btn-danger btn-sm" data-dismiss="modal">Fermer</button>
-                        <button type="submit" class="btn btn-primary btn-sm" ng-click="addElement($event,'plan')">Enregistrer</button>
+                        <button type="submit" class="btn btn-primary btn-sm" ng-click="addElement($event,'projet')">Enregistrer</button>
                     </div>
                 </form>
 
