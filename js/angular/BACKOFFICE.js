@@ -123,7 +123,7 @@ app.factory('Init', function ($http, $q) {
                 console.log('Dans login', data);
                 var deferred = $q.defer();
                 $http({
-                    url: BASE_URL + 'connexion',
+                    url: BASE_URL + 'api/connexion',
                     method: 'POST',
                     data: data,
                     headers: {
@@ -727,8 +727,8 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
         //  if ($scope.userConnected) {
             //let data = [];
             var data = {
-                'client': '2',
-               // 'client': $scope.userConnected.id,
+                'user': $scope.userConnected.id,
+               
                 'adresse_terrain': $('#localisation_projet').val(),
                 'fichier': $('#fichier_projet').val(),
                 'longeur': $('#longeur_projet').val(),
@@ -963,9 +963,7 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
                 $scope.userConnected = userLogged.isLogged();
                // $scope.userConnected.estConnectei = 'true';
                 $window.sessionStorage.setItem('connectei', true);
-              //  $scope.estConnectei = $window.sessionStorage.getItem('connectei');
-
-
+              
                 iziToast.success({
                     title: 'Connexion',
                     message: 'Vous étes connecté',
