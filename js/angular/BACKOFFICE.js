@@ -123,6 +123,7 @@ app.factory('Init', function ($http, $q) {
                 console.log('Dans login 1', data);
                 var deferred = $q.defer();
                 $http({
+                    //url: BASE_URL + 'connexion',
                     url: BASE_URL + 'api/connexion',
                     method: 'POST',
                     data: data,
