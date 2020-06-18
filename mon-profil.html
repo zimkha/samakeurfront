@@ -1109,12 +1109,14 @@
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="form-group">
+
                                 <label for="localisation_projet">Adresse</label>
                                 <input type="text" id="localisation_projet" name="adresse_terrain" class="form-control">
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="form-group">
+
                                 <label for="fichier_projet">Fichier</label>
                                 <input type="file" class="form-control" id="fichier_projet" name="fichier">
                             </div>
@@ -1127,12 +1129,14 @@
                         </div>-->
                         <div class="col-lg-4">
                             <div class="form-group">
+
                                 <label for="longeur_projet">Longeur</label>
                                 <input type="number" id="longeur_projet" name="longeur" class="form-control">
                             </div>
                         </div>
                         <div class="col-lg-4">
                             <div class="form-group">
+
                                 <label for="largeur_projet">Largeur</label>
                                 <input type="number" id="largeur_projet" name="largeur" class="form-control">
                             </div>
@@ -1152,7 +1156,7 @@
                                 <label for="unite_mesure_projet">Unité de mesure</label>
                                 <select class="form-control" id="unite_mesure_projet" name="unite_mesure">
                                     <option value="1">Mettre carré</option>
-                                    <option value="2">Hectare</option>
+                                    <option value="0">Hectare</option>
                                 </select>
                             </div>
                         </div>-->
@@ -1180,6 +1184,7 @@
                         </div>
                     </div>-->
                     <div class="row">
+
                         <div class="col-lg-3">
                             <label class="checkbox-inline">
                                 <input type="checkbox" id="electricte_projet" value="true" name="electricite"> Electricté
@@ -1235,12 +1240,14 @@
                                 <div class="row">
                                     <div class="col-lg-3">
                                         <div class="form-group">
+
                                             <label for="niveau_projet">Designation</label>
                                             <input type="text" name="niveau" id="niveau_projet" class="form-control" >
                                         </div>
                                     </div>
                                     <div class="col-lg-3">
                                         <div class="form-group">
+
                                             <label for="piece_projet">Pièces</label>
                                             <input type="number" name="piece" id="piece_projet" class="form-control" >
                                         </div>
@@ -1253,18 +1260,21 @@
                                     </div>
                                     <div class="col-lg-3">
                                         <div class="form-group">
+
                                             <label for="chambre_sdb_projet">Chbres SDB</label>
                                             <input type="number" name="sdb" id="chambre_sdb_projet" class="form-control" >
                                         </div>
                                     </div>
                                     <div class="col-lg-3">
                                         <div class="form-group">
+
                                             <label for="bureau_projet">Bureau</label>
                                             <input type="number" id="bureau_projet" class="form-control" >
                                         </div>
                                     </div>
                                     <div class="col-lg-3">
                                         <div class="form-group">
+
                                             <label for="salon_projet">Salon</label>
                                             <input type="number" name="salon" id="salon_projet" class="form-control" >
                                         </div>
@@ -1277,6 +1287,7 @@
                                     </div>
                                     <div class="col-lg-2">
                                         <div class="form-group">
+
                                             <label for="toillette_projet">Toillette</label>
                                             <input type="number" name="toillette" class="form-control" id="toillette_projet">
                                         </div>
@@ -1371,6 +1382,7 @@
 
                     <div class="modal-footer">
                         <button type="reset" class="btn btn-danger btn-sm" data-dismiss="modal">Fermer</button>
+
                         <button type="submit" class="btn btn-primary btn-sm" ng-click="addProjet($event)">Enregistrer</button>
                     </div>
                 </form>
