@@ -297,7 +297,7 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
 
             "niveauprojets"                 :  ["id",""],
 
-            "projets"                       :  ["id,etat,active,a_valider,created_at_fr,created_at,superficie,longeur,largeur,nb_pieces,nb_salon,nb_chambre,nb_cuisine,nb_toillette,nb_etage,user_id,user{name,email,nom,prenom,telephone,adresse_complet,code_postal}", ",niveau_projets{id,piece,bureau,toillette,chambre,salon,cuisine},remarques{id,demande_text,projet_id,type_remarque_id}"],
+            "projets"                       :  ["id,name,etat,active,a_valider,created_at_fr,created_at,superficie,longeur,largeur,nb_pieces,nb_salon,nb_chambre,nb_cuisine,nb_toillette,nb_etage,user_id,user{name,email,nom,prenom,telephone,adresse_complet,code_postal}", ",niveau_projets{id,piece,bureau,toillette,chambre,salon,cuisine},remarques{id,demande_text,projet_id,type_remarque_id}"],
 
             "clients"                       :  ["id",""],
 
@@ -332,16 +332,28 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
         totalItems: 0
     };
 
-    $(".search-home-2").hide();
+   // $(".search-home-2-1").hide();
+    for (i=0;i<9;i++) {
+        $(".search-home-2-"+i).hide();
+    }
     $scope.searchPopo = function()
     {
 
         $(".btn-btn").on('click', function()
         {
-            $(".search-home-2").fadeIn(700);
-            $(".search-home-2").show();
+            for (let j = 0; j < $scope.projets.length; j++) {
 
-            console.log('focus detecré');
+                for (i = 0; i < 9; i++) {
+                    if (i == j) {
+                        $(".search-home-2-" + i).fadeIn(700);
+                        $(".search-home-2-" + i).show();
+
+                        console.log('focus detecré');
+                    }
+                }
+            }
+
+
         })
 
     }
@@ -350,9 +362,23 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
 
         $(".btn-btn-minus").on('click', function()
         {
-            $(".search-home-2").fadeOut(700);
-            $(".search-home-2").hide();
-            console.log('focus retiré');
+            for (let j = 0; j < $scope.projets.length; j++) {
+
+                for (i = 0; i < 9; i++) {
+                    if (i == j) {
+                        $(".search-home-2-"+i).fadeOut(700);
+                        $(".search-home-2-"+i).hide();
+                        console.log('focus retiré');
+                    }
+                }
+            }
+
+           /* for (i=0;i<9;i++) {
+                $(".search-home-2-"+i).fadeOut(700);
+                $(".search-home-2-"+i).hide();
+                console.log('focus retiré');
+            }*/
+
         });
 
     }
