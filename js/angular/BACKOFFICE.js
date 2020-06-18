@@ -120,7 +120,7 @@ app.factory('Init', function ($http, $q) {
         {
             data: false,
             loginUser: function (data) {
-                console.log('Dans login', data);
+                console.log('Dans login 1', data);
                 var deferred = $q.defer();
                 $http({
                     url: BASE_URL + 'connexion',
@@ -753,8 +753,8 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
         //  if ($scope.userConnected) {
             //let data = [];
             var data = {
-                'client': '2',
-               // 'client': $scope.userConnected.id,
+               // 'client': '2',
+                'client': $scope.userConnected.id,
                 'adresse_terrain': $('#localisation_projet').val(),
                 'fichier': $('#fichier_projet').val(),
                 'longeur': $('#longeur_projet').val(),
@@ -971,9 +971,10 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
 
         form.blockUI_start();
         Init.loginUser(data).then(function (data) {
+            console.log('erreur data', data, '>,errors',data.errors, '>,error',data.error,'> succes',data.success);
+
             form.blockUI_stop();
             if (data.errors) {
-                console.log('erreur data', data);
 
                 iziToast.error({
                     title: 'Connexion',
@@ -988,7 +989,7 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
                 userLogged.loginUser(data.data);
                 $scope.userConnected = userLogged.isLogged();
                // $scope.userConnected.estConnectei = 'true';
-                $window.sessionStorage.setItem('connectei', true);
+               // $window.sessionStorage.setItem('connectei', true);
               //  $scope.estConnectei = $window.sessionStorage.getItem('connectei');
 
 
