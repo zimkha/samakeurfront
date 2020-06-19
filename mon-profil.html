@@ -142,9 +142,13 @@
                                             <li><a href="apropos.html">A Propos</a></li>
                                             <li><a href="service.html">Services</a></li>
                                             <li><a href="#"><span class="pc">Espace client</span> <span class="fa fa-user fsize-18 mobile"></span></a>
-                                                <ul class="dropdown">
+                                                <ul class="dropdown" ng-if="!userConnected">
                                                     <li class="active"><a href="login.html">Connexion</a></li>
                                                     <li><a href="register.html">S'inscrire</a></li>
+                                                </ul>
+                                                <ul class="dropdown" ng-if="userConnected">
+                                                    <li class="active"><a href="mon-profil.html">Mon profil</a></li>
+                                                    <li><a ng-click="LogOut()">Deconnexion</a></li>
                                                 </ul>
                                             </li>
                                         </ul>
@@ -166,7 +170,6 @@
 
         <div class="item-titre farial">Mon profil</div>
         <div class="underline"></div>
-
 
         <div class="mt-30">
 
@@ -286,90 +289,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <!--<div class="tab-single">
-                                    <div class="mt-20">
-
-                                        <div class="row">
-                                            <div class="col-12 class-table">
-                                                <table class="table">
-                                                    <thead>
-                                                    <tr class="main-hading back-orange">
-                                                        <th>Adresse Chantier</th>
-                                                        <th>Superficie</th>
-                                                        <th>Longeur</th>
-                                                        <th>Largeur</th>
-                                                        <th>Nombre de chambre</th>
-                                                        <th>Actions</th>
-                                                    </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                    <tr>
-                                                        <td class="price"><span>Thiaroye</span></td>
-                                                        <td class="price"><span>300 m*m</span></td>
-                                                        <td class="price"><span>34</span></td>
-                                                        <td class="price"><span>23</span></td>
-                                                        <td class="price"><span>12</span></td>
-                                                        <td class="">
-                                                            <button  title="Info" class="btn back-info btn-sm btn-circle">
-                                                                <i class="fa fa-info"></i>
-                                                            </button>
-                                                            <button  title="detail" class="btn back-success btn-sm btn-circle">
-                                                                <i class="fa fa-edit"></i>
-                                                            </button>
-                                                            <button  title="Supprimer" class="btn back-danger btn-sm btn-circle">
-                                                                <i class="fa fa-trash"></i>
-                                                            </button>
-
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="price"><span>Thiaroye</span></td>
-                                                        <td class="price"><span>300 m*m</span></td>
-                                                        <td class="price"><span>34</span></td>
-                                                        <td class="price"><span>23</span></td>
-                                                        <td class="price"><span>12</span></td>
-                                                        <td class="">
-                                                            <button  title="Info" class="btn back-info btn-sm btn-circle">
-                                                                <i class="fa fa-info"></i>
-                                                            </button>
-                                                            <button  title="detail" class="btn back-success btn-sm btn-circle">
-                                                                <i class="fa fa-edit"></i>
-                                                            </button>
-                                                            <button  title="Supprimer" class="btn back-danger btn-sm btn-circle">
-                                                                <i class="fa fa-trash"></i>
-                                                            </button>
-
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="price"><span>Thiaroye</span></td>
-                                                        <td class="price"><span>300 m*m</span></td>
-                                                        <td class="price"><span>34</span></td>
-                                                        <td class="price"><span>23</span></td>
-                                                        <td class="price"><span>12</span></td>
-                                                        <td class="">
-                                                            <button  title="Info" class="btn back-info btn-sm btn-circle">
-                                                                <i class="fa fa-info"></i>
-                                                            </button>
-                                                            <button  title="detail" class="btn back-success btn-sm btn-circle">
-                                                                <i class="fa fa-edit"></i>
-                                                            </button>
-                                                            <button  title="Supprimer" class="btn back-danger btn-sm btn-circle">
-                                                                <i class="fa fa-trash"></i>
-                                                            </button>
-
-                                                        </td>
-                                                    </tr>
-
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>-->
                             </div>
-                            <!--/ End Single Tab -->
-                            <!-- Start Single Tab -->
                             <div class="tab-pane fade" id="women" role="tabpanel">
 
                                 <div class="mt-2 text-justify">
@@ -725,8 +645,6 @@
                                     </div>
                                 </div>
                             </div>
-                            <!--/ End Single Tab -->
-                            <!-- Start Single Tab -->
                             <div class="tab-pane fade" id="kids" role="tabpanel">
                                 <div class="mt-2 text-justify">
                                     Suite à la livraison des plans, vous pouvez soummettre vos remarques à SAMAKEUR ou procéder à la validation des plans.
@@ -1409,8 +1327,8 @@ files angularJS
 <script src="js/angular/angularjs-social-login.js"></script>
 <script src="js/angular/angular-filter.js"></script>
 <!--iziToast-->
-<script src="js/blockUI/jquery.blockUI.js"></script>
-<script src="js/iziToast/dist/js/iziToast.min.js"></script>
+<!--<script src="js/blockUI/jquery.blockUI.js"></script>
+<script src="js/iziToast/dist/js/iziToast.min.js"></script>-->
 
 
 <!-- Jquery -->

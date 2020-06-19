@@ -487,7 +487,8 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
             },function (msg)
             {
 
-                toastr.error(msg);
+                console.log("ici msg => ",msg)
+              //  toastr.error(msg);
             });
         }
     };
@@ -687,7 +688,7 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
     $scope.necessite_bornage = 0;
 
 
-    $scope.userConnected = {id: 1, nom_complet: "papa thiam", email: "papathiame11@gmail.com"}
+    // $scope.userConnected = {id: 1, nom_complet: "papa thiam", email: "papathiame11@gmail.com"}
 
     $scope.addProjet = function (e) {
         e.preventDefault();
@@ -919,17 +920,22 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
         }
     };
 
+    console.log("ici  $scope.userConnected =>",  $scope.userConnected)
+
+
     // $locale.NUMBER_FORMATS.GROUP_SEP = ' ';
     $scope.userConnected = userLogged.isLogged();
     $scope.userLogged = { login: "", password: "" };
     $scope.resetPassword = "";
+
+
 
     whereAreWe = window.location.href;
     console.log('whereAreWe', whereAreWe);
     if (whereAreWe.indexOf('mon-profil')!==-1)
     {
         console.log("je suis icici")
-        $scope.getelements('projets')
+      //  $scope.getelements('projets')
         $scope.pageChanged("projet");
       //  $scope.getelements("planprojets");
     }
@@ -972,19 +978,20 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
 
         form.blockUI_start();
         Init.loginUser(data).then(function (data) {
-            console.log('erreur data', data, '>,errors',data.errors, '>,error',data.error,'> succes',data.success);
+            console.log('erreur data 2', data, '>,errors',data.errors_debug, '>,error',data.error,'> succes',data.success);
 
             form.blockUI_stop();
-            if (data.errors) {
+            if (data.errors_debug) {
 
                 iziToast.error({
                     title: 'Connexion',
-                    message: data.errors,
+                    message: data.errors_debug,
                     position: 'topRight'
                 });
             }
             else
             {
+                console.log("data.data" , data.data)
                 // console.log('userconnected connexion', data);
                 // Save user connected
                 userLogged.loginUser(data.data);
@@ -994,11 +1001,13 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
               
                 iziToast.success({
                     title: 'Connexion',
-                    message: 'Vous étes connecté',
+                     message: data.message,
+                  //  message: 'Vous étes connecté',
                     position: 'topRight'
                 });
                 var urlRedirection = "mon-profil.html";
                 setTimeout(function () {
+                    console.log("ici ok");
                     window.location.href = urlRedirection;
                 }, 500);
             }
@@ -1102,14 +1111,14 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
       //  $scope.estConnectei = $window.sessionStorage.getItem('connectei');
         //console.log('testinnnnnnnnnnnnnng = '+$scope.estConnectei);
         iziToast.info({
-            title: 'Vous vous ï¿½tes dï¿½connectï¿½',
+            title: 'Vous vous étes déconnecté',
             position: 'topRight'
         });
         //$scope.userConnected = null;
-        var urlRedirection = "../";
+        var urlRedirection = "index.html";
         setTimeout(function () {
             window.location.href = urlRedirection;
-        }, 500);
+        }, 300);
         //$location.path( "/" );
     };
 
