@@ -142,7 +142,8 @@
 															<li><a href="register.html">S'inscrire</a></li>
 														</ul>
 														<ul class="dropdown" ng-if="userConnected">
-															<li class="active"><a href="mon-profil.html">Mon profil</a></li>
+															<li class="active"><a href="profil/index.html"> <span class="fa fa-user mr-1"></span> {{userConnected.prenom}} {{userConnected.nom}} </a></li>
+															<li class="active"><a href="profil/mon-profil.html">Mon profil</a></li>
 															<li><a ng-click="LogOut()">Deconnexion</a></li>
 														</ul>
 													</li>

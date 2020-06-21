@@ -312,6 +312,8 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
             "contacts"                       : "id,email,nomcomplet,telephone,message",
             "messages"                       : "id,email,nom,prenom,telephone,code,status",*/
 
+            // electricite,acces_voirie,assainissement,geometre,courant_faible,eaux_pluviable,bornes_visible,necessite_bornage
+
             "plans"                         :  ["id,superficie,longeur,largeur,nb_pieces,nb_salon,nb_chambre,nb_cuisine,nb_toillette,nb_etage", ",niveau_plans{id,piece,bureau,toillette,chambre,salon,cuisine}"],
 
             "planprojets"                   :  ["id,plan_id,projet_id,etat_active,message,etat,plan{id}",""],
@@ -320,7 +322,7 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
 
             "niveauprojets"                 :  ["id",""],
 
-            "projets"                       :  ["id,name,etat,adresse_terrain,fichier,electricite,acces_voirie,assainissement,geometre,courant_faible,eaux_pluviable,bornes_visible,necessite_bornage,active,a_valider,created_at_fr,created_at,superficie,longeur,largeur,nb_pieces,nb_salon,nb_chambre,nb_cuisine,nb_toillette,nb_etage,user_id,user{name,email,nom,prenom,telephone,adresse_complet,code_postal}", ",niveau_projets{id,piece,bureau,toillette,chambre,salon,cuisine},remarques{id,demande_text,projet_id,type_remarque_id}"],
+            "projets"                       :  ["id,name,etat,adresse_terrain,fichier,active,a_valider,created_at_fr,created_at,superficie,longeur,largeur,nb_pieces,nb_salon,nb_chambre,nb_cuisine,nb_toillette,nb_etage,user_id,user{name,email,nom,prenom,telephone,adresse_complet,code_postal}", ",niveau_projets{id,piece,bureau,toillette,chambre,salon,cuisine},remarques{id,demande_text,projet_id,type_remarque_id}"],
 
             "clients"                       :  ["id",""],
 
@@ -485,14 +487,14 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
         {
             rewriteelement = 'projetspaginated(page:'+ $scope.paginationprojet.currentPage +',count:'+ $scope.paginationprojet.entryLimit
                 + ($scope.userConnected ? ',user_id:' + $scope.userConnected.id : "" )
-               /* + ($scope.projetview ? ',projet_id:' + $scope.projetview.id : "" )
-                + ($scope.planview ? ',plan_id:' + $scope.planview.id : "" )
-                + ($scope.clientview ? ',user_id:' + $scope.clientview.id : "" )
-                + ($scope.radioBtnComposition ? ',etat:' + $scope.radioBtnComposition : "")
-                + ($('#searchtexte_projet').val() ? (',' + $('#searchoption_projet').val() + ':"' + $('#searchtexte_projet').val() + '"') : "" )
-                + ($('#projet_user').val() ? ',user_id:' + $('#projet_user').val() : "" )
-                + ($('#created_at_start_listprojet').val() ? ',created_at_start:' + '"' + $('#created_at_start_listprojet').val() + '"' : "" )
-                + ($('#created_at_end_listprojet').val() ? ',created_at_end:' + '"' + $('#created_at_end_listprojet').val() + '"' : "" )*/
+                + ($scope.idProjet ? ',id:' + $scope.idProjet : "" )
+                /*    + ($scope.planview ? ',plan_id:' + $scope.planview.id : "" )
+                  + ($scope.clientview ? ',user_id:' + $scope.clientview.id : "" )
+                  + ($scope.radioBtnComposition ? ',etat:' + $scope.radioBtnComposition : "")
+                  + ($('#searchtexte_projet').val() ? (',' + $('#searchoption_projet').val() + ':"' + $('#searchtexte_projet').val() + '"') : "" )
+                  + ($('#projet_user').val() ? ',user_id:' + $('#projet_user').val() : "" )
+                  + ($('#created_at_start_listprojet').val() ? ',created_at_start:' + '"' + $('#created_at_start_listprojet').val() + '"' : "" )
+                  + ($('#created_at_end_listprojet').val() ? ',created_at_end:' + '"' + $('#created_at_end_listprojet').val() + '"' : "" )*/
                 +')';
             Init.getElementPaginated(rewriteelement, listofrequests_assoc["projets"][0]).then(function (data)
             {
@@ -837,6 +839,8 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
         return 'yes';*/
     }
 
+
+
     $scope.UpdateProjet = function (itemId, type) {
         reqwrite = "projets" + "(id:" + itemId + ")";
 
@@ -866,6 +870,10 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
             });
             console.log('Erreur serveur ici = ' + msg);
         });
+    };
+
+    $scope.InfoProjet = function (itemId) {
+        localStorage.setItem("id_projet", itemId);
     };
 
     $scope.deleteProjet = function (itemId) {
@@ -1063,15 +1071,36 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
     $scope.resetPassword = "";
 
 
+    $scope.idProjet = null;
 
     whereAreWe = window.location.href;
     console.log('whereAreWe', whereAreWe);
     if (whereAreWe.indexOf('mon-profil')!==-1)
     {
         console.log("je suis icici")
-      //  $scope.getelements('projets')
         $scope.pageChanged("projet");
-      //  $scope.getelements("planprojets");
+    }
+    else if(whereAreWe.indexOf('detail-projet')!==-1)
+    {
+       $scope.idProjet = localStorage.getItem("id_projet");
+        console.log("ici detail projet", $scope.idProjet);
+        $scope.pageChanged("projet");
+    }
+    else if(whereAreWe.indexOf('profil/index')!==-1)
+    {
+        //alert("ici")
+        var type = "saveaccount";
+
+        console.log('userInfos', $scope.userConnected,'ici avec id',$scope.userConnected.id);
+        $('#id_' + type).val($scope.userConnected.id);
+        $('#nom_' + type).val($scope.userConnected.nom);
+        $('#prenom_' + type).val($scope.userConnected.prenom);
+        $('#telephone_' + type).val($scope.userConnected.telephone);
+        $('#email_' + type).val($scope.userConnected.email);
+        $('#adresse_' + type).val($scope.userConnected.adresse_complet);
+        $("input[id*=password]").each(function () {
+            $(this).val("");
+        });
     }
 
 
@@ -1139,7 +1168,7 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
                   //  message: 'Vous étes connecté',
                     position: 'topRight'
                 });
-                var urlRedirection = "mon-profil.html";
+                var urlRedirection = "profil/mon-profil.html";
                 setTimeout(function () {
                     console.log("ici ok");
                     window.location.href = urlRedirection;
@@ -1269,7 +1298,7 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
         send_dataObj = form.serializeObject();
 
 
-        console.log("form serialize data =", senddata);
+        console.log("form serialize data =", senddata, 'send_dataObj => ',send_dataObj);
         // console.log(senddata);
 
         form.blockUI_start();
@@ -1302,13 +1331,7 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
                     if (send_dataObj.id)
                     {
                         userData = retour.clients[0];
-                        delete userData.ca_souscription;
-                        delete userData.ca_vente;
-                        delete userData.nb_souscription;
-                        delete userData.nb_reservation;
-                        delete userData.nb_vente;
-                        delete userData.souscriptions;
-                        delete userData.type_personne;
+                      //  delete userData.ca_souscription;
                     }
                     else
                     {
