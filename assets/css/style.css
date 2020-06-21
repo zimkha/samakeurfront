@@ -236,6 +236,11 @@
   /* vertical-align: top; */
   border-top: 1px solid #dee2e6; }
 
+.modal-dialog .modal-content .modal-body {
+  padding: 0px !important;
+  overflow-y: auto !important;
+  height: auto !important; }
+
 .nice-select {
   background-color: #fff;
   width: 100% !important; }

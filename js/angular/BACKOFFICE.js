@@ -488,6 +488,7 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
             rewriteelement = 'projetspaginated(page:'+ $scope.paginationprojet.currentPage +',count:'+ $scope.paginationprojet.entryLimit
                 + ($scope.userConnected ? ',user_id:' + $scope.userConnected.id : "" )
                 + ($scope.idProjet ? ',id:' + $scope.idProjet : "" )
+                + (',etat:' + $scope.etatProjet + '')
                 /*    + ($scope.planview ? ',plan_id:' + $scope.planview.id : "" )
                   + ($scope.clientview ? ',user_id:' + $scope.clientview.id : "" )
                   + ($scope.radioBtnComposition ? ',etat:' + $scope.radioBtnComposition : "")
@@ -708,6 +709,9 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
     $scope.eaux_pluviable = 0;
     $scope.bornes_visible = 0;
     $scope.necessite_bornage = 0;
+
+
+    $scope.etatProjet = null;
 
 
     // $scope.userConnected = {id: 1, nom_complet: "papa thiam", email: "papathiame11@gmail.com"}
@@ -952,6 +956,61 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
         });
     };
 
+    $scope.PayeProjet = function (idprojet) {
+
+        var data = {
+            'id': idprojet,
+        };
+
+        console.log("icic les datas => ", data)
+        // $('body').blockUI_start();
+        $http({
+            url: BASE_URL + 'paye',
+            method: 'POST',
+            data: data,
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }).then(function (data) {
+            // $('body').blockUI_stop();
+            if (data.data.errors) {
+                iziToast.error({
+                    title: '',
+                    message: data.data.errors,
+                    position: 'topRight'
+                });
+            }else{
+                // $('body').blockUI_stop();
+                iziToast.success({
+                    title: 'Payement',
+                    message: 'Votre demande a bien été prise en compt',
+                    position: 'topRight'
+                });
+
+
+               // $scope.emptyForm('projet');
+
+             //   $("#modal_demande").modal('hide');
+                $scope.pageChanged('projet');
+
+            }
+        })
+        /* } else {
+             iziToast.info({
+                 title: '',
+                 message: 'Veuillez vous connecter pour réserver',
+                 position: 'topRight'
+             });
+         }
+         return 'yes';*/
+    }
+
+    $scope.filtreProjet = function(itemId)
+    {
+        $scope.etatProjet = itemId;
+        $scope.pageChanged('projet');
+    }
+
     $scope.resetPwd = function (e)
     {
         e.preventDefault();
@@ -981,10 +1040,10 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
             {
                 iziToast.success({
                     title: '',
-                    message: data.data.message,
+                    message: "Mot de passe modifie",
                     position: 'topRight'
                 });
-                var urlRedirection = "./connexion.html";
+                var urlRedirection = "./login.html";
                 setTimeout(function () {
                     window.location.href = urlRedirection;
                 }, 500);
@@ -1077,17 +1136,52 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
     console.log('whereAreWe', whereAreWe);
     if (whereAreWe.indexOf('mon-profil')!==-1)
     {
+        $scope.etatProjet = 0;
+        if ($scope.userConnected == null) {
+            iziToast.warning({
+                title: 'Vous n\'êtes pas connecté',
+                position: 'topRight'
+            });
+
+            var urlRedirection = "../index.html";
+            setTimeout(function () {
+                window.location.href = urlRedirection;
+            }, 500);
+        }
         console.log("je suis icici")
         $scope.pageChanged("projet");
     }
     else if(whereAreWe.indexOf('detail-projet')!==-1)
     {
+        if ($scope.userConnected == null) {
+            iziToast.warning({
+                title: 'Vous n\'êtes pas connecté',
+                position: 'topRight'
+            });
+
+            var urlRedirection = "../index.html";
+            setTimeout(function () {
+                window.location.href = urlRedirection;
+            }, 500);
+        }
        $scope.idProjet = localStorage.getItem("id_projet");
         console.log("ici detail projet", $scope.idProjet);
         $scope.pageChanged("projet");
     }
     else if(whereAreWe.indexOf('profil/index')!==-1)
     {
+        if ($scope.userConnected == null) {
+            iziToast.warning({
+                title: 'Vous n\'êtes pas connecté',
+                position: 'topRight'
+            });
+
+            var urlRedirection = "../index.html";
+            setTimeout(function () {
+                window.location.href = urlRedirection;
+            }, 500);
+        }
+
         //alert("ici")
         var type = "saveaccount";
 
@@ -1230,17 +1324,19 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
         console.log('Dans deconnexion');
         //$scope.userConnected = null;
         userLogged.LogOut();
-        //$scope.userConnected.estConnectei = 'false';
         $scope.userConnected = userLogged.isLogged();
-        //$scope.userConnected.id = 0;
-        //$window.sessionStorage.setItem('connectei', false);
-      //  $scope.estConnectei = $window.sessionStorage.getItem('connectei');
-        //console.log('testinnnnnnnnnnnnnng = '+$scope.estConnectei);
         iziToast.info({
             title: 'Vous vous étes déconnecté',
             position: 'topRight'
         });
         //$scope.userConnected = null;
+         if(whereAreWe.indexOf('profil')!==-1)
+        {
+            var urlRedirection = "../index.html";
+            setTimeout(function () {
+                window.location.href = urlRedirection;
+            }, 300);
+        }
         var urlRedirection = "index.html";
         setTimeout(function () {
             window.location.href = urlRedirection;
@@ -1301,10 +1397,12 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
                             message: 'Mis a jour réussie, un mail d\'activation vous a été envoyé dans votre boite mail',
                             position: 'topRight'
                         });
-                       /* var urlRedirection = "index.html";
+
+                        var urlRedirection = "./index.html";
                         setTimeout(function () {
+                            $scope.LogOut();
                             window.location.href = urlRedirection;
-                        }, 500);*/
+                        }, 500);
                     }
 
                 }

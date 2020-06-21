@@ -286,6 +286,14 @@
 
 // fin tableau
 
+.modal-dialog .modal-content .modal-body {
+  padding: 0px!important;
+  overflow-y: auto!important;
+  //max-height: 510px!important;
+  height: auto!important;
+}
+
+
 .nice-select {
   background-color: #fff;
   width: 100%!important;
