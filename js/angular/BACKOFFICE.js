@@ -312,7 +312,7 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
             "contacts"                       : "id,email,nomcomplet,telephone,message",
             "messages"                       : "id,email,nom,prenom,telephone,code,status",*/
 
-            // electricite,acces_voirie,assainissement,geometre,courant_faible,eaux_pluviable,bornes_visible,necessite_bornage
+
 
             "plans"                         :  ["id,superficie,longeur,largeur,nb_pieces,nb_salon,nb_chambre,nb_cuisine,nb_toillette,nb_etage", ",niveau_plans{id,piece,bureau,toillette,chambre,salon,cuisine}"],
 
@@ -322,7 +322,7 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
 
             "niveauprojets"                 :  ["id",""],
 
-            "projets"                       :  ["id,name,etat,adresse_terrain,fichier,active,a_valider,created_at_fr,created_at,superficie,longeur,largeur,nb_pieces,nb_salon,nb_chambre,nb_cuisine,nb_toillette,nb_etage,user_id,user{name,email,nom,prenom,telephone,adresse_complet,code_postal}", ",niveau_projets{id,piece,bureau,toillette,chambre,salon,cuisine},remarques{id,demande_text,projet_id,type_remarque_id}"],
+            "projets"                       :  ["id,name,etat,electricite,acces_voirie,assainissement,geometre,courant_faible,eaux_pluviable,bornes_visible,necessite_bornage,adresse_terrain,fichier,active,a_valider,created_at_fr,created_at,superficie,longeur,largeur,nb_pieces,nb_salon,nb_chambre,nb_cuisine,nb_toillette,nb_etage,user_id,user{name,email,nom,prenom,telephone,adresse_complet,code_postal}", ",niveau_projets{id,piece,bureau,toillette,chambre,salon,cuisine},remarques{id,demande_text,projet_id,type_remarque_id}"],
 
             "clients"                       :  ["id",""],
 
@@ -1097,6 +1097,7 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
         $('#prenom_' + type).val($scope.userConnected.prenom);
         $('#telephone_' + type).val($scope.userConnected.telephone);
         $('#email_' + type).val($scope.userConnected.email);
+        $('#confirmemail_' + type).val($scope.userConnected.email);
         $('#adresse_' + type).val($scope.userConnected.adresse_complet);
         $("input[id*=password]").each(function () {
             $(this).val("");
@@ -1186,44 +1187,6 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
         });
     };
 
-  /*  $scope.passwordReset = function (e)
-    {
-        e.preventDefault();
-        var form = $('#form_passwordreset');
-        var data = form.serializeObject();
-        $('#form_passwordreset').blockUI_start();
-        Init.passwordReset(data).then(function (data)
-        {
-            $('#form_passwordreset').blockUI_stop();
-            if (data != null && !data.errors)
-            {
-                iziToast.success({
-                    title: 'Mot de passe oubliï¿½',
-                    message: data.success,
-                    position: 'topRight'
-                });
-                $scope.emptyForm('passwordreset');
-                $('#seconnecter').trigger('click');
-            }
-            else
-            {
-                iziToast.error({
-                    title: 'Mot de passe oubliï¿½',
-                    message: data.errors,
-                    position: 'topRight'
-                });
-            }
-        }, function (msg)
-        {
-            $('#form_passwordreset').blockUI_stop();
-            iziToast.error({
-                title: 'Mot de passe oubliï¿½',
-                message: "Erreur depuis le serveur, contactez le support technique",
-                position: 'topRight'
-            });
-        });
-    };
-*/
 
     $scope.activationAccount = function (e) {
         e.preventDefault();
@@ -1302,27 +1265,48 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
         // console.log(senddata);
 
         form.blockUI_start();
-        Init.saveAccount(senddata, (send_dataObj.id ? true : false)).then(function (retour)
+      /*  Init.saveAccount(senddata, (send_dataObj.id ? true : false)).then(function (retour)*/
+        Init.saveAccount(senddata, (send_dataObj.ids ? true : false)).then(function (retour)
         {
             console.log('retour', retour);
             form.blockUI_stop();
             // console.log('create account',retour);
             if (retour != null && !retour.errors)
             {
-                if (!send_dataObj.id)
+               /* if (!send_dataObj.id)*/
+                if (!send_dataObj.ids)
                 {
-                    // Inscription
-                    $scope.emptyForm('saveaccount');
-                    iziToast.success({
-                        title: ('Information'),
-                        //message: retour.success,
-                        message: 'Inscription réussie, un mail d\'activation vous a été envoyé dans votre boite mail',
-                        position: 'topRight'
-                    });
-                    var urlRedirection = "login.html";
-                    setTimeout(function () {
-                        window.location.href = urlRedirection;
-                    }, 500);
+                    if(whereAreWe.indexOf('register')!==-1)
+                    {
+                        // Inscription
+                        $scope.emptyForm('saveaccount');
+                        iziToast.success({
+                            title: ('Information'),
+                            //message: retour.success,
+                            message: 'Inscription réussie, un mail d\'activation vous a été envoyé dans votre boite mail',
+                            position: 'topRight'
+                        });
+                        var urlRedirection = "login.html";
+                        setTimeout(function () {
+                            window.location.href = urlRedirection;
+                        }, 500);
+                    }
+                    else if(whereAreWe.indexOf('profil/index')!==-1)
+                    {
+                        // update
+                       // $scope.emptyForm('saveaccount');
+                        iziToast.success({
+                            title: ('Information'),
+                            //message: retour.success,
+                            message: 'Mis a jour réussie, un mail d\'activation vous a été envoyé dans votre boite mail',
+                            position: 'topRight'
+                        });
+                       /* var urlRedirection = "index.html";
+                        setTimeout(function () {
+                            window.location.href = urlRedirection;
+                        }, 500);*/
+                    }
+
                 }
                 else
                 {
