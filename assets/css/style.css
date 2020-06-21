@@ -171,6 +171,9 @@
 .item-menu-res a:hover {
   font-size: 14px !important; }
 
+.pointer-hover:hover {
+  cursor: pointer !important; }
+
 .hero-slider .hero-text h1 {
   line-height: 50px;
   font-size: 47px;

@@ -261,8 +261,30 @@ app.factory('Init', function ($http, $q) {
                 return deferred.promise;
 
             }
+
+
         };
-    return factory;
+
+        factory.removeElement = function (id, type) {
+            var deferred = $q.defer();
+            $http({
+                method: 'DELETE',
+                url: BASE_URL + type + id,
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            }).then(function successCallback(response) {
+                factory.data = response['data'];
+                deferred.resolve(factory.data);
+            }, function errorCallback(error) {
+                console.log('erreur serveur', error);
+                deferred.reject(error);
+                //msg_erreur
+            });
+            return deferred.promise;
+        };
+
+        return factory;
 });
 
 // Pour mettre les espaces sur les montants
@@ -298,7 +320,7 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
 
             "niveauprojets"                 :  ["id",""],
 
-            "projets"                       :  ["id,name,etat,active,a_valider,created_at_fr,created_at,superficie,longeur,largeur,nb_pieces,nb_salon,nb_chambre,nb_cuisine,nb_toillette,nb_etage,user_id,user{name,email,nom,prenom,telephone,adresse_complet,code_postal}", ",niveau_projets{id,piece,bureau,toillette,chambre,salon,cuisine},remarques{id,demande_text,projet_id,type_remarque_id}"],
+            "projets"                       :  ["id,name,etat,adresse_terrain,fichier,electricite,acces_voirie,assainissement,geometre,courant_faible,eaux_pluviable,bornes_visible,necessite_bornage,active,a_valider,created_at_fr,created_at,superficie,longeur,largeur,nb_pieces,nb_salon,nb_chambre,nb_cuisine,nb_toillette,nb_etage,user_id,user{name,email,nom,prenom,telephone,adresse_complet,code_postal}", ",niveau_projets{id,piece,bureau,toillette,chambre,salon,cuisine},remarques{id,demande_text,projet_id,type_remarque_id}"],
 
             "clients"                       :  ["id",""],
 
@@ -334,28 +356,25 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
     };
 
    // $(".search-home-2-1").hide();
-    for (i=0;i<9;i++) {
+  /*  for (i=0;i<9;i++) {
+        console.log("ici aussi")
         $(".search-home-2-"+i).hide();
-    }
+    }*/
     $scope.searchPopo = function()
     {
 
-        $(".btn-btn").on('click', function()
+       /* $(".btn-btn").on('click', function()
         {
             for (let j = 0; j < $scope.projets.length; j++) {
+                console.log("icic")
+                $(".search-home-2-" + j).fadeIn(700);
+                $(".search-home-2-" + j).show();
 
-                for (i = 0; i < 9; i++) {
-                    if (i == j) {
-                        $(".search-home-2-" + i).fadeIn(700);
-                        $(".search-home-2-" + i).show();
-
-                        console.log('focus detecré');
-                    }
-                }
+                console.log('focus detecré');
             }
 
 
-        })
+        })*/
 
     }
     $scope.searchPopo2 = function()
@@ -363,7 +382,7 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
 
         $(".btn-btn-minus").on('click', function()
         {
-            for (let j = 0; j < $scope.projets.length; j++) {
+           /* for (let j = 0; j < $scope.projets.length; j++) {
 
                 for (i = 0; i < 9; i++) {
                     if (i == j) {
@@ -372,7 +391,7 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
                         console.log('focus retiré');
                     }
                 }
-            }
+            }*/
 
            /* for (i=0;i<9;i++) {
                 $(".search-home-2-"+i).fadeOut(700);
@@ -465,6 +484,7 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
         if ( currentpage.indexOf('projet')!==-1 )
         {
             rewriteelement = 'projetspaginated(page:'+ $scope.paginationprojet.currentPage +',count:'+ $scope.paginationprojet.entryLimit
+                + ($scope.userConnected ? ',user_id:' + $scope.userConnected.id : "" )
                /* + ($scope.projetview ? ',projet_id:' + $scope.projetview.id : "" )
                 + ($scope.planview ? ',plan_id:' + $scope.planview.id : "" )
                 + ($scope.clientview ? ',user_id:' + $scope.clientview.id : "" )
@@ -798,6 +818,13 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
                         message: 'Votre demande a bien été prise en compte',
                         position: 'topRight'
                     });
+
+
+                    $scope.emptyForm('projet');
+
+                    $("#modal_demande").modal('hide');
+                    $scope.pageChanged('projet');
+
                 }
             })
        /* } else {
@@ -809,6 +836,113 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
         }
         return 'yes';*/
     }
+
+    $scope.UpdateProjet = function (itemId, type) {
+        reqwrite = "projets" + "(id:" + itemId + ")";
+
+        console.log('update', reqwrite);
+        Init.getElement(reqwrite, listofrequests_assoc["projets"]).then(function (data) {
+            var item = data[0];
+
+            console.log("ici item => " , item)
+
+            $scope.showModalAdd(type);
+
+            type= 'projet';
+
+            $('#id_'+type).val(item.id);
+            $('#localisation_'+type).val(item.adresse_terrain);
+            $('#fichier_'+type).val(item.fichier);
+            $('#longeur_'+type).val(item.longeur);
+            $('#largeur_'+type).val(item.largeur);
+            $('#piscine_'+type).val(item.piscine);
+            $('#electricite_'+type).val(item.electricite);
+
+        }, function (msg) {
+            iziToast.error({
+                title: "Modification",
+                message: 'Erreur server',
+                position: 'topRight'
+            });
+            console.log('Erreur serveur ici = ' + msg);
+        });
+    };
+
+    $scope.deleteProjet = function (itemId) {
+        var msg = 'Voulez-vous vraiment effectué cette suppression ?';
+        var title = 'SUPPRESSION';
+        iziToast.question({
+            timeout: 0,
+            close: false,
+            overlay: true,
+            displayMode: 'once',
+            id: 'question',
+            zindex: 999,
+            title: title,
+            message: msg,
+            position: 'center',
+            buttons: [
+                ['<button class="font-bold">OUI</button>', function (instance, toast) {
+
+                    instance.hide({ transitionOut: 'fadeOut' }, toast, 'button');
+
+                    Init.removeElement(itemId, 'projet/').then(function (data) {
+
+                        console.log('deleted deleted', data);
+                        if (data.error) {
+                            console.log('deleted', data);
+
+                            $scope.error = data.error;
+
+                            var msg = "";
+                            $.each($scope.error, function (key, value) {
+                                msg = msg + "\n" + value;
+                            });
+
+                            iziToast.error({
+                                title: "",
+                                message: msg,
+                                position: 'topRight'
+                            });
+
+                        }
+                        else {
+                            $.each($scope.projets, function (keyItem, oneItem) {
+                                if (oneItem.id === itemId) {
+                                    $scope.projets.splice(keyItem, 1);
+                                    return false;
+                                }
+                            });
+
+                            $scope.paginationprojet.totalItems--;
+                            if ($scope.projets.length < $scope.paginationprojet.entryLimit) {
+                                $scope.pageChanged('projet');
+                            }
+
+                            iziToast.success({
+                                title: title,
+                                message: "Projet supprimé",
+                                position: 'topRight'
+                            });
+                        }
+
+                    }, function (msg) {
+                        iziToast.error({
+                            title: title,
+                            message: 'Erreur server',
+                            position: 'topRight'
+                        });
+                    });
+
+                }, true],
+                ['<button>NON</button>', function (instance, toast) {
+
+                    instance.hide({ transitionOut: 'fadeOut' }, toast, 'button');
+
+                }],
+            ]
+        });
+    };
 
     $scope.resetPwd = function (e)
     {

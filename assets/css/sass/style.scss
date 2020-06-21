@@ -206,6 +206,12 @@
   }
 }
 
+.pointer-hover {
+  &:hover {
+    cursor: pointer!important;
+  }
+}
+
 
 .hero-slider .hero-text h1 {
   line-height: 50px;
