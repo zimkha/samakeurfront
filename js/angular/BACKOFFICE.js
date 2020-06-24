@@ -322,7 +322,7 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
 
             "niveauprojets"                 :  ["id",""],
 
-            "projets"                       :  ["id,name,etat,electricite,acces_voirie,assainissement,geometre,courant_faible,eaux_pluviable,bornes_visible,necessite_bornage,adresse_terrain,fichier,active,a_valider,created_at_fr,created_at,superficie,longeur,largeur,nb_pieces,nb_salon,nb_chambre,nb_cuisine,nb_toillette,nb_etage,user_id,user{name,email,nom,prenom,telephone,adresse_complet,code_postal}", ",niveau_projets{id,piece,bureau,toillette,chambre,salon,cuisine},remarques{id,demande_text,projet_id,type_remarque_id}"],
+            "projets"                       :  ["id,name,etat,electricite,acces_voirie,assainissement,geometre,courant_faible,eaux_pluviable,bornes_visible,necessite_bornage,adresse_terrain,active,a_valider,created_at_fr,created_at,superficie,longeur,largeur,nb_pieces,nb_salon,nb_chambre,nb_cuisine,nb_toillette,nb_etage,user_id,user{name,email,nom,prenom,telephone,adresse_complet,code_postal},fichier", ",niveau_projets{id,piece,bureau,toillette,chambre,salon,cuisine},remarques{id,demande_text,projet_id,type_remarque_id}"],
 
             "clients"                       :  ["id",""],
 
@@ -781,6 +781,7 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
         //  if ($scope.userConnected) {
             //let data = [];
             var data = {
+                'id': 1,
                 'user': $scope.userConnected.id,
                
                 'adresse_terrain': $('#localisation_projet').val(),
@@ -860,11 +861,11 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
 
             $('#id_'+type).val(item.id);
             $('#localisation_'+type).val(item.adresse_terrain);
-            $('#fichier_'+type).val(item.fichier);
             $('#longeur_'+type).val(item.longeur);
             $('#largeur_'+type).val(item.largeur);
             $('#piscine_'+type).val(item.piscine);
             $('#electricite_'+type).val(item.electricite);
+            $('#fichier_'+type).val(item.fichier);
 
         }, function (msg) {
             iziToast.error({

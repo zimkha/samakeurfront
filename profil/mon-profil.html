@@ -180,7 +180,6 @@
                 <div class="col-md-3">
                     <div class="text-right">
                         <button class="btn btn-warning btn-sm" type="button" ng-click="showModalAdd('demande')">Demande devis</button>
-                        <button class="btn btn-warning btn-sm" type="button" ng-click="showModalAdd('remarque')">Remarque</button>
                     </div>
                 </div>
             </div>
@@ -733,46 +732,6 @@
                     </div>
 
 
-
-                    <div class="modal-footer">
-                        <button type="reset" class="btn btn-danger btn-sm" data-dismiss="modal">Fermer</button>
-
-                        <button type="submit" class="btn btn-primary btn-sm" ng-click="addProjet($event)">Enregistrer</button>
-                    </div>
-                </form>
-
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="modal fade" id="modal_remarque" tabindex="-1" role="dialog">
-    <div class="modal-dialog" role="document" style="width: 550px!important;">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span class="ti-close" aria-hidden="true"></span></button>
-            </div>
-            <div class="modal-body" style="padding: 50px!important;">
-                <form id="form_addremarque" class="form" enctype="multipart/form-data" accept-charset="UTF-8">
-                    <!--   <input type="hidden" id="id_projet" name="id">
-                       <input type="hidden" name="tab_niveau" id="tab_niveau" value="@{{produitsInTable}}">-->
-
-                    <div class="row mt-14">
-                        <div class="col-lg-12">
-                            <div class="form-group">
-                                <label for="fichier_projet">Fichier</label>
-                                <input type="file" class="form-control" id="fichier_remarque" name="fichier">
-                            </div>
-                        </div>
-                        <div class="col-lg-12">
-                            <div class="form-group">
-                                <label>
-                                    Description
-                                </label>
-                                <textarea  class="form-control" placeholder="Description de votre projet"  rows="4" id="demande_texte_remarque" name="demande_texte"></textarea>
-                            </div>
-                        </div>
-                    </div>
 
                     <div class="modal-footer">
                         <button type="reset" class="btn btn-danger btn-sm" data-dismiss="modal">Fermer</button>
