@@ -322,7 +322,7 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
 
             "niveauprojets"                 :  ["id",""],
 
-            "projets"                       :  ["id,name,etat,electricite,acces_voirie,assainissement,geometre,courant_faible,eaux_pluviable,bornes_visible,necessite_bornage,adresse_terrain,active,a_valider,created_at_fr,created_at,superficie,longeur,largeur,nb_pieces,nb_salon,nb_chambre,nb_cuisine,nb_toillette,nb_etage,user_id,user{name,email,nom,prenom,telephone,adresse_complet,code_postal},fichier", ",niveau_projets{id,piece,bureau,toillette,chambre,salon,cuisine},remarques{id,demande_text,projet_id,type_remarque_id}"],
+            "projets"                       :  ["id,name,etat,electricite,acces_voirie,assainissement,geometre,courant_faible,eaux_pluviable,bornes_visible,necessite_bornage,adresse_terrain,active,a_valider,created_at_fr,created_at,superficie,longeur,largeur,nb_pieces,nb_salon,sdb,nb_chambre,nb_cuisine,nb_toillette,nb_etage,user_id,user{name,email,nom,prenom,telephone,adresse_complet,code_postal},fichier", ",niveau_projets{id,piece,bureau,toillette,chambre,sdb,salon,cuisine},remarques{id,demande_text,projet_id,type_remarque_id}"],
 
             "clients"                       :  ["id",""],
 
@@ -778,12 +778,11 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
 
         console.log("icic => ",$scope.necessite_bornage,$scope.bornes_visible,$scope.eaux_pluviable,$scope.electricite)
 
-        //  if ($scope.userConnected) {
-            //let data = [];
+        if ($scope.idProjet2 == 0){
+
             var data = {
-                'id': 1,
+              //  'id': 1,
                 'user': $scope.userConnected.id,
-               
                 'adresse_terrain': $('#localisation_projet').val(),
                 'fichier': $('#fichier_projet').val(),
                 'longeur': $('#longeur_projet').val(),
@@ -800,6 +799,29 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
                 'necessite_bornage': $scope.necessite_bornage,
                 'tab_projet': JSON.stringify($scope.produitsInTable),
             };
+
+        }
+        else {
+            var data = {
+                 'id': parseInt($scope.idProjet2),
+                'user': $scope.userConnected.id,
+                'adresse_terrain': $('#localisation_projet').val(),
+                'fichier': $('#fichier_projet').val(),
+                'longeur': $('#longeur_projet').val(),
+                'largeur': $('#largeur_projet').val(),
+                'piscine': $('#piscine_projet').val(),
+                'description': $('#description_projet').val(),
+                'electricite': $scope.electricite,
+                'acces_voirie': $scope.acces_voirie,
+                'assainissement': $scope.assainissement,
+                'geometre': $scope.geometre,
+                'courant_faible': $scope.courant_faible,
+                'eaux_pluviable': $scope.eaux_pluviable,
+                'bornes_visible': $scope.bornes_visible,
+                'necessite_bornage': $scope.necessite_bornage,
+                'tab_projet': JSON.stringify($scope.produitsInTable),
+            };
+        }
 
             console.log("icic les datas => ", data)
            // $('body').blockUI_start();
@@ -845,15 +867,16 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
     }
 
 
-
+    $scope.idProjet2  = 0;
     $scope.UpdateProjet = function (itemId, type) {
         reqwrite = "projets" + "(id:" + itemId + ")";
+        $scope.idProjet2  = itemId;
 
         console.log('update', reqwrite);
         Init.getElement(reqwrite, listofrequests_assoc["projets"]).then(function (data) {
             var item = data[0];
 
-            console.log("ici item => " , item)
+            console.log("ici item => " , item, itemId)
 
             $scope.showModalAdd(type);
 
@@ -863,9 +886,35 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
             $('#localisation_'+type).val(item.adresse_terrain);
             $('#longeur_'+type).val(item.longeur);
             $('#largeur_'+type).val(item.largeur);
+            $('#description_'+type).val(item.description);
             $('#piscine_'+type).val(item.piscine);
-            $('#electricite_'+type).val(item.electricite);
-            $('#fichier_'+type).val(item.fichier);
+          //  $('#electricite_'+type).val(item.electricite);
+           /* $('#acces_voirie'+type).val(item.acces_voirie);
+            $('#assainissement'+type).val(item.assainissement);
+            $('#cadastre'+type).val(item.geometre);
+            $('#courant_faible'+type).val(item.courant_faible);
+            $('#bornes_visible'+type).val(item.bornes_visible);
+            $('#eaux_pluviable'+type).val(item.eaux_pluviable);
+            $('#necessite_bornage'+type).val(item.necessite_bornage);*/
+
+            $('#electricite_'+type).prop('checked', item.electricite == true);
+            $('#acces_voirie_'+type).prop('checked', item.acces_voirie == true);
+            $('#assainissement_'+type).prop('checked', item.assainissement == true);
+            $('#cadastre_'+type).prop('checked', item.geometre == true);
+            $('#courant_faible_'+type).prop('checked', item.courant_faible == true);
+            $('#bornes_visible_'+type).prop('checked', item.bornes_visible == true);
+            $('#eaux_pluviable_'+type).prop('checked', item.eaux_pluviable == true);
+            $('#necessite_bornage_'+type).prop('checked', item.necessite_bornage == true);
+
+            var liste_ligneniveau = [];
+            $.each(item.niveau_projets, function (keyItem, valueItem) {
+                console.log("le projet en question",valueItem)
+                liste_ligneniveau.push({"id":valueItem.id, "niveau":valueItem.niveau_name,"piece":valueItem.piece,"sdb": valueItem.sdb, "chambre" : valueItem.chambre, "bureau" : valueItem.bureau, "salon" : valueItem.salon, "cuisine" : valueItem.cuisine, "toillette" : valueItem.toillette});
+            });
+            $scope.produitsInTable = [];
+            $scope.produitsInTable = liste_ligneniveau;
+
+           // $('#fichier_'+type).val(item.fichier);
 
         }, function (msg) {
             iziToast.error({
