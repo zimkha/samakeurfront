@@ -180,7 +180,6 @@
                 <div class="col-md-3">
                     <div class="text-right">
                         <button class="btn btn-warning btn-sm" type="button" ng-click="showModalAdd('demande')">Demande devis</button>
-                        <button class="btn btn-warning btn-sm" type="button" ng-click="showModalAdd('remarque')">Remarque</button>
                     </div>
                 </div>
             </div>
@@ -199,7 +198,7 @@
                         </div>
                         <div class="tab-content" id="myTabContent">
                             <div class="tab-pane fade show active" id="man" role="tabpanel">
-                                <div class="mt-2 text-justify">
+                                <div class="mt-3 mb-1 text-center">
                                     Voici la liste de vos demandes soumises à SAMAKEUR et qui sont en étude pour un devis.
                                 </div>
                                 <div class="row mt-20">
@@ -211,7 +210,7 @@
                                                 </div>
                                             </p>
                                             <div class="collapse" id="collapseExample-2-{{$index}}" style="position: absolute;z-index: 999;background: #fff;border-radius: 5px">
-                                                <div class="">
+                                                <div class="shadow">
                                                     <div  class="card-body row animated fadeInUp">
                                                         <div class=" col-md-12 col-sm-12 mt-10">
                                                             <div class="border-danger">
@@ -290,7 +289,7 @@
                             </div>
 
                             <div class="tab-pane fade" id="women" role="tabpanel">
-                                <div class="mt-2 text-justify">
+                                <div class="mt-3 mb-1 text-center">
                                     Vous avez reçu le devis de SAMAKEUR. Vous devez procéder à la signature du contrat et au paiement pour le démarrage des études.
                                 </div>
                                 <div class="row mt-20">
@@ -302,7 +301,7 @@
                                             </div>
                                             </p>
                                             <div class="collapse" id="collapseExample-3-{{$index}}" style="position: absolute;z-index: 999;background: #fff;border-radius: 5px">
-                                                <div class="">
+                                                <div class="shadow">
                                                     <div  class="card-body row animated fadeInUp">
                                                         <div class=" col-md-12 col-sm-12 mt-10">
                                                             <div class="border-danger">
@@ -360,7 +359,7 @@
                                                             <a href="detail-projet.html" title="Info" class="btn back-success btn-sm btn-circle mr-2 text-white" ng-click="InfoProjet(item.id)">
                                                                 <i class="fa fa-info"></i>
                                                             </a>
-                                                            <button  title="detail" class="btn back-success btn-sm btn-circle mr-2" ng-click="PayeProjet(item.id)">
+                                                            <button  title="detail" class="btn back-success btn-sm btn-circle mr-2" ng-click="PayeProjet(item.id)" target="_blank">
                                                                 <i class="fa fa-paypal"></i>
                                                             </button>
                                                             <button  title="Supprimer" class="btn back-danger btn-sm btn-circle" ng-click="deleteProjet(item.id)">
@@ -381,7 +380,7 @@
                             </div>
 
                             <div class="tab-pane fade" id="kids" role="tabpanel">
-                                <div class="mt-2 text-justify">
+                                <div class="mt-3 mb-1 text-center">
                                     Suite à la livraison des plans, vous pouvez soummettre vos remarques à SAMAKEUR ou procéder à la validation des plans.
                                 </div>
                                 <div class="row mt-20">
@@ -393,7 +392,7 @@
                                             </div>
                                             </p>
                                             <div class="collapse" id="collapseExample-{{$index}}" style="position: absolute;z-index: 999;background: #fff;border-radius: 5px">
-                                                <div class="">
+                                                <div class="shadow">
                                                     <div  class="card-body row animated fadeInUp">
                                                         <div class=" col-md-12 col-sm-12 mt-10">
                                                             <div class="border-danger">
@@ -526,7 +525,7 @@
                         </div>
 
                         <div class="col-lg-4">
-                            <div class="form-group" style="margin-bottom: 0px 0px 8px!important;">
+                            <div class="form-group">
                                 <label for="piscine_projet">Piscine</label>
                                 <select class="form-control" id="piscine_projet" name="piscine">
                                     <option value="1">OUI</option>
@@ -733,46 +732,6 @@
                     </div>
 
 
-
-                    <div class="modal-footer">
-                        <button type="reset" class="btn btn-danger btn-sm" data-dismiss="modal">Fermer</button>
-
-                        <button type="submit" class="btn btn-primary btn-sm" ng-click="addProjet($event)">Enregistrer</button>
-                    </div>
-                </form>
-
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="modal fade" id="modal_remarque" tabindex="-1" role="dialog">
-    <div class="modal-dialog" role="document" style="width: 550px!important;">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span class="ti-close" aria-hidden="true"></span></button>
-            </div>
-            <div class="modal-body" style="padding: 50px!important;">
-                <form id="form_addremarque" class="form" enctype="multipart/form-data" accept-charset="UTF-8">
-                    <!--   <input type="hidden" id="id_projet" name="id">
-                       <input type="hidden" name="tab_niveau" id="tab_niveau" value="@{{produitsInTable}}">-->
-
-                    <div class="row mt-14">
-                        <div class="col-lg-12">
-                            <div class="form-group">
-                                <label for="fichier_projet">Fichier</label>
-                                <input type="file" class="form-control" id="fichier_remarque" name="fichier">
-                            </div>
-                        </div>
-                        <div class="col-lg-12">
-                            <div class="form-group">
-                                <label>
-                                    Description
-                                </label>
-                                <textarea  class="form-control" placeholder="Description de votre projet"  rows="4" id="demande_texte_remarque" name="demande_texte"></textarea>
-                            </div>
-                        </div>
-                    </div>
 
                     <div class="modal-footer">
                         <button type="reset" class="btn btn-danger btn-sm" data-dismiss="modal">Fermer</button>
