@@ -322,7 +322,9 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
 
             "niveauprojets"                 :  ["id",""],
 
+
             "projets"                       :  ["id,name,etat,electricite,acces_voirie,assainissement,geometre,courant_faible,eaux_pluviable,bornes_visible,necessite_bornage,adresse_terrain,active,a_valider,created_at_fr,created_at,superficie,longeur,largeur,nb_pieces,nb_salon,sdb,nb_chambre,nb_cuisine,nb_toillette,nb_etage,user_id,user{name,email,nom,prenom,telephone,adresse_complet,code_postal},fichier", ",niveau_projets{id,piece,bureau,toillette,chambre,sdb,salon,cuisine},remarques{id,demande_text,projet_id,type_remarque_id}"],
+
 
             "clients"                       :  ["id",""],
 
@@ -1015,8 +1017,8 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
         console.log("icic les datas => ", data)
         // $('body').blockUI_start();
         $http({
-            url: BASE_URL + 'paye',
-            method: 'POST',
+            url: BASE_URL + 'paypal/' + idprojet,
+            method: 'GET',
             data: data,
             headers: {
                 'Content-Type': 'application/json'
