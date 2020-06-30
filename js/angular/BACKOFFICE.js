@@ -1011,8 +1011,7 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
     $scope.addRemarque =  function (e,idRemarque) {
         e.preventDefault();
         var data = {
-            'id': idRemarque,
-            'user_id' :  $scope.userConnected.id,
+            'projet_id': idRemarque,
             'fichier' :  $('#fichier_remarque').val(),
             'demande_texte' :  $('#demande_texte_remarque').val(),
         };
