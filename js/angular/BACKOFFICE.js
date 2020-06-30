@@ -1008,6 +1008,58 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
         });
     };
 
+    $scope.addRemarque =  function (e,idRemarque) {
+        e.preventDefault();
+        var data = {
+            'id': idRemarque,
+            'user_id' :  $scope.userConnected.id,
+            'fichier' :  $('#fichier_remarque').val(),
+            'demande_texte' :  $('#demande_texte_remarque').val(),
+        };
+
+        console.log("icic les datas => ", data)
+        // $('body').blockUI_start();
+        $http({
+            url: BASE_URL + 'remarque',
+            method: 'POST',
+            data: data,
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }).then(function (data) {
+            // $('body').blockUI_stop();
+            if (data.data.errors) {
+                iziToast.error({
+                    title: '',
+                    message: data.data.errors,
+                    position: 'topRight'
+                });
+            }else{
+                // $('body').blockUI_stop();
+                iziToast.success({
+                    title: 'Payement',
+                    message: 'Votre remarque a bien été prise en compte',
+                    position: 'topRight'
+                });
+
+
+               // $scope.emptyForm('projet');
+
+             //   $("#modal_demande").modal('hide');
+                $scope.pageChanged('projet');
+
+            }
+        })
+        /* } else {
+             iziToast.info({
+                 title: '',
+                 message: 'Veuillez vous connecter pour réserver',
+                 position: 'topRight'
+             });
+         }
+         return 'yes';*/
+    }
+
     $scope.PayeProjet = function (idprojet) {
 
         var data = {
@@ -1033,11 +1085,14 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
                 });
             }else{
                 // $('body').blockUI_stop();
-                iziToast.success({
+                console.log("ici les datas -> ", data.data)
+
+                window.open(""+data.data,"_blank");
+              /*  iziToast.success({
                     title: 'Payement',
-                    message: 'Votre demande a bien été prise en compt',
+                    message: 'Votre demande a bien été prise en compte',
                     position: 'topRight'
-                });
+                });*/
 
 
                // $scope.emptyForm('projet');

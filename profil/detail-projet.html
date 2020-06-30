@@ -492,7 +492,7 @@
                     <div class="row mt-14">
                         <div class="col-lg-12">
                             <div class="form-group">
-                                <label for="fichier_projet">Fichier</label>
+                                <label for="fichier_remarque">Fichier</label>
                                 <input type="file" class="form-control" id="fichier_remarque" name="fichier">
                             </div>
                         </div>
@@ -509,7 +509,7 @@
                     <div class="modal-footer">
                         <button type="reset" class="btn btn-danger btn-sm" data-dismiss="modal">Fermer</button>
 
-                        <button type="submit" class="btn btn-primary btn-sm" ng-click="addProjet($event)">Enregistrer</button>
+                        <button type="submit" class="btn btn-primary btn-sm" ng-click="addRemarque($event, projets[0].id)">Enregistrer</button>
                     </div>
                 </form>
 
