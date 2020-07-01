@@ -2,7 +2,8 @@ var app = angular.module('samakeur', ['angular.filter','socialLogin', 'ngCookies
 
 //---BASE_URL----//
 var BASE_URL = 'http://localhost/samakeurback/public/';
-//var BASE_URL = 'http://samakeurci.com/admin/';
+// en ligne
+//var BASE_URL = 'http://samakeur.sn/admin/';
 
 var imgupload = 'images/upload.jpg';
 var tokenDesamakeur = '';
@@ -1013,7 +1014,7 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
         var data = {
             'projet_id': idRemarque,
             'fichier' :  $('#fichier_remarque').val(),
-            'demande_texte' :  $('#demande_texte_remarque').val(),
+            'demande_text' :  $('#demande_texte_remarque').val(),
         };
 
         console.log("icic les datas => ", data)
