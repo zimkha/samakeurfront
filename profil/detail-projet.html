@@ -486,9 +486,8 @@
             </div>
             <div class="modal-body" style="padding: 50px!important;">
                 <form id="form_addremarque" class="form" enctype="multipart/form-data" accept-charset="UTF-8">
-                    <!--   <input type="hidden" id="id_projet" name="id">
-                       <input type="hidden" name="tab_niveau" id="tab_niveau" value="@{{produitsInTable}}">-->
-
+                      <input type="hidden" id="id_projet" name="id">
+                     
                     <div class="row mt-14">
                         <div class="col-lg-12">
                             <div class="form-group">
@@ -509,7 +508,7 @@
                     <div class="modal-footer">
                         <button type="reset" class="btn btn-danger btn-sm" data-dismiss="modal">Fermer</button>
 
-                        <button type="submit" class="btn btn-primary btn-sm" ng-click="addProjet($event)">Enregistrer</button>
+                        <button type="submit" class="btn btn-primary btn-sm" ng-click="addRemarque($event)">Enregistrer</button>
                     </div>
                 </form>
 

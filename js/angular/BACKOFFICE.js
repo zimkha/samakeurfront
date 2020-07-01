@@ -323,7 +323,7 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
             "niveauprojets"                 :  ["id",""],
 
 
-            "projets"                       :  ["id,name,etat,electricite,acces_voirie,assainissement,geometre,courant_faible,eaux_pluviable,bornes_visible,necessite_bornage,adresse_terrain,active,a_valider,created_at_fr,created_at,superficie,longeur,largeur,nb_pieces,nb_salon,sdb,nb_chambre,nb_cuisine,nb_toillette,nb_etage,user_id,user{name,email,nom,prenom,telephone,adresse_complet,code_postal},fichier", ",niveau_projets{id,piece,bureau,toillette,chambre,sdb,salon,cuisine},remarques{id,demande_text,projet_id,type_remarque_id}"],
+            "projets"                       :  ["id,name,etat,electricite,acces_voirie,assainissement,geometre,courant_faible,eaux_pluviable,bornes_visible,necessite_bornage,adresse_terrain,active,a_valider,created_at_fr,created_at,superficie,longeur,largeur,nb_pieces,nb_salon,sdb,nb_chambre,nb_cuisine,nb_toillette,nb_etage,user_id,remarques{id,demande_text,projet_id},user{name,email,nom,prenom,telephone,adresse_complet,code_postal},fichier,niveau_projets{id,piece,bureau,toillette,chambre,sdb,salon,cuisine},plan_projets{id,plan_id,projet_id, plan{id,code,created_at_fr,superficie,longeur,largeur,nb_pieces,nb_salon,nb_chambre,nb_cuisine,nb_toillette,nb_etage,unite_mesure_id,unite_mesure{id,name},fichier,joineds{id,fichier,description,active},niveau_plans{id,piece,niveau,bureau,toillette,chambre,salon,cuisine}}}",""],
 
 
             "clients"                       :  ["id",""],
@@ -867,6 +867,60 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
         }
         return 'yes';*/
     }
+    $scope.remarque_text = "";
+    $scope.addRemarque = function(e)
+    {
+        console.log("je suis ici", $("#id_projet").val(),$scope.idProjet);
+        if($('#demande_texte_remarque') == ""){
+            iziToast.error({
+                title: '',
+                message: "Veuillez definir un text pour la remarque",
+                position: 'topRight'
+            });
+        }
+        else
+        {
+            $scope.remarque_text = $('#demande_texte_remarque').val();
+        }
+
+        var data = {
+            'remarque_text' : $scope.remarque_text,
+            'projet'        : $scope.idProjet,
+            'fichier'       : $("#fichier_remarque").val()
+        };
+        data = JSON.stringify(data);
+
+        $http({
+            url: BASE_URL + 'remarque',
+            method: 'POST',
+            data: data,
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }).then(function (data) {
+           // $('body').blockUI_stop();
+            if (data.data.errors) {
+                iziToast.error({
+                    title: '',
+                    message: data.data.errors,
+                    position: 'topRight'
+                });
+            }else{
+               // $('body').blockUI_stop();
+                iziToast.success({
+                    title: '',
+                    message: 'Remarque bien envoyé',
+                    position: 'topRight'
+                });
+            }
+        });
+
+
+                $scope.emptyForm('remarque');
+
+                $("#modal_remarque").modal('hide');
+              
+    };
 
 
     $scope.idProjet2  = 0;
