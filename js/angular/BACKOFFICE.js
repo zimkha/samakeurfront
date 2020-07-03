@@ -537,13 +537,15 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
     };
 
     $scope.produitsInTable = [];
-
+    $scope.index_plan = 0;
     $scope.actionSurProjet = function (action, selectedItem = null) {
         if (action == 'add')
         {
             //Ajouter un élément dans le tableau
+             $scope.index_plan = $scope.index_plan + 1;
+
             var niveau = $("#niveau_projet").val();
-            var piece_projet = $("#piece_projet").val();
+            // var piece_projet = $("#piece_projet").val();
             var chambre_projet = $("#chambre_projet").val();
             var chambre_sdb_projet = $("#chambre_sdb_projet").val();
             var bureau_projet = $("#bureau_projet").val();
@@ -552,13 +554,13 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
             var toillette_projet = $("#toillette_projet").val();
 
 
-            if ($scope.estEntier(piece_projet) == false) {
-                iziToast.error({
-                    message: "Sélectionnez une piece",
-                    position: 'topRight'
-                });
-                return false;
-            }
+            // if ($scope.estEntier(piece_projet) == false) {
+            //     iziToast.error({
+            //         message: "Sélectionnez une piece",
+            //         position: 'topRight'
+            //     });
+            //     return false;
+            // }
             if ($scope.estEntier(chambre_projet) == false) {
                 iziToast.error({
                     message: "Sélectionnez une chambre",
@@ -594,17 +596,17 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
                 });
                 return false;
             }
-            else if ($scope.testSiUnElementEstDansTableau($scope.produitsInTable, niveau) == true) {
-                iziToast.error({
-                    message: "Le niveau est déja dans le tableau",
-                    position: 'topRight'
-                });
-                return false;
-            }
+            // else if ($scope.testSiUnElementEstDansTableau($scope.produitsInTable, niveau) == true) {
+            //     iziToast.error({
+            //         message: "Le niveau est déja dans le tableau",
+            //         position: 'topRight'
+            //     });
+            //     return false;
+            // }
 
             $scope.produitsInTable.unshift({
-                "niveau": niveau,
-                "piece": piece_projet,
+                 "niveau":"R +" + $scope.index_plan,
+                // "piece": piece_projet,
                 "chambre": chambre_projet,
                 "sdb": chambre_sdb_projet,
                 "bureau": bureau_projet,
@@ -656,10 +658,10 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
         } else {
             if (superieur == false) {
                 //entier inférieur
-                if (parseInt(val) < 0 && peutEtreEgaleAzero == true) {
+                if (parseInt(val) < 0) {
                     //]-inf; 0]
                     retour = true;
-                } else if (parseInt(val) < 0 && peutEtreEgaleAzero == false) {
+                } else if (parseInt(val) < 0) {
                     //]-inf; 0[
                     retour = true;
                 } else {

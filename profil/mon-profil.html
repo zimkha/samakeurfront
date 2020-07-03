@@ -509,14 +509,14 @@
                                 <input type="file" class="form-control" id="fichier_projet" name="fichier">
                             </div>
                         </div>
-                        <div class="col-lg-4">
+                        <div class="col-lg-3">
                             <div class="form-group">
 
                                 <label for="longeur_projet">Longeur</label>
                                 <input type="number" id="longeur_projet" name="longeur" class="form-control">
                             </div>
                         </div>
-                        <div class="col-lg-4">
+                        <div class="col-lg-3">
                             <div class="form-group">
 
                                 <label for="largeur_projet">Largeur</label>
@@ -524,7 +524,7 @@
                             </div>
                         </div>
 
-                        <div class="col-lg-4">
+                        <div class="col-lg-3">
                             <div class="form-group">
                                 <label for="piscine_projet">Piscine</label>
                                 <select class="form-control" id="piscine_projet" name="piscine">
@@ -534,6 +534,15 @@
                             </div>
                         </div>
 
+                        <div class="col-lg-3">
+                            <div class="form-group">
+                                <label for="garage_projet">Garage</label>
+                                <select class="form-control" id="garage_projet" name="garage">
+                                    <option value="1">OUI</option>
+                                    <option value="0">NON</option>
+                                </select>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="row">
@@ -591,20 +600,20 @@
 
                             <div class="card-body">
                                 <div class="row">
-                                    <div class="col-lg-3">
+                                    <!-- <div class="col-lg-3">
                                         <div class="form-group">
 
                                             <label for="niveau_projet">Designation</label>
                                             <input type="text" name="niveau" id="niveau_projet" class="form-control" >
                                         </div>
-                                    </div>
-                                    <div class="col-lg-3">
+                                    </div> -->
+                                    <!-- <div class="col-lg-3">
                                         <div class="form-group">
 
                                             <label for="piece_projet">Pièces</label>
                                             <input type="number" name="piece" id="piece_projet" class="form-control" >
                                         </div>
-                                    </div>
+                                    </div> -->
                                     <div class="col-lg-3">
                                         <div class="form-group">
                                             <label for="chambre_projet">Chbres simples</label>
@@ -665,7 +674,7 @@
                                                   <thead style="color: #000!important;" >
                                                   <th class="text-center">N°</th>
                                                   <th class="text-center">Niveau</th>
-                                                  <th class="text-center">Pièce</th>
+                                                  <!-- <th class="text-center">Pièce</th> -->
                                                   <th class="text-center">Chbres Sple</th>
                                                   <th class="text-center">Chbres SDB</th>
                                                   <th class="text-center">Bureau</th>
@@ -682,9 +691,7 @@
                                                       <td class="text-center">
                                                           {{ item.niveau }}
                                                       </td>
-                                                      <td class="text-center">
-                                                          {{ item.piece }}
-                                                      </td>
+                                                     
                                                       <td class="text-center">
                                                           {{ item.chambre }}
                                                       </td>
