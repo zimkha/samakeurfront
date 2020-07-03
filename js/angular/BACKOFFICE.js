@@ -324,7 +324,7 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
             "niveauprojets"                 :  ["id",""],
 
 
-            "projets"                       :  ["id,name,etat,electricite,acces_voirie,assainissement,geometre,courant_faible,eaux_pluviable,bornes_visible,necessite_bornage,adresse_terrain,active,a_valider,created_at_fr,created_at,superficie,longeur,largeur,nb_pieces,nb_salon,sdb,nb_chambre,nb_cuisine,nb_toillette,nb_etage,user_id,remarques{id,demande_text,projet_id},user{name,email,nom,prenom,telephone,adresse_complet,code_postal},fichier,niveau_projets{id,niveau_name,piece,bureau,toillette,chambre,sdb,salon,cuisine},plan_projets{id,plan_id,projet_id, plan{id,code,created_at_fr,superficie,longeur,largeur,nb_pieces,nb_salon,nb_chambre,nb_cuisine,nb_toillette,nb_etage,unite_mesure_id,unite_mesure{id,name},fichier,joineds{id,fichier,description,active},niveau_plans{id,piece,niveau,bureau,toillette,chambre,salon,cuisine}}}",""],
+            "projets"                       :  ["id,text_projet,name,etat,electricite,acces_voirie,assainissement,geometre,courant_faible,eaux_pluviable,bornes_visible,necessite_bornage,adresse_terrain,active,a_valider,created_at_fr,created_at,superficie,longeur,largeur,nb_pieces,nb_salon,sdb,nb_chambre,nb_cuisine,nb_toillette,nb_etage,user_id,remarques{id,demande_text,projet_id},user{name,email,nom,prenom,telephone,adresse_complet,code_postal},fichier,niveau_projets{id,niveau_name,piece,bureau,toillette,chambre,sdb,salon,cuisine},plan_projets{id,plan_id,projet_id, plan{id,code,created_at_fr,superficie,longeur,largeur,nb_pieces,nb_salon,nb_chambre,nb_cuisine,nb_toillette,nb_etage,unite_mesure_id,unite_mesure{id,name},fichier,joineds{id,fichier,description,active},niveau_plans{id,piece,niveau,bureau,toillette,chambre,salon,cuisine}}}",""],
 
 
             "clients"                       :  ["id",""],
@@ -538,13 +538,15 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
     };
 
     $scope.produitsInTable = [];
-
+    $scope.index_plan = 0;
     $scope.actionSurProjet = function (action, selectedItem = null) {
         if (action == 'add')
         {
             //Ajouter un élément dans le tableau
+             $scope.index_plan = $scope.index_plan + 1;
+
             var niveau = $("#niveau_projet").val();
-            var piece_projet = $("#piece_projet").val();
+            // var piece_projet = $("#piece_projet").val();
             var chambre_projet = $("#chambre_projet").val();
             var chambre_sdb_projet = $("#chambre_sdb_projet").val();
             var bureau_projet = $("#bureau_projet").val();
@@ -553,59 +555,94 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
             var toillette_projet = $("#toillette_projet").val();
 
 
-            if ($scope.estEntier(piece_projet) == false) {
+            // if ($scope.estEntier(piece_projet) == false) {
+            //     iziToast.error({
+            //         message: "Sélectionnez une piece",
+            //         position: 'topRight'
+            //     });
+            //     return false;
+            // }
+            // if ($scope.estEntier(chambre_projet) == false) {
+            //     iziToast.error({
+            //         message: "Sélectionnez une chambre",
+            //         position: 'topRight'
+            //     });
+            //     return false;
+            // }
+            if(chambre_projet < 0)
+            {
                 iziToast.error({
-                    message: "Sélectionnez une piece",
+                    message: "Preciserle nombre de chambres",
                     position: 'topRight'
                 });
                 return false;
             }
-            if ($scope.estEntier(chambre_projet) == false) {
+            // if ($scope.estEntier(chambre_sdb_projet) == false) {
+            //     iziToast.error({
+            //         message: "Sélectionnez une chambre SDB",
+            //         position: 'topRight'
+            //     });
+            //     return false;
+            // }
+            if(chambre_sdb_projet < 0)
+            {
                 iziToast.error({
-                    message: "Sélectionnez une chambre",
+                    message: "Preciserle nombre de Chambre Salle de Bain",
                     position: 'topRight'
                 });
                 return false;
             }
-            if ($scope.estEntier(chambre_sdb_projet) == false) {
+            if(salon_projet < 0)
+            {
                 iziToast.error({
-                    message: "Sélectionnez une chambre SDB",
+                    message: "Preciserle nombre de salon",
                     position: 'topRight'
                 });
                 return false;
             }
-            if ($scope.estEntier(salon_projet) == false) {
+            // if ($scope.estEntier(salon_projet) == false) {
+               
+            // }
+            // if ($scope.estEntier(cuisine_projet) == false) {
+            //     iziToast.error({
+            //         message: "Sélectionnez une cuisine",
+            //         position: 'topRight'
+            //     });
+            //     return false;
+            // }
+            if(cuisine_projet < 0)
+            {
                 iziToast.error({
-                    message: "Sélectionnez une salon",
+                    message: "Preciserle nombre de cuisine",
                     position: 'topRight'
                 });
                 return false;
             }
-            if ($scope.estEntier(cuisine_projet) == false) {
+            // if ($scope.estEntier(toillette_projet) == false) {
+            //     iziToast.error({
+            //         message: "Sélectionnez une toillette",
+            //         position: 'topRight'
+            //     });
+            //     return false;
+            // }
+            if(toillette_projet < 0)
+            {
                 iziToast.error({
-                    message: "Sélectionnez une cuisine",
+                    message: "Preciserle nombre de Toillettes",
                     position: 'topRight'
                 });
                 return false;
             }
-            if ($scope.estEntier(toillette_projet) == false) {
-                iziToast.error({
-                    message: "Sélectionnez une toillette",
-                    position: 'topRight'
-                });
-                return false;
-            }
-            else if ($scope.testSiUnElementEstDansTableau($scope.produitsInTable, niveau) == true) {
-                iziToast.error({
-                    message: "Le niveau est déja dans le tableau",
-                    position: 'topRight'
-                });
-                return false;
-            }
+            // else if ($scope.testSiUnElementEstDansTableau($scope.produitsInTable, niveau) == true) {
+            //     iziToast.error({
+            //         message: "Le niveau est déja dans le tableau",
+            //         position: 'topRight'
+            //     });
+            //     return false;
+            // }
 
             $scope.produitsInTable.unshift({
-                "niveau": niveau,
-                "piece": piece_projet,
+                "niveau":  "R +" + $scope.index_plan,
                 "chambre": chambre_projet,
                 "sdb": chambre_sdb_projet,
                 "bureau": bureau_projet,
@@ -628,6 +665,7 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
         }
         else if (action == 'delete') {
             //Supprimer un élément du tableau
+            $scope.index_plan = $scope.index_plan - 1;
             $.each($scope.produitsInTable, function (keyItem, oneItem) {
                 if (oneItem.id == selectedItem.id) {
                     $scope.produitsInTable.splice(keyItem, 1);
@@ -657,10 +695,10 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
         } else {
             if (superieur == false) {
                 //entier inférieur
-                if (parseInt(val) < 0 && peutEtreEgaleAzero == true) {
+                if (parseInt(val) < 0) {
                     //]-inf; 0]
                     retour = true;
-                } else if (parseInt(val) < 0 && peutEtreEgaleAzero == false) {
+                } else if (parseInt(val) < 0) {
                     //]-inf; 0[
                     retour = true;
                 } else {
@@ -668,10 +706,10 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
                 }
             } else {
                 //entier supérieur
-                if (parseInt(val) > 0 && peutEtreEgaleAzero == true) {
+                if (parseInt(val) > 0 ) {
                     //[0; +inf[
                     retour = true;
-                } else if (parseInt(val) > 0 && peutEtreEgaleAzero == false) {
+                } else if (parseInt(val) > 0 ) {
                     //]0; +inf[
                     retour = true;
                 } else {
@@ -722,10 +760,7 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
     $scope.addProjet = function (e) {
         e.preventDefault();
 
-        if ($scope.produitsInTable.length == 0)
-        {
-
-        }
+    
         if ($scope.produitsInTable.length ==0)
         {
             iziToast.error({
@@ -869,6 +904,7 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
                     $scope.emptyForm('projet');
 
                     $("#modal_demande").modal('hide');
+                    $scope.index_plan = 0;
                     $scope.pageChanged('projet');
 
                 }
@@ -959,6 +995,9 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
             $('#largeur_'+type).val(item.largeur);
             $('#description_'+type).val(item.description);
             $('#piscine_'+type).val(item.piscine);
+            $('#garage_'+type).val(item.garage);
+            $('#description_projet'+type).val(item.text_projet);
+            
           //  $('#electricite_'+type).val(item.electricite);
            /* $('#acces_voirie'+type).val(item.acces_voirie);
             $('#assainissement'+type).val(item.assainissement);
