@@ -491,8 +491,8 @@
             </div>
             <div class="modal-body" style="padding: 50px!important;">
                 <form id="form_addprojet" class="form" enctype="multipart/form-data" accept-charset="UTF-8">
+                    @csrf
                     <input type="hidden" id="id_projet" name="id">
-                    <!--  <input type="hidden" name="tab_niveau" id="tab_niveau" value="@{{produitsInTable}}">-->
 
                     <div class="row">
                         <div class="col-lg-6">
@@ -614,47 +614,47 @@
                                             <input type="number" name="piece" id="piece_projet" class="form-control" >
                                         </div>
                                     </div> -->
-                                    <div class="col-lg-3">
+                                    <div class="col-lg-4">
                                         <div class="form-group">
                                             <label for="chambre_projet">Chbres simples</label>
                                             <input type="number" name="chambre" id="chambre_projet" class="form-control" >
                                         </div>
                                     </div>
-                                    <div class="col-lg-3">
+                                    <div class="col-lg-4">
                                         <div class="form-group">
 
                                             <label for="chambre_sdb_projet">Chbres SDB</label>
                                             <input type="number" name="sdb" id="chambre_sdb_projet" class="form-control" >
                                         </div>
                                     </div>
-                                    <div class="col-lg-3">
+                                    <div class="col-lg-4">
                                         <div class="form-group">
 
                                             <label for="bureau_projet">Bureau</label>
                                             <input type="number" id="bureau_projet" class="form-control" >
                                         </div>
                                     </div>
-                                    <div class="col-lg-3">
+                                    <div class="col-lg-4">
                                         <div class="form-group">
 
                                             <label for="salon_projet">Salon</label>
                                             <input type="number" name="salon" id="salon_projet" class="form-control" >
                                         </div>
                                     </div>
-                                    <div class="col-lg-2">
+                                    <div class="col-lg-4">
                                         <div class="form-group">
                                             <label for="cuisine_projet">Cuisine</label>
                                             <input type="number" name="cuisine" id="cuisine_projet" class="form-control" >
                                         </div>
                                     </div>
-                                    <div class="col-lg-2">
+                                    <div class="col-lg-3">
                                         <div class="form-group">
 
                                             <label for="toillette_projet">Toillette</label>
                                             <input type="number" name="toillette" class="form-control" id="toillette_projet">
                                         </div>
                                     </div>
-                                    <div class="col-lg-2">
+                                    <div class="col-lg-1">
                                         <div class="form-group mt-4 text-lg-right">
                                             <button class="btn btn-success mt-2" ng-click="actionSurProjet('add')" title="Ajouter un niveau" >
                                                 <i class="fa fa-plus"></i>
