@@ -5,6 +5,7 @@ var BASE_URL = 'http://localhost/samakeurback/public/';
 //var BASE_URL = 'http://samakeurci.com/admin/';
 
 var imgupload = 'images/upload.jpg';
+
 var tokenDesamakeur = '';
 var tokenDeOasisValCompte = '';
 
@@ -720,6 +721,20 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
 
     $scope.addProjet = function (e) {
         e.preventDefault();
+
+        if ($scope.produitsInTable.length == 0)
+        {
+
+        }
+        if ($scope.produitsInTable.length ==0)
+        {
+            iziToast.error({
+                title: "",
+                message: "Vous devez ajouter au moins un niveau.",
+                position: 'topRight'
+            });
+            return false;
+        }
 
         if($('#electricte_projet').prop('checked') == true){
             $scope.electricite = 1;
