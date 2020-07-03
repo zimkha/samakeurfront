@@ -1147,7 +1147,7 @@ object {
 .modal-dialog .modal-content .modal-body {
 	padding: 0px;
 	overflow-y: auto;
-	max-height: 510px;
+	/*max-height: 510px;*/
 	height: 700px;
 }
 .quickview-content {

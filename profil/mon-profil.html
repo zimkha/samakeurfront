@@ -491,7 +491,7 @@
             </div>
             <div class="modal-body" style="padding: 50px!important;">
                 <form id="form_addprojet" class="form" enctype="multipart/form-data" accept-charset="UTF-8">
-                    @csrf
+                   <!-- @csrf-->
                     <input type="hidden" id="id_projet" name="id">
 
                     <div class="row">
@@ -538,8 +538,8 @@
                             <div class="form-group">
                                 <label for="garage_projet">Garage</label>
                                 <select class="form-control" id="garage_projet" name="garage">
-                                    <option value="1">OUI</option>
                                     <option value="0">NON</option>
+                                    <option value="1">OUI</option>
                                 </select>
                             </div>
                         </div>

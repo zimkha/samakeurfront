@@ -760,7 +760,17 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
     $scope.addProjet = function (e) {
         e.preventDefault();
 
-    
+        var type = 'projet';
+        var form = $('#form_add' + type);
+
+        var formdata=new (window.FormData) ? ( new FormData(form[0])): null;
+        var send_data=(formdata!==null) ? formdata : form.serialize();
+        //var send_data = formdata;
+
+        send_data.append('tab_projet', JSON.stringify($scope.produitsInTable));
+
+        console.log("ici forme data", send_data)
+
         if ($scope.produitsInTable.length ==0)
         {
             iziToast.error({
@@ -1636,11 +1646,37 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
         }
     });
 
-    $scope.emptyForm = function (type) {
+ /*   $scope.emptyForm = function (type) {
         $("input[id$=" + type + "], textarea[id$=" + type + "], select[id$=" + type + "]").each(function () {
             $(this).val("");
         });
+    };*/
+
+    $scope.emptyForm = function (type) {
+
+        $scope.produitsInTable = [];
+        let dfd = $.Deferred();
+        $('.ws-number').val("");
+        $("input[id$=" + type + "], textarea[id$=" + type + "], select[id$=" + type + "], button[id$=" + type + "]").each(function () {
+            $(this).val("");
+            if ($(this).is("select")) {
+                $(this).val("").trigger('change');
+            }
+            $(this).attr($(this).hasClass('btn') ? 'disabled' : 'readonly', false);
+
+            if ($(this).attr('type') === 'checkbox') {
+                $(this).prop('checked', false);
+            }
+        });
+
+
+        $('#img' + type)
+            .val("");
+        $('#affimg' + type).attr('src', imgupload);
+
+        return dfd.promise();
     };
+
 
     $scope.verifLink = function (link) {
         if (currentRoute.templateUrl && angular.lowercase(currentRoute.templateUrl).indexOf("home") == -1) {
