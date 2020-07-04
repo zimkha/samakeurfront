@@ -150,7 +150,7 @@
                                                 </ul>
                                                 <ul class="dropdown" ng-if="userConnected">
                                                     <li class="active"><a href="index.html"> <span class="fa fa-user mr-1"></span> {{userConnected.prenom}} {{userConnected.nom}} </a></li>
-                                                    <li class="active"><a href="mon-profil.html">Mon profil</a></li>
+                                                    <li class="active"><a href="mon-profil.html">Samakeur</a></li>
                                                     <li><a ng-click="LogOut()">Deconnexion</a></li>
                                                 </ul>
                                             </li>
@@ -171,7 +171,7 @@
 <div class="product-area section">
     <div class="container">
 
-        <div class="item-titre farial">Mon profil</div>
+        <div class="item-titre farial">Samakeur</div>
         <div class="underline"></div>
 
         <div class="mt-30">
@@ -542,6 +542,47 @@
                                     <option value="1">OUI</option>
                                 </select>
                             </div>
+                        </div>
+                    </div>
+
+                    <div class="row justify-content-center">
+                        <div class="col-md-12">
+                            <div class="row justify-content-center">
+                                <div class="col-md-2 mb-2 text-center">
+                                    <label for="garage_projet">Choix Nord </label>
+                                    <select class="form-control" id="choix_nord_projet" name="choix_nord">
+                                        <option value="0">Rue</option>
+                                        <option value="1">Mitoyen</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-2 pb-4 pt-4 text-center">
+                            <label for="garage_projet">Choix Ouest </label>
+                            <select class="form-control" id="choix_ouest_projet" name="choix_ouest">
+                                <option value="0">Rue</option>
+                                <option value="1">Mitoyen</option>
+                            </select>
+                        </div>
+                        <div class="col-md-5 border"></div>
+                        <div class="col-md-2 pb-4 pt-4 text-center">
+                            <label for="garage_projet">Choix Est </label>
+                            <select class="form-control" id="choix_est_projet" name="choix_est">
+                                <option value="0">Rue</option>
+                                <option value="1">Mitoyen</option>
+                            </select>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="row justify-content-center">
+                                <div class="col-md-2 mt-2 text-center">
+                                    <label for="garage_projet">Choix Sud </label>
+                                    <select class="form-control" id="choix_sud_projet" name="choix_sud">
+                                        <option value="0">Rue</option>
+                                        <option value="1">Mitoyen</option>
+                                    </select>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
 
