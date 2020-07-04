@@ -324,7 +324,7 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
             "niveauprojets"                 :  ["id",""],
 
 
-            "projets"                       :  ["id,text_projet,name,etat,electricite,acces_voirie,assainissement,geometre,courant_faible,eaux_pluviable,bornes_visible,necessite_bornage,adresse_terrain,active,a_valider,created_at_fr,created_at,superficie,longeur,largeur,nb_pieces,nb_salon,sdb,nb_chambre,nb_cuisine,nb_toillette,nb_etage,user_id,remarques{id,demande_text,projet_id},user{name,email,nom,prenom,telephone,adresse_complet,code_postal},fichier,niveau_projets{id,niveau_name,piece,bureau,toillette,chambre,sdb,salon,cuisine},plan_projets{id,plan_id,projet_id, plan{id,code,created_at_fr,superficie,longeur,largeur,nb_pieces,nb_salon,nb_chambre,nb_cuisine,nb_toillette,nb_etage,unite_mesure_id,unite_mesure{id,name},fichier,joineds{id,fichier,description,active},niveau_plans{id,piece,niveau,bureau,toillette,chambre,salon,cuisine}}}",""],
+            "projets"                       :  ["id,text_projet,name,etat,electricite,acces_voirie,assainissement,geometre,courant_faible,eaux_pluviable,bornes_visible,necessite_bornage,adresse_terrain,active,a_valider,created_at_fr,created_at,superficie,longeur,largeur,nb_pieces,nb_salon,nb_sdb,nb_bureau,nb_chambre,nb_cuisine,nb_toillette,nb_etage,user_id,remarques{id,demande_text,projet_id},user{name,email,nom,prenom,telephone,adresse_complet,code_postal},fichier,niveau_projets{id,niveau_name,piece,bureau,toillette,chambre,sdb,salon,cuisine},plan_projets{id,plan_id,projet_id, plan{id,code,created_at_fr,superficie,longeur,largeur,nb_pieces,nb_salon,nb_chambre,nb_cuisine,nb_toillette,nb_etage,unite_mesure_id,unite_mesure{id,name},fichier,joineds{id,fichier,description,active},niveau_plans{id,piece,niveau,bureau,toillette,chambre,salon,cuisine}}}",""],
 
 
             "clients"                       :  ["id",""],
@@ -587,7 +587,7 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
             if(chambre_sdb_projet < 0)
             {
                 iziToast.error({
-                    message: "Preciserle nombre de Chambre Salle de Bain",
+                    message: "Preciser le nombre de Chambre Salle de Bain",
                     position: 'topRight'
                 });
                 return false;
@@ -595,7 +595,7 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
             if(salon_projet < 0)
             {
                 iziToast.error({
-                    message: "Preciserle nombre de salon",
+                    message: "Preciser le nombre de salon",
                     position: 'topRight'
                 });
                 return false;
@@ -613,7 +613,7 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
             if(cuisine_projet < 0)
             {
                 iziToast.error({
-                    message: "Preciserle nombre de cuisine",
+                    message: "Preciser le nombre de cuisine",
                     position: 'topRight'
                 });
                 return false;
@@ -628,7 +628,7 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
             if(toillette_projet < 0)
             {
                 iziToast.error({
-                    message: "Preciserle nombre de Toillettes",
+                    message: "Preciser le nombre de Toillettes",
                     position: 'topRight'
                 });
                 return false;
@@ -1029,7 +1029,7 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
             var liste_ligneniveau = [];
             $.each(item.niveau_projets, function (keyItem, valueItem) {
                 console.log("le projet en question",valueItem)
-                liste_ligneniveau.push({"id":valueItem.id, "niveau":valueItem.niveau_name,"piece":valueItem.piece,"sdb": valueItem.sdb, "chambre" : valueItem.chambre, "bureau" : valueItem.bureau, "salon" : valueItem.salon, "cuisine" : valueItem.cuisine, "toillette" : valueItem.toillette});
+                liste_ligneniveau.push({"id":valueItem.id, "niveau":valueItem.niveau_name,"piece":valueItem.piece,"sdb": valueItem.nb_sdb, "chambre" : valueItem.chambre, "bureau" : valueItem.bureau, "salon" : valueItem.salon, "cuisine" : valueItem.cuisine, "toillette" : valueItem.toillette});
             });
             $scope.produitsInTable = [];
             $scope.produitsInTable = liste_ligneniveau;
