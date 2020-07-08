@@ -555,39 +555,18 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
             var toillette_projet = $("#toillette_projet").val();
 
 
-            // if ($scope.estEntier(piece_projet) == false) {
-            //     iziToast.error({
-            //         message: "Sélectionnez une piece",
-            //         position: 'topRight'
-            //     });
-            //     return false;
-            // }
-            // if ($scope.estEntier(chambre_projet) == false) {
-            //     iziToast.error({
-            //         message: "Sélectionnez une chambre",
-            //         position: 'topRight'
-            //     });
-            //     return false;
-            // }
             if(chambre_projet < 0)
             {
                 iziToast.error({
-                    message: "Preciserle nombre de chambres",
+                    message: "Preciser le nombre de chambres",
                     position: 'topRight'
                 });
                 return false;
             }
-            // if ($scope.estEntier(chambre_sdb_projet) == false) {
-            //     iziToast.error({
-            //         message: "Sélectionnez une chambre SDB",
-            //         position: 'topRight'
-            //     });
-            //     return false;
-            // }
             if(chambre_sdb_projet < 0)
             {
                 iziToast.error({
-                    message: "Preciser le nombre de Chambre Salle de Bain",
+                    message: "Preciser le nombre de Chambre avec Salle de Bain",
                     position: 'topRight'
                 });
                 return false;
@@ -600,16 +579,6 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
                 });
                 return false;
             }
-            // if ($scope.estEntier(salon_projet) == false) {
-               
-            // }
-            // if ($scope.estEntier(cuisine_projet) == false) {
-            //     iziToast.error({
-            //         message: "Sélectionnez une cuisine",
-            //         position: 'topRight'
-            //     });
-            //     return false;
-            // }
             if(cuisine_projet < 0)
             {
                 iziToast.error({
@@ -618,30 +587,17 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
                 });
                 return false;
             }
-            // if ($scope.estEntier(toillette_projet) == false) {
-            //     iziToast.error({
-            //         message: "Sélectionnez une toillette",
-            //         position: 'topRight'
-            //     });
-            //     return false;
-            // }
             if(toillette_projet < 0)
             {
                 iziToast.error({
-                    message: "Preciser le nombre de Toillettes",
+                    message: "Preciser le nombre de toillettes",
                     position: 'topRight'
                 });
                 return false;
             }
-            // else if ($scope.testSiUnElementEstDansTableau($scope.produitsInTable, niveau) == true) {
-            //     iziToast.error({
-            //         message: "Le niveau est déja dans le tableau",
-            //         position: 'topRight'
-            //     });
-            //     return false;
-            // }
 
-            $scope.produitsInTable.unshift({
+           // $scope.produitsInTable.unshift({
+            $scope.produitsInTable.push({
                 "niveau":  "R +" + $scope.index_plan,
                 "chambre": chambre_projet,
                 "sdb": chambre_sdb_projet,
@@ -653,8 +609,8 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
 
             console.log("this.produitsInTable",$scope.produitsInTable)
 
-            $("#niveau_projet").val('');
-            $("#piece_projet").val('');
+           // $("#niveau_projet").val('');
+           // $("#piece_projet").val('');
             $("#chambre_projet").val('');
             $("#chambre_sdb_projet").val('');
             $("#salon_projet").val('');
@@ -1029,7 +985,7 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
             var liste_ligneniveau = [];
             $.each(item.niveau_projets, function (keyItem, valueItem) {
                 console.log("le projet en question",valueItem)
-                liste_ligneniveau.push({"id":valueItem.id, "niveau":valueItem.niveau_name,"piece":valueItem.piece,"sdb": valueItem.nb_sdb, "chambre" : valueItem.chambre, "bureau" : valueItem.bureau, "salon" : valueItem.salon, "cuisine" : valueItem.cuisine, "toillette" : valueItem.toillette});
+                liste_ligneniveau.push({"id":valueItem.id, "niveau":valueItem.niveau_name,"piece":valueItem.piece,"sdb": valueItem.sdb, "chambre" : valueItem.chambre, "bureau" : valueItem.bureau, "salon" : valueItem.salon, "cuisine" : valueItem.cuisine, "toillette" : valueItem.toillette});
             });
             $scope.produitsInTable = [];
             $scope.produitsInTable = liste_ligneniveau;

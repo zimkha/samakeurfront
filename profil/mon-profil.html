@@ -356,7 +356,7 @@
                                                         </div>
                                                         <div class=" col-md-12 col-sm-12 mt-10">
                                                             <div class="border-danger">
-                                                                <div style="font-size: 17px;color: #F7941D;font-weight: bold"> Prix :<span> <u style="margin-left: 10px!important;">{{item.prix}}</u></span></div>
+                                                                <div style="font-size: 17px;color: #F7941D;font-weight: bold"> <span class="fa fa-money mr-1"></span> Prix :<span> <u style="margin-left: 10px!important;"> 500 000 FCFA {{item.prix}}</u></span></div>
                                                             </div>
                                                         </div>
 
@@ -509,6 +509,11 @@
                    <!-- @csrf-->
                     <input type="hidden" id="id_projet" name="id">
 
+                    <h4 class="form-section animated fadeInDown text-uppercase mb-3 mt-5 border-bottom border-alternate">
+                        <i class="fa fa-info-circle"></i>
+                        Informations
+                    </h4>
+
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="form-group">
@@ -522,20 +527,6 @@
 
                                 <label for="fichier_projet">Fichier</label>
                                 <input type="file" class="form-control" id="fichier_projet" name="fichier">
-                            </div>
-                        </div>
-                        <div class="col-lg-3">
-                            <div class="form-group">
-
-                                <label for="longeur_projet">Longeur</label>
-                                <input type="number" id="longeur_projet" name="longeur" class="form-control">
-                            </div>
-                        </div>
-                        <div class="col-lg-3">
-                            <div class="form-group">
-
-                                <label for="largeur_projet">Largeur</label>
-                                <input type="number" id="largeur_projet" name="largeur" class="form-control">
                             </div>
                         </div>
 
@@ -560,7 +551,7 @@
                         </div>
                     </div>
 
-                    <h4 class="form-section animated fadeInDown mb-3 mt-5 border-bottom border-alternate">
+                    <h4 class="form-section animated fadeInDown text-uppercase mb-3 mt-5 border-bottom border-alternate">
                         <i class="fa fa-building"></i>
                         Position
                     </h4>
@@ -568,39 +559,61 @@
                     <div class="row justify-content-center mb-3">
                         <div class="col-md-12">
                             <div class="row justify-content-center">
+                                <div class="col-lg-2  text-center">
+                                    <div class="form-group">
+                                        <label for="longeur_projet">Longeur(m)</label>
+                                        <input type="number" id="longeur_projet" name="longeur" class="form-control">
+                                    </div>
+                                </div>
                                 <div class="col-md-2 mb-2 text-center">
                                     <label for="garage_projet">Choix Nord </label>
                                     <select class="form-control" id="choix_nord_projet" name="choix_nord">
-                                        <option value="0">Rue</option>
                                         <option value="1">Mitoyen</option>
+                                        <option value="0">Rue</option>
                                     </select>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-2 pb-4 pt-4 text-center align-self-center">
-                            <label for="garage_projet">Choix Ouest </label>
-                            <select class="form-control" id="choix_ouest_projet" name="choix_ouest">
-                                <option value="0">Rue</option>
-                                <option value="1">Mitoyen</option>
-                            </select>
+
+                        <div class="col-md-4 align-self-center">
+                            <div class="row ">
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label for="largeur_projet">Largeur(m)</label>
+                                        <input type="number" id="largeur_projet" name="largeur" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-md-6 pb-4 text-center align-self-center">
+                                    <label for="garage_projet">Choix Ouest </label>
+                                    <select class="form-control" id="choix_ouest_projet" name="choix_ouest">
+                                        <option value="1">Mitoyen</option>
+                                        <option value="0">Rue</option>
+                                    </select>
+                                </div>
+                            </div>
                         </div>
                         <div class="col-md-5 border">
                             <div style="height: 200px"></div>
                         </div>
-                        <div class="col-md-2 pb-4 pt-4 text-center align-self-center">
-                            <label for="garage_projet">Choix Est </label>
-                            <select class="form-control" id="choix_est_projet" name="choix_est">
-                                <option value="0">Rue</option>
-                                <option value="1">Mitoyen</option>
-                            </select>
+                        <div class="col-md-3 align-self-center">
+                            <div class="row ">
+                                <div class="col-md-6 pb-4 pt-4 text-center align-self-center">
+                                    <label for="garage_projet">Choix Est </label>
+                                    <select class="form-control" id="choix_est_projet" name="choix_est">
+                                        <option value="1">Mitoyen</option>
+                                        <option value="0">Rue</option>
+                                    </select>
+                                </div>
+                            </div>
                         </div>
+
                         <div class="col-md-12">
                             <div class="row justify-content-center">
                                 <div class="col-md-2 mt-2 text-center">
                                     <label for="garage_projet">Choix Sud </label>
                                     <select class="form-control" id="choix_sud_projet" name="choix_sud">
-                                        <option value="0">Rue</option>
                                         <option value="1">Mitoyen</option>
+                                        <option value="0">Rue</option>
                                     </select>
                                 </div>
                             </div>
@@ -617,7 +630,7 @@
                         </div>
                         <div class="col-lg-3">
                             <label class="checkbox-inline">
-                                <input type="checkbox" id="accesvoirie_projet" value="true" name="acces_voirie"> Accés voirie
+                                <input type="checkbox" id="accesvoirie_projet" value="true" name="acces_voirie"> Accès voirie
                             </label>
                         </div>
                         <div class="col-lg-3">
@@ -634,22 +647,22 @@
                     <div class="row">
                         <div class="col-lg-3">
                             <label class="checkbox-inline">
-                                <input type="checkbox" id="courant_faible_projet" value="true" name="courant_faible"> Courant Faible
+                                <input type="checkbox" id="courant_faible_projet" value="true" name="courant_faible"> Courant faible
                             </label>
                         </div>
                         <div class="col-lg-3">
                             <label class="checkbox-inline">
-                                <input type="checkbox" id="eaux_pluviable_projet" value="true" name="eaux_pluviable"> Eaux pliviale
+                                <input type="checkbox" id="eaux_pluviable_projet" value="true" name="eaux_pluviable"> Eaux pluviales
                             </label>
                         </div>
                         <div class="col-lg-3">
                             <label class="checkbox-inline">
-                                <input type="checkbox" id="bornes_visible_projet" value="true" name="bornes_visible"> Bornez Visible
+                                <input type="checkbox" id="bornes_visible_projet" value="true" name="bornes_visible"> Borne visible
                             </label>
                         </div>
                         <div class="col-lg-3">
                             <label class="checkbox-inline">
-                                <input type="checkbox" id="necessite_bornage_projet" value="true" name="necessite_bornage"> Necessite bornage
+                                <input type="checkbox" id="necessite_bornage_projet" value="true" name="necessite_bornage"> Nécessite bornage
                             </label>
                         </div>
                     </div>
@@ -679,14 +692,14 @@
                                     </div> -->
                                     <div class="col-lg-4">
                                         <div class="form-group">
-                                            <label for="chambre_projet">Chbres simples</label>
+                                            <label for="chambre_projet">Chambres simples</label>
                                             <input type="number" name="chambre" id="chambre_projet" class="form-control" >
                                         </div>
                                     </div>
                                     <div class="col-lg-4">
                                         <div class="form-group">
 
-                                            <label for="chambre_sdb_projet">Chbres SDB</label>
+                                            <label for="chambre_sdb_projet">Chambres avec salle de bain</label>
                                             <input type="number" name="sdb" id="chambre_sdb_projet" class="form-control" >
                                         </div>
                                     </div>
@@ -749,17 +762,17 @@
                                                   <tbody>
                                                   <tr class="animated fadeIn" ng-repeat="item in produitsInTable">
                                                       <td class="text-center">
-                                                          1
+                                                          {{$index + 1 }}
                                                       </td>
                                                       <td class="text-center">
-                                                          {{ item.niveau }}
+                                                          {{ $index == 0 ? "Rez de chaussée" : item.niveau }}
                                                       </td>
                                                      
                                                       <td class="text-center">
                                                           {{ item.chambre }}
                                                       </td>
                                                       <td class="text-center">
-                                                          {{ item.nb_sdb }}
+                                                          {{ item.sdb }}
                                                       </td>
                                                       <td class="text-center">
                                                           {{ item.bureau }}
