@@ -1084,14 +1084,15 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
         });
     };
 
+
+
+
     $scope.PayeProjet = function (idprojet) {
 
         var data = {
             'id': idprojet,
         };
-
         console.log("icic les datas => ", data)
-        // $('body').blockUI_start();
         $http({
             url: BASE_URL + 'paypal/' + idprojet,
             method: 'GET',
@@ -1100,7 +1101,6 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
                 'Content-Type': 'application/json'
             }
         }).then(function (data) {
-            // $('body').blockUI_stop();
             if (data.data.errors) {
                 iziToast.error({
                     title: '',
@@ -1108,30 +1108,23 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
                     position: 'topRight'
                 });
             }else{
-                // $('body').blockUI_stop();
-                iziToast.success({
-                    title: 'Payement',
-                    message: 'Votre demande a bien été prise en compt',
-                    position: 'topRight'
-                });
+                console.log("ici les datas -> ", data.data)
 
+                  iziToast.success({
+                   //   title: 'Payement',
+                      message: 'Veuillez remplir les informations de votre compte',
+                      position: 'topRight'
+                  });
 
-               // $scope.emptyForm('projet');
+                window.open(""+data.data,"_blank");
 
-             //   $("#modal_demande").modal('hide');
                 $scope.pageChanged('projet');
 
             }
         })
-        /* } else {
-             iziToast.info({
-                 title: '',
-                 message: 'Veuillez vous connecter pour réserver',
-                 position: 'topRight'
-             });
-         }
-         return 'yes';*/
+
     }
+
 
     $scope.filtreProjet = function(itemId)
     {
