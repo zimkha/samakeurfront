@@ -107,6 +107,13 @@ jQuery.extend( jQuery.easing,
             }, 2000);
         });
 
+        $('.lire').click(function(){
+            $('html, body').animate({
+                scrollTop: $( $(this).attr('href') ).offset().top
+            }, 500);
+            return false;
+        });
+
     /*    function toggleIcon(e) {
             alert("bonjour");
             $(e.target)
