@@ -324,7 +324,7 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
             "niveauprojets"                 :  ["id",""],
 
 
-            "projets"                       :  ["id,text_projet,name,etat,electricite,acces_voirie,assainissement,geometre,courant_faible,eaux_pluviable,bornes_visible,necessite_bornage,adresse_terrain,active,a_valider,created_at_fr,created_at,superficie,longeur,largeur,nb_pieces,nb_salon,nb_sdb,nb_bureau,nb_chambre,nb_cuisine,nb_toillette,nb_etage,user_id,remarques{id,demande_text,projet_id},user{name,email,nom,prenom,telephone,adresse_complet,code_postal},fichier,niveau_projets{id,niveau_name,piece,bureau,toillette,chambre,sdb,salon,cuisine},plan_projets{id,plan_id,projet_id, plan{id,code,created_at_fr,superficie,longeur,largeur,nb_pieces,nb_salon,nb_chambre,nb_cuisine,nb_toillette,nb_etage,unite_mesure_id,unite_mesure{id,name},fichier,joineds{id,fichier,description,active},niveau_plans{id,piece,niveau,bureau,toillette,chambre,salon,cuisine}}}",""],
+            "projets"                       :  ["id,montant,text_projet,name,etat,electricite,acces_voirie,assainissement,geometre,courant_faible,eaux_pluviable,bornes_visible,necessite_bornage,adresse_terrain,active,a_valider,created_at_fr,created_at,superficie,longeur,largeur,nb_pieces,nb_salon,nb_sdb,nb_bureau,nb_chambre,nb_cuisine,nb_toillette,nb_etage,user_id,remarques{id,demande_text,projet_id},user{name,email,nom,prenom,telephone,adresse_complet,code_postal},fichier,niveau_projets{id,niveau_name,piece,bureau,toillette,chambre,sdb,salon,cuisine},plan_projets{id,plan_id,projet_id, plan{id,code,created_at_fr,superficie,longeur,largeur,nb_pieces,nb_salon,nb_chambre,nb_cuisine,nb_toillette,nb_etage,unite_mesure_id,unite_mesure{id,name},fichier,joineds{id,fichier,description,active},niveau_plans{id,piece,niveau,bureau,toillette,chambre,salon,cuisine}}}",""],
 
 
             "clients"                       :  ["id",""],
@@ -411,7 +411,9 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
     $scope.getelements = function (type, addData=null)
     {
         rewriteType = type;
-        Init.getElement(rewriteType, listofrequests_assoc[type]).then(function(data)
+        $add_to_req =  (listofrequests_assoc[type].length > 1 && !nullableAddToReq) ? listofrequests_assoc[type][1] : null;
+
+        Init.getElement(rewriteType, listofrequests_assoc[type] + $add_to_req).then(function(data)
         {
             console.log('donnees yi = ', type, data);
 
