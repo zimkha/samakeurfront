@@ -1152,7 +1152,7 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
         {
             form.blockUI_start();
             $http({
-                url: BASE_URL + 'contact',
+                url: BASE_URL + 'contact-send',
                 method: 'POST',
                 data: senddata,
                 headers: {
