@@ -501,9 +501,7 @@
             </div>
             <div class="modal-body" style="padding: 50px!important;">
                 <form id="form_addprojet" class="form" enctype="multipart/form-data" accept-charset="UTF-8">
-                   <!-- @csrf-->
                     <input type="hidden" id="id_projet" name="id">
-
                     <h4 class="form-section animated fadeInDown text-uppercase mb-3 mt-5 border-bottom border-alternate">
                         <i class="fa fa-info-circle"></i>
                         Informations
@@ -745,7 +743,6 @@
                                                   <thead style="color: #000!important;" >
                                                   <th class="text-center">N°</th>
                                                   <th class="text-center">Niveau</th>
-                                                  <!-- <th class="text-center">Pièce</th> -->
                                                   <th class="text-center">Chbres Sple</th>
                                                   <th class="text-center">Chbres SDB</th>
                                                   <th class="text-center">Bureau</th>
@@ -762,7 +759,6 @@
                                                       <td class="text-center">
                                                           {{ $index == 0 ? "Rez de chaussée" : item.niveau }}
                                                       </td>
-                                                     
                                                       <td class="text-center">
                                                           {{ item.chambre }}
                                                       </td>
@@ -808,7 +804,6 @@
                             </div>
                         </div>
                     </div>
-
 
 
                     <div class="modal-footer">

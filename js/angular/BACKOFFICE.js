@@ -700,6 +700,46 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
         return retour;
     };
 
+    $choixNord = 0;
+    $choixSud = 0;
+    $choixOuest = 0;
+    $choixEst = 0;
+
+    $scope.positions = []
+
+    $scope.actionSurPosition = function () {
+
+       /* if (position == "nord")
+        {
+           $choixNord = $('#choix_nord_projet').val();
+        }
+
+        if (position == "sud")
+        {
+            $choixSud = $('#choix_sud_projet').val();
+        }
+
+        if (position == "ouest")
+        {
+            $choixOuest = $('#choix_ouest_projet').val();
+        }
+
+        if (position == "est")
+        {
+            $choixEst = $('#choix_est_projet').val();
+        }
+*/
+       $scope.positions = [
+            {position : 'Nord',ref:  $('#choix_nord_projet').val()},
+            {position : 'Sud',ref: $('#choix_sud_projet').val()},
+            {position : 'Ouest',ref: $('#choix_ouest_projet').val()},
+            {position : 'Est',ref: $('#choix_ouest_projet').val()},
+        ];
+
+       console.log("ici le tabs positions", $scope.positions)
+
+    }
+
     $scope.electricite = 0;
     $scope.acces_voirie = 0;
     $scope.assainissement = 0;
@@ -818,12 +858,13 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
                 'bornes_visible': $scope.bornes_visible,
                 'necessite_bornage': $scope.necessite_bornage,
                 'tab_projet': JSON.stringify($scope.produitsInTable),
+                'positions': [{position : 'Nord',ref:  parseInt($('#choix_nord_projet').val())}, {position : 'Sud',ref: parseInt($('#choix_sud_projet').val())}, {position : 'Ouest',ref: parseInt($('#choix_ouest_projet').val())}, {position : 'Est',ref: parseInt($('#choix_ouest_projet').val())}],
             };
 
         }
         else {
             var data = {
-                 'id': parseInt($scope.idProjet2),
+                'id': parseInt($scope.idProjet2),
                 'user': $scope.userConnected.id,
                 'adresse_terrain': $('#localisation_projet').val(),
                 'fichier': $('#fichier_projet').val(),
@@ -854,6 +895,7 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
                 }
             }).then(function (data) {
                // $('body').blockUI_stop();
+                console.log("ici les datas retours ", data)
                 if (data.data.errors) {
                     iziToast.error({
                         title: '',
@@ -868,7 +910,6 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
                         position: 'topRight'
                     });
 
-
                     $scope.emptyForm('projet');
 
                     $("#modal_demande").modal('hide');
@@ -877,19 +918,15 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
 
                 }
             })
-       /* } else {
-            iziToast.info({
-                title: '',
-                message: 'Veuillez vous connecter pour réserver',
-                position: 'topRight'
-            });
-        }
-        return 'yes';*/
+
     }
+
+
     $scope.remarque_text = "";
     $scope.addRemarque = function(e)
     {
         console.log("je suis ici", $("#id_projet").val(),$scope.idProjet);
+
         if($('#demande_texte_remarque') == ""){
             iziToast.error({
                 title: '',
@@ -934,12 +971,12 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
             }
         });
 
+        $scope.emptyForm('remarque');
 
-                $scope.emptyForm('remarque');
-
-                $("#modal_remarque").modal('hide');
+        $("#modal_remarque").modal('hide');
               
     };
+
 
 
     $scope.idProjet2  = 0;
@@ -965,15 +1002,6 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
             $('#piscine_'+type).val(item.piscine);
             $('#garage_'+type).val(item.garage);
             $('#description_projet'+type).val(item.text_projet);
-            
-          //  $('#electricite_'+type).val(item.electricite);
-           /* $('#acces_voirie'+type).val(item.acces_voirie);
-            $('#assainissement'+type).val(item.assainissement);
-            $('#cadastre'+type).val(item.geometre);
-            $('#courant_faible'+type).val(item.courant_faible);
-            $('#bornes_visible'+type).val(item.bornes_visible);
-            $('#eaux_pluviable'+type).val(item.eaux_pluviable);
-            $('#necessite_bornage'+type).val(item.necessite_bornage);*/
 
             $('#electricite_'+type).prop('checked', item.electricite == true);
             $('#acces_voirie_'+type).prop('checked', item.acces_voirie == true);
@@ -1002,6 +1030,7 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
             });
             console.log('Erreur serveur ici = ' + msg);
         });
+
     };
 
     $scope.InfoProjet = function (itemId) {
@@ -1083,8 +1112,6 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
             ]
         });
     };
-
-
 
 
     $scope.PayeProjet = function (idprojet) {
