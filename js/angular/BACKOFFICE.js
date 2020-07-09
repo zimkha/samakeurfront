@@ -1139,6 +1139,47 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
         $scope.pageChanged('projet');
     }
 
+
+    $scope.contactezNous = function (e)
+    {
+        e.preventDefault();
+        var prefixeForm = 'contacteznous';
+        var form = $('#' + prefixeForm);
+        senddata = form.serializeObject();
+        console.log('senddata form', senddata);
+
+        if (form.validate(prefixeForm))
+        {
+            form.blockUI_start();
+            $http({
+                url: BASE_URL + 'contact',
+                method: 'POST',
+                data: senddata,
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            }).then(function (data) {
+                form.blockUI_stop();
+                console.log('retour formulaire = '+JSON.stringify(data.data));
+                if (data.data.errors) {
+                    iziToast.error({
+                        title: '',
+                        message: data.data.errors,
+                        position: 'topRight'
+                    });
+                }else{
+                    iziToast.success({
+                        title: '',
+                        message: data.data.success,
+                        position: 'topRight'
+                    });
+                    console.log("datadata ", data)
+                    $scope.emptyForm(prefixeForm);
+                }
+            });
+        }
+    };
+
     $scope.resetPwd = function (e)
     {
         e.preventDefault();
