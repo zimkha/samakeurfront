@@ -140,12 +140,12 @@
                                             <li class="active"><a href="pub.html">Pub</a></li>
                                             <li><a href="#"><span class="pc">Espace client</span> <span class="fa fa-user fsize-18 mobile"></span></a>
                                                 <ul class="dropdown" ng-if="!userConnected">
-                                                    <li class="active"><a href="login.html">Connexion</a></li>
+                                                    <li><a href="login.html">Connexion</a></li>
                                                     <li><a href="register.html">S'inscrire</a></li>
                                                 </ul>
                                                 <ul class="dropdown" ng-if="userConnected">
-                                                    <li class="active"><a href="profil/index.html"> <span class="fa fa-user mr-1"></span> {{userConnected.prenom}} {{userConnected.nom}} </a></li>
-                                                    <li class="active"><a href="profil/mon-profil.html">Samakeur</a></li>
+                                                    <li><a href="profil/index.html"> <span class="fa fa-user mr-1"></span> {{userConnected.prenom}} {{userConnected.nom}} </a></li>
+                                                    <li><a href="profil/mon-profil.html">Samakeur</a></li>
                                                     <li><a ng-click="LogOut()">Deconnexion</a></li>
                                                 </ul>
                                             </li>
