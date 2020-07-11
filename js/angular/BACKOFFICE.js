@@ -730,10 +730,10 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
         }
 */
        $scope.positions = [
-            {position : 'Nord',ref:  $('#choix_nord_projet').val()},
-            {position : 'Sud',ref: $('#choix_sud_projet').val()},
-            {position : 'Ouest',ref: $('#choix_ouest_projet').val()},
-            {position : 'Est',ref: $('#choix_ouest_projet').val()},
+            {position : 'Nord',ref:  parseInt($('#choix_nord_projet').val())},
+            {position : 'Sud',ref: parseInt($('#choix_sud_projet').val())},
+            {position : 'Ouest',ref: parseInt($('#choix_ouest_projet').val())},
+            {position : 'Est',ref: parseInt($('#choix_est_projet').val())},
         ];
 
        console.log("ici le tabs positions", $scope.positions)
