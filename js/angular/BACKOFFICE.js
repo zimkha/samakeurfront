@@ -338,6 +338,7 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
 
             "posts"                         : ["id,description,fichier",""]
         };
+    $scope.base_url = BASE_URL;
 
     $scope.plans = [];
     $scope.planprojets = [];
@@ -407,7 +408,7 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
 
     }
 
-    $scope.getelements = function (type, addData=null)
+    $scope.getelements = function (type, addData=null,nullableAddToReq = false)
     {
         rewriteType = type;
         $add_to_req =  (listofrequests_assoc[type].length > 1 && !nullableAddToReq) ? listofrequests_assoc[type][1] : null;
