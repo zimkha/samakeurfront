@@ -565,7 +565,7 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
             var toillette_projet = $("#toillette_projet").val();
 
 
-            if(chambre_projet < 0)
+            if($("#chambre_projet").val() == '' || parseInt($("#chambre_projet").val()) < 0)
             {
                 iziToast.error({
                     message: "Preciser le nombre de chambres",
@@ -573,7 +573,7 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
                 });
                 return false;
             }
-            if(chambre_sdb_projet < 0)
+            if($("#chambre_sdb_projet").val() == '' || parseInt($("#chambre_projet").val()) < 0)
             {
                 iziToast.error({
                     message: "Preciser le nombre de Chambre avec Salle de Bain",
@@ -581,7 +581,7 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
                 });
                 return false;
             }
-            if(salon_projet < 0)
+            if($("#salon_projet").val() == '' || parseInt($("#salon_projet").val()) < 0)
             {
                 iziToast.error({
                     message: "Preciser le nombre de salon",
@@ -589,7 +589,7 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
                 });
                 return false;
             }
-            if(cuisine_projet < 0)
+            if($("#cuisine_projet").val() == '' || parseInt($("#cuisine_projet").val()) < 0)
             {
                 iziToast.error({
                     message: "Preciser le nombre de cuisine",
@@ -597,7 +597,7 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
                 });
                 return false;
             }
-            if(toillette_projet < 0)
+            if($("#toillette_projet").val() == '' || parseInt($("#toillette_projet").val()) < 0)
             {
                 iziToast.error({
                     message: "Preciser le nombre de toillettes",

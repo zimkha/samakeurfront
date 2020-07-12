@@ -170,7 +170,8 @@
         <div class="item-titre farial">Publications</div>
         <div class="underline"></div>
 
-        <div class="row mt-40">
+        <div class="mt-40 font-italic fsize-16" ng-if="posts.length == 0">Pas de publication</div>
+        <div class="row mt-40" ng-if="posts.length != 0">
             <div class="col-md-6 col-lg-4" style="margin-bottom: 2%" ng-repeat="item in posts">
 
                 <a href="{{base_url}}/{{item.fichier}}" data-title="{{ item.description }}" data-lightbox="roadtrip">
