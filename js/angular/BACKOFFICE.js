@@ -308,13 +308,6 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
 
     var listofrequests_assoc =
         {
-
-            /*"jeuxs"                          : "id,user_id,ligne_regularisations{id,ligne_inventaire_id,ligne_inventaire{actual_quantity,current_quantity},ligne_approvisionn    ement_id},created_at_fr,user{name,image}",
-            "contacts"                       : "id,email,nomcomplet,telephone,message",
-            "messages"                       : "id,email,nom,prenom,telephone,code,status",*/
-
-
-
             "plans"                         :  ["id,superficie,longeur,largeur,nb_pieces,nb_salon,nb_chambre,nb_cuisine,nb_toillette,nb_etage", ",niveau_plans{id,piece,bureau,toillette,chambre,salon,cuisine}"],
 
             "planprojets"                   :  ["id,plan_id,projet_id,etat_active,message,etat,plan{id}",""],
@@ -340,6 +333,10 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
             "users"                         :  ["id,nom,prenom,adresse_complet,pays,code_postal,is_client,telephone,name,email,active,password,image,roles{id,name,guard_name,permissions{id,name,display_name,guard_name}}", ",last_login,last_login_ip,created_at_fr", ""],
 
             "dashboards"                    :  ["clients,assurances,ventes,fournisseurs"],
+
+            "messagesends"                  : ["id,objet,message,telephone,email,nom",""],
+
+            "posts"                         : ["id,description,fichier",""]
         };
 
     $scope.plans = [];
@@ -350,6 +347,8 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
     $scope.typeremarques = [];
     $scope.remarques = [];
     $scope.users = [];
+    $scope.posts = [];
+    $scope.messagesends = [];
 
 
 
@@ -452,6 +451,14 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
             else if (type.indexOf("permissions")!==-1)
             {
                 $scope.permissions = data;
+            }
+            else if (type.indexOf("messagesends")!==-1)
+            {
+                $scope.messagesends = data;
+            }
+            else if (type.indexOf("posts")!==-1)
+            {
+                $scope.posts = data;
             }
             else if (type.indexOf("roles")!==-1)
             {
@@ -1323,7 +1330,14 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
 
     whereAreWe = window.location.href;
     console.log('whereAreWe', whereAreWe);
-    if (whereAreWe.indexOf('mon-profil')!==-1)
+
+   // $scope.getelements("posts");
+
+     if(whereAreWe.indexOf('pub')!==-1)
+    {
+        $scope.getelements("posts");
+    }
+    else if (whereAreWe.indexOf('mon-profil')!==-1)
     {
         $scope.etatProjet = 0;
         if ($scope.userConnected == null) {
