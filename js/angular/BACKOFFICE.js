@@ -717,26 +717,6 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
 
     $scope.actionSurPosition = function () {
 
-       /* if (position == "nord")
-        {
-           $choixNord = $('#choix_nord_projet').val();
-        }
-
-        if (position == "sud")
-        {
-            $choixSud = $('#choix_sud_projet').val();
-        }
-
-        if (position == "ouest")
-        {
-            $choixOuest = $('#choix_ouest_projet').val();
-        }
-
-        if (position == "est")
-        {
-            $choixEst = $('#choix_est_projet').val();
-        }
-*/
        $scope.positions = [
             {position : 'Nord',ref:  parseInt($('#choix_nord_projet').val())},
             {position : 'Sud',ref: parseInt($('#choix_sud_projet').val())},
@@ -866,7 +846,7 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
                 'bornes_visible': $scope.bornes_visible,
                 'necessite_bornage': $scope.necessite_bornage,
                 'tab_projet': JSON.stringify($scope.produitsInTable),
-                'positions': [{position : 'Nord',ref:  parseInt($('#choix_nord_projet').val())}, {position : 'Sud',ref: parseInt($('#choix_sud_projet').val())}, {position : 'Ouest',ref: parseInt($('#choix_ouest_projet').val())}, {position : 'Est',ref: parseInt($('#choix_ouest_projet').val())}],
+                'positions': JSON.stringify([{position : 'Nord',ref:  parseInt($('#choix_nord_projet').val())}, {position : 'Sud',ref: parseInt($('#choix_sud_projet').val())}, {position : 'Ouest',ref: parseInt($('#choix_ouest_projet').val())}, {position : 'Est',ref: parseInt($('#choix_ouest_projet').val())}]),
             };
 
         }
