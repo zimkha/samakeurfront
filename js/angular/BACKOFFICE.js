@@ -826,10 +826,10 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
 
         console.log("icic => ",$scope.necessite_bornage,$scope.bornes_visible,$scope.eaux_pluviable,$scope.electricite)
 
-        if ($scope.idProjet2 == 0){
+        if ($scope.idProjet2 == 0) {
 
             var data = {
-              //  'id': 1,
+                //  'id': 1,
                 'user': $scope.userConnected.id,
                 'adresse_terrain': $('#localisation_projet').val(),
                 'fichier': $('#fichier_projet').val(),
@@ -847,8 +847,7 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
                 'necessite_bornage': $scope.necessite_bornage,
                 'tab_projet': JSON.stringify($scope.produitsInTable),
                 'positions': JSON.stringify([{position : 'Nord',ref:  parseInt($('#choix_nord_projet').val())}, {position : 'Sud',ref: parseInt($('#choix_sud_projet').val())}, {position : 'Ouest',ref: parseInt($('#choix_ouest_projet').val())}, {position : 'Est',ref: parseInt($('#choix_ouest_projet').val())}]),
-            };
-
+            }
         }
         else {
             var data = {
@@ -869,6 +868,7 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
                 'bornes_visible': $scope.bornes_visible,
                 'necessite_bornage': $scope.necessite_bornage,
                 'tab_projet': JSON.stringify($scope.produitsInTable),
+                'positions': JSON.stringify([{position : 'Nord',ref:  parseInt($('#choix_nord_projet').val())}, {position : 'Sud',ref: parseInt($('#choix_sud_projet').val())}, {position : 'Ouest',ref: parseInt($('#choix_ouest_projet').val())}, {position : 'Est',ref: parseInt($('#choix_ouest_projet').val())}]),
             };
         }
 
