@@ -930,7 +930,7 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
         var data = {
             'remarque_text' : $scope.remarque_text,
             'projet'        : $scope.idProjet,
-            'fichier'       : $("#fichier_remarque").val()
+           // 'fichier'       : $("#fichier_remarque").val()
         };
         data = JSON.stringify(data);
 
@@ -956,6 +956,7 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
                     message: 'Remarque bien envoyé',
                     position: 'topRight'
                 });
+                $scope.pageChanged('projet')
             }
         });
 
@@ -965,6 +966,45 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
               
     };
 
+
+    $scope.GetPdf = function (idprojet) {
+
+        var data = {
+            'id': idprojet,
+        };
+        console.log("icic les datas => ", data)
+        $http({
+            url: BASE_URL + 'contrat/' + idprojet,
+            method: 'GET',
+            data: data,
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }).then(function (data) {
+            if (data.data.errors) {
+                iziToast.error({
+                    title: '',
+                    message: data.data.errors,
+                    position: 'topRight'
+                });
+            }else{
+
+
+                iziToast.success({
+                    //   title: 'Payement',
+                    message: 'Veuillez remplir les informations de votre compte',
+                    position: 'topRight'
+                });
+                console.log("ici les datas -> ", data.data)
+                var idp = data.data
+                window.open($scope.base_url+"contrat/"+idp,"_blank");
+
+                $scope.pageChanged('projet');
+
+            }
+        })
+
+    }
 
 
     $scope.idProjet2  = 0;
@@ -986,7 +1026,7 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
             $('#localisation_'+type).val(item.adresse_terrain);
             $('#longeur_'+type).val(item.longeur);
             $('#largeur_'+type).val(item.largeur);
-            $('#description_'+type).val(item.description);
+            $('#description_'+type).val(item.text_demande);
             $('#piscine_'+type).val(item.piscine);
             $('#garage_'+type).val(item.garage);
             $('#description_projet'+type).val(item.text_projet);
