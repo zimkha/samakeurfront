@@ -531,8 +531,8 @@
                             <div class="form-group">
                                 <label for="piscine_projet">Piscine</label>
                                 <select class="form-control" id="piscine_projet" name="piscine">
-                                    <option value="0">NON</option>
-                                    <option value="1">OUI</option>
+                                    <option value="{{item.id}}" ng-repeat="item in piscines">{{ item.designation }}</option>
+                                    <!-- <option value="1">OUI</option> -->
                                 </select>
                             </div>
                         </div>
@@ -541,8 +541,8 @@
                             <div class="form-group">
                                 <label for="garage_projet">Garage</label>
                                 <select class="form-control" id="garage_projet" name="garage">
-                                    <option value="0">NON</option>
-                                    <option value="1">OUI</option>
+                                    <option value="{{item.id}}" ng-repeat="item in garages">{{ item.designation }}</option>
+                                    <!-- <option value="1">OUI</option> -->
                                 </select>
                             </div>
                         </div>

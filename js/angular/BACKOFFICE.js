@@ -994,10 +994,10 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
                     position: 'topRight'
                 });
                 console.log("ici les datas -> ", data.data)
-                var idp = data.data
-                window.open($scope.base_url+"contrat/"+idp,"_blank");
+               // var idp = data.data
+                 window.open($scope.base_url+"contrat/"+idprojet,"_blank");
 
-                $scope.pageChanged('projet');
+               // $scope.pageChanged('projet');
 
             }
         })
@@ -1027,7 +1027,7 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
             $('#description_'+type).val(item.text_demande);
             $('#piscine_'+type).val(item.piscine);
             $('#garage_'+type).val(item.garage);
-            $('#description_projet'+type).val(item.text_projet);
+            $('#description_'+type).val(item.text_projet);
 
             $('#electricite_'+type).prop('checked', item.electricite == true);
             $('#acces_voirie_'+type).prop('checked', item.acces_voirie == true);
