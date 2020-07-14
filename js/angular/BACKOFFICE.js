@@ -989,10 +989,8 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
                 });
             }else{
 
-
                 iziToast.success({
-                    //   title: 'Payement',
-                    message: 'Veuillez remplir les informations de votre compte',
+                    message: 'Merci de patientez !!',
                     position: 'topRight'
                 });
                 console.log("ici les datas -> ", data.data)
