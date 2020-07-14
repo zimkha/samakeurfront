@@ -1196,7 +1196,7 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
 
         if (form.validate(prefixeForm))
         {
-            form.blockUI_start();
+           // form.blockUI_start();
             $http({
                 url: BASE_URL + 'contact-send',
                 method: 'POST',
@@ -1205,17 +1205,19 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
                     'Content-Type': 'application/json'
                 }
             }).then(function (data) {
-                form.blockUI_stop();
-                console.log('retour formulaire = '+JSON.stringify(data.data));
+                //form.blockUI_stop();
+                console.log('retour formulaire = ' , data.data);
                 if (data.data.errors) {
                     iziToast.error({
                         title: '',
+                       // message: "Erreur de la demande",
                         message: data.data.errors,
                         position: 'topRight'
                     });
                 }else{
                     iziToast.success({
                         title: '',
+                       // message: "Demande envoyé !",
                         message: data.data.success,
                         position: 'topRight'
                     });
