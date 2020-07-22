@@ -270,6 +270,15 @@
                                                     </div>
 
                                                 </div>
+                                                <div class="row mt-30 animated px-2">
+                                                    <div class="col-md-2 mb-10" ng-repeat="item in projets[0].plan_projets">
+                                                        <a href="@{{link}}/@{{ item.fichier }}">
+                                                            <span class="fa fa-file-pdf"></span>
+                                                        </a>
+                                                        @{{ item.description }}
+                                                    </div>
+                                                </div>  
+
                                                 <div class=" col-md-12 col-sm-12 mt-3">
                                                     <div class="border-danger">
                                                         <h6> Description : {{ projets[0].text_projet }}</h6>
@@ -462,11 +471,7 @@
                     <div class="modal-footer">
                         <button type="reset" class="btn btn-danger btn-sm" data-dismiss="modal">Fermer</button>
 
-<!-- <<<<<<< HEAD
-                        <button type="submit" class="btn btn-primary btn-sm" ng-click="addRemarque($event)">Enregistrer</button>
-======= -->
                         <button type="submit" class="btn btn-primary btn-sm" ng-click="addRemarque($event, projets[0].id)">Enregistrer</button>
-<!-- >>>>>>> 3500759b13b5e2ee202f7ac253a8a427f227bb04 -->
                     </div>
                 </form>
 

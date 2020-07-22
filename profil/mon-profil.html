@@ -357,7 +357,7 @@
                                                         </div>
                                                         <div class=" col-md-12 col-sm-12 mt-10">
                                                             <div class="border-danger">
-                                                                <div style="font-size: 17px;color: #F7941D;font-weight: bold"> <span class="fa fa-money mr-1"></span> Prix :<span> <u style="margin-left: 10px!important;">  {{item.montant}} FCFA</u></span></div>
+                                                                <div style="font-size: 17px;color: #F7941D;font-weight: bold"> <span class="fa fa-money mr-1"></span> Prix :<span> <u style="margin-left: 10px!important;">  {{item.montant | currency:"":0 | convertMontant}} FCFA</u></span></div>
                                                             </div>
                                                         </div>
 
@@ -366,6 +366,12 @@
                                                                 <div class="col-md-6">
                                                                     <a href="detail-projet.html" title="Info" class="btn back-success btn-sm btn-circle mr-2 text-white" ng-click="InfoProjet(item.id)">
                                                                         <i class="fa fa-info"></i>
+                                                                    </a>
+                                                                    <a title="Voir le contrat" class="btn back-success btn-sm btn-circle text-white mr-2" ng-click="GetPdf(item.id)">
+                                                                        <i style="margin-left: -2px" class="fa fa-eye"></i>
+                                                                    </a>
+                                                                    <a title="Signer le contrat" ng-if="item.contrat == null" class="btn back-success btn-sm btn-circle text-white" ng-click="SigneContrat(item.id)">
+                                                                        <i style="margin-left: -2px" class="fa fa-check"></i>
                                                                     </a>
                                                                 </div>
                                                                 <div class="col-md-6">
@@ -520,7 +526,7 @@
                             <div class="form-group">
 
                                 <label for="fichier_projet">Fichier</label>
-                                <input type="file" class="form-control" id="fichier_projet" name="fichier">
+                                <input type="file" class="form-control" file-model="fichier_projet" id="fichier_projet"  accept="image/*, .pdf" name="fichier">
                             </div>
                         </div>
 
@@ -538,8 +544,8 @@
                             <div class="form-group">
                                 <label for="garage_projet">Garage</label>
                                 <select class="form-control" id="garage_projet" name="garage">
-                                    <option value="0">NON</option>
-                                    <option value="1">OUI</option>
+                                     <option value="0">NON</option>
+                                     <option value="1">OUI</option>
                                 </select>
                             </div>
                         </div>
@@ -617,48 +623,50 @@
 
                     <div class="row">
 
+                       
+                        <!--<div class="col-lg-3">-->
+                        <!--    <label class="checkbox-inline">-->
+                        <!--        <input type="checkbox" id="accesvoirie_projet" value="true" name="acces_voirie"> Accès voirie-->
+                        <!--    </label>-->
+                        <!--</div>-->
                         <div class="col-lg-3">
                             <label class="checkbox-inline">
-                                <input type="checkbox" id="electricte_projet" value="true" name="electricite"> Electricté
+                                <input type="checkbox" id="ass_projet" value="true" name="assainissement"> 
+                                Résidence pour location
                             </label>
                         </div>
                         <div class="col-lg-3">
                             <label class="checkbox-inline">
-                                <input type="checkbox" id="accesvoirie_projet" value="true" name="acces_voirie"> Accès voirie
+                                <input type="checkbox" id="cadastre_projet" value="true" name="geometre">
+                                 Résidence personnelle
                             </label>
                         </div>
-                        <div class="col-lg-3">
+                         <div class="col-lg-3">
                             <label class="checkbox-inline">
-                                <input type="checkbox" id="ass_projet" value="true" name="assainissement"> Assainissement
+                                <input type="checkbox" id="eaux_pluviable_projet" value="true" name="eaux_pluviable">
+                                Zone assainie
                             </label>
                         </div>
-                        <div class="col-lg-3">
+                         <div class="col-lg-3">
                             <label class="checkbox-inline">
-                                <input type="checkbox" id="cadastre_projet" value="true" name="geometre"> Cadastre
+                                <input type="checkbox" id="courant_faible_projet" value="true" name="courant_faible"> 
+                                Zone éléctrifiée
                             </label>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-lg-3">
-                            <label class="checkbox-inline">
-                                <input type="checkbox" id="courant_faible_projet" value="true" name="courant_faible"> Courant faible
-                            </label>
-                        </div>
-                        <div class="col-lg-3">
-                            <label class="checkbox-inline">
-                                <input type="checkbox" id="eaux_pluviable_projet" value="true" name="eaux_pluviable"> Eaux pluviales
-                            </label>
-                        </div>
-                        <div class="col-lg-3">
-                            <label class="checkbox-inline">
-                                <input type="checkbox" id="bornes_visible_projet" value="true" name="bornes_visible"> Borne visible
-                            </label>
-                        </div>
-                        <div class="col-lg-3">
-                            <label class="checkbox-inline">
-                                <input type="checkbox" id="necessite_bornage_projet" value="true" name="necessite_bornage"> Nécessite bornage
-                            </label>
-                        </div>
+                       
+                       
+                        <!--<div class="col-lg-3">-->
+                        <!--    <label class="checkbox-inline">-->
+                        <!--        <input type="checkbox" id="bornes_visible_projet" value="true" name="bornes_visible"> Borne visible-->
+                        <!--    </label>-->
+                        <!--</div>-->
+                        <!--<div class="col-lg-3">-->
+                        <!--    <label class="checkbox-inline">-->
+                        <!--        <input type="checkbox" id="necessite_bornage_projet" value="true" name="necessite_bornage"> Nécessite bornage-->
+                        <!--    </label>-->
+                        <!--</div>-->
                     </div>
 
                     <h4 class="form-section animated fadeInDown mb-3 mt-5 border-bottom border-alternate">

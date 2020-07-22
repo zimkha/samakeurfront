@@ -3,6 +3,7 @@ var app = angular.module('samakeur', ['angular.filter','socialLogin', 'ngCookies
 //---BASE_URL----//
 var BASE_URL = 'http://localhost/samakeurback/public/';
 //var BASE_URL = 'http://samakeurci.com/admin/';
+// var BASE_URL = 'http://samakeur.sn/back/';
 
 var imgupload = 'images/upload.jpg';
 
@@ -317,7 +318,7 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
             "niveauprojets"                 :  ["id",""],
 
 
-            "projets"                       :  ["id,montant,text_projet,name,etat,electricite,acces_voirie,assainissement,geometre,courant_faible,eaux_pluviable,bornes_visible,necessite_bornage,adresse_terrain,active,a_valider,created_at_fr,created_at,superficie,longeur,largeur,nb_pieces,nb_salon,nb_sdb,nb_bureau,nb_chambre,nb_cuisine,nb_toillette,nb_etage,user_id,remarques{id,demande_text,projet_id},user{name,email,nom,prenom,telephone,adresse_complet,code_postal},fichier,niveau_projets{id,niveau_name,piece,bureau,toillette,chambre,sdb,salon,cuisine},plan_projets{id,plan_id,projet_id, plan{id,code,created_at_fr,superficie,longeur,largeur,nb_pieces,nb_salon,nb_chambre,nb_cuisine,nb_toillette,nb_etage,unite_mesure_id,unite_mesure{id,name},fichier,joineds{id,fichier,description,active},niveau_plans{id,piece,niveau,bureau,toillette,chambre,salon,cuisine}}}",""],
+            "projets"                       :  ["id,contrat,montant,text_projet,name,etat,electricite,acces_voirie,assainissement,geometre,courant_faible,eaux_pluviable,bornes_visible,necessite_bornage,adresse_terrain,active,a_valider,created_at_fr,created_at,superficie,longeur,largeur,nb_pieces,nb_salon,nb_sdb,nb_bureau,nb_chambre,nb_cuisine,nb_toillette,nb_etage,user_id,remarques{id,demande_text,projet_id},user{name,email,nom,prenom,telephone,adresse_complet,code_postal},fichier,niveau_projets{id,niveau_name,piece,bureau,toillette,chambre,sdb,salon,cuisine},plan_projets{id,plan_id,projet_id, plan{id,code,created_at_fr,superficie,longeur,largeur,nb_pieces,nb_salon,nb_chambre,nb_cuisine,nb_toillette,nb_etage,unite_mesure_id,unite_mesure{id,name},fichier,joineds{id,fichier,description,active},niveau_plans{id,piece,niveau,bureau,toillette,chambre,salon,cuisine}}}",""],
 
 
             "clients"                       :  ["id",""],
@@ -330,7 +331,7 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
 
             "roles"                         :  ["id,name,guard_name,permissions{id,name,display_name,guard_name}", ""],
 
-            "users"                         :  ["id,nom,prenom,adresse_complet,pays,code_postal,is_client,telephone,name,email,active,password,image,roles{id,name,guard_name,permissions{id,name,display_name,guard_name}}", ",last_login,last_login_ip,created_at_fr", ""],
+            "users"                         :  ["id,nom,nci,prenom,adresse_complet,pays,code_postal,is_client,telephone,name,email,active,password,image,roles{id,name,guard_name,permissions{id,name,display_name,guard_name}}", ",last_login,last_login_ip,created_at_fr", ""],
 
             "dashboards"                    :  ["clients,assurances,ventes,fournisseurs"],
 
@@ -635,6 +636,7 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
             $.each($scope.produitsInTable, function (keyItem, oneItem) {
                 if (oneItem.id == selectedItem.id) {
                     $scope.produitsInTable.splice(keyItem, 1);
+                    $scope.index_plan -= $scope.index_plan;
                     return false;
                 }
             });
@@ -883,14 +885,15 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
                 }
             }).then(function (data) {
                // $('body').blockUI_stop();
+               
                 console.log("ici les datas retours ", data)
-                if (data.data.errors) {
+                if (data.data.errors != null || data.data.errors_debug) {
                     iziToast.error({
                         title: '',
                         message: data.data.errors,
                         position: 'topRight'
                     });
-                }else{
+                } else{
                    // $('body').blockUI_stop();
                     iziToast.success({
                         title: '',
@@ -909,6 +912,60 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
 
     }
 
+    $scope.addNci = function (e) {
+        e.preventDefault();
+
+        var type = 'projet';
+        var form = $('#form_add' + type);
+
+        var formdata=new (window.FormData) ? ( new FormData(form[0])): null;
+        var send_data=(formdata!==null) ? formdata : form.serialize();
+        //var send_data = formdata;
+
+        send_data.append('tab_projet', JSON.stringify($scope.produitsInTable));
+
+        
+        var data = {
+               
+                'user_id': $scope.userConnected.id,
+                'nci'    : $('#numero_nci').val(),
+               }
+
+            console.log("icic les datas => ", data)
+           // $('body').blockUI_start();
+            $http({
+                url: BASE_URL + 'user-nci',
+                method: 'POST',
+                data: data,
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            }).then(function (data) {
+               // $('body').blockUI_stop();
+                console.log("ici les datas retours ", data)
+                if (data.data.errors) {
+                    iziToast.error({
+                        title: '',
+                        message: data.data.errors,
+                        position: 'topRight'
+                    });
+                }else{
+                   // $('body').blockUI_stop();
+                    iziToast.success({
+                        title: '',
+                        message: 'Votre demande a bien été prise en compte',
+                        position: 'topRight'
+                    });
+
+                    $scope.emptyForm('nci');
+
+                    $("#modal_information").modal('hide');
+                    
+
+                }
+            })
+
+    }
 
     $scope.remarque_text = "";
     $scope.addRemarque = function(e)
@@ -930,7 +987,7 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
         var data = {
             'remarque_text' : $scope.remarque_text,
             'projet'        : $scope.idProjet,
-            'fichier'       : $("#fichier_remarque").val()
+           // 'fichier'       : $("#fichier_remarque").val()
         };
         data = JSON.stringify(data);
 
@@ -956,6 +1013,7 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
                     message: 'Remarque bien envoyé',
                     position: 'topRight'
                 });
+                $scope.pageChanged('projet')
             }
         });
 
@@ -965,6 +1023,43 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
               
     };
 
+
+    $scope.GetPdf = function (idprojet) {
+
+        var data = {
+            'id': idprojet,
+        };
+        console.log("icic les datas => ", data)
+        $http({
+            url: BASE_URL + 'contrat/' + idprojet,
+            method: 'GET',
+            data: data,
+            // headers: {
+            //     'Content-Type': 'application/pdf'
+            // }
+        }).then(function (data) {
+            if (data.data.errors) {
+                iziToast.error({
+                    title: '',
+                    message: data.data.errors,
+                    position: 'topRight'
+                });
+            }else{
+
+               /* iziToast.success({
+                    message: 'Merci de patientez !!',
+                    position: 'topRight'
+                });*/
+                console.log("ici les datas -> ", data.data)
+               // var idp = data.data
+                 window.open($scope.base_url+"contrat/"+idprojet,"_blank");
+
+               // $scope.pageChanged('projet');
+
+            }
+        })
+
+    }
 
 
     $scope.idProjet2  = 0;
@@ -986,10 +1081,10 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
             $('#localisation_'+type).val(item.adresse_terrain);
             $('#longeur_'+type).val(item.longeur);
             $('#largeur_'+type).val(item.largeur);
-            $('#description_'+type).val(item.description);
+            $('#description_'+type).val(item.text_demande);
             $('#piscine_'+type).val(item.piscine);
             $('#garage_'+type).val(item.garage);
-            $('#description_projet'+type).val(item.text_projet);
+            $('#description_'+type).val(item.text_projet);
 
             $('#electricite_'+type).prop('checked', item.electricite == true);
             $('#acces_voirie_'+type).prop('checked', item.acces_voirie == true);
@@ -1141,6 +1236,101 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
     }
 
 
+    $scope.SigneContrat = function (idprojet)
+    {
+
+         var data = {
+             'id': idprojet,
+         };
+         console.log("icic les datas => ", data)
+         $http({
+             url: BASE_URL + 'signe-contrat/' + idprojet,
+             method: 'GET',
+             data: data,
+             headers: {
+                 'Content-Type': 'application/json'
+             }
+         }).then(function (data) {
+             if (data.data.errors || data.data.data == 0) {
+                 iziToast.error({
+                     title: '',
+                    message: data.data.errors,
+                    position: 'topRight'
+                 });
+             }
+             else  if (data.data.data == 1) {
+
+                 iziToast.success({
+                    message: 'Votre contrat a été bien signé, Merci de votre confiance',
+                    position: 'topRight'
+                 });
+                 $scope.pageChanged('projet');
+            
+            }
+        })
+
+     };
+     
+     $scope.SigneContrat = function (idprojet) {
+        title = 'Signature contrat';
+        msg = 'Voulez-vous vraiment signer le contrat';
+
+
+        var form = $('body');
+        iziToast.question({
+            timeout: 0,
+            close: false,
+            overlay: true,
+            displayMode: 'once',
+            id: 'question',
+            zindex: 999,
+            title: title,
+            message: msg,
+            position: 'center',
+            buttons: [
+                ['<button class="font-bold">OUI</button>', function (instance, toast) {
+
+                    instance.hide({ transitionOut: 'fadeOut' }, toast, 'button');
+
+                    var data = {
+                         'id': idprojet,
+                     };
+                     console.log("icic les datas => ", data)
+                     $http({
+                         url: BASE_URL + 'signe-contrat/' + idprojet,
+                         method: 'GET',
+                         data: data,
+                         headers: {
+                             'Content-Type': 'application/json'
+                         }
+                     }).then(function (data) {
+                         if (data.data.errors || data.data.data == 0) {
+                             iziToast.error({
+                                 title: '',
+                                message: data.data.errors,
+                                position: 'topRight'
+                             });
+                         }
+                         else  if (data.data.data == 1) {
+            
+                             iziToast.success({
+                                message: 'Votre contrat a été bien signé, Merci de votre confiance',
+                                position: 'topRight'
+                             });
+                             $scope.pageChanged('projet');
+                        
+                        }
+                    });
+                    
+                }, true],
+                ['<button>NON</button>', function (instance, toast) {
+
+                    instance.hide({ transitionOut: 'fadeOut' }, toast, 'button');
+                }],
+            ]
+        });
+    };
+
     $scope.filtreProjet = function(itemId)
     {
         $scope.etatProjet = itemId;
@@ -1158,7 +1348,7 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
 
         if (form.validate(prefixeForm))
         {
-            form.blockUI_start();
+           // form.blockUI_start();
             $http({
                 url: BASE_URL + 'contact-send',
                 method: 'POST',
@@ -1167,22 +1357,25 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
                     'Content-Type': 'application/json'
                 }
             }).then(function (data) {
-                form.blockUI_stop();
-                console.log('retour formulaire = '+JSON.stringify(data.data));
+                //form.blockUI_stop();
+                console.log('retour formulaire = ' , data.data);
                 if (data.data.errors) {
                     iziToast.error({
-                        title: '',
+                        //title: '',
+                       // message: "Erreur de la demande",
                         message: data.data.errors,
                         position: 'topRight'
                     });
                 }else{
+                     $scope.emptyForm(prefixeForm);
                     iziToast.success({
-                        title: '',
-                        message: data.data.success,
+                        //title: '',
+                        message: "Demande envoyé !",
+                       // message: data.data.success,
                         position: 'topRight'
                     });
                     console.log("datadata ", data)
-                    $scope.emptyForm(prefixeForm);
+                   
                 }
             });
         }
