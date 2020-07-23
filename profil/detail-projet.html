@@ -287,14 +287,11 @@
 
                                                 </div>
 
-                                                <div class="row mt-30 animated px-2">
-                                                   <!-- <div class="col-md-2 mb-10" ng-repeat="item in projets[0].remarques">
-                                                        <a href="{{link}}/{{ item.demande_text }}">
-                                                            <span class="fa fa-file-pdf"></span>
-                                                        </a>
+                                               <!-- <div class="row mt-30 animated px-2">
+                                                    <div class="col-md-2 mb-10" ng-repeat="item in projets[0].remarques">
                                                         {{ item.demande_text }}
-                                                    </div>-->
-                                                </div>
+                                                    </div>
+                                                </div>-->
 
                                             </div>
                                         </div>
@@ -311,7 +308,7 @@
                                             <div style="background: #ffffff;padding: 10px;border-radius: 5px" class="shadow">
                                                 <p style="margin-bottom: 10px;margin-left: -1rem" class="alert-accor">
                                                 <div class="pointer-hover wd-100" type="button" data-toggle="collapse" data-target="#collapseExample-55-{{$index}}" aria-expanded="false" aria-controls="collapseExample-1">
-                                                    <div>Projet {{ item.name }}</div>
+                                                    <div>Remarque {{ item.id }}</div>
                                                 </div>
                                                 </p>
                                                 <div class="collapse" id="collapseExample-55-{{$index}}" style="position: absolute;z-index: 999;background: #fff;border-radius: 5px">
@@ -319,14 +316,14 @@
                                                         <div  class="card-body row animated fadeInUp">
                                                             <div class=" col-md-12 col-sm-12 mt-10">
                                                                 <div class="border-danger">
-                                                                    <div> Description :<span> <u>{{item.demande_text}}</u></span></div>
+                                                                    <div> {{item.demande_text}} </div>
                                                                 </div>
                                                             </div>
-                                                            <div class=" col-md-12 col-sm-12 mt-10">
+                                                           <!-- <div class=" col-md-12 col-sm-12 mt-10">
                                                                 <div class="border-danger">
                                                                     <div> Fichier :<span> <u><a href="{{ base_url }}/{{ item.fichier }}"></a></u></span></div>
                                                                 </div>
-                                                            </div>
+                                                            </div>-->
 
                                                         </div>
 
@@ -452,12 +449,12 @@
                       <input type="hidden" id="id_projet" name="id">
                      
                     <div class="row mt-14">
-                        <div class="col-lg-12">
+                       <!-- <div class="col-lg-12">
                             <div class="form-group">
                                 <label for="fichier_remarque">Fichier</label>
                                 <input type="file" class="form-control" id="fichier_remarque" name="fichier">
                             </div>
-                        </div>
+                        </div>-->
                         <div class="col-lg-12">
                             <div class="form-group">
                                 <label>

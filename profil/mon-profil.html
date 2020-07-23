@@ -526,7 +526,7 @@
                             <div class="form-group">
 
                                 <label for="fichier_projet">Fichier</label>
-                                <input type="file" class="form-control" file-model="fichier_projet" id="fichier_projet"  accept="image/*, .pdf" name="fichier">
+                                <input type="file" class="form-control" accept='image/*' id="fichier_projet" ng-model="fichier_projet" ng-change="saveFile()" name="fichier">
                             </div>
                         </div>
 

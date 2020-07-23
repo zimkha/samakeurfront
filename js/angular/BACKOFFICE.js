@@ -318,7 +318,7 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
             "niveauprojets"                 :  ["id",""],
 
 
-            "projets"                       :  ["id,contrat,montant,text_projet,name,etat,electricite,acces_voirie,assainissement,geometre,courant_faible,eaux_pluviable,bornes_visible,necessite_bornage,adresse_terrain,active,a_valider,created_at_fr,created_at,superficie,longeur,largeur,nb_pieces,nb_salon,nb_sdb,nb_bureau,nb_chambre,nb_cuisine,nb_toillette,nb_etage,user_id,remarques{id,demande_text,projet_id},user{name,email,nom,prenom,telephone,adresse_complet,code_postal},fichier,niveau_projets{id,niveau_name,piece,bureau,toillette,chambre,sdb,salon,cuisine},plan_projets{id,plan_id,projet_id, plan{id,code,created_at_fr,superficie,longeur,largeur,nb_pieces,nb_salon,nb_chambre,nb_cuisine,nb_toillette,nb_etage,unite_mesure_id,unite_mesure{id,name},fichier,joineds{id,fichier,description,active},niveau_plans{id,piece,niveau,bureau,toillette,chambre,salon,cuisine}}}",""],
+            "projets"                       :  ["id,garage,piscine,contrat,montant,text_projet,name,etat,electricite,acces_voirie,assainissement,geometre,courant_faible,eaux_pluviable,bornes_visible,necessite_bornage,adresse_terrain,active,a_valider,created_at_fr,created_at,superficie,longeur,largeur,nb_pieces,nb_salon,nb_sdb,nb_bureau,nb_chambre,nb_cuisine,nb_toillette,nb_etage,user_id,remarques{id,demande_text,projet_id},user{name,email,nom,prenom,telephone,adresse_complet,code_postal},fichier,niveau_projets{id,niveau_name,piece,bureau,toillette,chambre,sdb,salon,cuisine},plan_projets{id,plan_id,projet_id, plan{id,code,created_at_fr,superficie,longeur,largeur,nb_pieces,nb_salon,nb_chambre,nb_cuisine,nb_toillette,nb_etage,unite_mesure_id,unite_mesure{id,name},fichier,joineds{id,fichier,description,active},niveau_plans{id,piece,niveau,bureau,toillette,chambre,salon,cuisine}}},fichier,positions{id,position,nom_position,projet_id}",""],
 
 
             "clients"                       :  ["id",""],
@@ -829,7 +829,7 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
         console.log("icic => ",$scope.necessite_bornage,$scope.bornes_visible,$scope.eaux_pluviable,$scope.electricite)
 
         if ($scope.idProjet2 == 0) {
-
+            console.log("Le fichier a envoyer au server",fichier_projet.files[0])
             var data = {
                 //  'id': 1,
                 'user': $scope.userConnected.id,
@@ -838,6 +838,7 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
                 'longeur': $('#longeur_projet').val(),
                 'largeur': $('#largeur_projet').val(),
                 'piscine': $('#piscine_projet').val(),
+                'fichier': fichier_projet.files[0],
                 'description': $('#description_projet').val(),
                 'electricite': $scope.electricite,
                 'acces_voirie': $scope.acces_voirie,
@@ -852,14 +853,16 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
             }
         }
         else {
+            console.log("Le fichier a envoyer au server",fichier_projet.files[0], $("fichier_projet").val())
             var data = {
                 'id': parseInt($scope.idProjet2),
                 'user': $scope.userConnected.id,
                 'adresse_terrain': $('#localisation_projet').val(),
-                'fichier': $('#fichier_projet').val(),
+                'fichier': fichier_projet.files[0],
                 'longeur': $('#longeur_projet').val(),
                 'largeur': $('#largeur_projet').val(),
                 'piscine': $('#piscine_projet').val(),
+                'garage' : $('#garage_projet').val(),
                 'description': $('#description_projet').val(),
                 'electricite': $scope.electricite,
                 'acces_voirie': $scope.acces_voirie,
@@ -1034,9 +1037,9 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
             url: BASE_URL + 'contrat/' + idprojet,
             method: 'GET',
             data: data,
-            // headers: {
-            //     'Content-Type': 'application/pdf'
-            // }
+            headers: {
+                'Content-Type': 'application/json'
+            }
         }).then(function (data) {
             if (data.data.errors) {
                 iziToast.error({
@@ -1045,11 +1048,10 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
                     position: 'topRight'
                 });
             }else{
-
-               /* iziToast.success({
+                iziToast.success({
                     message: 'Merci de patientez !!',
                     position: 'topRight'
-                });*/
+                });
                 console.log("ici les datas -> ", data.data)
                // var idp = data.data
                  window.open($scope.base_url+"contrat/"+idprojet,"_blank");
@@ -1361,7 +1363,8 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
                 console.log('retour formulaire = ' , data.data);
                 if (data.data.errors) {
                     iziToast.error({
-                        //title: '',
+
+                        title: '',
                        // message: "Erreur de la demande",
                         message: data.data.errors,
                         position: 'topRight'
@@ -1369,9 +1372,9 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
                 }else{
                      $scope.emptyForm(prefixeForm);
                     iziToast.success({
-                        //title: '',
-                        message: "Demande envoyé !",
-                       // message: data.data.success,
+                title: '',
+                       // message: "Demande envoyé !",
+                        message: data.data.success,
                         position: 'topRight'
                     });
                     console.log("datadata ", data)
