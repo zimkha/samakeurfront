@@ -507,7 +507,7 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span class="ti-close" aria-hidden="true"></span></button>
             </div>
             <div class="modal-body" style="padding: 50px!important;">
-                <form id="form_addprojet" class="form" enctype="multipart/form-data" accept-charset="UTF-8">
+                <form id="form_addprojet" class="form"enctype="multipart/form-data" accept-charset="UTF-8">
                     <input type="hidden" id="id_projet" name="id">
                     <h4 class="form-section animated fadeInDown text-uppercase mb-3 mt-5 border-bottom border-alternate">
                         <i class="fa fa-info-circle"></i>
@@ -526,7 +526,7 @@
                             <div class="form-group">
 
                                 <label for="fichier_projet">Fichier</label>
-                                <input type="file" class="form-control" accept='image/*' id="fichier_projet" ng-model="fichier_projet" ng-change="saveFile()" name="fichier">
+                                <input type="file" class="form-control" accept='image/*, .pdf, .docs' id="fichier_projet" name="fichier">
                             </div>
                         </div>
 

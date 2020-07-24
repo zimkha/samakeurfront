@@ -318,7 +318,7 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
             "niveauprojets"                 :  ["id",""],
 
 
-            "projets"                       :  ["id,garage,piscine,contrat,montant,text_projet,name,etat,electricite,acces_voirie,assainissement,geometre,courant_faible,eaux_pluviable,bornes_visible,necessite_bornage,adresse_terrain,active,a_valider,created_at_fr,created_at,superficie,longeur,largeur,nb_pieces,nb_salon,nb_sdb,nb_bureau,nb_chambre,nb_cuisine,nb_toillette,nb_etage,user_id,remarques{id,demande_text,projet_id},user{name,email,nom,prenom,telephone,adresse_complet,code_postal},fichier,niveau_projets{id,niveau_name,piece,bureau,toillette,chambre,sdb,salon,cuisine},plan_projets{id,plan_id,projet_id, plan{id,code,created_at_fr,superficie,longeur,largeur,nb_pieces,nb_salon,nb_chambre,nb_cuisine,nb_toillette,nb_etage,unite_mesure_id,unite_mesure{id,name},fichier,joineds{id,fichier,description,active},niveau_plans{id,piece,niveau,bureau,toillette,chambre,salon,cuisine}}},fichier,positions{id,position,nom_position,projet_id}",""],
+            "projets"                       :  ["id,garage,piscine,contrat,montant,text_projet,name,etat,electricite,acces_voirie,assainissement,geometre,courant_faible,eaux_pluviable,bornes_visible,necessite_bornage,adresse_terrain,active,a_valider,created_at_fr,created_at,superficie,longeur,largeur,nb_pieces,nb_salon,nb_sdb,nb_bureau,nb_chambre,nb_cuisine,nb_toillette,nb_etage,user_id,remarques{id,demande_text,projet_id},user{name,email,nom,prenom,telephone,adresse_complet,code_postal},fichier,niveau_projets{id,niveau_name,piece,bureau,toillette,chambre,sdb,salon,cuisine},plan_projets{id,plan_id,projet_id, plan{id,code,fichier,joineds{id,fichier,description,active}}},fichier,positions{id,position,nom_position,projet_id}",""],
 
 
             "clients"                       :  ["id",""],
@@ -757,7 +757,10 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
 
         send_data.append('tab_projet', JSON.stringify($scope.produitsInTable));
 
-        console.log("ici forme data", send_data)
+        frm = $("#form_addprojet");
+        data_form =  frm.serialize();
+
+        // console.log("ici forme data", data_form);
 
         if ($scope.produitsInTable.length ==0)
         {
@@ -827,9 +830,17 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
         }
 
         console.log("icic => ",$scope.necessite_bornage,$scope.bornes_visible,$scope.eaux_pluviable,$scope.electricite)
+        if(fichier_projet.files[0].size > 1000000) {
+            iziToast.error({
+                title: "",
+                message: "La taille maximale du fichier doit etre de 1 MB",
+                position: 'topRight'
+            });
 
+            allow = false;
+        }
         if ($scope.idProjet2 == 0) {
-            console.log("Le fichier a envoyer au server",fichier_projet.files[0])
+           
             var data = {
                 //  'id': 1,
                 'user': $scope.userConnected.id,
@@ -838,7 +849,8 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
                 'longeur': $('#longeur_projet').val(),
                 'largeur': $('#largeur_projet').val(),
                 'piscine': $('#piscine_projet').val(),
-                'fichier': fichier_projet.files[0],
+                'garare': $('#garage_projet').val(),
+                'fichier':  document.getElementById('fichier_projet').files[0],
                 'description': $('#description_projet').val(),
                 'electricite': $scope.electricite,
                 'acces_voirie': $scope.acces_voirie,
@@ -850,15 +862,18 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
                 'necessite_bornage': $scope.necessite_bornage,
                 'tab_projet': JSON.stringify($scope.produitsInTable),
                 'positions': JSON.stringify([{position : 'Nord',ref:  parseInt($('#choix_nord_projet').val())}, {position : 'Sud',ref: parseInt($('#choix_sud_projet').val())}, {position : 'Ouest',ref: parseInt($('#choix_ouest_projet').val())}, {position : 'Est',ref: parseInt($('#choix_ouest_projet').val())}]),
-            }
+            };
+            
+            console.log("les donnes a envoye =>", data);
         }
         else {
-            console.log("Le fichier a envoyer au server",fichier_projet.files[0], $("fichier_projet").val())
+            console.log("Le fichier a envoyer au server",fichier_projet.files[0])
+           
             var data = {
                 'id': parseInt($scope.idProjet2),
                 'user': $scope.userConnected.id,
                 'adresse_terrain': $('#localisation_projet').val(),
-                'fichier': fichier_projet.files[0],
+                'fichier': document.getElementById('fichier_projet').files[0],
                 'longeur': $('#longeur_projet').val(),
                 'largeur': $('#largeur_projet').val(),
                 'piscine': $('#piscine_projet').val(),
@@ -875,6 +890,7 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
                 'tab_projet': JSON.stringify($scope.produitsInTable),
                 'positions': JSON.stringify([{position : 'Nord',ref:  parseInt($('#choix_nord_projet').val())}, {position : 'Sud',ref: parseInt($('#choix_sud_projet').val())}, {position : 'Ouest',ref: parseInt($('#choix_ouest_projet').val())}, {position : 'Est',ref: parseInt($('#choix_ouest_projet').val())}]),
             };
+            console.log("les donnes a envoye =>", data);
         }
 
             console.log("icic les datas => ", data)
