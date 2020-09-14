@@ -5,6 +5,7 @@ var BASE_URL = 'http://localhost/samakeurback/public/';
 //var BASE_URL = 'http://samakeurci.com/admin/';
 // var BASE_URL = 'http://samakeur.sn/back/';
 
+
 var imgupload = 'images/upload.jpg';
 
 var tokenDesamakeur = '';
@@ -222,6 +223,40 @@ app.factory('Init', function ($http, $q) {
                 });
                 return deferred.promise;
             },
+            saveElementAjax:function (element,data) {
+                var deferred=$q.defer();
+                $.ajax
+                (
+                    {
+                        url: BASE_URL + element,
+                        type:'POST',
+                        contentType:false,
+                        processData:false,
+                        DataType:'text',
+                        data:data,
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+                        },
+                        beforeSend: function()
+                        {
+                           // $('#modal_add'+element).blockUI_start();
+                        },success:function(response)
+                        {
+                            //$('#modal_add'+element).blockUI_stop();
+                            factory.data=response;
+                            deferred.resolve(factory.data);
+                        },
+                        error:function (error)
+                        {
+                           // unauthenticated(error);
+                           // $('#modal_add' + element).blockUI_stop();
+                            console.log('erreur serveur', error);
+                            deferred.reject(msg_erreur);
+                        }
+                    }
+                );
+                return deferred.promise;
+            },
             saveAccount: function (data, is_an_update) {
                 console.log('Dans inscription', data);
 
@@ -306,7 +341,7 @@ app.config(function (socialProvider) {
 
 app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $cookies, $filter, socialLoginService, $log, $q, $http, $window) {
     $scope.showPopover = false;
-
+    // const Link_file = 'http://localhost/samakeurback/public/';
     var listofrequests_assoc =
         {
             "plans"                         :  ["id,superficie,longeur,largeur,nb_pieces,nb_salon,nb_chambre,nb_cuisine,nb_toillette,nb_etage", ",niveau_plans{id,piece,bureau,toillette,chambre,salon,cuisine}"],
@@ -318,7 +353,7 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
             "niveauprojets"                 :  ["id",""],
 
 
-            "projets"                       :  ["id,garage,piscine,contrat,montant,text_projet,name,etat,electricite,acces_voirie,assainissement,geometre,courant_faible,eaux_pluviable,bornes_visible,necessite_bornage,adresse_terrain,active,a_valider,created_at_fr,created_at,superficie,longeur,largeur,nb_pieces,nb_salon,nb_sdb,nb_bureau,nb_chambre,nb_cuisine,nb_toillette,nb_etage,user_id,remarques{id,demande_text,projet_id},user{name,email,nom,prenom,telephone,adresse_complet,code_postal},fichier,niveau_projets{id,niveau_name,piece,bureau,toillette,chambre,sdb,salon,cuisine},plan_projets{id,plan_id,projet_id, plan{id,code,fichier,joineds{id,fichier,description,active}}},fichier,positions{id,position,nom_position,projet_id}",""],
+            "projets"                       :  ["id,garage,piscine,contrat,montant,text_projet,name,etat,electricite,acces_voirie,assainissement,geometre,courant_faible,eaux_pluviable,bornes_visible,necessite_bornage,adresse_terrain,active,a_valider,created_at_fr,created_at,superficie,longeur,largeur,nb_pieces,nb_salon,nb_sdb,nb_bureau,nb_chambre,nb_cuisine,nb_toillette,nb_etage,user_id,remarques{id,demande_text,projet_id},user{name,email,nom,prenom,telephone,adresse_complet,code_postal},fichier,niveau_projets{id,niveau_name,piece,bureau,toillette,chambre,sdb,salon,cuisine},plan_projets{id,plan_id,projet_id, plan{id,code,created_at_fr,superficie,longeur,largeur,nb_pieces,nb_salon,nb_chambre,nb_cuisine,nb_toillette,nb_etage,unite_mesure_id,unite_mesure{id,name},fichier,joineds{id,fichier,description,active},niveau_plans{id,piece,niveau,bureau,toillette,chambre,salon,cuisine}}},fichier,positions{id,position,nom_position,projet_id}",""],
 
 
             "clients"                       :  ["id",""],
@@ -337,7 +372,21 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
 
             "messagesends"                  : ["id,objet,message,telephone,email,nom",""],
 
-            "posts"                         : ["id,description,fichier",""]
+            "posts"                         : ["id,description,fichier",""],
+
+            "chantiers"                     : ["id,user_id,user{id,nom,prenom},fichier,created_at_fr",""],
+
+            // "chantiers"                     : ["id,user_id,user{id,nom,prenom}",""],
+
+            // "chantiers"                     : ["id,user_id,user{id,nom,prenom}",""],
+
+            // "chantiers"                     : ["id,user_id,user{id,nom,prenom}",""],
+
+            // "chantiers"                     : ["id,user_id,user{id,nom,prenom}",""],
+
+
+
+
         };
     $scope.base_url = BASE_URL;
 
@@ -351,10 +400,17 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
     $scope.users = [];
     $scope.posts = [];
     $scope.messagesends = [];
+    $scope.chantiers = [];
 
 
 
     $scope.paginationprojet = {
+        currentPage: 1,
+        maxSize: 10,
+        entryLimit: 10,
+        totalItems: 0
+    };
+    $scope.paginationchantier = {
         currentPage: 1,
         maxSize: 10,
         entryLimit: 10,
@@ -437,6 +493,10 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
             else if (type.indexOf("niveauprojets")!==-1)
             {
                 $scope.niveauprojets = data;
+            }
+            else if (type.indexOf("chantiers")!==-1)
+            {
+                $scope.chantiers = data;
             }
             else if (type.indexOf("projets")!==-1)
             {
@@ -528,6 +588,29 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
               //  toastr.error(msg);
             });
         }
+        else if ( currentpage.indexOf('chantier')!==-1 )
+        {
+            rewriteelement = 'chantierspaginated(page:'+ $scope.paginationchantier.currentPage +',count:'+ $scope.paginationchantier.entryLimit
+                + ($scope.userConnected ? ',user_id:' + $scope.userConnected.id : "" )
+                + ($scope.idChantier ? ',id:' + $scope.idChantier : "" )
+                +')';
+            Init.getElementPaginated(rewriteelement, listofrequests_assoc["chantiers"][0]).then(function (data)
+            {
+                $scope.paginationchantier = {
+                    currentPage: data.metadata.current_page,
+                    maxSize: 10,
+                    entryLimit: $scope.paginationchantier.entryLimit,
+                    totalItems: data.metadata.total
+                };
+
+                $scope.chantiers = data.data;
+            },function (msg)
+            {
+
+                console.log("ici msg => ",msg)
+                toastr.error(msg);
+            });
+        }
     };
 
     // Permet d'afficher le formulaire
@@ -558,12 +641,12 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
 
             var niveau = $("#niveau_projet").val();
             // var piece_projet = $("#piece_projet").val();
-            var chambre_projet = $("#chambre_projet").val();
-            var chambre_sdb_projet = $("#chambre_sdb_projet").val();
-            var bureau_projet = $("#bureau_projet").val();
-            var salon_projet = $("#salon_projet").val();
-            var cuisine_projet = $("#cuisine_projet").val();
-            var toillette_projet = $("#toillette_projet").val();
+            var chambre_projet          = parseInt($("#chambre_projet").val());
+            var chambre_sdb_projet      = parseInt($("#chambre_sdb_projet").val());
+            var bureau_projet           = parseInt($("#bureau_projet").val());
+            var salon_projet            = parseInt($("#salon_projet").val());
+            var cuisine_projet          = parseInt($("#cuisine_projet").val());
+            var toillette_projet        = parseInt($("#toillette_projet").val());
 
 
             if($("#chambre_projet").val() == '' || parseInt($("#chambre_projet").val()) < 0)
@@ -744,192 +827,352 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
 
 
     // $scope.userConnected = {id: 1, nom_complet: "papa thiam", email: "papathiame11@gmail.com"}
-
-    $scope.addProjet = function (e) {
+    
+    $scope.getBase64 = function(file) {
+       reader = new FileReader(),
+       reader.onload = function () {
+         //console.log("reader.result ",reader.result);
+         $scope.fichier_projet = reader.result;
+         //console.log("ici $scope.fichier_projet", $scope.fichier_projet, reader.result)
+       };
+       reader.readAsDataURL(file);
+      
+       reader.onerror = function (error) {
+         console.log('Error: ', error);
+       };
+    }
+    
+    //var file = document.querySelector('#fichier_projet > input[type="file"]').files[0];
+    //var fileteste = document.getElementById('fichier_projet').files[0];
+    //$scope.getBase64(fileteste); 
+    
+    $scope.addChantier = function(e)
+    {
         e.preventDefault();
-
-        var type = 'projet';
-        var form = $('#form_add' + type);
-
-        var formdata=new (window.FormData) ? ( new FormData(form[0])): null;
-        var send_data=(formdata!==null) ? formdata : form.serialize();
-        //var send_data = formdata;
-
-        send_data.append('tab_projet', JSON.stringify($scope.produitsInTable));
-
-        frm = $("#form_addprojet");
-        data_form =  frm.serialize();
-
-        // console.log("ici forme data", data_form);
-
-        if ($scope.produitsInTable.length ==0)
-        {
-            iziToast.error({
-                title: "",
-                message: "Vous devez ajouter au moins un niveau.",
-                position: 'topRight'
-            });
-            return false;
-        }
-
-        if($('#electricte_projet').prop('checked') == true){
-            $scope.electricite = 1;
-        }
-        else
-        {
-            $scope.electricite = 0;
-        }
-        if($('#accesvoirie_projet').prop('checked') == true){
-            $scope.acces_voirie = 1;
-        }
-        else
-        {
-            $scope.acces_voirie = 0;
-        }
-        if($('#ass_projet').prop('checked') == true){
-            $scope.assainissement = 1;
-        }
-        else
-        {
-            $scope.assainissement = 0;
-        }
-        if($('#cadastre_projet').prop('checked') == true){
-            $scope.geometre = 1;
-        }
-        else
-        {
-            $scope.geometre = 0;
-        }
-        if($('#courant_faible_projet').prop('checked') == true){
-            $scope.courant_faible = 1;
-        }
-        else
-        {
-            $scope.courant_faible = 0;
-        }
-        if($('#eaux_pluviable_projet').prop('checked') == true){
-            $scope.eaux_pluviable = 1;
-        }
-        else
-        {
-            $scope.eaux_pluviable = 0;
-        }
-        if($('#bornes_visible_projet').prop('checked') == true){
-            $scope.bornes_visible = 1;
-        }
-        else
-        {
-            $scope.bornes_visible = 0;
-        }
-        if($('#necessite_bornage_projet').prop('checked') == true){
-            $scope.necessite_bornage = 1;
-        }
-        else
-        {
-            $scope.necessite_bornage = 0;
-        }
-
-        console.log("icic => ",$scope.necessite_bornage,$scope.bornes_visible,$scope.eaux_pluviable,$scope.electricite)
-        if(fichier_projet.files[0].size > 1000000) {
-            iziToast.error({
-                title: "",
-                message: "La taille maximale du fichier doit etre de 1 MB",
-                position: 'topRight'
-            });
-
-            allow = false;
-        }
-        if ($scope.idProjet2 == 0) {
-           
-            var data = {
-                //  'id': 1,
-                'user': $scope.userConnected.id,
-                'adresse_terrain': $('#localisation_projet').val(),
-                'fichier': $('#fichier_projet').val(),
-                'longeur': $('#longeur_projet').val(),
-                'largeur': $('#largeur_projet').val(),
-                'piscine': $('#piscine_projet').val(),
-                'garare': $('#garage_projet').val(),
-                'fichier':  document.getElementById('fichier_projet').files[0],
-                'description': $('#description_projet').val(),
-                'electricite': $scope.electricite,
-                'acces_voirie': $scope.acces_voirie,
-                'assainissement': $scope.assainissement,
-                'geometre': $scope.geometre,
-                'courant_faible': $scope.courant_faible,
-                'eaux_pluviable': $scope.eaux_pluviable,
-                'bornes_visible': $scope.bornes_visible,
-                'necessite_bornage': $scope.necessite_bornage,
-                'tab_projet': JSON.stringify($scope.produitsInTable),
-                'positions': JSON.stringify([{position : 'Nord',ref:  parseInt($('#choix_nord_projet').val())}, {position : 'Sud',ref: parseInt($('#choix_sud_projet').val())}, {position : 'Ouest',ref: parseInt($('#choix_ouest_projet').val())}, {position : 'Est',ref: parseInt($('#choix_ouest_projet').val())}]),
-            };
+        if ($scope.userConnected) {
             
-            console.log("les donnes a envoye =>", data);
-        }
-        else {
-            console.log("Le fichier a envoyer au server",fichier_projet.files[0])
-           
-            var data = {
-                'id': parseInt($scope.idProjet2),
-                'user': $scope.userConnected.id,
-                'adresse_terrain': $('#localisation_projet').val(),
-                'fichier': document.getElementById('fichier_projet').files[0],
-                'longeur': $('#longeur_projet').val(),
-                'largeur': $('#largeur_projet').val(),
-                'piscine': $('#piscine_projet').val(),
-                'garage' : $('#garage_projet').val(),
-                'description': $('#description_projet').val(),
-                'electricite': $scope.electricite,
-                'acces_voirie': $scope.acces_voirie,
-                'assainissement': $scope.assainissement,
-                'geometre': $scope.geometre,
-                'courant_faible': $scope.courant_faible,
-                'eaux_pluviable': $scope.eaux_pluviable,
-                'bornes_visible': $scope.bornes_visible,
-                'necessite_bornage': $scope.necessite_bornage,
-                'tab_projet': JSON.stringify($scope.produitsInTable),
-                'positions': JSON.stringify([{position : 'Nord',ref:  parseInt($('#choix_nord_projet').val())}, {position : 'Sud',ref: parseInt($('#choix_sud_projet').val())}, {position : 'Ouest',ref: parseInt($('#choix_ouest_projet').val())}, {position : 'Est',ref: parseInt($('#choix_ouest_projet').val())}]),
-            };
-            console.log("les donnes a envoye =>", data);
-        }
+            var type = 'chantier';
+            var form = $('#form_add' + type);
+    
+            var formdata=new (window.FormData) ? ( new FormData(form[0])): null;
+            var senddata=(formdata!==null) ? formdata : form.serialize();
+    
+    
+            senddata.append('user', $scope.userConnected.id);
 
-            console.log("icic les datas => ", data)
-           // $('body').blockUI_start();
-            $http({
-                url: BASE_URL + 'projet',
-                method: 'POST',
-                data: data,
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            }).then(function (data) {
-               // $('body').blockUI_stop();
-               
+   
+            //     senddata.append("mode_reglement_id",$scope.choixmodalite)
+        
+    
+            console.log("form serialize data =", senddata);
+          
+    
+    
+            Init.saveElementAjax( type, senddata).then(function(data)
+            {
+                console.log('data', data);
+    
                 console.log("ici les datas retours ", data)
-                if (data.data.errors != null || data.data.errors_debug) {
+                if (data.errors) {
                     iziToast.error({
                         title: '',
-                        message: data.data.errors,
+                        message: data.errors,
                         position: 'topRight'
                     });
-                } else{
-                   // $('body').blockUI_stop();
+                }else{
                     iziToast.success({
                         title: '',
                         message: 'Votre demande a bien été prise en compte',
                         position: 'topRight'
                     });
-
+    
                     $scope.emptyForm('projet');
+    
+                    $("#modal_chantier").modal('hide');
+                    $scope.index_plan = 0;
+                    $scope.pageChanged('chantier');
+    
+                }
+    
+            }, function (msg)
+            {
+                iziToast.error({
+                    title: (!senddata.id ? 'AJOUT' : 'MODIFICATION'),
+                    message: '<span class="h4">Erreur depuis le serveur, veuillez contactez l\'administrateur</span>',
+                    position: 'topRight'
+                });
+                console.log('Erreur serveur ici = ' + msg);
+            });
+    
+        }
+        else {
+            iziToast.info({
+                title: '',
+                message: 'Veuillez vous connecter !',
+                displayMode: 'once',
+                position: 'topRight'
+            });
+            return false;
+        }
+    };
+       
+      $scope.addProjet = function (e) {
+        e.preventDefault();
+       
 
+        if ($scope.userConnected) {
+            
+            var type = 'projet';
+            var form = $('#form_add' + type);
+    
+            var formdata=new (window.FormData) ? ( new FormData(form[0])): null;
+            var senddata=(formdata!==null) ? formdata : form.serialize();
+    
+          if ($scope.produitsInTable.length ==0)
+            {
+                iziToast.error({
+                    title: "",
+                    message: "Vous devez ajouter au moins un niveau.",
+                    position: 'topRight'
+                });
+                return false;
+            }
+    
+            senddata.append('tab_projet', JSON.stringify($scope.produitsInTable));
+            senddata.append('id', $scope.idProjet2 == 0 ? '' : parseInt($scope.idProjet2));
+            senddata.append('user', $scope.userConnected.id);
+            senddata.append('positions', JSON.stringify([{position : 'Nord',ref:  parseInt($('#choix_nord_projet').val())}, {position : 'Sud',ref: parseInt($('#choix_sud_projet').val())}, {position : 'Ouest',ref: parseInt($('#choix_ouest_projet').val())}, {position : 'Est',ref: parseInt($('#choix_ouest_projet').val())}]));
+
+   
+            //     senddata.append("mode_reglement_id",$scope.choixmodalite)
+        
+    
+            console.log("form serialize data =", senddata);
+          
+    
+    
+            Init.saveElementAjax( type, senddata).then(function(data)
+            {
+                console.log('data', data);
+    
+                console.log("ici les datas retours ", data)
+                if (data.errors) {
+                    iziToast.error({
+                        title: '',
+                        message: data.errors,
+                        position: 'topRight'
+                    });
+                }else{
+                    iziToast.success({
+                        title: '',
+                        message: 'Votre demande a bien été prise en compte',
+                        position: 'topRight'
+                    });
+    
+                    $scope.emptyForm('projet');
+    
                     $("#modal_demande").modal('hide');
                     $scope.index_plan = 0;
                     $scope.pageChanged('projet');
-
+    
                 }
-            })
+    
+            }, function (msg)
+            {
+                iziToast.error({
+                    title: (!senddata.id ? 'AJOUT' : 'MODIFICATION'),
+                    message: '<span class="h4">Erreur depuis le serveur, veuillez contactez l\'administrateur</span>',
+                    position: 'topRight'
+                });
+                console.log('Erreur serveur ici = ' + msg);
+            });
+    
+        }
+        else {
+            iziToast.info({
+                title: '',
+                message: 'Veuillez vous connecter !',
+                displayMode: 'once',
+                position: 'topRight'
+            });
+            return false;
+        }
 
-    }
+       
+    };
+
+    // $scope.addProjet = function (e) {
+    //     e.preventDefault();
+
+    //     var type = 'projet';
+    //     var form = $('#form_add' + type);
+
+    //     var formdata=new (window.FormData) ? ( new FormData(form[0])): null;
+    //     var send_data=(formdata!==null) ? formdata : form.serialize();
+    //     //var send_data = formdata;
+
+    //     send_data.append('tab_projet', JSON.stringify($scope.produitsInTable));
+        
+    //     // $scope.fichier_projet = document.getElementById('fichier_projet').files[0];
+    //     //var file = document.getElementById('fichier_projet').files[0];
+
+    //     //$scope.getBase64(file)
+
+    //     console.log("ici forme data", send_data)
+
+    //     if ($scope.produitsInTable.length ==0)
+    //     {
+    //         iziToast.error({
+    //             title: "",
+    //             message: "Vous devez ajouter au moins un niveau.",
+    //             position: 'topRight'
+    //         });
+    //         return false;
+    //     }
+
+    //     if($('#electricte_projet').prop('checked') == true){
+    //         $scope.electricite = 1;
+    //     }
+    //     else
+    //     {
+    //         $scope.electricite = 0;
+    //     }
+    //     if($('#accesvoirie_projet').prop('checked') == true){
+    //         $scope.acces_voirie = 1;
+    //     }
+    //     else
+    //     {
+    //         $scope.acces_voirie = 0;
+    //     }
+    //     if($('#ass_projet').prop('checked') == true){
+    //         $scope.assainissement = 1;
+    //     }
+    //     else
+    //     {
+    //         $scope.assainissement = 0;
+    //     }
+    //     if($('#cadastre_projet').prop('checked') == true){
+    //         $scope.geometre = 1;
+    //     }
+    //     else
+    //     {
+    //         $scope.geometre = 0;
+    //     }
+    //     if($('#courant_faible_projet').prop('checked') == true){
+    //         $scope.courant_faible = 1;
+    //     }
+    //     else
+    //     {
+    //         $scope.courant_faible = 0;
+    //     }
+    //     if($('#eaux_pluviable_projet').prop('checked') == true){
+    //         $scope.eaux_pluviable = 1;
+    //     }
+    //     else
+    //     {
+    //         $scope.eaux_pluviable = 0;
+    //     }
+    //     if($('#bornes_visible_projet').prop('checked') == true){
+    //         $scope.bornes_visible = 1;
+    //     }
+    //     else
+    //     {
+    //         $scope.bornes_visible = 0;
+    //     }
+    //     if($('#necessite_bornage_projet').prop('checked') == true){
+    //         $scope.necessite_bornage = 1;
+    //     }
+    //     else
+    //     {
+    //         $scope.necessite_bornage = 0;
+    //     }
+
+    //     console.log("icic => ",$scope.necessite_bornage,$scope.bornes_visible,$scope.eaux_pluviable,$scope.electricite)
+
+    //     if ($scope.idProjet2 == 0) {
+
+    //         var data = {
+    //             //  'id': 1,
+    //             'user': $scope.userConnected.id,
+    //             'adresse_terrain': $('#localisation_projet').val(),
+    //             // 'fichier': document.querySelector('input[type="file"]').files[0],
+    //             'longeur': $('#longeur_projet').val(),
+    //             'largeur': $('#largeur_projet').val(),
+    //             'piscine': $('#piscine_projet').val(),
+    //             'garage' : $('#garage_projet').val(),
+    //             'description': $('#description_projet').val(),
+    //             'electricite': $scope.electricite,
+    //             'acces_voirie': $scope.acces_voirie,
+    //             'assainissement': $scope.assainissement,
+    //             'geometre': $scope.geometre,
+    //             'courant_faible': $scope.courant_faible,
+    //             'eaux_pluviable': $scope.eaux_pluviable,
+    //             'bornes_visible': $scope.bornes_visible,
+    //             'necessite_bornage': $scope.necessite_bornage,
+    //             'tab_projet': JSON.stringify($scope.produitsInTable),
+    //             'positions': JSON.stringify([{position : 'Nord',ref:  parseInt($('#choix_nord_projet').val())}, {position : 'Sud',ref: parseInt($('#choix_sud_projet').val())}, {position : 'Ouest',ref: parseInt($('#choix_ouest_projet').val())}, {position : 'Est',ref: parseInt($('#choix_ouest_projet').val())}]),
+    //         }
+    //     }
+    //     else {
+    //         var data = {
+    //             'id': parseInt($scope.idProjet2),
+    //             'user': $scope.userConnected.id,
+    //             'adresse_terrain': $('#localisation_projet').val(),
+    //             // 'fichier': document.querySelector('input[type="file"]').files[0],
+    //           // 'fichier': $scope.fichier_projet,
+    //             'longeur': $('#longeur_projet').val(),
+    //             'largeur': $('#largeur_projet').val(),
+    //             'piscine': $('#piscine_projet').val(),
+    //             'description': $('#description_projet').val(),
+    //             'electricite': $scope.electricite,
+    //             'acces_voirie': $scope.acces_voirie,
+    //             'assainissement': $scope.assainissement,
+    //             'geometre': $scope.geometre,
+    //             'courant_faible': $scope.courant_faible,
+    //             'eaux_pluviable': $scope.eaux_pluviable,
+    //             'bornes_visible': $scope.bornes_visible,
+    //             'necessite_bornage': $scope.necessite_bornage,
+    //             'tab_projet': JSON.stringify($scope.produitsInTable),
+    //             'positions': JSON.stringify([{position : 'Nord',ref:  parseInt($('#choix_nord_projet').val())}, {position : 'Sud',ref: parseInt($('#choix_sud_projet').val())}, {position : 'Ouest',ref: parseInt($('#choix_ouest_projet').val())}, {position : 'Est',ref: parseInt($('#choix_ouest_projet').val())}]),
+    //         };
+    //     }
+
+    //         console.log("icic les datas => ", data)
+    //       // $('body').blockUI_start();
+    //         $http({
+    //             url: BASE_URL + 'projet',
+    //             method: 'POST',
+    //             data: data,
+    //             headers: {
+    //                 'Content-Type': 'application/json'
+    //             }
+    //         }).then(function (data) {
+    //           // $('body').blockUI_stop();
+    //             console.log("ici les datas retours ", data)
+    //             if (data.data.errors) {
+    //                 iziToast.error({
+    //                     title: '',
+    //                     message: data.data.errors,
+    //                     position: 'topRight'
+    //                 });
+    //             }else{
+    //               // $('body').blockUI_stop();
+    //                 iziToast.success({
+    //                     title: '',
+    //                     message: 'Votre demande a bien été prise en compte',
+    //                     position: 'topRight'
+    //                 });
+
+    //                 $scope.emptyForm('projet');
+
+    //                 $("#modal_demande").modal('hide');
+    //                 $scope.index_plan = 0;
+    //                 $scope.pageChanged('projet');
+
+    //             }
+    //         })
+
+    // }
 
     $scope.addNci = function (e) {
         e.preventDefault();
@@ -1041,8 +1284,64 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
         $("#modal_remarque").modal('hide');
               
     };
+    
+    $scope.enableElement  = function(type , idChantier)
+    {
+        var data = {
+            'id': idChantier,
+        };
+        $http({
+            url: BASE_URL + type + '_enable/' + idChantier,
+            method: 'GET',
+            data: data,
+             headers: {
+                'Content-Type': 'application/pdf'
+            }
+        }).then(function (data) {
+            if (data.data.errors) {
+                iziToast.error({
+                    title: '',
+                    message: data.data.errors,
+                    position: 'topRight'
+                });
+            }else{
+                 console.log("ici les datas -> ", data.data)
+                 iziToast.success({
+                    title: 'ACTIVATION / VALIDATION',
+                    message: 'Le ' + type + ' est bien validé',
+                    position: 'topRight'
+                });
+                //  window.open($scope.base_url+ type +"enable/"+idChantier,"_blank");
+            }
+        });
 
-
+    };
+    $scope.getPDFElement = function(type, idElement)
+    {
+        var data = {
+            'id': idElement,
+        };
+      
+        $http({
+            url: BASE_URL + type + '_pdf/' + idElement,
+            method: 'GET',
+            data: data,
+             headers: {
+                'Content-Type': 'application/pdf'
+            }
+        }).then(function (data) {
+            if (data.data.errors) {
+                iziToast.error({
+                    title: '',
+                    message: data.data.errors,
+                    position: 'topRight'
+                });
+            }else{
+                 console.log("ici les datas -> ", data.data),
+                 window.open($scope.base_url+ type +"_pdf/"+idElement,"_blank");
+            }
+        })
+    };
     $scope.GetPdf = function (idprojet) {
 
         var data = {
@@ -1053,9 +1352,9 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
             url: BASE_URL + 'contrat/' + idprojet,
             method: 'GET',
             data: data,
-            headers: {
-                'Content-Type': 'application/json'
-            }
+            // headers: {
+            //     'Content-Type': 'application/pdf'
+            // }
         }).then(function (data) {
             if (data.data.errors) {
                 iziToast.error({
@@ -1064,10 +1363,11 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
                     position: 'topRight'
                 });
             }else{
-                iziToast.success({
+
+               /* iziToast.success({
                     message: 'Merci de patientez !!',
                     position: 'topRight'
-                });
+                });*/
                 console.log("ici les datas -> ", data.data)
                // var idp = data.data
                  window.open($scope.base_url+"contrat/"+idprojet,"_blank");
@@ -1136,6 +1436,83 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
 
     $scope.InfoProjet = function (itemId) {
         localStorage.setItem("id_projet", itemId);
+    };
+    $scope.InfoChantier = function(itemId)
+    {
+        localStorage.setItem("id_chantier", itemId);
+    
+    };
+ 
+    $scope.deleteChantier = function (itemId) {
+        var msg = 'Voulez-vous vraiment effectué cette suppression ?';
+        var title = 'SUPPRESSION';
+        iziToast.question({
+            timeout: 0,
+            close: false,
+            overlay: true,
+            displayMode: 'once',
+            id: 'question',
+            zindex: 999,
+            title: title,
+            message: msg,
+            position: 'center',
+            buttons: [
+                ['<button class="font-bold">OUI</button>', function (instance, toast) {
+
+                    instance.hide({ transitionOut: 'fadeOut' }, toast, 'button');
+
+                    Init.removeElement(itemId, 'chantier/').then(function (data) {
+
+                        console.log('deleted deleted', data);
+                        if (data.errors || data.errors_debug) {
+                            console.log('deleted', data);
+
+                            $scope.errors = data.errors;
+                            console.log("voisci l'erreur", data.errors)
+                          
+                            iziToast.error({
+                                title: "",
+                                message: data.errors,
+                                position: 'topRight'
+                            });
+
+                        }
+                        else {
+                            $.each($scope.chantiers, function (keyItem, oneItem) {
+                                if (oneItem.id === itemId) {
+                                    $scope.chantiers.splice(keyItem, 1);
+                                    return false;
+                                }
+                            });
+
+                            $scope.paginationchantier.totalItems--;
+                            if ($scope.chantier.length < $scope.paginationchantier.entryLimit) {
+                                $scope.pageChanged('chantier');
+                            }
+
+                            iziToast.success({
+                                title: title,
+                                message: "Chantier supprimé",
+                                position: 'topRight'
+                            });
+                        }
+
+                    }, function (msg) {
+                        iziToast.error({
+                            title: title,
+                            message: 'Erreur server',
+                            position: 'topRight'
+                        });
+                    });
+
+                }, true],
+                ['<button>NON</button>', function (instance, toast) {
+
+                    instance.hide({ transitionOut: 'fadeOut' }, toast, 'button');
+
+                }],
+            ]
+        });
     };
 
     $scope.deleteProjet = function (itemId) {
@@ -1354,6 +1731,11 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
         $scope.etatProjet = itemId;
         $scope.pageChanged('projet');
     }
+    $scope.filtreChantier = function(itemId)
+    {
+        $scope.etatChantier = itemId;
+        $scope.pageChanged('chantier');
+    };
 
 
     $scope.contactezNous = function (e)
@@ -1379,8 +1761,7 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
                 console.log('retour formulaire = ' , data.data);
                 if (data.data.errors) {
                     iziToast.error({
-
-                        title: '',
+                        //title: '',
                        // message: "Erreur de la demande",
                         message: data.data.errors,
                         position: 'topRight'
@@ -1388,9 +1769,9 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
                 }else{
                      $scope.emptyForm(prefixeForm);
                     iziToast.success({
-                title: '',
-                       // message: "Demande envoyé !",
-                        message: data.data.success,
+                        //title: '',
+                        message: "Demande envoyé !",
+                       // message: data.data.success,
                         position: 'topRight'
                     });
                     console.log("datadata ", data)
@@ -1520,6 +1901,7 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
 
 
     $scope.idProjet = null;
+    $scope.idChantier = null;
 
     whereAreWe = window.location.href;
     console.log('whereAreWe', whereAreWe);
@@ -1529,6 +1911,21 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
      if(whereAreWe.indexOf('pub')!==-1)
     {
         $scope.getelements("posts");
+    }
+    else if (whereAreWe.indexOf('detail-chantier')!==-1)
+    {
+        if ($scope.userConnected == null) {
+            iziToast.warning({
+                title: 'Vous n\'êtes pas connecté',
+                position: 'topRight'
+            });
+
+            var urlRedirection = "../index.html";
+            setTimeout(function () {
+                window.location.href = urlRedirection;
+            }, 500);
+        }
+        $scope.pageChanged("chantier");
     }
     else if (whereAreWe.indexOf('mon-profil')!==-1)
     {

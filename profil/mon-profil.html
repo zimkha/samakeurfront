@@ -195,6 +195,8 @@
                                 <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#man" role="tab" ng-click="filtreProjet(0)">Mes demandes</a></li>
                                 <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#women" role="tab"  ng-click="filtreProjet(1)">En validation</a></li>
                                 <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#kids" role="tab"  ng-click="filtreProjet(2)">Paiement effectué</a></li>
+                                <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#chantiers" role="tab"  ng-click="filtreChantier(0)">Mes Chantiers</a></li>
+
                             </ul>
                         </div>
                         <div class="tab-content" id="myTabContent">
@@ -486,6 +488,106 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="tab-pane fade" id="chantiers" role="tabpanel">
+                                <div class="row justify-content-end">
+                                    <div class="col-md-3">
+                                        <div class="text-right">
+                                            <button class="btn btn-warning btn-sm" type="button" ng-click="showModalAdd('chantier')">Creer Un chantier</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mt-3 mb-1 text-center">
+                                    La listes de mes chantiers dans SAMA Keur
+                                </div>
+                                <div class="row mt-20">
+                                    <div class="col-md-4 mb-10" ng-repeat="item in chantiers">
+                                        <div style="background: #ffffff;padding: 10px;border-radius: 5px" class="shadow">
+                                            <p style="margin-bottom: 10px;margin-left: -1rem" class="alert-accor">
+                                            <div class="pointer-hover wd-100" type="button" data-toggle="collapse" data-target="#collapseExample-{{$index}}" aria-expanded="false" aria-controls="collapseExample-1">
+                                                <div>Chantiers {{ item.id }}</div>
+                                            </div>
+                                            </p>
+                                            <div class="collapse" id="collapseExample-{{$index}}" style="position: absolute;z-index: 999;background: #fff;border-radius: 5px">
+                                                <div class="shadow">
+                                                    <div  class="card-body row animated fadeInUp">
+                                                        <div class=" col-md-12 col-sm-12 mt-10">
+                                                            <div class="border-danger">
+                                                                <div> Crée le :<span> <u>{{item.created_at_fr}}</u></span></div>
+                                                            </div>
+                                                        </div>
+                                                        <div class=" col-md-6 col-sm-12 mt-10">
+                                                            <div class="border-danger">
+                                                                <div> 
+                                                                     <a href="{{Link_file}}/{{ item.fichier }}">
+                                                                    <span class="fa fa-file-pdf"></span> 
+                                                                </a>
+                                                                Fichier
+                                                            </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class=" col-md-6 col-sm-12 mt-10">
+                                                            <div class="border-danger">
+                                                                <!-- <div> Long / Larg : <span> <u>{{item.longeur}} - {{item.largeur}}</u></span></div> -->
+                                                            </div>
+                                                        </div>
+                                                        <div class=" col-md-12 col-sm-12 mt-10">
+                                                            <div class="border-danger text-orange font-weight-bold ">
+                                                                <!-- <div> Niveau :<span> <u>{{item.niveau}}</u></span></div> -->
+                                                            </div>
+                                                        </div>
+                                                        <div class=" col-md-6 col-sm-12 mt-10">
+                                                            <div class="border-danger">
+                                                                <!-- <div> Chambre Sple :<span> <u>{{item.nb_chambre}}</u></span></div> -->
+                                                            </div>
+
+                                                        </div>
+                                                        <div class=" col-md-6 col-sm-12 mt-10">
+                                                            <div class="border-danger">
+                                                                <!-- <div> Chambre SDB :<span> <u>{{item.nb_sdb}}</u></span></div> -->
+                                                            </div>
+                                                        </div>
+                                                        <div class=" col-md-6 col-sm-12 mt-10">
+                                                            <div class="border-danger">
+                                                                <!-- <div> Cuisine :<span> <u>{{item.nb_cuisine}}</u></span></div> -->
+                                                            </div>
+                                                        </div>
+                                                        <div class=" col-md-6 col-sm-12 mt-10">
+                                                            <div class="border-danger">
+                                                                <!-- <div>  Toillette :<span> <u>{{item.nb_toillette}}</u></span></div> -->
+                                                            </div>
+                                                        </div>
+                                                        <div class=" col-md-6 col-sm-12 mt-10">
+                                                            <div class="border-danger">
+                                                                <!-- <div> Salon :<span> <u>{{item.nb_salon}}</u></span></div> -->
+                                                            </div>
+                                                        </div>
+                                                        <div class=" col-md-6 col-sm-12 mt-10">
+                                                            <div class="border-danger">
+                                                                <!-- <div> Bureau :<span> <u>{{item.nb_bureau}}</u></span></div> -->
+                                                            </div>
+                                                        </div>
+
+                                                        <div class=" col-md-12 col-sm-12 mt-10">
+                                                            <a href="detail-chantier.html" title="Info" class="btn back-success btn-sm btn-circle mr-2 text-white"  ng-click="InfoChantier(item.id)">
+                                                                <i class="fa fa-info"></i>
+                                                            </a>
+                                                          
+                                                            <button  title="Supprimer" class="btn back-danger btn-sm btn-circle" ng-click="deleteChantier(item.id)">
+                                                                <i class="fa fa-trash"></i>
+                                                            </button>
+
+                                                        </div>
+
+
+                                                    </div>
+
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
 
 
                         </div>
@@ -499,6 +601,32 @@
 
 
 <!--modal-->
+<div class="modal fade" id="modal_chantier" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span class="ti-close" aria-hidden="true"></span></button>
+            </div>
+            <div class="modal-body" style="padding: 50px!important">
+                <form id="form_addchantier" class="form" enctype="multipart/form-data" ng-submit="addChantier($event)" accept-charset="UTF-8">
+                    <div class="col-lg-12">
+                        <div class="form-group">
+
+                            <label for="fichier_chantier">Fichier</label>
+                            <input type="file" class="form-control" accept='image/*,.pdf' id="fichier_chantier" name="fichier">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="reset" class="btn btn-danger btn-sm" data-dismiss="modal">Fermer</button>
+
+                        <button type="submit" class="btn btn-primary btn-sm">Enregistrer</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 <div class="modal fade" id="modal_demande" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
@@ -507,7 +635,7 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span class="ti-close" aria-hidden="true"></span></button>
             </div>
             <div class="modal-body" style="padding: 50px!important;">
-                <form id="form_addprojet" class="form"enctype="multipart/form-data" accept-charset="UTF-8">
+                <form id="form_addprojet" class="form" enctype="multipart/form-data" ng-submit="addProjet($event)" accept-charset="UTF-8">
                     <input type="hidden" id="id_projet" name="id">
                     <h4 class="form-section animated fadeInDown text-uppercase mb-3 mt-5 border-bottom border-alternate">
                         <i class="fa fa-info-circle"></i>
@@ -515,7 +643,7 @@
                     </h4>
 
                     <div class="row">
-                        <div class="col-lg-6">
+                        <div class="col-lg-12">
                             <div class="form-group">
 
                                 <label for="localisation_projet">Adresse</label>
@@ -526,7 +654,7 @@
                             <div class="form-group">
 
                                 <label for="fichier_projet">Fichier</label>
-                                <input type="file" class="form-control" accept='image/*, .pdf, .docs' id="fichier_projet" name="fichier">
+                                <input type="file" class="form-control" accept='image/*,.pdf' id="fichier_projet" name="fichier">
                             </div>
                         </div>
 
@@ -557,17 +685,22 @@
                     </h4>
 
                     <div class="row justify-content-center mb-3">
+                          
+                        <div class="col-md-5 mobile text-center">
+                            <img src="../assets/images/image_boussol.jpeg">
+                        </div>
                         <div class="col-md-12">
                             <div class="row justify-content-center">
-                                <div class="col-lg-2  text-center">
+                                <div class="col-lg-2">
                                     <div class="form-group">
                                         <label for="longeur_projet">Longeur(m)</label>
                                         <input type="number" id="longeur_projet" name="longeur" class="form-control">
                                     </div>
                                 </div>
-                                <div class="col-md-2 mb-2 text-center">
+                                <div class="col-md-2 mb-2">
                                     <label for="garage_projet">Choix Nord </label>
                                     <select class="form-control" id="choix_nord_projet" name="choix_nord" ng-click="actionSurPosition()">
+                                         <!--<option>Fair un Choix</option>-->
                                         <option value="1">Mitoyen</option>
                                         <option value="0">Rue</option>
                                     </select>
@@ -583,23 +716,25 @@
                                         <input type="number" id="largeur_projet" name="largeur" class="form-control">
                                     </div>
                                 </div>
-                                <div class="col-md-6 pb-4 text-center align-self-center">
+                                <div class="col-md-6 pb-4 align-self-center">
                                     <label for="garage_projet">Choix Ouest </label>
                                     <select class="form-control" id="choix_ouest_projet" name="choix_ouest" ng-click="actionSurPosition()">
+                                        <!--<option>Fair un Choix</option>-->
                                         <option value="1">Mitoyen</option>
                                         <option value="0">Rue</option>
                                     </select>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-5 border">
+                        <div class="col-md-5 border pc">
                             <div style="height: 200px"></div>
                         </div>
                         <div class="col-md-3 align-self-center">
                             <div class="row ">
-                                <div class="col-md-6 pb-4 pt-4 text-center align-self-center">
+                                <div class="col-md-6 pb-4 pt-4 align-self-center">
                                     <label for="garage_projet">Choix Est </label>
                                     <select class="form-control" id="choix_est_projet" name="choix_est" ng-click="actionSurPosition()">
+                                        <!--<option>Fair un Choix</option>-->
                                         <option value="1">Mitoyen</option>
                                         <option value="0">Rue</option>
                                     </select>
@@ -609,11 +744,13 @@
 
                         <div class="col-md-12">
                             <div class="row justify-content-center">
-                                <div class="col-md-2 mt-2 text-center">
+                                <div class="col-md-2 mt-2">
                                     <label for="garage_projet">Choix Sud </label>
                                     <select class="form-control" id="choix_sud_projet" name="choix_sud" ng-click="actionSurPosition()">
+                                        <!--<option>Fair un Choix</option>-->
+                                         <option value="0">Rue</option>
                                         <option value="1">Mitoyen</option>
-                                        <option value="0">Rue</option>
+                                       
                                     </select>
                                 </div>
                             </div>
@@ -734,9 +871,9 @@
                                     </div>
                                     <div class="col-lg-1">
                                         <div class="form-group mt-4 text-lg-right">
-                                            <button class="btn btn-success mt-2" ng-click="actionSurProjet('add')" title="Ajouter un niveau" >
+                                            <div class="btn btn-success mt-2" ng-click="actionSurProjet('add')" title="Ajouter un niveau" >
                                                 <i class="fa fa-plus"></i>
-                                            </button>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -818,7 +955,7 @@
                     <div class="modal-footer">
                         <button type="reset" class="btn btn-danger btn-sm" data-dismiss="modal">Fermer</button>
 
-                        <button type="submit" class="btn btn-primary btn-sm" ng-click="addProjet($event)">Enregistrer</button>
+                        <button type="submit" class="btn btn-primary btn-sm">Enregistrer</button>
                     </div>
                 </form>
 

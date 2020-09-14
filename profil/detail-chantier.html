@@ -167,7 +167,7 @@
 <div class="container">
     <div class="section">
 
-        <div class="item-titre farial fsize-20">Détail projet <span class="badge badge-warning ml-2">{{ projets[0].name }}</span></div>
+        <div class="item-titre farial fsize-20">Détail Chantier <span class="badge badge-warning ml-2">{{ chantier[0].id }}</span></div>
         <div class="underline"></div>
 
 
@@ -208,59 +208,59 @@
                                                 <div class="text-center p-1">
                                                     <div>
                                                         <i class="fa fa-calendar-check"></i> <strong><u>Date creation:</u></strong>
-                                                        <span class="text-muted">{{ projets[0].created_at_fr }}</span>
+                                                        <!-- <span class="text-muted">{{ projets[0].created_at_fr }}</span> -->
                                                     </div>
                                                 </div>
                                             </div>
                                             <div  class="card-body row animated fadeInUp">
                                                 <div class=" col-md-3 col-sm-12 mt-3">
                                                     <div class="border-danger">
-                                                        <h6> Adresse : <strong><u>{{ projets[0].adresse_terrain }}</u></strong></h6>
+                                                        <!-- <h6> Adresse : <strong><u>{{ projets[0].adresse_terrain }}</u></strong></h6> -->
                                                     </div>
 
                                                 </div>
                                                 <div class=" col-md-3 col-sm-12 mt-3">
                                                     <div class="border-danger">
-                                                        <h6> Superficie : <strong><u>{{ projets[0].superficie }}</u></strong></h6>
+                                                        <!-- <h6> Superficie : <strong><u>{{ projets[0].superficie }}</u></strong></h6> -->
                                                     </div>
 
                                                 </div>
                                                 <div class=" col-md-3 col-sm-12 mt-3">
                                                     <div class="border-danger">
-                                                        <h6> Longeur : <strong><u>{{ projets[0].longeur }}</u></strong></h6>
+                                                        <!-- <h6> Longeur : <strong><u>{{ projets[0].longeur }}</u></strong></h6> -->
                                                     </div>
 
                                                 </div>
                                                 <div class=" col-md-3 col-sm-12 mt-3">
                                                     <div class="border-danger">
-                                                        <h6> Largeur : <strong><u>{{ projets[0].largeur }}</u></strong></h6>
+                                                        <!-- <h6> Largeur : <strong><u>{{ projets[0].largeur }}</u></strong></h6> -->
                                                     </div>
 
                                                 </div>
                                                 <div class=" col-md-3 col-sm-12 mt-3">
                                                     <div class="border-danger">
-                                                        <h6>Nbre Chambre Sple : <strong><u>{{ projets[0].nb_chambre }}</u></strong></h6>
-
-                                                    </div>
-
-                                                </div>
-                                                <div class=" col-md-3 col-sm-12 mt-3">
-                                                    <div class="border-danger">
-                                                        <h6>Nbre Chambre SDB : <strong><u>{{ projets[0].nb_sdb }}</u></strong></h6>
+                                                        <!-- <h6>Nbre Chambre Sple : <strong><u>{{ projets[0].nb_chambre }}</u></strong></h6> -->
 
                                                     </div>
 
                                                 </div>
                                                 <div class=" col-md-3 col-sm-12 mt-3">
                                                     <div class="border-danger">
-                                                        <h6>Nbre cuisine : <strong><u>{{ projets[0].nb_cuisine }}</u></strong></h6>
+                                                        <!-- <h6>Nbre Chambre SDB : <strong><u>{{ projets[0].nb_sdb }}</u></strong></h6> -->
 
                                                     </div>
 
                                                 </div>
                                                 <div class=" col-md-3 col-sm-12 mt-3">
                                                     <div class="border-danger">
-                                                        <h6> Nbre Toillette : <strong><u>{{ projets[0].nb_toillette }}</u></strong></h6>
+                                                        <!-- <h6>Nbre cuisine : <strong><u>{{ projets[0].nb_cuisine }}</u></strong></h6> -->
+
+                                                    </div>
+
+                                                </div>
+                                                <div class=" col-md-3 col-sm-12 mt-3">
+                                                    <div class="border-danger">
+                                                        <!-- <h6> Nbre Toillette : <strong><u>{{ projets[0].nb_toillette }}</u></strong></h6> -->
 
                                                     </div>
 
@@ -272,20 +272,9 @@
                                                     </div>
 
                                                 </div>-->
-                                                <div class=" col-md-3 col-sm-12 mt-3">
+                                                <!-- <div class=" col-md-3 col-sm-12 mt-3">
                                                     <div class="border-danger">
-                                                        <h6> Nbre Salon : <strong><u>{{ projets[0].nb_salon }}</u></strong></h6>
-
-                                                    </div>
-
-                                                </div>
-                                                <div class=" col-md-3 col-sm-12 mt-3">
-                                                    <div class="border-danger">
-                                                        <h6> Fichier Projet : </h6>
-                                                        <a href="/{{link}}/{{ projets[0].fichier }}">
-                                                            <span class="fa fa-file-pdf"></span>
-                                                          
-                                                        </a
+                                                         <h6> Nbre Salon : <strong><u>{{ projets[0].nb_salon }}</u></strong></h6> 
 
                                                     </div>
 
@@ -305,7 +294,7 @@
 
                                                     </div>
 
-                                                </div>
+                                                </div> -->
 
                                                <!-- <div class="row mt-30 animated px-2">
                                                     <div class="col-md-2 mb-10" ng-repeat="item in projets[0].remarques">
@@ -318,150 +307,8 @@
 
                                     </div>
                                 </div>
-                            </div>
 
-                                <div class="tab-pane fade" id="remarque" role="tabpanel">
-                                    <div class="text-right mt-10 mr-2">
-                                        <button class="btn btn-warning btn-sm" type="button" ng-if="projets[0].etat == 2" ng-click="showModalAdd('remarque')">Remarque</button>
-                                    </div>
-                                    <div class="row mt-20">
-                                        <div class="col-md-4 mb-10" ng-repeat="item in projets[0].remarques">
-                                            <div style="background: #ffffff;padding: 10px;border-radius: 5px" class="shadow">
-                                                <p style="margin-bottom: 10px;margin-left: -1rem" class="alert-accor">
-                                                <div class="pointer-hover wd-100" type="button" data-toggle="collapse" data-target="#collapseExample-55-{{$index}}" aria-expanded="false" aria-controls="collapseExample-1">
-                                                    <div>Remarque {{ item.id }}</div>
-                                                </div>
-                                                </p>
-                                                <div class="collapse" id="collapseExample-55-{{$index}}" style="position: absolute;z-index: 999;background: #fff;border-radius: 5px">
-                                                    <div class="shadow">
-                                                        <div  class="card-body row animated fadeInUp">
-                                                            <div class=" col-md-12 col-sm-12 mt-10">
-                                                                <div class="border-danger">
-                                                                    <div> {{item.demande_text}} </div>
-                                                                </div>
-                                                            </div>
-                                                           <!-- <div class=" col-md-12 col-sm-12 mt-10">
-                                                                <div class="border-danger">
-                                                                    <div> Fichier :<span> <u><a href="{{ base_url }}/{{ item.fichier }}"></a></u></span></div>
-                                                                </div>
-                                                            </div>-->
-
-                                                        </div>
-
-                                                    </div>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="tab-pane fade" id="niveau" role="tabpanel">
-                                    <div class="mt-2 text-justify">
-                                    </div>
-                                    <div class="row mt-20">
-                                        <div class="col-md-4 mb-10" ng-repeat="item in projets[0].niveau_projets">
-                                            <div style="background: #ffffff;padding: 10px;border-radius: 5px" class="shadow">
-                                                <p style="margin-bottom: 10px;margin-left: -1rem" class="alert-accor">
-                                                <div class="pointer-hover wd-100" type="button" data-toggle="collapse" data-target="#collapseExample-3-{{$index}}" aria-expanded="false" aria-controls="collapseExample-1">
-                                                    <div>Projet {{ item.niveau_name }}</div>
-                                                </div>
-                                                </p>
-                                                <div class="collapse" id="collapseExample-3-{{$index}}" style="position: absolute;z-index: 999;background: #fff;border-radius: 5px">
-                                                    <div class="">
-                                                        <div  class="card-body row animated fadeInUp">
-                                                           
-                                                           
-                                                            <div class=" col-md-6 col-sm-12 mt-10">
-                                                                <div class="border-danger">
-                                                                    <div> Chambre Sple :<span> <u>{{item.chambre}}</u></span></div>
-                                                                </div>
-
-                                                            </div>
-                                                            <div class=" col-md-6 col-sm-12 mt-10">
-                                                                <div class="border-danger">
-                                                                    <div> Chambre SDB :<span> <u>{{item.sdb}}</u></span></div>
-                                                                </div>
-                                                            </div>
-                                                            <div class=" col-md-6 col-sm-12 mt-10">
-                                                                <div class="border-danger">
-                                                                    <div> Cuisine :<span> <u>{{item.cuisine}}</u></span></div>
-                                                                </div>
-                                                            </div>
-                                                            <div class=" col-md-6 col-sm-12 mt-10">
-                                                                <div class="border-danger">
-                                                                    <div>  Toillette :<span> <u>{{item.toillette}}</u></span></div>
-                                                                </div>
-                                                            </div>
-                                                            <div class=" col-md-6 col-sm-12 mt-10">
-                                                                <div class="border-danger">
-                                                                    <div> Salon :<span> <u>{{item.salon}}</u></span></div>
-                                                                </div>
-                                                            </div>
-                                                            <div class=" col-md-6 col-sm-12 mt-10">
-                                                                <div class="border-danger">
-                                                                    <div> Bureau :<span> <u>{{item.bureau}}</u></span></div>
-                                                                </div>
-                                                            </div>
-
-                                                          
-
-
-                                                        </div>
-
-                                                    </div>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="tab-pane fade" id="plans" role="tabpanel">
-                                    <div class="text-right mt-10 mr-2">
-                                        <button class="btn btn-warning btn-sm" type="button" ng-if="projets[0].etat == 2" ng-click="showModalAdd('remarque')">Remarque</button>
-                                    </div>
-                                    <div class="row mt-20">
-                                        <div class="col-md-4 mb-10" ng-repeat="item in projets[0].remarques">
-                                            <div style="background: #ffffff;padding: 10px;border-radius: 5px" class="shadow">
-                                                <p style="margin-bottom: 10px;margin-left: -1rem" class="alert-accor">
-                                                <div class="pointer-hover wd-100" type="button" data-toggle="collapse" data-target="#collapseExample-55-{{$index}}" aria-expanded="false" aria-controls="collapseExample-1">
-                                                    <div class="col-md-2 mb-10" ng-repeat="item in planview.joineds">
-                                                        <a href="{{link}}/{{ projets[0].plan_projets[0].plan.fichier }}">
-                                                            <span class="fa fa-file-pdf"></span>
-                                                        </a>
-                                                      fichier du plan (Fichier 1)
-                                                    </div>
-                                                </div>
-                                                </p>
-                                                <div class="collapse" id="collapseExample-55-{{$index}}" style="position: absolute;z-index: 999;background: #fff;border-radius: 5px">
-                                                    <div class="shadow">
-                                                        <div  class="card-body row animated fadeInUp">
-                                                            <div class=" col-md-12 col-sm-12 mt-10">
-                                                                <div class="border-danger">
-                                                                    <div> Les autres fichier liées au projets </div>
-                                                                </div>
-                                                                <div class="col-md-2 mb-10" ng-repeat="item in projets[0].plan_projets[0].plan.joineds">
-                                                                    <a href="/{{link}}/{{ item.fichier }}">
-                                                                        <span class="fa fa-file-pdf"></span>
-                                                                        {{ item.description}}
-                                                                    </a>
-                                                                </div>
-                                                            </div>
-                                                           <!-- <div class=" col-md-12 col-sm-12 mt-10">
-                                                                <div class="border-danger">
-                                                                    <div> Fichier :<span> <u><a href="{{ base_url }}/{{ item.fichier }}"></a></u></span></div>
-                                                                </div>
-                                                            </div>-->
-
-                                                        </div>
-
-                                                    </div>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                
 
                             </div>
                         </div>
