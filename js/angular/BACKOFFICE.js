@@ -633,10 +633,11 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
 
     $scope.produitsInTable = [];
     $scope.index_plan = 0;
+    $scope.i = 0;
     $scope.actionSurProjet = function (action, selectedItem = null) {
         if (action == 'add')
         {
-            //Ajouter un élément dans le tableau
+         
              $scope.index_plan = $scope.index_plan + 1;
 
             var niveau = $("#niveau_projet").val();
@@ -691,8 +692,9 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
             }
 
            // $scope.produitsInTable.unshift({
+           
             $scope.produitsInTable.push({
-                "niveau":  "R +" + $scope.index_plan,
+                "niveau":  "R +" + ($scope.index_plan - 1),
                 "chambre": chambre_projet,
                 "sdb": chambre_sdb_projet,
                 "bureau": bureau_projet,
@@ -703,8 +705,7 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
 
             console.log("this.produitsInTable",$scope.produitsInTable)
 
-           // $("#niveau_projet").val('');
-           // $("#piece_projet").val('');
+          
             $("#chambre_projet").val('');
             $("#chambre_sdb_projet").val('');
             $("#salon_projet").val('');
@@ -1400,8 +1401,17 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
             $('#longeur_'+type).val(item.longeur);
             $('#largeur_'+type).val(item.largeur);
             $('#description_'+type).val(item.text_demande);
-            $('#piscine_'+type).val(item.piscine);
-            $('#garage_'+type).val(item.garage);
+            if(item.piscine == true )
+            {
+                $('#piscine_'+type).val("1");
+            }
+            else   $('#piscine_'+type).val("0");
+
+           if(item.garage == true)
+           {
+            $('#garage_'+type).val("1");
+           }
+           else  $('#garage_'+type).val("0");
             $('#description_'+type).val(item.text_projet);
 
             $('#electricite_'+type).prop('checked', item.electricite == true);
@@ -1418,6 +1428,13 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
                 console.log("le projet en question",valueItem)
                 liste_ligneniveau.push({"id":valueItem.id, "niveau":valueItem.niveau_name,"piece":valueItem.piece,"sdb": valueItem.sdb, "chambre" : valueItem.chambre, "bureau" : valueItem.bureau, "salon" : valueItem.salon, "cuisine" : valueItem.cuisine, "toillette" : valueItem.toillette});
             });
+            var list_positions = [];
+            $.each(item.positions, function(keyItem, valueItem){
+                list_positions.push({"position":valueItem.position, "nom_position": valueItem.nom_position})
+            });
+            
+            $scope.positions = list_positions;
+            console.log(list_positions,$scope.positions);
             $scope.produitsInTable = [];
             $scope.produitsInTable = liste_ligneniveau;
 
