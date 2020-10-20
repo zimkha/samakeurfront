@@ -2189,7 +2189,7 @@ app.controller('afterLoginCtl', function (Init, userLogged, $location, $scope, $
                         iziToast.success({
                             title: ('Information'),
                             //message: retour.success,
-                            message: 'Inscription réussie, un mail d\'activation vous a été envoyé dans votre boite mail',
+                            message: 'Inscription réussi, Veuillez vous connectez avec vos identifients',
                             position: 'topRight'
                         });
                         var urlRedirection = "login.html";
