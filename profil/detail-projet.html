@@ -254,7 +254,7 @@
                                                   <div class=" col-md-3 col-sm-12 mt-3">
                                                     <div class="border-danger">
                                                         <h6>Piscine :
-                                                            <strong><u>{{ projets[0].psc }}</u></strong>  
+                                                            <strong><u>{{ projets[0].psc }}</u></strong>
                                                         </h6>
 
                                                     </div>
@@ -302,7 +302,7 @@
                                                         <h6> Fichier Projet : </h6>
                                                         <a href="/{{link}}/{{ projets[0].fichier }}">
                                                             <span class="fa fa-file-pdf"></span>
-                                                          
+
                                                         </a
 
                                                     </div>
@@ -315,7 +315,7 @@
                                                         </a>
                                                         @{{ item.description }}
                                                     </div>
-                                                </div>  
+                                                </div>
 
                                                 <div class=" col-md-12 col-sm-12 mt-3">
                                                     <div class="border-danger">
@@ -388,8 +388,8 @@
                                                 <div class="collapse" id="collapseExample-3-{{$index}}" style="position: absolute;z-index: 999;background: #fff;border-radius: 5px">
                                                     <div class="">
                                                         <div  class="card-body row animated fadeInUp">
-                                                           
-                                                           
+
+
                                                             <div class=" col-md-6 col-sm-12 mt-10">
                                                                 <div class="border-danger">
                                                                     <div> Chambre Sple :<span> <u>{{item.chambre}}</u></span></div>
@@ -422,7 +422,7 @@
                                                                 </div>
                                                             </div>
 
-                                                          
+
 
 
                                                         </div>
@@ -439,45 +439,20 @@
                                         <button class="btn btn-warning btn-sm" type="button" ng-if="projets[0].etat == 2" ng-click="showModalAdd('remarque')">Remarque</button>
                                     </div>
                                     <div class="row mt-20">
-                                        <div class="col-md-4 mb-10" ng-repeat="item in projets[0].remarques">
+                                        <div class="col-md-4 mb-10" >
                                             <div style="background: #ffffff;padding: 10px;border-radius: 5px" class="shadow">
                                                 <p style="margin-bottom: 10px;margin-left: -1rem" class="alert-accor">
                                                 <div class="pointer-hover wd-100" type="button" data-toggle="collapse" data-target="#collapseExample-55-{{$index}}" aria-expanded="false" aria-controls="collapseExample-1">
-                                                    <div class="col-md-2 mb-10" ng-repeat="item in planview.joineds">
                                                         <a href="{{link}}/{{ projets[0].plan_projets[0].plan.fichier }}">
                                                             <span class="fa fa-file-pdf"></span>
                                                         </a>
                                                       fichier du plan (Fichier 1)
-                                                    </div>
+
                                                 </div>
                                                 </p>
-                                                <div class="collapse" id="collapseExample-55-{{$index}}" style="position: absolute;z-index: 999;background: #fff;border-radius: 5px">
-                                                    <div class="shadow">
-                                                        <div  class="card-body row animated fadeInUp">
-                                                            <div class=" col-md-12 col-sm-12 mt-10">
-                                                                <div class="border-danger">
-                                                                    <div> Les autres fichier liées au projets </div>
-                                                                </div>
-                                                                <div class="col-md-2 mb-10" ng-repeat="item in projets[0].plan_projets[0].plan.joineds">
-                                                                    <a href="/{{link}}/{{ item.fichier }}">
-                                                                        <span class="fa fa-file-pdf"></span>
-                                                                        {{ item.description}}
-                                                                    </a>
-                                                                </div>
-                                                            </div>
-                                                           <!-- <div class=" col-md-12 col-sm-12 mt-10">
-                                                                <div class="border-danger">
-                                                                    <div> Fichier :<span> <u><a href="{{ base_url }}/{{ item.fichier }}"></a></u></span></div>
-                                                                </div>
-                                                            </div>-->
-
-                                                        </div>
-
-                                                    </div>
-                                                </div>
 
                                             </div>
-                                        </div>
+
                                     </div>
                                 </div>
 
@@ -502,7 +477,7 @@
             <div class="modal-body" style="padding: 50px!important;">
                 <form id="form_addremarque" class="form" enctype="multipart/form-data" accept-charset="UTF-8">
                       <input type="hidden" id="id_projet" name="id">
-                     
+
                     <div class="row mt-14">
                        <!-- <div class="col-lg-12">
                             <div class="form-group">
